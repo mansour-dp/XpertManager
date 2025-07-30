@@ -3,14 +3,17 @@
 
 
 @theme {
-	--color-primary: #A74488;
-	--color-background: #FCF0F8;
-	--color-txt: #010000;
-	--color-txtLight: #C582B1;
-	--color-bordure: #A74488;
-	--color-blanc: #FFFFFF;
-	--color-card: #FCF0F8;
-	--color-ombre: #000000;
+	--color-primary: #20a192;        /* Turquoise principal */
+	--color-secondary: #edc66a;      /* Jaune doré accent */
+	--color-accent: #ff4c0c;         /* Orange vif pour CTA */
+	--color-dark: #45123e;           /* Prune foncé pour texte */
+	--color-background: #f8fffe;     /* Fond très clair turquoise */
+	--color-txt: #45123e;            /* Texte principal prune */
+	--color-txtLight: #20a192;       /* Texte secondaire turquoise */
+	--color-bordure: #20a192;        /* Bordures turquoise */
+	--color-blanc: #FFFFFF;          /* Blanc pur */
+	--color-card: #f0fffe;           /* Cartes légèrement turquoise */
+	--color-ombre: #000000;          /* Ombres */
 	--font-roboto: "Roboto", sans-serif;
 
 	/* Valeurs en pourcentage du conteneur parent */

@@ -281,7 +281,7 @@ export const tabContentVariants = {
 export const footerLinkVariant = {
 	hover: {
 		x: 5,
-		color: "#A74488",
+		color: "#edc66a",
 		transition: { duration: 0.2 },
 	},
 };
@@ -305,7 +305,7 @@ export const paymentLogoVariant = {
 export const socialIconVariant = {
 	hover: {
 		scale: 1.2,
-		color: "#A74488",
+		color: "#edc66a",
 		transition: {
 			type: "spring",
 			stiffness: 300,

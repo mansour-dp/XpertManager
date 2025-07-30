@@ -53,7 +53,7 @@ const Loader = () => {
 						transition: { delay: 0.3, duration: 0.5 },
 					}}
 				>
-					Chargement de votre solution bien-être...
+				Chargement de votre expérience digitale...	
 				</motion.p>
 			</motion.div>
 		</motion.div>

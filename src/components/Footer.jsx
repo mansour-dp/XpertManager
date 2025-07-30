@@ -1,12 +1,9 @@
-import { SlSocialFacebook } from "react-icons/sl";
-import { PiTiktokLogo } from "react-icons/pi";
-import { BsInstagram } from "react-icons/bs";
-import { CiDeliveryTruck } from "react-icons/ci";
+import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import Logo from "../assets/images/logo.png";
-import OM from "../assets/images/om.jpg";
-import Wave from "../assets/images/wave.jpg";
-import FM from "../assets/images/fm.png";
-import { FACEBOOK_PAGE, INSTAGRAM_PAGE, TIKTOK_PAGE, WA_BUSINESS_NUMBER } from "../constants/info";
+import InstagramLogo from "../assets/images/instagram.png";
+import LinkedinLogo from "../assets/images/linkedin.png";
+import WhatsappLogo from "../assets/images/whatsapp.png";
+import { WA_BUSINESS_NUMBER } from "../constants/info";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { 
@@ -17,15 +14,14 @@ import {
     hoverScale,
     listItemVariant,
     footerLinkVariant,
-    paymentLogoVariant,
     socialIconVariant 
 } from "../constants/animationVariants";
 
 export function Footer() {
-    const facebookLink = FACEBOOK_PAGE;
-    const instagramLink = INSTAGRAM_PAGE;
-    const tiktokLink = TIKTOK_PAGE;
-    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20commander%20des%20patchs%20Luna%20Soulage";
+    // PLACEHOLDERS POUR LES LIENS RÉSEAUX SOCIAUX - À REMPLACER PAR VOS VRAIS LIENS
+    const instagramLink = "https://instagram.com/votre_compte_instagram"; // Remplacez par votre lien Instagram
+    const linkedinLink = "https://linkedin.com/company/votre_entreprise"; // Remplacez par votre lien LinkedIn
+    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager";
 
     // Fonction pour faire défiler vers une section
     const scrollToSection = (sectionId) => {
@@ -40,289 +36,252 @@ export function Footer() {
 
     return (
         <motion.footer 
-            className="mt-5 sm:mt-6 md:mt-7 px-3 sm:px-4 md:px-5 border-t border-ombre/25 bg-background"
+            className="bg-gradient-to-tr from-dark/95 via-dark to-dark/90 relative overflow-hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={fadeInUp}
         >
-            <motion.div 
-                className="container mx-auto flex flex-col md:flex-row flex-wrap gap-6 sm:gap-8 md:gap-4 lg:gap-6 px-2 sm:px-4 md:px-6 lg:px-14 py-4"
-                variants={staggerContainer}
-            >
-                {/* Logo - masqué sur mobile et tablette */}
-                <motion.div variants={fadeInLeft}>
-                    <button 
-                        onClick={() => scrollToSection('hero')} 
-                        className="hidden lg:flex items-center w-full lg:w-auto lg:flex-shrink-0 lg:mr-8"
-                    >
-                        <motion.img
-                            className="w-20 md:w-24 object-contain h-auto"
-                            loading="lazy"
-                            src={Logo}
-                            alt="Logo Luna Soulage"
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                        />
-                    </button>
-                </motion.div>
-
-                {/* Grille de liens responsive */}
+            {/* Motifs décoratifs subtils */}
+            <div className="absolute inset-0">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/5 rounded-full blur-2xl"></div>
+            </div>
+            <div className="relative text-white py-12">
+            <div className="container mx-auto px-4">
                 <motion.div 
-                    className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-4 lg:gap-6 w-full lg:flex-1"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
                     variants={staggerContainer}
                 >
-                    {/* Colonne 1 - Produit */}
-                    <motion.div 
-                        className="flex flex-col gap-2 sm:gap-3"
-                        variants={fadeInUp}
-                    >
-                        <motion.h2 
-                            className="text-lg sm:text-xl font-bold uppercase text-primary"
-                            variants={fadeInLeft}
+                    {/* Logo et Description */}
+                    <motion.div variants={fadeInLeft} className="lg:col-span-2">
+                        <motion.div 
+                            className="flex items-center gap-3 mb-4"
+                            whileHover={{ scale: 1.02 }}
                         >
-                            Notre produit
-                        </motion.h2>
-                        <motion.div variants={staggerContainer}>
+                            <img
+                                className="w-12 h-12 object-contain"
+                                loading="lazy"
+                                src={Logo}
+                                alt="Logo XpertManager"
+                            />
+                            <h2 className="text-2xl font-bold">XpertManager</h2>
+                        </motion.div>
+                        <p className="text-gray-300 mb-6 max-w-md">
+                            Votre partenaire digital pour transformer vos idées en solutions innovantes. 
+                            Nous accompagnons les entreprises dans leur transformation numérique avec 
+                            expertise et passion.
+                        </p>
+                        
+                        {/* Informations de contact */}
+                        <div className="space-y-3">
+                            <motion.div 
+                                className="flex items-center gap-3 text-gray-300"
+                                whileHover={{ x: 5 }}
+                            >
+                                <MdEmail className="text-secondary" />
+                                <a href="mailto:contact@xpertmanager.com" className="hover:text-white">
+                                    contact@xpertmanager.com
+                                </a>
+                            </motion.div>
+                            <motion.div 
+                                className="flex items-center gap-3 text-gray-300"
+                                whileHover={{ x: 5 }}
+                            >
+                                <MdPhone className="text-secondary" />
+                                <a href="tel:+221775937679" className="hover:text-white">
+                                    +221 77 593 76 79
+                                </a>
+                            </motion.div>
+                            <motion.div 
+                                className="flex items-center gap-3 text-gray-300"
+                                whileHover={{ x: 5 }}
+                            >
+                                <MdLocationOn className="text-secondary" />
+                                <span>Dakar, Sénégal</span>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+
+                    {/* Services */}
+                    <motion.div variants={fadeInUp}>
+                        <h3 className="text-xl font-bold mb-4 text-secondary">Nos Services</h3>
+                        <motion.div className="space-y-2" variants={staggerContainer}>
                             <motion.div variants={listItemVariant}>
                                 <button 
-                                    onClick={() => scrollToSection('problem-solution')} 
-                                    className="text-sm sm:text-base hover:text-txtLight hover:underline block text-left"
+                                    onClick={() => scrollToSection('services')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Présentation du produit
+                                        Développement Web
                                     </motion.span>
                                 </button>
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
-                                    onClick={() => scrollToSection('how-it-works')} 
-                                    className="text-sm sm:text-base hover:text-txtLight hover:underline block text-left"
+                                    onClick={() => scrollToSection('services')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Mode d'emploi
+                                        Applications Mobile
                                     </motion.span>
                                 </button>
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
-                                    onClick={() => scrollToSection('testimonials')} 
-                                    className="text-sm sm:text-base hover:text-txtLight hover:underline block text-left"
+                                    onClick={() => scrollToSection('services')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Témoignages clients
+                                        Marketing Digital
                                     </motion.span>
                                 </button>
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
-                                    onClick={() => scrollToSection('faq')} 
-                                    className="text-sm sm:text-base hover:text-txtLight hover:underline block text-left"
+                                    onClick={() => scrollToSection('services')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        FAQ
+                                        Conseil Tech
+                                    </motion.span>
+                                </button>
+                            </motion.div>
+                            <motion.div variants={listItemVariant}>
+                                <button 
+                                    onClick={() => scrollToSection('services')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                >
+                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
+                                        Design UI/UX
                                     </motion.span>
                                 </button>
                             </motion.div>
                         </motion.div>
                     </motion.div>
 
-                    {/* Colonne 2 - Contact */}
-                    <motion.div 
-                        className="flex flex-col gap-2 sm:gap-3"
-                        variants={fadeInUp}
-                    >
-                        <motion.h2 
-                            className="text-lg sm:text-xl font-bold uppercase text-primary"
-                            variants={fadeInLeft}
+                    {/* Liens rapides et Réseaux sociaux */}
+                    <motion.div variants={fadeInRight}>
+                        <h3 className="text-xl font-bold mb-4 text-secondary">Liens Rapides</h3>
+                        <motion.div className="space-y-2 mb-6" variants={staggerContainer}>
+                            <motion.div variants={listItemVariant}>
+                                <button 
+                                    onClick={() => scrollToSection('hero')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                >
+                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
+                                        Accueil
+                                    </motion.span>
+                                </button>
+                            </motion.div>
+                            <motion.div variants={listItemVariant}>
+                                <button 
+                                    onClick={() => scrollToSection('about')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                >
+                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
+                                        À propos
+                                    </motion.span>
+                                </button>
+                            </motion.div>
+                            <motion.div variants={listItemVariant}>
+                                <button 
+                                    onClick={() => scrollToSection('contact')} 
+                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                >
+                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
+                                        Contact
+                                    </motion.span>
+                                </button>
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Réseaux sociaux */}
+                        <h4 className="text-lg font-semibold mb-3 text-secondary">Suivez-nous</h4>
+                        <motion.div 
+                            className="flex gap-4"
+                            variants={staggerContainer}
                         >
-                            Contact
-                        </motion.h2>
-                        <motion.div variants={listItemVariant}>
-                            <a 
+                            <motion.a
                                 href={whatsApp}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm sm:text-base hover:text-txtLight hover:underline font-medium block"
-                            >
-                                <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                    Commander maintenant
-                                </motion.span>
-                            </a>
-                        </motion.div>
-                        <motion.p 
-                            className="text-sm sm:text-base text-txt"
-                            variants={listItemVariant}
-                        >
-                            WhatsApp: (+221) 77 593 76 79
-                        </motion.p>
-                        <motion.p 
-                            className="text-sm sm:text-base text-txt"
-                            variants={listItemVariant}
-                        >
-                            Email: lunasoulage@gmail.com
-                        </motion.p>
-                        <motion.div 
-                            className="flex gap-3 items-center mt-1 text-txtLight"
-                            variants={staggerContainer}
-                            initial="hidden"
-                            animate="visible"
-                        >
-                            <motion.a 
-                                href={facebookLink}
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="Facebook"
-                                variants={listItemVariant}
+                                className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                                variants={socialIconVariant}
                                 whileHover="hover"
+                                title="WhatsApp"
                             >
-                                <motion.div variants={socialIconVariant}>
-                                    <SlSocialFacebook className="text-lg sm:text-xl cursor-pointer" />
-                                </motion.div>
+                                <img src={WhatsappLogo} alt="WhatsApp" className="w-full h-full object-contain filter brightness-90 hover:brightness-100" />
                             </motion.a>
-                            <motion.a 
-                                href={tiktokLink}
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="TikTok"
-                                variants={listItemVariant}
+                            <motion.a
+                                href={instagramLink} // PLACEHOLDER - Remplacez par votre lien Instagram
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                                variants={socialIconVariant}
                                 whileHover="hover"
+                                title="Instagram"
                             >
-                                <motion.div variants={socialIconVariant}>
-                                    <PiTiktokLogo className="text-lg sm:text-xl cursor-pointer" />
-                                </motion.div>
+                                <img src={InstagramLogo} alt="Instagram" className="w-full h-full object-contain filter brightness-90 hover:brightness-100" />
                             </motion.a>
-                            <motion.a 
-                                href={instagramLink} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="Instagram"
-                                variants={listItemVariant}
+                            <motion.a
+                                href={linkedinLink} // PLACEHOLDER - Remplacez par votre lien LinkedIn
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                                variants={socialIconVariant}
                                 whileHover="hover"
+                                title="LinkedIn"
                             >
-                                <motion.div variants={socialIconVariant}>
-                                    <BsInstagram className="text-lg sm:text-xl cursor-pointer" />
-                                </motion.div>
+                                <img src={LinkedinLogo} alt="LinkedIn" className="w-full h-full object-contain filter brightness-90 hover:brightness-100" />
                             </motion.a>
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Colonne 3 - Informations */}
-                    <motion.div 
-                        className="flex flex-col gap-2 sm:gap-3"
-                        variants={fadeInUp}
-                    >
-                        <motion.h2 
-                            className="text-lg sm:text-xl font-bold uppercase text-primary"
-                            variants={fadeInLeft}
-                        >
-                            Informations
-                        </motion.h2>
-                        <motion.div variants={staggerContainer}>
-                            <motion.div variants={listItemVariant}>
-                                <button 
-                                    onClick={() => scrollToSection('key-benefits')} 
-                                    className="text-sm sm:text-base hover:text-txtLight hover:underline block text-left"
-                                >
-                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Avantages
-                                    </motion.span>
-                                </button>
-                            </motion.div>
-                            <motion.div variants={listItemVariant}>
-                                <button 
-                                    onClick={() => scrollToSection('packs-prix')} 
-                                    className="text-sm sm:text-base hover:text-txtLight hover:underline block text-left"
-                                >
-                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Nos packs
-                                    </motion.span>
-                                </button>
-                            </motion.div>
-                        </motion.div>
-                        <motion.div 
-                            className="mt-3"
-                            variants={fadeInRight}
-                        >
-                            <motion.h3 
-                                className="text-sm sm:text-base font-semibold text-primary"
-                                variants={fadeInUp}
-                            >
-                                Méthodes de paiement
-                            </motion.h3>
-                            <motion.div 
-                                className="flex flex-wrap gap-2 items-center mt-1"
-                                variants={staggerContainer}
-                                initial="hidden"
-                                animate="visible"
-                            >
-                                <motion.img 
-                                    className="w-[30px] h-[22px] sm:w-[34px] sm:h-[24px] border border-bordure/20 rounded object-contain bg-blanc" 
-                                    src={OM} 
-                                    loading="lazy" 
-                                    alt="Orange Money" 
-                                    title="Orange Money"
-                                    variants={paymentLogoVariant}
-                                    whileHover="hover"
-                                />
-                                <motion.img 
-                                    className="w-[30px] h-[22px] sm:w-[34px] sm:h-[24px] border border-bordure/20 rounded object-contain bg-blanc" 
-                                    src={Wave} 
-                                    loading="lazy" 
-                                    alt="Wave" 
-                                    title="Wave"
-                                    variants={paymentLogoVariant}
-                                    whileHover="hover"
-                                />
-                                <motion.img 
-                                    className="w-[30px] h-[22px] sm:w-[34px] sm:h-[24px] border border-bordure/20 rounded object-contain bg-blanc" 
-                                    src={FM} 
-                                    loading="lazy" 
-                                    alt="Free Money" 
-                                    title="Free Money"
-                                    variants={paymentLogoVariant}
-                                    whileHover="hover"
-                                />
-                                <motion.div
-                                    variants={paymentLogoVariant}
-                                    whileHover="hover"
-                                >
-                                    <CiDeliveryTruck className="w-[30px] h-[22px] sm:w-[34px] sm:h-[24px] border border-bordure/20 rounded p-0.5 bg-blanc text-primary" title="Paiement à la livraison" />
-                                </motion.div>
-                            </motion.div>
                         </motion.div>
                     </motion.div>
                 </motion.div>
-            </motion.div>
 
-            {/* Copyright */}
-            <motion.div 
-                className="border-t border-ombre/10 mt-4 sm:mt-6"
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-            >
-                <motion.p 
-                    className="text-center py-2.5 text-xs sm:text-sm text-txt"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.7 }}
+                {/* Séparateur */}
+                <motion.div 
+                    className="border-t border-gray-700 mt-8 pt-8"
+                    variants={fadeInUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 }}
                 >
-                    &copy; {new Date().getFullYear()} Luna Soulage. Tous droits réservés.
-                    Réalisation:{" "}
-                    <motion.a 
-                        href="https://smrs.sn" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-primary hover:underline hover:text-txtLight"
-                        whileHover={hoverScale}
-                    >
-                        SMRS
-                    </motion.a>
-                </motion.p>
-            </motion.div>
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <motion.p 
+                            className="text-gray-400 text-sm"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.7 }}
+                        >
+                            &copy; {new Date().getFullYear()} XpertManager. Tous droits réservés.
+                        </motion.p>
+                        <motion.div 
+                            className="flex gap-6 text-sm text-gray-400"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                        >
+                            <motion.a 
+                                href="#" 
+                                className="hover:text-white transition-colors"
+                                whileHover={hoverScale}
+                            >
+                                Politique de confidentialité
+                            </motion.a>
+                            <motion.a 
+                                href="#" 
+                                className="hover:text-white transition-colors"
+                                whileHover={hoverScale}
+                            >
+                                Conditions d'utilisation
+                            </motion.a>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+            </div>
         </motion.footer>
     );
 }

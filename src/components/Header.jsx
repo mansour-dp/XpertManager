@@ -111,26 +111,26 @@ export function Header() {
                             </li>
                             <li>
                                 <button 
-                                    onClick={() => scrollToSection('problem-solution')} 
+                                    onClick={() => scrollToSection('about')} 
                                     className={navLinkStyles}
                                 >
-                                    Présentation
+                                    À propos
                                 </button>
                             </li>
                             <li>
                                 <button 
-                                    onClick={() => scrollToSection('how-it-works')} 
+                                    onClick={() => scrollToSection('services')} 
                                     className={navLinkStyles}
                                 >
-                                    Mode d'emploi
+                                    Services
                                 </button>
                             </li>
                             <li>
                                 <button 
-                                    onClick={() => scrollToSection('testimonials')} 
+                                    onClick={() => scrollToSection('contact')} 
                                     className={navLinkStyles}
                                 >
-                                    Témoignages
+                                    Contact
                                 </button>
                             </li>
                             <li>
@@ -197,26 +197,26 @@ export function Header() {
                                 </li>
                                 <li>
                                     <button 
-                                        onClick={() => scrollToSection('problem-solution')} 
+                                        onClick={() => scrollToSection('about')} 
                                         className={mobileNavLinkStyles}
                                     >
-                                        Présentation
+                                        À propos
                                     </button>
                                 </li>
                                 <li>
                                     <button 
-                                        onClick={() => scrollToSection('how-it-works')} 
+                                        onClick={() => scrollToSection('services')} 
                                         className={mobileNavLinkStyles}
                                     >
-                                        Mode d'emploi
+                                        Services
                                     </button>
                                 </li>
                                 <li>
                                     <button 
-                                        onClick={() => scrollToSection('testimonials')} 
+                                        onClick={() => scrollToSection('contact')} 
                                         className={mobileNavLinkStyles}
                                     >
-                                        Témoignages
+                                        Contact
                                     </button>
                                 </li>
                                 <li>

@@ -15,7 +15,7 @@ export function BtnCustom({
 	if (isExternal) {
 		return (
 			<a
-				className={`w-fit bg-primary text-white font-bold rounded-[8px] py-2 px-6 hover:bg-primary/80 transition-colors ${className} ${
+				className={`w-fit bg-accent text-white font-bold rounded-[8px] py-2 px-6 hover:bg-accent/90 transition-colors ${className} ${
 					disabled ? "opacity-50 cursor-not-allowed" : ""
 				}`}
 				href={to}
@@ -30,7 +30,7 @@ export function BtnCustom({
 	// Pour les liens internes, utiliser NavLink
 	return (
 		<NavLink
-			className={`w-fit bg-primary text-white font-bold rounded-[8px] py-2 px-6 hover:bg-primary/80 transition-colors ${className} ${
+			className={`w-fit bg-accent text-white font-bold rounded-[8px] py-2 px-6 hover:bg-accent/90 transition-colors ${className} ${
 				disabled ? "opacity-50 cursor-not-allowed" : ""
 			}`}
 			to={to || "#"}

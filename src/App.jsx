@@ -57,23 +57,32 @@ const App = () => {
 				animate="visible"
 				id="hero"
 			>
+				{/* Overlay professionnel pour la lisibilité */}
+				<div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/40"></div>
+				<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+				
 				<motion.div
-					className="flex flex-col items-center justify-center gap-3 md:gap-5 h-full bg-gradient-to-br from-dark/60 via-primary/40 to-dark/60 text-white p-4 md:p-5"
+					className="relative flex flex-col items-center justify-center gap-3 md:gap-5 h-full text-white p-4 md:p-5"
 					variants={bannerContentAnimation}
 				>
-					<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl">
-						Transformez vos idées en solutions digitales exceptionnelles
-					</motion.h1>
-					<p className="text-sm sm:text-base md:text-lg text-center max-w-2xl">
-						XpertManager - Votre partenaire digital pour développer, innover et réussir 
-						dans l'écosystème numérique d'aujourd'hui
-					</p>
+					{/* Conteneur avec fond semi-transparent pour le texte */}
+					<div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl">
+						<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl drop-shadow-lg">
+							Transformez vos idées en solutions digitales exceptionnelles
+						</motion.h1>
+						<p className="text-sm sm:text-base md:text-lg text-center max-w-2xl mt-4 text-gray-100 drop-shadow-md">
+							XpertManager - Votre partenaire digital pour développer, innover et réussir 
+							dans l'écosystème numérique d'aujourd'hui
+						</p>
+					</div>
+					
 					<motion.div
 						whileHover={hoverScale}
 						whileTap={{ scale: 0.98 }}
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 0.8, duration: 0.4 }}
+						className="mt-6"
 					>
 						<BtnCustom
 							to={whatsApp}
@@ -144,14 +153,21 @@ const App = () => {
 					<motion.div
 						className="md:w-1/2"
 						variants={fadeInUp}
-						whileHover={{ scale: 1.02 }}
-						transition={{ duration: 0.3 }}
 					>
-						<img
-							src={PatchApplication}
-							alt="Équipe XpertManager au travail"
-							className="rounded-lg shadow-lg w-full h-auto"
-						/>
+						<motion.div
+							className="relative overflow-hidden rounded-lg shadow-lg"
+							whileHover={{ scale: 1.01 }}
+							transition={{ duration: 0.4, ease: "easeOut" }}
+						>
+							<img
+								src={PatchApplication}
+								alt="Équipe XpertManager au travail"
+								className="w-full h-auto object-cover"
+								loading="lazy"
+							/>
+							{/* Overlay subtil pour effet professionnel */}
+							<div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-primary/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+						</motion.div>
 					</motion.div>
 				</div>
 			</motion.section>

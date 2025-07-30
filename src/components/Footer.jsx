@@ -255,7 +255,7 @@ export function Footer() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.7 }}
                         >
-                            &copy; {new Date().getFullYear()} XpertManager. Tous droits réservés.
+                            &copy; {new Date().getFullYear()} XpertManager. Tous droits réservés.Réalisation:MSR-DP
                         </motion.p>
                         <motion.div 
                             className="flex gap-6 text-sm text-gray-400"

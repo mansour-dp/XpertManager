@@ -1,4 +1,4 @@
-# 🚀 XpertManager - Site Vitrine
+# 🚀 XpertManager - Site Vitrine Professionnel
 
 ![React](https://img.shields.io/badge/React-v19-blue?style=flat-square&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-ultra--rapide-yellow?style=flat-square&logo=vite)
@@ -6,123 +6,175 @@
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-animations%20fluides-red?style=flat-square&logo=framer)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-Site vitrine pour l'agence **XpertManager**, votre partenaire de confiance pour la gestion et le développement de votre entreprise.
+Site vitrine moderne et professionnel pour **XpertManager**, votre agence de confiance spécialisée dans la gestion et le développement d'entreprise.
 
 ---
 
-## 🎯 Objectif
+## 🎯 À propos du projet
 
-Créer une vitrine moderne et professionnelle qui :
+XpertManager est une agence qui accompagne les entreprises dans leur croissance et leur transformation digitale. Ce site vitrine a été conçu pour :
 
-- Présente les services de l'agence XpertManager
-- Met en avant l'expertise et les compétences
-- Affiche les témoignages clients
-- Facilite la prise de contact
-- Inspire confiance aux prospects
+- **Présenter nos services** de conseil et gestion d'entreprise
+- **Mettre en valeur notre expertise** et nos réalisations
+- **Faciliter la prise de contact** avec nos prospects
+- **Inspirer confiance** grâce à un design professionnel
+- **Afficher les témoignages** de nos clients satisfaits
 
 ---
 
-## 🏗️ Structure du projet
+## 🏗️ Architecture du projet
 
 ```
-luna_soulage/
-├── public/                  # Fichiers statiques (images, favicon, etc.)
+XpertManager/
+├── public/                    # Ressources statiques
+│   └── favicon.png           # Icône du site
 ├── src/
-│   ├── assets/              # Images et ressources
-│   ├── components/          # Composants réutilisables
+│   ├── assets/               # Images et styles
+│   │   ├── images/          # Logos, bannières, icônes
+│   │   └── styles/          # Fichiers CSS
+│   ├── components/          # Composants React réutilisables
+│   │   ├── Header.jsx       # Navigation principale
 │   │   ├── Footer.jsx       # Pied de page
-│   │   ├── Header.jsx       # En-tête avec navigation
-│   │   ├── Btn.jsx          # Bouton WhatsApp
-│   │   └── ScrollToTopButton.jsx # Bouton retour en haut
-│   ├── constants/           # Constantes globales
-│   ├── App.jsx              # Composant principal
-│   ├── main.jsx             # Point d'entrée
-├── index.html               # Template HTML
-├── package.json             # Dépendances et scripts
-├── tailwind.config.js       # Configuration de Tailwind CSS
-└── vite.config.js           # Configuration de Vite
+│   │   ├── ContactForm.jsx  # Formulaire de contact
+│   │   ├── TestimonialsCarousel.jsx # Carrousel de témoignages
+│   │   ├── Btn.jsx          # Boutons d'action
+│   │   ├── Loader.jsx       # Indicateurs de chargement
+│   │   ├── PageLoader.jsx   # Chargement de page
+│   │   └── ScrollToTopButton.jsx # Retour en haut
+│   ├── constants/           # Constantes et configuration
+│   │   ├── info.js          # Informations de l'entreprise
+│   │   └── animationVariants.js # Variants d'animation
+│   ├── App.jsx              # Composant racine
+│   └── main.jsx             # Point d'entrée de l'application
+├── index.html               # Template HTML principal
+├── package.json             # Dépendances et scripts npm
+├── vite.config.js           # Configuration Vite
+└── eslint.config.js         # Configuration ESLint
 ```
 
 ---
 
 ## 🚀 Installation et démarrage
 
-1. **Cloner le dépôt**
+### Prérequis
 
+- Node.js (version 18 ou supérieure)
+- npm ou yarn
+
+### Étapes d'installation
+
+1. **Cloner le dépôt**
    ```bash
-   git clone [URL_DU_REPO]
-   cd luna_soulage
+   git clone https://github.com/mansour-dp/XpertManager.git
+   cd XpertManager
    ```
 
 2. **Installer les dépendances**
-
    ```bash
    npm install
    ```
 
 3. **Démarrer le serveur de développement**
-
    ```bash
    npm run dev
    ```
+   Le site sera accessible sur `http://localhost:5173`
 
 4. **Construire pour la production**
-
    ```bash
    npm run build
    ```
 
 5. **Prévisualiser la version de production**
-
    ```bash
    npm run preview
    ```
 
 ---
 
+## 🛠️ Stack technique
+
+- **⚛️ React 19** - Framework JavaScript pour l'interface utilisateur
+- **⚡ Vite** - Bundler et serveur de développement ultra-rapide
+- **🎨 Tailwind CSS v4** - Framework CSS utilitaire pour le design
+- **🎭 Framer Motion** - Bibliothèque d'animations fluides
+- **📱 Responsive Design** - Compatible mobile, tablette et desktop
+- **🔍 SEO Optimisé** - Métadonnées et structure optimisées
+
+---
+
+## ✨ Fonctionnalités principales
+
+### 🎨 Design et UX
+- ✅ Interface moderne et professionnelle
+- ✅ Design entièrement responsive
+- ✅ Animations et transitions fluides
+- ✅ Chargement optimisé des images (lazy loading)
+- ✅ Navigation intuitive avec menu hamburger mobile
+
+### 📞 Communication
+- ✅ Formulaire de contact intégré
+- ✅ Bouton WhatsApp avec message prérempli
+- ✅ Liens vers les réseaux sociaux (LinkedIn, Instagram)
+- ✅ Informations de contact facilement accessibles
+
+### 🏆 Contenu
+- ✅ Présentation des services
+- ✅ Carrousel de témoignages clients
+- ✅ Section "À propos" détaillée
+- ✅ Galerie de réalisations
+- ✅ Call-to-action stratégiquement placés
+
+### ⚡ Performance
+- ✅ Optimisation des performances (code splitting)
+- ✅ Bouton "Retour en haut" fluide
+- ✅ Temps de chargement optimisés
+- ✅ Compatibilité cross-browser
+
+---
+
 ## 📱 Déploiement
 
-Le site sera déployé sur **Vercel**.
+Le site est optimisé pour un déploiement sur **Vercel**, **Netlify** ou tout autre service d'hébergement statique.
 
+### Déploiement sur Vercel
 ```bash
-# Installation de Vercel CLI (si nécessaire)
+# Installation de Vercel CLI
 npm install -g vercel
 
 # Déploiement
-vercel
+vercel --prod
+```
+
+### Variables d'environnement
+Créez un fichier `.env.local` pour les variables d'environnement :
+```env
+VITE_CONTACT_EMAIL=contact@xpertmanager.com
+VITE_WHATSAPP_NUMBER=+221784590536
 ```
 
 ---
 
-## 📚 Technologies utilisées
+## 🤝 Contribution
 
-- **React 19** - Bibliothèque UI pour construire l'interface
-- **Vite** - Bundler et serveur de développement ultra-rapide
-- **Tailwind CSS v4** - Framework CSS utilitaire
-- **Framer Motion** - Animations et transitions fluides
-- **React Icons** - Icônes pour l'interface utilisateur
+Les contributions sont les bienvenues ! Pour contribuer :
 
----
-
-## 🧩 Caractéristiques principales
-
-- Design moderne et attrayant adapté à la cible
-- Navigation intuitive avec menu responsive
-- Animations élégantes pour une expérience utilisateur optimale
-- Totalement responsive sur mobile, tablette et desktop
-- Optimisé pour les performances (code splitting, lazy loading)
-- Appels à l'action clairs pour faciliter les commandes
+1. Fork le projet
+2. Créez une branche pour votre feature (`git checkout -b feature/NouvelleFeature`)
+3. Commit vos changements (`git commit -m 'Ajout d'une nouvelle feature'`)
+4. Push vers la branche (`git push origin feature/NouvelleFeature`)
+5. Ouvrez une Pull Request
 
 ---
 
-## 📋 Fonctionnalités
+## 📋 Scripts disponibles
 
-- ✅ Intégration du bouton WhatsApp avec message prérempli
-- ✅ Animation et transitions entre sections (Framer Motion)
-- ✅ Responsive design (mobile, tablette, desktop)
-- ✅ Bouton "Retour en haut" fonctionnel sur toutes les pages
-- ✅ Chargement différé des images (lazy loading)
-- ✅ Accessibilité (attributs ARIA, navigation au clavier)
+```bash
+npm run dev          # Démarrer le serveur de développement
+npm run build        # Construire pour la production
+npm run preview      # Prévisualiser la version de production
+npm run lint         # Lancer ESLint pour vérifier le code
+```
 
 ---
 
@@ -134,14 +186,20 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 
 ## 📞 Contact
 
-### Luna Soulage Team
+### XpertManager - Votre partenaire de confiance
 
-- 📧 Email : <seydina.mrs@gmail.com>
-- 📱 Téléphone : (221) 78 459 05 36
-- 🌐 Site web : [luna-soulage.vercel.app](https://luna-soulage.vercel.app)
+- 📧 **Email** : contact@xpertmanager.com
+- 📱 **Téléphone** : +221 78 459 05 36
+- 🌐 **Site web** : [www.xpertmanager.com](https://www.xpertmanager.com)
+- 💼 **LinkedIn** : [XpertManager](https://linkedin.com/company/xpertmanager)
+- 📸 **Instagram** : [@xpertmanager](https://instagram.com/xpertmanager)
 
 ---
 
-## 💌 Remerciements
+## 🙏 Remerciements
 
-Merci de faire confiance à **Luna Soulage** pour transformer votre expérience des règles. 🌸
+Merci de faire confiance à **XpertManager** pour accompagner votre entreprise vers le succès ! 🚀
+
+---
+
+*Développé avec ❤️ par l'équipe XpertManager*

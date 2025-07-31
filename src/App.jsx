@@ -27,6 +27,7 @@ import {
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
+	const [selectedImage, setSelectedImage] = useState(null);
 
 	const whatsApp =
 		WA_BUSINESS_NUMBER +
@@ -66,13 +67,12 @@ const App = () => {
 					variants={bannerContentAnimation}
 				>
 					{/* Conteneur avec fond semi-transparent pour le texte */}
-					<div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl">
-						<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl drop-shadow-lg">
-							Transformez vos idées en solutions digitales exceptionnelles
+					<div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl max-w-5xl mx-auto">
+						<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl mx-auto drop-shadow-lg">
+							Donnez vie à votre organisation avec XpertManager
 						</motion.h1>
-						<p className="text-sm sm:text-base md:text-lg text-center max-w-2xl mt-4 text-gray-100 drop-shadow-md">
-							XpertManager - Votre partenaire digital pour développer, innover et réussir 
-							dans l'écosystème numérique d'aujourd'hui
+						<p className="text-sm sm:text-base md:text-lg text-center max-w-3xl mx-auto mt-4 text-gray-100 drop-shadow-md">
+							XpertManager - Solutions numériques puissantes pour booster la performance, l'innovation et la collaboration dans votre organisation.
 						</p>
 					</div>
 					
@@ -118,20 +118,20 @@ const App = () => {
 				<div className="flex flex-col md:flex-row gap-8 items-center">
 					<motion.div className="md:w-1/2" variants={fadeInUp}>
 						<h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
-							XpertManager - Votre partenaire digital
+							XpertManager
 						</h2>
 						<motion.div
 							className="bg-card rounded-lg p-6 shadow-md mb-6"
 							whileHover={hoverScale}
 						>
 							<h3 className="text-xl font-bold text-txtLight mb-2">
-								Qui sommes-nous ?
+								Qu'est-ce que XpertManager ?
 							</h3>
 							<p className="text-txt mb-4">
-								XpertManager est une agence digitale spécialisée dans l'accompagnement 
-								des entreprises vers leur transformation numérique. Nous combinons 
-								expertise technique, créativité et vision stratégique pour donner 
-								vie à vos projets les plus ambitieux.
+								XpertManager est une plateforme intégrée de gestion,
+								qui regroupe dans un environnement unique des fonctionnalités clés,
+								indispensables pour toute organisation moderne : qu'elle soit publique,
+								privée ou associative.
 							</p>
 						</motion.div>
 						<motion.div
@@ -140,14 +140,29 @@ const App = () => {
 							transition={{ delay: 0.1 }}
 						>
 							<h3 className="text-xl font-bold text-primary mb-2">
-								Notre mission
+								Pourquoi avoir développé XpertManager ?
 							</h3>
-							<p className="text-txt">
-								Nous mettons notre savoir-faire au service de votre réussite. 
-								De la conception de sites web modernes au développement d'applications 
-								sur mesure, en passant par le marketing digital et la gestion 
-								de projets, nous vous accompagnons à chaque étape de votre croissance.
+							<p className="text-txt mb-4">
+								Parce que nous ne devons plus dépendre systématiquement de solutions importées, souvent
+								mal adaptées à nos contextes ou financièrement inaccessibles.
 							</p>
+							<p className="text-txt mb-4">
+								Mon objectif, à travers ce projet, est clair :
+							</p>
+							<ul className="text-txt space-y-2">
+								<li className="flex items-start">
+									<span className="text-primary mr-2">•</span>
+									Valoriser nos compétences locales
+								</li>
+								<li className="flex items-start">
+									<span className="text-primary mr-2">•</span>
+									Répondre à nos besoins spécifiques
+								</li>
+								<li className="flex items-start">
+									<span className="text-primary mr-2">•</span>
+									Offrir à nos communautés des outils puissants, accessibles, et conçus sur mesure
+								</li>
+							</ul>
 						</motion.div>
 					</motion.div>
 					<motion.div
@@ -172,110 +187,288 @@ const App = () => {
 				</div>
 			</motion.section>
 
-			{/* 3. SERVICES */}
+			{/* 3. GALERIE FONCTIONNALITÉS */}
 			<section
 				className="bg-primary/5 py-12 md:py-16 w-full"
-				id="services"
+				id="fonctionnalites"
 			>
 				<div className="container mx-auto px-4">
 					<motion.h2
-						className="text-2xl md:text-3xl font-bold text-primary text-center mb-8"
+						className="text-2xl md:text-3xl font-bold text-primary text-center mb-4"
 						initial={{ opacity: 0 }}
 						whileInView={{ opacity: 1 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.6 }}
 					>
-						Nos Services Experts
+						Fonctionnalités XpertManager
 					</motion.h2>
+					<motion.p
+						className="text-txt text-center mb-12 max-w-3xl mx-auto"
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.2, duration: 0.6 }}
+					>
+						Découvrez les puissantes fonctionnalités de notre plateforme de gestion intégrée.
+						Cliquez sur les images pour les voir en détail.
+					</motion.p>
+					
 					<motion.div
-						className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
+						className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
 						variants={staggerContainer}
 						initial="hidden"
 						whileInView="visible"
 						viewport={{ once: true, amount: 0.1 }}
 					>
+						{/* Fonctionnalité 1 - Dashboard */}
 						<motion.div
-							className="bg-white rounded-lg p-6 shadow-md flex flex-col items-center text-center border-l-4 border-primary"
+							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
 							variants={cardVariant}
-							whileHover={hoverScale}
+							whileHover={{ y: -8, scale: 1.02 }}
+							transition={{ duration: 0.3 }}
 						>
-							<div className="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
-								<span className="text-primary text-2xl">
-									💻
-								</span>
+							<div 
+								className="relative group cursor-pointer"
+								onClick={() => setSelectedImage({
+									src: PatchApplication, // Remplacez par votre image
+									title: "Dashboard Principal",
+									description: "Interface principale de gestion avec vue d'ensemble de toutes vos données et indicateurs clés de performance."
+								})}
+							>
+								<img
+									src={PatchApplication} // Remplacez par votre image de dashboard
+									alt="Dashboard XpertManager"
+									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+									loading="lazy"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+									<span className="text-primary text-lg">🔍</span>
+								</div>
 							</div>
-							<h3 className="font-bold text-lg mb-2 text-dark">Développement Web</h3>
-							<p className="text-txt">
-								Sites web modernes, responsives et optimisés pour vos besoins
-							</p>
+							<div className="p-6">
+								<h3 className="font-bold text-xl mb-3 text-dark">Dashboard Principal</h3>
+								<p className="text-txt leading-relaxed">
+									Interface principale de gestion avec vue d'ensemble de toutes vos données 
+									et indicateurs clés de performance en temps réel.
+								</p>
+							</div>
 						</motion.div>
 
+						{/* Fonctionnalité 2 - Gestion des utilisateurs */}
 						<motion.div
-							className="bg-white rounded-lg p-6 shadow-md flex flex-col items-center text-center"
+							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
 							variants={cardVariant}
-							whileHover={hoverScale}
+							whileHover={{ y: -8, scale: 1.02 }}
+							transition={{ duration: 0.3 }}
 						>
-							<div className="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
-								<span className="text-primary text-2xl">📱</span>
+							<div 
+								className="relative group cursor-pointer"
+								onClick={() => setSelectedImage({
+									src: PatchApplication, // Remplacez par votre image
+									title: "Gestion des Utilisateurs",
+									description: "Module complet de gestion des utilisateurs avec rôles, permissions et suivi des activités."
+								})}
+							>
+								<img
+									src={PatchApplication} // Remplacez par votre image de gestion utilisateurs
+									alt="Gestion des utilisateurs XpertManager"
+									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+									loading="lazy"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+									<span className="text-primary text-lg">🔍</span>
+								</div>
 							</div>
-							<h3 className="font-bold text-lg mb-2">
-								Applications Mobile
-							</h3>
-							<p className="text-txt">
-								Applications natives et cross-platform pour iOS et Android
-							</p>
+							<div className="p-6">
+								<h3 className="font-bold text-xl mb-3 text-dark">Gestion des Utilisateurs</h3>
+								<p className="text-txt leading-relaxed">
+									Module complet de gestion des utilisateurs avec attribution de rôles, 
+									permissions personnalisées et suivi détaillé des activités.
+								</p>
+							</div>
 						</motion.div>
 
+						{/* Fonctionnalité 3 - Rapports et Analytics */}
 						<motion.div
-							className="bg-white rounded-lg p-6 shadow-md flex flex-col items-center text-center"
+							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
 							variants={cardVariant}
-							whileHover={hoverScale}
+							whileHover={{ y: -8, scale: 1.02 }}
+							transition={{ duration: 0.3 }}
 						>
-							<div className="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
-								<span className="text-primary text-2xl">
-									�
-								</span>
+							<div 
+								className="relative group cursor-pointer"
+								onClick={() => setSelectedImage({
+									src: PatchApplication, // Remplacez par votre image
+									title: "Rapports et Analytics",
+									description: "Système de reporting avancé avec graphiques interactifs et export de données personnalisé."
+								})}
+							>
+								<img
+									src={PatchApplication} // Remplacez par votre image de rapports
+									alt="Rapports XpertManager"
+									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+									loading="lazy"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+									<span className="text-primary text-lg">🔍</span>
+								</div>
 							</div>
-							<h3 className="font-bold text-lg mb-2">Marketing Digital</h3>
-							<p className="text-txt">
-								Stratégies digitales pour augmenter votre visibilité en ligne
-							</p>
+							<div className="p-6">
+								<h3 className="font-bold text-xl mb-3 text-dark">Rapports et Analytics</h3>
+								<p className="text-txt leading-relaxed">
+									Système de reporting avancé avec graphiques interactifs, 
+									tableaux de bord personnalisables et export de données.
+								</p>
+							</div>
 						</motion.div>
 
+						{/* Fonctionnalité 4 - Gestion des projets */}
 						<motion.div
-							className="bg-white rounded-lg p-6 shadow-md flex flex-col items-center text-center"
+							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
 							variants={cardVariant}
-							whileHover={hoverScale}
+							whileHover={{ y: -8, scale: 1.02 }}
+							transition={{ duration: 0.3 }}
 						>
-							<div className="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
-								<span className="text-primary text-2xl">
-									⚙️
-								</span>
+							<div 
+								className="relative group cursor-pointer"
+								onClick={() => setSelectedImage({
+									src: PatchApplication, // Remplacez par votre image
+									title: "Gestion des Projets",
+									description: "Outil complet de gestion de projets avec planification, suivi et collaboration en équipe."
+								})}
+							>
+								<img
+									src={PatchApplication} // Remplacez par votre image de gestion projets
+									alt="Gestion des projets XpertManager"
+									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+									loading="lazy"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+									<span className="text-primary text-lg">🔍</span>
+								</div>
 							</div>
-							<h3 className="font-bold text-lg mb-2">Conseil Tech</h3>
-							<p className="text-txt">
-								Accompagnement dans vos choix technologiques et stratégiques
-							</p>
+							<div className="p-6">
+								<h3 className="font-bold text-xl mb-3 text-dark">Gestion des Projets</h3>
+								<p className="text-txt leading-relaxed">
+									Outil complet de gestion de projets avec planification des tâches, 
+									suivi du progrès et collaboration en temps réel.
+								</p>
+							</div>
 						</motion.div>
 
+						{/* Fonctionnalité 5 - Communication */}
 						<motion.div
-							className="bg-white rounded-lg p-6 shadow-md flex flex-col items-center text-center"
+							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
 							variants={cardVariant}
-							whileHover={hoverScale}
+							whileHover={{ y: -8, scale: 1.02 }}
+							transition={{ duration: 0.3 }}
 						>
-							<div className="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
-								<span className="text-primary text-2xl">
-									🎨
-								</span>
+							<div 
+								className="relative group cursor-pointer"
+								onClick={() => setSelectedImage({
+									src: PatchApplication, // Remplacez par votre image
+									title: "Module Communication",
+									description: "Système de messagerie interne avec notifications et gestion des annonces."
+								})}
+							>
+								<img
+									src={PatchApplication} // Remplacez par votre image de communication
+									alt="Communication XpertManager"
+									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+									loading="lazy"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+									<span className="text-primary text-lg">🔍</span>
+								</div>
 							</div>
-							<h3 className="font-bold text-lg mb-2">Design UI/UX</h3>
-							<p className="text-txt">
-								Interfaces utilisateur intuitives et expériences optimales
-							</p>
+							<div className="p-6">
+								<h3 className="font-bold text-xl mb-3 text-dark">Module Communication</h3>
+								<p className="text-txt leading-relaxed">
+									Système de messagerie interne intégré avec notifications push, 
+									gestion des annonces et communication d'équipe.
+								</p>
+							</div>
+						</motion.div>
+
+						{/* Fonctionnalité 6 - Configuration */}
+						<motion.div
+							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
+							variants={cardVariant}
+							whileHover={{ y: -8, scale: 1.02 }}
+							transition={{ duration: 0.3 }}
+						>
+							<div 
+								className="relative group cursor-pointer"
+								onClick={() => setSelectedImage({
+									src: PatchApplication, // Remplacez par votre image
+									title: "Panneau de Configuration",
+									description: "Interface d'administration complète pour personnaliser et configurer votre plateforme."
+								})}
+							>
+								<img
+									src={PatchApplication} // Remplacez par votre image de configuration
+									alt="Configuration XpertManager"
+									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+									loading="lazy"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+									<span className="text-primary text-lg">🔍</span>
+								</div>
+							</div>
+							<div className="p-6">
+								<h3 className="font-bold text-xl mb-3 text-dark">Panneau de Configuration</h3>
+								<p className="text-txt leading-relaxed">
+									Interface d'administration complète pour personnaliser 
+									votre plateforme selon vos besoins spécifiques.
+								</p>
+							</div>
 						</motion.div>
 					</motion.div>
 				</div>
 			</section>
+
+			{/* Modal pour agrandir les images */}
+			{selectedImage && (
+				<motion.div
+					className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					onClick={() => setSelectedImage(null)}
+				>
+					<motion.div
+						className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-hidden"
+						initial={{ scale: 0.8, opacity: 0 }}
+						animate={{ scale: 1, opacity: 1 }}
+						exit={{ scale: 0.8, opacity: 0 }}
+						onClick={(e) => e.stopPropagation()}
+					>
+						<div className="relative">
+							<img
+								src={selectedImage.src}
+								alt={selectedImage.title}
+								className="w-full max-h-[60vh] object-contain"
+							/>
+							<button
+								onClick={() => setSelectedImage(null)}
+								className="absolute top-4 right-4 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 transition-colors"
+							>
+								✕
+							</button>
+						</div>
+						<div className="p-6">
+							<h3 className="text-2xl font-bold text-dark mb-3">{selectedImage.title}</h3>
+							<p className="text-txt leading-relaxed">{selectedImage.description}</p>
+						</div>
+					</motion.div>
+				</motion.div>
+			)}
 
 			{/* 4. FORMULAIRE DE CONTACT */}
 			<ContactForm />
@@ -312,7 +505,7 @@ const App = () => {
 					whileTap={{ scale: 0.98 }}
 				>
 					<BtnCustom
-						to={whatsApp.replace('commander%20des%20patchs%20Luna%20Soulage', 'discuter%20d%27un%20projet%20avec%20XpertManager')}
+						to={whatsApp}
 						className="mx-auto px-8 py-3 text-lg flex items-center gap-3 justify-center"
 					>
 						<motion.span

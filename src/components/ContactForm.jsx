@@ -26,8 +26,6 @@ const ContactForm = () => {
                 from_name: data.name,
                 from_email: data.email,
                 phone: data.phone,
-                company: data.company,
-                service: data.service,
                 message: data.message,
                 to_name: "XpertManager",
             };
@@ -49,16 +47,6 @@ const ContactForm = () => {
             setIsSubmitting(false);
         }
     };
-
-    const services = [
-        "Développement Web",
-        "Application Mobile",
-        "Marketing Digital",
-        "Conseil Tech",
-        "Design UI/UX",
-        "E-commerce",
-        "Autre"
-    ];
 
     return (
         <section className="bg-gradient-to-br from-primary/5 to-primary/10 py-16 md:py-20" id="contact">
@@ -137,52 +125,16 @@ const ContactForm = () => {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Téléphone
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        {...register("phone")}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                                        placeholder="+221 XX XXX XX XX"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Entreprise
-                                    </label>
-                                    <input
-                                        type="text"
-                                        {...register("company")}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                                        placeholder="Nom de votre entreprise"
-                                    />
-                                </div>
-                            </div>
-
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Service souhaité *
+                                    Téléphone
                                 </label>
-                                <select
-                                    {...register("service", { required: "Veuillez sélectionner un service" })}
-                                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors ${
-                                        errors.service ? "border-red-500" : "border-gray-300"
-                                    }`}
-                                >
-                                    <option value="">Sélectionnez un service</option>
-                                    {services.map((service) => (
-                                        <option key={service} value={service}>
-                                            {service}
-                                        </option>
-                                    ))}
-                                </select>
-                                {errors.service && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.service.message}</p>
-                                )}
+                                <input
+                                    type="tel"
+                                    {...register("phone")}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                                    placeholder="+221 XX XXX XX XX"
+                                />
                             </div>
 
                             <div>

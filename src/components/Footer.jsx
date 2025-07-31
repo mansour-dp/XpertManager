@@ -3,7 +3,7 @@ import Logo from "../assets/images/logo.png";
 import InstagramLogo from "../assets/images/instagram.png";
 import LinkedinLogo from "../assets/images/linkedin.png";
 import WhatsappLogo from "../assets/images/whatsapp.png";
-import { WA_BUSINESS_NUMBER } from "../constants/info";
+import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, PHONE_NUMBER } from "../constants/info";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { 
@@ -80,8 +80,8 @@ export function Footer() {
                                 whileHover={{ x: 5 }}
                             >
                                 <MdEmail className="text-secondary text-lg" />
-                                <a href="mailto:contact@xpertmanager.com" className="hover:text-white transition-colors">
-                                    contact@xpertmanager.com
+                                <a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-white transition-colors">
+                                    {EMAIL_CONTACT}
                                 </a>
                             </motion.div>
                             <motion.div 
@@ -89,8 +89,8 @@ export function Footer() {
                                 whileHover={{ x: 5 }}
                             >
                                 <MdPhone className="text-secondary text-lg" />
-                                <a href="tel:+221775937679" className="hover:text-white transition-colors">
-                                    +221 77 593 76 79
+                                <a href={`tel:${PHONE_NUMBER}`} className="hover:text-white transition-colors">
+                                    {PHONE_NUMBER}
                                 </a>
                             </motion.div>
                             <motion.div 

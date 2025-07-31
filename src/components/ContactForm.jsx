@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import { PiWhatsappLogoFill } from "react-icons/pi";
 import { fadeInUp, cardVariant, hoverScale } from "../constants/animationVariants";
+import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, PHONE_NUMBER } from '../constants/info.js';
 
 const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -196,8 +197,8 @@ const ContactForm = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold text-gray-800">Email</h4>
-                                        <a href="mailto:contact@xpertmanager.com" className="text-primary hover:underline">
-                                            contact@xpertmanager.com
+                                        <a href={`mailto:${EMAIL_CONTACT}`} className="text-primary hover:underline">
+                                            {EMAIL_CONTACT}
                                         </a>
                                     </div>
                                 </motion.div>
@@ -211,14 +212,14 @@ const ContactForm = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold text-gray-800">Téléphone</h4>
-                                        <a href="tel:+221775937679" className="text-primary hover:underline">
-                                            +221 77 593 76 79
+                                        <a href={`tel:${PHONE_NUMBER}`} className="text-primary hover:underline">
+                                            {PHONE_NUMBER}
                                         </a>
                                     </div>
                                 </motion.div>
 
                                 <motion.a
-                                    href="https://wa.me/221775937679?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager"
+                                    href={`${WA_BUSINESS_NUMBER}?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 transition-colors"

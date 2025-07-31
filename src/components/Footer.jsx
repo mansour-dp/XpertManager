@@ -11,7 +11,6 @@ import {
     fadeInLeft, 
     fadeInRight, 
     staggerContainer, 
-    hoverScale,
     listItemVariant,
     footerLinkVariant,
     socialIconVariant 
@@ -36,7 +35,7 @@ export function Footer() {
 
     return (
         <motion.footer 
-            className="bg-gradient-to-tr from-dark/95 via-dark to-dark/90 relative overflow-hidden"
+            className="bg-gradient-to-br from-primary/95 via-primary to-primary/90 relative overflow-hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
@@ -44,19 +43,20 @@ export function Footer() {
         >
             {/* Motifs décoratifs subtils */}
             <div className="absolute inset-0">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/5 rounded-full blur-2xl"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full blur-2xl"></div>
+                <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-white/3 rounded-full blur-xl"></div>
             </div>
-            <div className="relative text-white py-12">
+            <div className="relative text-white py-12 md:py-16">
             <div className="container mx-auto px-4">
                 <motion.div 
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
                     variants={staggerContainer}
                 >
                     {/* Logo et Description */}
-                    <motion.div variants={fadeInLeft} className="lg:col-span-2">
+                    <motion.div variants={fadeInLeft} className="sm:col-span-2 lg:col-span-2">
                         <motion.div 
-                            className="flex items-center gap-3 mb-4"
+                            className="flex items-center gap-3 mb-6"
                             whileHover={{ scale: 1.02 }}
                         >
                             <img
@@ -67,7 +67,7 @@ export function Footer() {
                             />
                             <h2 className="text-2xl font-bold">XpertManager</h2>
                         </motion.div>
-                        <p className="text-gray-300 mb-6 max-w-md">
+                        <p className="text-white/90 mb-6 max-w-md leading-relaxed text-sm sm:text-base">
                             Votre partenaire digital pour transformer vos idées en solutions innovantes. 
                             Nous accompagnons les entreprises dans leur transformation numérique avec 
                             expertise et passion.
@@ -76,84 +76,84 @@ export function Footer() {
                         {/* Informations de contact */}
                         <div className="space-y-3">
                             <motion.div 
-                                className="flex items-center gap-3 text-gray-300"
+                                className="flex items-center gap-3 text-white/80 text-sm sm:text-base"
                                 whileHover={{ x: 5 }}
                             >
-                                <MdEmail className="text-secondary" />
-                                <a href="mailto:contact@xpertmanager.com" className="hover:text-white">
+                                <MdEmail className="text-secondary text-lg" />
+                                <a href="mailto:contact@xpertmanager.com" className="hover:text-white transition-colors">
                                     contact@xpertmanager.com
                                 </a>
                             </motion.div>
                             <motion.div 
-                                className="flex items-center gap-3 text-gray-300"
+                                className="flex items-center gap-3 text-white/80 text-sm sm:text-base"
                                 whileHover={{ x: 5 }}
                             >
-                                <MdPhone className="text-secondary" />
-                                <a href="tel:+221775937679" className="hover:text-white">
+                                <MdPhone className="text-secondary text-lg" />
+                                <a href="tel:+221775937679" className="hover:text-white transition-colors">
                                     +221 77 593 76 79
                                 </a>
                             </motion.div>
                             <motion.div 
-                                className="flex items-center gap-3 text-gray-300"
+                                className="flex items-center gap-3 text-white/80 text-sm sm:text-base"
                                 whileHover={{ x: 5 }}
                             >
-                                <MdLocationOn className="text-secondary" />
+                                <MdLocationOn className="text-secondary text-lg" />
                                 <span>Dakar, Sénégal</span>
                             </motion.div>
                         </div>
                     </motion.div>
 
-                    {/* Services */}
-                    <motion.div variants={fadeInUp}>
-                        <h3 className="text-xl font-bold mb-4 text-secondary">Nos Services</h3>
+                    {/* Fonctionnalités */}
+                    <motion.div variants={fadeInUp} className="lg:col-span-1">
+                        <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">Nos Fonctionnalités</h3>
                         <motion.div className="space-y-2" variants={staggerContainer}>
                             <motion.div variants={listItemVariant}>
                                 <button 
                                     onClick={() => scrollToSection('services')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Développement Web
+                                        Dashboard Principal
                                     </motion.span>
                                 </button>
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
                                     onClick={() => scrollToSection('services')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Applications Mobile
+                                        Gestion des Utilisateurs
                                     </motion.span>
                                 </button>
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
                                     onClick={() => scrollToSection('services')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Marketing Digital
+                                        Rapports et Analytics
                                     </motion.span>
                                 </button>
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
                                     onClick={() => scrollToSection('services')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Conseil Tech
+                                        Gestion des Projets
                                     </motion.span>
                                 </button>
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
                                     onClick={() => scrollToSection('services')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Design UI/UX
+                                        Module Communication
                                     </motion.span>
                                 </button>
                             </motion.div>
@@ -161,13 +161,13 @@ export function Footer() {
                     </motion.div>
 
                     {/* Liens rapides et Réseaux sociaux */}
-                    <motion.div variants={fadeInRight}>
-                        <h3 className="text-xl font-bold mb-4 text-secondary">Liens Rapides</h3>
+                    <motion.div variants={fadeInRight} className="lg:col-span-1">
+                        <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">Liens Rapides</h3>
                         <motion.div className="space-y-2 mb-6" variants={staggerContainer}>
                             <motion.div variants={listItemVariant}>
                                 <button 
                                     onClick={() => scrollToSection('hero')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
                                         Accueil
@@ -177,7 +177,7 @@ export function Footer() {
                             <motion.div variants={listItemVariant}>
                                 <button 
                                     onClick={() => scrollToSection('about')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
                                         À propos
@@ -186,8 +186,18 @@ export function Footer() {
                             </motion.div>
                             <motion.div variants={listItemVariant}>
                                 <button 
+                                    onClick={() => scrollToSection('services')} 
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
+                                >
+                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
+                                        Fonctionnalités
+                                    </motion.span>
+                                </button>
+                            </motion.div>
+                            <motion.div variants={listItemVariant}>
+                                <button 
                                     onClick={() => scrollToSection('contact')} 
-                                    className="text-gray-300 hover:text-white transition-colors block text-left"
+                                    className="text-white/80 hover:text-white transition-colors block text-left text-sm sm:text-base"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
                                         Contact
@@ -197,7 +207,7 @@ export function Footer() {
                         </motion.div>
 
                         {/* Réseaux sociaux */}
-                        <h4 className="text-lg font-semibold mb-3 text-secondary">Suivez-nous</h4>
+                        <h4 className="text-base sm:text-lg font-semibold mb-3 text-white">Suivez-nous</h4>
                         <motion.div 
                             className="flex gap-4"
                             variants={staggerContainer}
@@ -206,7 +216,7 @@ export function Footer() {
                                 href={whatsApp}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                                className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center hover:scale-110 transition-transform duration-200"
                                 variants={socialIconVariant}
                                 whileHover="hover"
                                 title="WhatsApp"
@@ -217,7 +227,7 @@ export function Footer() {
                                 href={instagramLink} // PLACEHOLDER - Remplacez par votre lien Instagram
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                                className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center hover:scale-110 transition-transform duration-200"
                                 variants={socialIconVariant}
                                 whileHover="hover"
                                 title="Instagram"
@@ -228,7 +238,7 @@ export function Footer() {
                                 href={linkedinLink} // PLACEHOLDER - Remplacez par votre lien LinkedIn
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                                className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center hover:scale-110 transition-transform duration-200"
                                 variants={socialIconVariant}
                                 whileHover="hover"
                                 title="LinkedIn"
@@ -241,43 +251,25 @@ export function Footer() {
 
                 {/* Séparateur */}
                 <motion.div 
-                    className="border-t border-gray-700 mt-8 pt-8"
+                    className="border-t border-white/20 mt-12 pt-6"
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 }}
                 >
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="text-center">
                         <motion.p 
-                            className="text-gray-400 text-sm"
+                            className="text-white/70 text-sm leading-relaxed"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.7 }}
                         >
-                            &copy; {new Date().getFullYear()} XpertManager. Tous droits réservés.Réalisation:MSR-DP
+                            &copy; {new Date().getFullYear()} XpertManager. Tous droits réservés.
+                            <br className="sm:hidden" />
+                            <span className="hidden sm:inline"> | </span>
+                            Réalisation: <span className="text-secondary font-medium">MSR-DP</span>
                         </motion.p>
-                        <motion.div 
-                            className="flex gap-6 text-sm text-gray-400"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.8 }}
-                        >
-                            <motion.a 
-                                href="#" 
-                                className="hover:text-white transition-colors"
-                                whileHover={hoverScale}
-                            >
-                                Politique de confidentialité
-                            </motion.a>
-                            <motion.a 
-                                href="#" 
-                                className="hover:text-white transition-colors"
-                                whileHover={hoverScale}
-                            >
-                                Conditions d'utilisation
-                            </motion.a>
-                        </motion.div>
                     </div>
                 </motion.div>
             </div>

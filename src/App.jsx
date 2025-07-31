@@ -190,7 +190,7 @@ const App = () => {
 			{/* 3. GALERIE FONCTIONNALITÉS */}
 			<section
 				className="bg-primary/5 py-12 md:py-16 w-full"
-				id="fonctionnalites"
+				id="services"
 			>
 				<div className="container mx-auto px-4">
 					<motion.h2

@@ -147,7 +147,7 @@ const App = () => {
 								mal adaptées à nos contextes ou financièrement inaccessibles.
 							</p>
 							<p className="text-txt mb-4">
-								Mon objectif, à travers ce projet, est clair :
+								L'objectif, à travers ce projet, est clair :
 							</p>
 							<ul className="text-txt space-y-2">
 								<li className="flex items-start">

@@ -204,17 +204,17 @@ const ContactForm = () => {
                                 </motion.div>
 
                                 <motion.div 
-                                    className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg"
-                                    whileHover={hoverScale}
+                                    // className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg"
+                                    // whileHover={hoverScale}
                                 >
-                                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                    {/* <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                                         <span className="text-primary text-xl">📱</span>
-                                    </div>
+                                    </div> */}
                                     <div>
-                                        <h4 className="font-semibold text-gray-800">Téléphone</h4>
+                                        {/* <h4 className="font-semibold text-gray-800">Téléphone</h4>
                                         <a href={`tel:${PHONE_NUMBER}`} className="text-primary hover:underline">
                                             {PHONE_NUMBER}
-                                        </a>
+                                        </a>  */}
                                     </div>
                                 </motion.div>
 

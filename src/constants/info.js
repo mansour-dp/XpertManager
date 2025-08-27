@@ -5,5 +5,5 @@ export const INSTAGRAM_PAGE =
 	"https://www.instagram.com/xpertmanager";
 export const TIKTOK_PAGE =
 	"https://www.tiktok.com/@xpertmanager";
-export const EMAIL_CONTACT = "contact@xpertmanager.com";
-export const PHONE_NUMBER = "+221784217475";
+export const EMAIL_CONTACT = "lamine.jeery.thiaw@gmail.com";
+export const PHONE_NUMBER = "+221769203031";

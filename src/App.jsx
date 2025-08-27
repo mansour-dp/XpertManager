@@ -200,18 +200,40 @@ const App = () => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6 }}
 					>
-						Fonctionnalités XpertManager
+						Fonctionnalités de XpertManager
 					</motion.h2>
 					<motion.p
-						className="text-txt text-center mb-12 max-w-3xl mx-auto"
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						viewport={{ once: true }}
-						transition={{ delay: 0.2, duration: 0.6 }}
-					>
-						Découvrez les puissantes fonctionnalités de notre plateforme de gestion intégrée.
-						Cliquez sur les images pour les voir en détail.
-					</motion.p>
+	className="text-txt text-center mb-12 max-w-3xl mx-auto"
+	initial={{ opacity: 0 }}
+	whileInView={{ opacity: 1 }}
+	viewport={{ once: true }}
+	transition={{ delay: 0.2, duration: 0.6 }}
+>
+	<br /><br />
+	Une plateforme intégrée de gestion, qui regroupe dans un environnement unique des fonctionnalités clés, indispensables pour toute organisation moderne, qu’elle soit publique, privée ou associative.
+	<br /><br />
+	xPertManager permet une gestion de projets fluide et collaborative, à travers une interface intuitive, permettant de :
+	<ul className="list-disc list-inside text-left max-w-xl mx-auto mt-2 mb-2">
+		<li>co-construire</li>
+		<li>planifier</li>
+		<li>suivre l’avancement</li>
+		<li>gérer les priorités et respecter les délais</li>
+	</ul>
+	xPertManager intègre également :
+	<ul className="list-disc list-inside text-left max-w-xl mx-auto mt-2 mb-2">
+		<li>des fonctions avancées de planification et d’ordonnancement des tâches</li>
+		<li>une gestion des activités basée sur la matrice d’Eisenhower</li>
+		<li>la gestion des ressources humaines et matérielles</li>
+		<li>une messagerie instantanée</li>
+		<li>l’envoi de messages texte</li>
+		<li>des appels audio inter-ordinateurs</li>
+		<li>des visioconférences</li>
+		<li>la gestion d’évènements : planification, invitation, notification et gestion des participants</li>
+		<li>un système de vote électronique pour une gouvernance participative, permettant des consultations et des prises de décision collectives</li>
+	</ul>
+	<br />
+	Découvrez les fonctions principales du logiciel xPertManager. Cliquez sur les rubriques ci-dessous pour les voir en détails.
+</motion.p>
 					
 					<motion.div
 						className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"

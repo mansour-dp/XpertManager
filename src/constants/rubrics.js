@@ -1,5 +1,4 @@
 // Images par défaut - vous devrez remplacer ces imports par vos vraies images
-import DefaultImage from "../assets/images/propos.png";
 import XpertManager from "../assets/images/1-xPertManager-starting.png";
 import Activity_creation from "../assets/images/2_0-Activity-creation.png";
 import Activity_grannt from "../assets/images/2_1-Activity-Gannt.png";

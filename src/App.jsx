@@ -14,7 +14,7 @@ import ContactForm from "./components/ContactForm";
 
 // Images - Assurez-vous d'avoir ces images dans vos assets
 import BannerHome from "./assets/images/banner.jpg";
-import PatchApplication from "./assets/images/propos.png";
+import PatchApplication from "./assets/images/propos1.svg";
 
 
 // Animations

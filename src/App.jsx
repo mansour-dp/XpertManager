@@ -5,7 +5,9 @@ import { PiWhatsappLogoFill } from "react-icons/pi";
 import { BtnCustom } from "./components/Btn";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Loader from "./components/Loader";
+import Gallery from "./components/Gallery";
 import { WA_BUSINESS_NUMBER } from "./constants/info";
+import { rubrics } from "./constants/rubrics";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import ContactForm from "./components/ContactForm";
@@ -27,11 +29,23 @@ import {
 
 const App = () => {
 	const [loading, setLoading] = useState(true);
-	const [selectedImage, setSelectedImage] = useState(null);
+	const [selectedRubric, setSelectedRubric] = useState(null);
+	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
 	const whatsApp =
 		WA_BUSINESS_NUMBER +
 		"?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager";
+
+	const openGallery = (rubric) => {
+		console.log("Opening gallery for rubric:", rubric);
+		setSelectedRubric(rubric);
+		setIsGalleryOpen(true);
+	};
+
+	const closeGallery = () => {
+		setIsGalleryOpen(false);
+		setSelectedRubric(null);
+	};
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -236,260 +250,81 @@ const App = () => {
 </motion.p>
 					
 					<motion.div
-						className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
 						variants={staggerContainer}
 						initial="hidden"
 						whileInView="visible"
 						viewport={{ once: true, amount: 0.1 }}
 					>
-						{/* Fonctionnalité 1 - Dashboard */}
-						<motion.div
-							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-							variants={cardVariant}
-							whileHover={{ y: -8, scale: 1.02 }}
-							transition={{ duration: 0.3 }}
-						>
-							<div 
-								className="relative group cursor-pointer"
-								onClick={() => setSelectedImage({
-									src: PatchApplication, // Remplacez par votre image
-									title: "Dashboard Principal",
-									description: "Interface principale de gestion avec vue d'ensemble de toutes vos données et indicateurs clés de performance."
-								})}
+						{rubrics.map((rubric) => (
+							<motion.div
+								key={rubric.id}
+								className="bg-gradient-to-br from-white to-gray-50/80 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 cursor-pointer group relative overflow-hidden"
+								variants={cardVariant}
+								whileHover={{ y: -8, scale: 1.02 }}
+								transition={{ duration: 0.3 }}
+								onClick={() => openGallery(rubric)}
 							>
-								<img
-									src={PatchApplication} // Remplacez par votre image de dashboard
-									alt="Dashboard XpertManager"
-									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-									loading="lazy"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<span className="text-primary text-lg">🔍</span>
-								</div>
-							</div>
-							<div className="p-6">
-								<h3 className="font-bold text-xl mb-3 text-dark">Dashboard Principal</h3>
-								<p className="text-txt leading-relaxed">
-									Interface principale de gestion avec vue d'ensemble de toutes vos données 
-									et indicateurs clés de performance en temps réel.
-								</p>
-							</div>
-						</motion.div>
+								{/* Décoration d'arrière-plan */}
+								<div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-700"></div>
+								<div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/3 to-transparent rounded-full transform -translate-x-12 translate-y-12 group-hover:scale-125 transition-transform duration-700"></div>
 
-						{/* Fonctionnalité 2 - Gestion des utilisateurs */}
-						<motion.div
-							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-							variants={cardVariant}
-							whileHover={{ y: -8, scale: 1.02 }}
-							transition={{ duration: 0.3 }}
-						>
-							<div 
-								className="relative group cursor-pointer"
-								onClick={() => setSelectedImage({
-									src: PatchApplication, // Remplacez par votre image
-									title: "Gestion des Utilisateurs",
-									description: "Module complet de gestion des utilisateurs avec rôles, permissions et suivi des activités."
-								})}
-							>
-								<img
-									src={PatchApplication} // Remplacez par votre image de gestion utilisateurs
-									alt="Gestion des utilisateurs XpertManager"
-									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-									loading="lazy"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<span className="text-primary text-lg">🔍</span>
-								</div>
-							</div>
-							<div className="p-6">
-								<h3 className="font-bold text-xl mb-3 text-dark">Gestion des Utilisateurs</h3>
-								<p className="text-txt leading-relaxed">
-									Module complet de gestion des utilisateurs avec attribution de rôles, 
-									permissions personnalisées et suivi détaillé des activités.
-								</p>
-							</div>
-						</motion.div>
+								<div className="relative p-8">
+									{/* En-tête avec numéro */}
+									<div className="flex items-center justify-between mb-6">
+										<div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+											<span className="text-white font-bold text-lg">
+												{String(rubric.id).padStart(2, '0')}
+											</span>
+										</div>
+										<div className="flex items-center text-primary/60 text-sm">
+											<svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+											</svg>
+											{rubric.images.length} images
+										</div>
+									</div>
 
-						{/* Fonctionnalité 3 - Rapports et Analytics */}
-						<motion.div
-							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-							variants={cardVariant}
-							whileHover={{ y: -8, scale: 1.02 }}
-							transition={{ duration: 0.3 }}
-						>
-							<div 
-								className="relative group cursor-pointer"
-								onClick={() => setSelectedImage({
-									src: PatchApplication, // Remplacez par votre image
-									title: "Rapports et Analytics",
-									description: "Système de reporting avancé avec graphiques interactifs et export de données personnalisé."
-								})}
-							>
-								<img
-									src={PatchApplication} // Remplacez par votre image de rapports
-									alt="Rapports XpertManager"
-									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-									loading="lazy"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<span className="text-primary text-lg">🔍</span>
-								</div>
-							</div>
-							<div className="p-6">
-								<h3 className="font-bold text-xl mb-3 text-dark">Rapports et Analytics</h3>
-								<p className="text-txt leading-relaxed">
-									Système de reporting avancé avec graphiques interactifs, 
-									tableaux de bord personnalisables et export de données.
-								</p>
-							</div>
-						</motion.div>
+									{/* Titre */}
+									<h3 className="font-bold text-2xl mb-4 text-dark group-hover:text-primary transition-colors duration-300 leading-tight">
+										{rubric.title}
+									</h3>
 
-						{/* Fonctionnalité 4 - Gestion des projets */}
-						<motion.div
-							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-							variants={cardVariant}
-							whileHover={{ y: -8, scale: 1.02 }}
-							transition={{ duration: 0.3 }}
-						>
-							<div 
-								className="relative group cursor-pointer"
-								onClick={() => setSelectedImage({
-									src: PatchApplication, // Remplacez par votre image
-									title: "Gestion des Projets",
-									description: "Outil complet de gestion de projets avec planification, suivi et collaboration en équipe."
-								})}
-							>
-								<img
-									src={PatchApplication} // Remplacez par votre image de gestion projets
-									alt="Gestion des projets XpertManager"
-									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-									loading="lazy"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<span className="text-primary text-lg">🔍</span>
+									{/* Description */}
+									<p className="text-txt leading-relaxed text-base mb-6 line-clamp-4">
+										{rubric.description}
+									</p>
+									
+									{/* Bouton call-to-action */}
+									<div className="flex items-center justify-between pt-4 border-t border-gray-100/50">
+										<div className="flex items-center text-primary font-semibold group-hover:text-primary-dark transition-colors duration-300">
+											<span>Découvrir la galerie</span>
+											<svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+											</svg>
+										</div>
+										
+										{/* Points indicateurs */}
+										<div className="flex space-x-1">
+											{[...Array(Math.min(rubric.images.length, 5))].map((_, index) => (
+												<div key={index} className={`w-2 h-2 rounded-full ${index < rubric.images.length ? 'bg-primary' : 'bg-primary/20'} group-hover:scale-125 transition-transform duration-300`}></div>
+											))}
+										</div>
+									</div>
 								</div>
-							</div>
-							<div className="p-6">
-								<h3 className="font-bold text-xl mb-3 text-dark">Gestion des Projets</h3>
-								<p className="text-txt leading-relaxed">
-									Outil complet de gestion de projets avec planification des tâches, 
-									suivi du progrès et collaboration en temps réel.
-								</p>
-							</div>
-						</motion.div>
-
-						{/* Fonctionnalité 5 - Communication */}
-						<motion.div
-							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-							variants={cardVariant}
-							whileHover={{ y: -8, scale: 1.02 }}
-							transition={{ duration: 0.3 }}
-						>
-							<div 
-								className="relative group cursor-pointer"
-								onClick={() => setSelectedImage({
-									src: PatchApplication, // Remplacez par votre image
-									title: "Module Communication",
-									description: "Système de messagerie interne avec notifications et gestion des annonces."
-								})}
-							>
-								<img
-									src={PatchApplication} // Remplacez par votre image de communication
-									alt="Communication XpertManager"
-									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-									loading="lazy"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<span className="text-primary text-lg">🔍</span>
-								</div>
-							</div>
-							<div className="p-6">
-								<h3 className="font-bold text-xl mb-3 text-dark">Module Communication</h3>
-								<p className="text-txt leading-relaxed">
-									Système de messagerie interne intégré avec notifications push, 
-									gestion des annonces et communication d'équipe.
-								</p>
-							</div>
-						</motion.div>
-
-						{/* Fonctionnalité 6 - Configuration */}
-						<motion.div
-							className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-							variants={cardVariant}
-							whileHover={{ y: -8, scale: 1.02 }}
-							transition={{ duration: 0.3 }}
-						>
-							<div 
-								className="relative group cursor-pointer"
-								onClick={() => setSelectedImage({
-									src: PatchApplication, // Remplacez par votre image
-									title: "Panneau de Configuration",
-									description: "Interface d'administration complète pour personnaliser et configurer votre plateforme."
-								})}
-							>
-								<img
-									src={PatchApplication} // Remplacez par votre image de configuration
-									alt="Configuration XpertManager"
-									className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-									loading="lazy"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<span className="text-primary text-lg">🔍</span>
-								</div>
-							</div>
-							<div className="p-6">
-								<h3 className="font-bold text-xl mb-3 text-dark">Panneau de Configuration</h3>
-								<p className="text-txt leading-relaxed">
-									Interface d'administration complète pour personnaliser 
-									votre plateforme selon vos besoins spécifiques.
-								</p>
-							</div>
-						</motion.div>
+							</motion.div>
+						))}
 					</motion.div>
 				</div>
 			</section>
 
-			{/* Modal pour agrandir les images */}
-			{selectedImage && (
-				<motion.div
-					className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					onClick={() => setSelectedImage(null)}
-				>
-					<motion.div
-						className="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-hidden"
-						initial={{ scale: 0.8, opacity: 0 }}
-						animate={{ scale: 1, opacity: 1 }}
-						exit={{ scale: 0.8, opacity: 0 }}
-						onClick={(e) => e.stopPropagation()}
-					>
-						<div className="relative">
-							<img
-								src={selectedImage.src}
-								alt={selectedImage.title}
-								className="w-full max-h-[60vh] object-contain"
-							/>
-							<button
-								onClick={() => setSelectedImage(null)}
-								className="absolute top-4 right-4 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 transition-colors"
-							>
-								✕
-							</button>
-						</div>
-						<div className="p-6">
-							<h3 className="text-2xl font-bold text-dark mb-3">{selectedImage.title}</h3>
-							<p className="text-txt leading-relaxed">{selectedImage.description}</p>
-						</div>
-					</motion.div>
-				</motion.div>
+			{/* Composant Gallery pour afficher les galeries d'images */}
+			{isGalleryOpen && selectedRubric && (
+				<Gallery 
+					isOpen={isGalleryOpen}
+					rubric={selectedRubric} 
+					onClose={closeGallery} 
+				/>
 			)}
 
 			{/* 4. FORMULAIRE DE CONTACT */}

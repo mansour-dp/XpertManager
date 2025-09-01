@@ -140,7 +140,7 @@ export function Header() {
                                     rel="noopener noreferrer"
                                     className="font-medium bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition-colors duration-200"
                                 >
-                                    Commander
+                                    PARLER À UN EXPERT
                                 </a>
                             </li>
                         </ul>
@@ -227,7 +227,7 @@ export function Header() {
                                         className="block text-lg font-medium bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition-colors duration-200 text-center mt-4"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        Commander
+                                        COMMANDER
                                     </a>
                                 </li>
                             </ul>

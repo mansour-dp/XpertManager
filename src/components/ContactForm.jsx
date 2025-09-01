@@ -22,21 +22,22 @@ const ContactForm = () => {
         setIsSubmitting(true);
         
         try {
-            // Configuration EmailJS (vous devrez configurer vos clés)
+            // Configuration EmailJS avec variables d'environnement
             const templateParams = {
                 from_name: data.name,
                 from_email: data.email,
                 phone: data.phone,
                 message: data.message,
                 to_name: "XpertManager",
+                reply_to: data.email,
             };
 
-            // Remplacez par vos véritables clés EmailJS
+            // Utilisation des variables d'environnement
             await emailjs.send(
-                'YOUR_SERVICE_ID', // À remplacer
-                'YOUR_TEMPLATE_ID', // À remplacer
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 templateParams,
-                'YOUR_PUBLIC_KEY' // À remplacer
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             );
             
             toast.success("Message envoyé avec succès ! Nous vous répondrons rapidement.");

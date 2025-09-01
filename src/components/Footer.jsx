@@ -113,7 +113,7 @@ export function Footer() {
                                     className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Dashboard Principal
+                                        Présentation d'interfaces
                                     </motion.span>
                                 </button>
                             </motion.div>
@@ -123,7 +123,7 @@ export function Footer() {
                                     className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Gestion des Utilisateurs
+                                        Gestion de projets
                                     </motion.span>
                                 </button>
                             </motion.div>
@@ -133,7 +133,7 @@ export function Footer() {
                                     className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Rapports et Analytics
+                                        Gestion des Événements
                                     </motion.span>
                                 </button>
                             </motion.div>
@@ -143,17 +143,7 @@ export function Footer() {
                                     className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
                                 >
                                     <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Gestion des Projets
-                                    </motion.span>
-                                </button>
-                            </motion.div>
-                            <motion.div variants={listItemVariant}>
-                                <button 
-                                    onClick={() => scrollToSection('services')} 
-                                    className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
-                                >
-                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Module Communication
+                                        Tableau de Bord (Gestion des Tâches)
                                     </motion.span>
                                 </button>
                             </motion.div>

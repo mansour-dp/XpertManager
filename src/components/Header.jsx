@@ -84,27 +84,28 @@ export function Header() {
         >
             <div className="max-w-screen-xl mx-auto flex items-center justify-between relative">
                 {/* Logo */}
-                <div className="relative z-20">
+                <div className="flex items-center flex-shrink-0">
                     <button
                         onClick={() => scrollToSection('hero')}
-                        className="flex items-center"
+                        className="flex items-center hover:scale-105 transition-transform duration-200"
                     >
                         <img
-                            className="w-12 sm:w-14 md:w-16 h-auto"
+                            className="w-12 sm:w-14 md:w-16 h-auto mr-2"
                             src={Logo}
-                            alt="Logo Luna Soulage"
+                            alt="Logo XpertManager"
                         />
+                        <span className="hidden sm:block text-lg font-bold text-primary">XpertManager</span>
                     </button>
                 </div>
 
-                {/* Navigation desktop */}
-                <div className="hidden md:block z-20">
-                    <nav className="container mx-auto">
-                        <ul className="flex items-center space-x-1 lg:space-x-3">
+                {/* Navigation desktop - Centré */}
+                <div className="hidden md:flex flex-1 justify-center">
+                    <nav className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg border border-gray-200">
+                        <ul className="flex items-center space-x-8">
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('hero')} 
-                                    className={navLinkStyles}
+                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
                                 >
                                     Accueil
                                 </button>
@@ -112,7 +113,7 @@ export function Header() {
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('about')} 
-                                    className={navLinkStyles}
+                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
                                 >
                                     À propos
                                 </button>
@@ -120,31 +121,37 @@ export function Header() {
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('services')} 
-                                    className={navLinkStyles}
+                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
                                 >
-                                    Services
+                                    Fonctionnalités
                                 </button>
                             </li>
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('contact')} 
-                                    className={navLinkStyles}
+                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
                                 >
                                     Contact
                                 </button>
                             </li>
-                            <li>
-                                <a 
-                                    href={whatsApp}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="font-medium bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition-colors duration-200"
-                                >
-                                    PARLER À UN EXPERT
-                                </a>
-                            </li>
                         </ul>
                     </nav>
+                </div>
+
+                {/* CTA Button - À droite */}
+                <div className="flex items-center flex-shrink-0">
+                    <a 
+                        href={whatsApp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hidden md:flex font-semibold bg-gradient-to-r from-primary to-primary/80 text-white px-4 lg:px-6 py-2.5 rounded-full hover:from-primary/90 hover:to-primary/70 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 items-center gap-2 text-sm lg:text-base"
+                    >
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.017 2.002c5.516 0 9.983 4.468 9.983 9.983 0 1.75-.456 3.398-1.253 4.833L24 24l-7.232-1.253c-1.434.796-3.082 1.253-4.833 1.253-5.516 0-9.983-4.467-9.983-9.983C2.034 6.484 6.502 2.002 12.017 2.002zm5.123 14.127c-.22-.037-.635-.156-.89-.278-.255-.119-1.475-.726-1.704-.81-.228-.084-.394-.125-.561.125-.166.25-.646.81-.793.976-.147.166-.293.187-.549.062-.255-.125-1.077-.397-2.053-1.266-.759-.676-1.271-1.511-1.42-1.766-.148-.255-.016-.394.11-.521.112-.112.255-.293.383-.439.125-.147.167-.255.25-.424.084-.166.042-.312-.02-.439-.063-.125-.561-1.351-.77-1.851-.203-.49-.408-.424-.561-.432-.146-.007-.312-.009-.479-.009-.166 0-.439.063-.67.312-.23.25-.876.855-.876 2.083 0 1.229.897 2.417 1.021 2.583.125.166 1.754 2.679 4.25 3.757.594.257 1.057.41 1.418.525.596.189 1.139.162 1.568.098.479-.072 1.475-.603 1.682-1.185.208-.583.208-1.082.146-1.185-.063-.104-.23-.167-.479-.293z"/>
+                        </svg>
+                        <span className="hidden lg:inline">PARLER À UN EXPERT</span>
+                        <span className="lg:hidden">EXPERT</span>
+                    </a>
                 </div>
 
                 {/* Navigation mobile */}
@@ -208,7 +215,7 @@ export function Header() {
                                         onClick={() => scrollToSection('services')} 
                                         className={mobileNavLinkStyles}
                                     >
-                                        Services
+                                        Fonctionnalités
                                     </button>
                                 </li>
                                 <li>
@@ -224,10 +231,13 @@ export function Header() {
                                         href={whatsApp}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block text-lg font-medium bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80 transition-colors duration-200 text-center mt-4"
+                                        className="flex items-center justify-center gap-2 text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 text-white px-6 py-3 rounded-full hover:from-primary/90 hover:to-primary/70 transition-all duration-200 text-center mt-6 shadow-lg"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        COMMANDER
+                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12.017 2.002c5.516 0 9.983 4.468 9.983 9.983 0 1.75-.456 3.398-1.253 4.833L24 24l-7.232-1.253c-1.434.796-3.082 1.253-4.833 1.253-5.516 0-9.983-4.467-9.983-9.983C2.034 6.484 6.502 2.002 12.017 2.002zm5.123 14.127c-.22-.037-.635-.156-.89-.278-.255-.119-1.475-.726-1.704-.81-.228-.084-.394-.125-.561.125-.166.25-.646.81-.793.976-.147.166-.293.187-.549.062-.255-.125-1.077-.397-2.053-1.266-.759-.676-1.271-1.511-1.42-1.766-.148-.255-.016-.394.11-.521.112-.112.255-.293.383-.439.125-.147.167-.255.25-.424.084-.166.042-.312-.02-.439-.063-.125-.561-1.351-.77-1.851-.203-.49-.408-.424-.561-.432-.146-.007-.312-.009-.479-.009-.166 0-.439.063-.67.312-.23.25-.876.855-.876 2.083 0 1.229.897 2.417 1.021 2.583.125.166 1.754 2.679 4.25 3.757.594.257 1.057.41 1.418.525.596.189 1.139.162 1.568.098.479-.072 1.475-.603 1.682-1.185.208-.583.208-1.082.146-1.185-.063-.104-.23-.167-.479-.293z"/>
+                                        </svg>
+                                        PARLER À UN EXPERT
                                     </a>
                                 </li>
                             </ul>

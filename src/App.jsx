@@ -217,7 +217,7 @@ const App = () => {
 						Fonctionnalités de XpertManager
 					</motion.h2>
 					<motion.p
-	className="text-txt text-center mb-12 max-w-3xl mx-auto"
+	className="text-txt text-left mb-12 max-w-3xl"
 	initial={{ opacity: 0 }}
 	whileInView={{ opacity: 1 }}
 	viewport={{ once: true }}
@@ -227,14 +227,14 @@ const App = () => {
 	Une plateforme intégrée de gestion, qui regroupe dans un environnement unique des fonctionnalités clés, indispensables pour toute organisation moderne, qu’elle soit publique, privée ou associative.
 	<br /><br />
 	xPertManager permet une gestion de projets fluide et collaborative, à travers une interface intuitive, permettant de :
-	<ul className="list-disc list-inside text-left max-w-xl mx-auto mt-2 mb-2">
+	<ul className="list-disc list-inside text-left max-w-xl mt-2 mb-2">
 		<li>co-construire</li>
 		<li>planifier</li>
 		<li>suivre l’avancement</li>
 		<li>gérer les priorités et respecter les délais</li>
 	</ul>
 	xPertManager intègre également :
-	<ul className="list-disc list-inside text-left max-w-xl mx-auto mt-2 mb-2">
+	<ul className="list-disc list-inside text-left max-w-xl mt-2 mb-2">
 		<li>des fonctions avancées de planification et d’ordonnancement des tâches</li>
 		<li>une gestion des activités basée sur la matrice d’Eisenhower</li>
 		<li>la gestion des ressources humaines et matérielles</li>

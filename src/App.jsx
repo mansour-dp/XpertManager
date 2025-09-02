@@ -246,7 +246,7 @@ const App = () => {
 		<li>un système de vote électronique pour une gouvernance participative, permettant des consultations et des prises de décision collectives</li>
 	</ul>
 	<br />
-	Découvrez les fonctions principales du logiciel xPertManager en cliquant sur les rubriques ci-dessous pour les voir en détails.
+	Découvrez les fonctions principales du logiciel xPertManager en cliquant sur les rubriques ci-dessous.
 </motion.p>
 					
 					<motion.div

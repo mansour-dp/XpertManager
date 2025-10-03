@@ -62,12 +62,9 @@ const ContactForm = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-                        Démarrons votre projet ensemble
+                        Contactez-nous
                     </h2>
-                    <p className="text-txt text-lg max-w-2xl mx-auto">
-                        Prêt à transformer votre vision en réalité ? Contactez-nous pour discuter 
-                        de votre projet et découvrir comment nous pouvons vous aider.
-                    </p>
+
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -237,29 +234,7 @@ const ContactForm = () => {
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-2xl shadow-xl p-8">
-                            <h3 className="text-xl font-bold text-primary mb-4">
-                                Pourquoi nous choisir ?
-                            </h3>
-                            <ul className="space-y-3 text-gray-600">
-                                <li className="flex items-center gap-2">
-                                    <span className="text-primary">✓</span>
-                                    Réponse sous 24h garantie
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-primary">✓</span>
-                                    Devis gratuit et détaillé
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-primary">✓</span>
-                                    Accompagnement personnalisé
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-primary">✓</span>
-                                    Expertise technique avérée
-                                </li>
-                            </ul>
-                        </div>
+
                     </motion.div>
                 </div>
             </div>

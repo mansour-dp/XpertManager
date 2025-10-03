@@ -14,7 +14,7 @@ import Dashboard_Eisenhover from "../assets/images/4_Dashborad-Eisenhover-matrix
 export const rubrics = [
 	{
 		id: 1,
-		title: "Presentation d'interfaces",
+		title: "Interface d'accueil",
 		description: "Accès sécurisé à votre compte avec gestion complète selon vos droits d'utilisateur. Interface principale pour organiser votre structure, gérer les ressources et accéder aux fonctionnalités de communication.",
 		thumbnail: XpertManager,
 		images: [
@@ -27,7 +27,7 @@ export const rubrics = [
 	},
 	{
 		id: 2,
-		title: "Gestion de projets",
+		title: "Interface de Gestion de projets",
 		description: "L'interface vous permet de gérer vos activités professionnelles (ou aussi personnelles), aussi bien celles que vous avez créées ou celles auxquelles vous avez été associées.\n\nVous pouvez entre autres :\n• Créer les activités de votre projet\n• Associer vos collaborateurs dans la création, la gestion et le suivi de votre projet\n• Affecter des équipes et des ressources matérielles à des tâches\n• Faire la planification et l'ordonnancement des tâches\n• Joindre des documents de travail dans les activités créées\n• Travailler sur des activités auxquelles vous avez été associées\n• Suivre en temps réels l'avancement de votre projet à travers une animation dans le diagramme de Gantt ou la méthode des potentiels métra MPM (similaire au diagramme de PERT)",
 		thumbnail: Activity_creation,
 		images: [
@@ -44,7 +44,7 @@ export const rubrics = [
 	},
 	{
 		id: 3,
-		title: "Gestion des Événements",
+		title: "Interface de Gestion des Événements",
 		description: "Interface complète pour créer, gérer et suivre des événements, incluant les visioconférences. Planifiez vos événements avec vos collaborateurs et gérez vos discussions en temps réel.",
 		thumbnail: Event_creation,
 		images: [
@@ -62,7 +62,7 @@ export const rubrics = [
 	},
 	{
 		id: 4,
-		title: "Tableau de Bord (Gestion des Tâches)",
+		title: "Tableau de Bord ",
 		description: "Système de gestion des priorités basé sur la matrice d'Eisenhower pour une organisation optimale de vos tâches et activités.",
 		thumbnail: Dashboard_Eisenhover,
 		images: [

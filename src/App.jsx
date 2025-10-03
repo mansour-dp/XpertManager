@@ -228,9 +228,7 @@ const HomePage = () => {
 	viewport={{ once: true }}
 	transition={{ delay: 0.2, duration: 0.6 }}
 >
-	<br /><br />
-	Une plateforme intégrée de gestion, qui regroupe dans un environnement unique des fonctionnalités clés, indispensables pour toute organisation moderne, qu’elle soit publique, privée ou associative.
-	<br /><br />
+
 	xPertManager permet une gestion de projets fluide et collaborative, à travers une interface intuitive, permettant de :
 	<ul className="list-disc list-inside text-left max-w-xl mt-2 mb-2">
 		<li>co-construire</li>
@@ -303,15 +301,14 @@ const HomePage = () => {
 									{/* Bouton call-to-action */}
 									<div className="flex items-center justify-between pt-4 border-t border-gray-100/50">
 										<div className="flex items-center text-primary font-semibold group-hover:text-primary-dark transition-colors duration-300">
-											<span>Découvrir la galerie</span>
-											<svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
 											</svg>
 										</div>
 										
 										{/* Points indicateurs */}
 										<div className="flex space-x-1">
-											{[...Array(Math.min(rubric.images.length, 5))].map((_, index) => (
+											{[...Array(3)].map((_, index) => (
 												<div key={index} className={`w-2 h-2 rounded-full ${index < rubric.images.length ? 'bg-primary' : 'bg-primary/20'} group-hover:scale-125 transition-transform duration-300`}></div>
 											))}
 										</div>
@@ -386,45 +383,7 @@ const HomePage = () => {
 					</BtnCustom>
 				</motion.div>
 
-				{/* Badges de réassurance */}
-				<motion.div
-					className="flex flex-wrap justify-center gap-4 mt-8"
-					variants={staggerContainer}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-				>
-					<motion.div
-						className="bg-primary/10 text-primary text-sm font-bold py-2 px-4 rounded-full"
-						variants={cardVariant}
-						whileHover={{
-							scale: 1.1,
-							backgroundColor: "rgba(32, 161, 146, 0.15)",
-						}}
-					>
-						Expertise certifiée
-					</motion.div>
-					<motion.div
-						className="bg-secondary/20 text-dark text-sm font-bold py-2 px-4 rounded-full"
-						variants={cardVariant}
-						whileHover={{
-							scale: 1.1,
-							backgroundColor: "rgba(237, 198, 106, 0.3)",
-						}}
-					>
-						Support 24/7
-					</motion.div>
-					<motion.div
-						className="bg-accent/10 text-accent text-sm font-bold py-2 px-4 rounded-full"
-						variants={cardVariant}
-						whileHover={{
-							scale: 1.1,
-							backgroundColor: "rgba(255, 76, 12, 0.15)",
-						}}
-					>
-						Résultats garantis
-					</motion.div>
-				</motion.div>
+
 			</section>
 
 			{/* 9. PIED DE PAGE */}

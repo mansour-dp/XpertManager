@@ -1,9 +1,9 @@
-import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import { MdEmail, MdLocationOn } from "react-icons/md";
 import Logo from "../assets/images/logo.png";
 import InstagramLogo from "../assets/images/instagram.png";
 import LinkedinLogo from "../assets/images/linkedin.png";
 import WhatsappLogo from "../assets/images/whatsapp.png";
-import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, PHONE_NUMBER } from "../constants/info";
+import { WA_BUSINESS_NUMBER, EMAIL_CONTACT } from "../constants/info";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { 
@@ -84,15 +84,7 @@ export function Footer() {
                                     {EMAIL_CONTACT}
                                 </a>
                             </motion.div>
-                            <motion.div 
-                                className="flex items-center gap-3 text-white/80 text-sm sm:text-base justify-center sm:justify-start"
-                                whileHover={{ x: 5 }}
-                            >
-                                <MdPhone className="text-secondary text-lg" />
-                                <a href={`tel:${PHONE_NUMBER}`} className="hover:text-white transition-colors">
-                                    {PHONE_NUMBER}
-                                </a>
-                            </motion.div>
+
                             <motion.div 
                                 className="flex items-center gap-3 text-white/80 text-sm sm:text-base justify-center sm:justify-start"
                                 whileHover={{ x: 5 }}

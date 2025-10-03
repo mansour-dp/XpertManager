@@ -30,6 +30,7 @@ import {
 } from "./constants/animationVariants";
 
 const HomePage = () => {
+	const [loading, setLoading] = useState(true);
 	const [selectedRubric, setSelectedRubric] = useState(null);
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
@@ -47,6 +48,17 @@ const HomePage = () => {
 		setIsGalleryOpen(false);
 		setSelectedRubric(null);
 	};
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+		return () => clearTimeout(timer);
+	}, []);
+
+	if (loading) {
+		return <Loader />;
+	}
 
 	return (
 		<div className="flex flex-col w-full">
@@ -425,19 +437,6 @@ const HomePage = () => {
 };
 
 const App = () => {
-	const [loading, setLoading] = useState(true);
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLoading(false);
-		}, 2000);
-		return () => clearTimeout(timer);
-	}, []);
-
-	if (loading) {
-		return <Loader />;
-	}
-
 	return (
 		<Router>
 			<Routes>

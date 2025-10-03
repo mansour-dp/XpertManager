@@ -98,9 +98,9 @@ const App = () => {
 						transition={{ delay: 0.8, duration: 0.4 }}
 						className="mt-6"
 					>
-						<BtnCustom
-							to="http://localhost:5173/src/assets/xPertManagerHelp.html"
-							className="mt-2 sm:mt-4 flex items-center gap-2 text-lg px-8 py-3"
+						<a
+							href="/xPertManagerHelp.html"
+							className="w-fit bg-accent text-white font-bold rounded-[8px] py-2 px-6 hover:bg-accent/90 transition-colors mt-2 sm:mt-4 flex items-center gap-2 text-lg px-8 py-3"
 						>
 							<motion.span
 								animate={{
@@ -118,7 +118,7 @@ const App = () => {
 								🎯
 							</motion.span>
 							Découvrir notre guide
-						</BtnCustom>
+						</a>
 					</motion.div>
 				</motion.div>
 			</motion.div>

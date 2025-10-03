@@ -1,4 +1,4 @@
-# 🚀 XpertManager - Plateforme de Gestion Intégrée
+# 🚀 xPertManager - Plateforme de Gestion Intégrée
 
 ![React](https://img.shields.io/badge/React-v19.1.1-blue?style=flat-square&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-v6.3.5-yellow?style=flat-square&logo=vite)
@@ -8,13 +8,13 @@
 ![Build](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)
 ![Bundle Size](https://img.shields.io/badge/Bundle%20Size-421.25%20kB-orange?style=flat-square)
 
-Site vitrine moderne et professionnel pour **XpertManager** - Une plateforme intégrée de gestion qui regroupe dans un environnement unique des fonctionnalités clés, indispensables pour toute organisation moderne, qu'elle soit publique, privée ou associative.
+Site vitrine moderne et professionnel pour **xPertManager** - Une plateforme intégrée de gestion qui regroupe dans un environnement unique des fonctionnalités clés, indispensables pour toute organisation moderne, qu'elle soit publique, privée ou associative.
 
 ---
 
 ## 🎯 À propos du projet
 
-**XpertManager** est une plateforme intégrée de gestion qui révolutionne la façon dont les organisations modernes gèrent leurs projets, événements et ressources. Cette vitrine interactive présente les quatre modules principaux de la solution :
+**xPertManager** est une plateforme intégrée de gestion qui révolutionne la façon dont les organisations modernes gèrent leurs projets, événements et ressources. Cette vitrine interactive présente les quatre modules principaux de la solution :
 
 ### 🔐 Module de Connexion et Gestion
 - **Interface principale sécurisée** avec gestion des droits utilisateur
@@ -43,7 +43,7 @@ Site vitrine moderne et professionnel pour **XpertManager** - Une plateforme int
 - **Interface personnalisée** selon les droits utilisateur
 
 Cette vitrine a été conçue pour :
-- **Présenter la solution complète** XpertManager
+- **Présenter la solution complète** xPertManager
 - **Démontrer nos capacités techniques** et notre expertise
 - **Faciliter la prise de contact** avec nos prospects
 - **Inspirer confiance** grâce à des démonstrations visuelles
@@ -54,14 +54,14 @@ Cette vitrine a été conçue pour :
 ## 🏗️ Architecture du projet
 
 ```
-XpertManager/
+xPertManager/
 ├── public/                     # Ressources statiques
 │   └── favicon.png            # Icône du site (32x32)
 ├── src/
 │   ├── assets/                # Images et styles
 │   │   ├── images/           # Ressources visuelles (8 fichiers)
 │   │   │   ├── banner.jpg    # Bannière principale
-│   │   │   ├── logo.png      # Logo XpertManager
+│   │   │   ├── logo.png      # Logo xPertManager
 │   │   │   ├── propos.png    # Image section à propos
 │   │   │   ├── 1-xPertManager-starting.png    # Écran de connexion
 │   │   │   ├── 2_0-Activity-creation.png      # Création d'activité
@@ -87,7 +87,7 @@ XpertManager/
 │   ├── constants/            # Configuration et données centralisées
 │   │   ├── animationVariants.js # 15+ variants d'animation Framer Motion
 │   │   ├── info.js          # Informations de l'entreprise et contact
-│   │   └── rubrics.js       # Données des 4 modules XpertManager
+│   │   └── rubrics.js       # Données des 4 modules xPertManager
 │   ├── App.jsx              # Composant racine avec toutes les sections
 │   └── main.jsx             # Point d'entrée React 19 avec StrictMode
 ├── index.html               # Template HTML avec métadonnées SEO
@@ -122,8 +122,8 @@ XpertManager/
 
 1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/mansour-dp/XpertManager.git
-   cd XpertManager
+   git clone https://github.com/mansour-dp/xPertManager.git
+   cd xPertManager
    ```
 
 2. **Installer les dépendances avec pnpm**
@@ -210,7 +210,7 @@ XpertManager/
 - ✅ **Informations de contact** facilement accessibles
 
 ### 🏆 Contenu et Présentation
-- ✅ **Démonstration des 4 modules** XpertManager avec captures d'écran
+- ✅ **Démonstration des 4 modules** xPertManager avec captures d'écran
 - ✅ **Galerie interactive** avec carrousel Embla
 - ✅ **Section "À propos"** détaillée avec badges d'expertise
 - ✅ **Call-to-action stratégiques** pour maximiser les conversions
@@ -345,12 +345,12 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 
 ## 📞 Contact
 
-### XpertManager - Votre partenaire de confiance pour la gestion intégrée
+### xPertManager - Votre partenaire de confiance pour la gestion intégrée
 
 - 📧 **Email professionnel** : contact@xpertmanager.com
 - 📱 **Téléphone direct** : +221 78 459 05 36
 - 🌐 **Site web** : [www.xpertmanager.com](https://www.xpertmanager.com)
-- 💼 **LinkedIn** : [XpertManager Company](https://linkedin.com/company/xpertmanager)
+- 💼 **LinkedIn** : [xPertManager Company](https://linkedin.com/company/xpertmanager)
 - 📸 **Instagram** : [@xpertmanager](https://instagram.com/xpertmanager)
 - 💬 **WhatsApp Business** : +221 78 459 05 36
 
@@ -374,7 +374,7 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 - **Optimisation** : Performance et SEO avancés
 
 ### 🎨 Ressources et Assets
-- **Illustrations** : Captures d'écran authentiques des modules XpertManager
+- **Illustrations** : Captures d'écran authentiques des modules xPertManager
 - **Iconographie** : Lucide React et assets personnalisés
 - **Police** : Système natif optimisé pour la lisibilité
 - **Palette** : Couleurs professionnelles harmonisées (#20a192)
@@ -386,10 +386,10 @@ Merci aux communautés de **React**, **Vite**, **TailwindCSS**, **Framer Motion*
 
 ## 🙏 Remerciements
 
-Merci de faire confiance à **XpertManager** pour accompagner votre organisation vers une gestion intégrée et performante ! 
+Merci de faire confiance à **xPertManager** pour accompagner votre organisation vers une gestion intégrée et performante ! 
 
 *Ensemble, construisons l'avenir de la gestion collaborative.* 🚀
 
 ---
 
-*Développé avec ❤️ par l'équipe XpertManager | Version 1.0.0 | Build réussi ✅*
+*Développé avec ❤️ par l'équipe xPertManager | Version 1.0.0 | Build réussi ✅*

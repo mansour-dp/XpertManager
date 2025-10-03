@@ -92,9 +92,9 @@ export function Header() {
                         <img
                             className="w-12 sm:w-14 md:w-16 h-auto mr-2"
                             src={Logo}
-                            alt="Logo XpertManager"
+                            alt="Logo xPertManager"
                         />
-                        <span className="hidden sm:block text-lg font-bold text-primary">XpertManager</span>
+                        <span className="hidden sm:block text-lg font-bold text-primary">xPertManager</span>
                     </button>
                 </div>
 

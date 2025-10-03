@@ -40,7 +40,7 @@ export function Footer() {
     // Remplacez ces liens par vos vrais liens
     const instagramLink = "https://instagram.com/xpertmanager_agency";
     const linkedinLink = "https://linkedin.com/company/xpertmanager-digital";
-    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager";
+    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager";
     
     // ... reste du code
 }

@@ -28,7 +28,7 @@ const ContactForm = () => {
                 from_email: data.email,
                 phone: data.phone,
                 message: data.message,
-                to_name: "XpertManager",
+                to_name: "xPertManager",
                 reply_to: data.email,
             };
 
@@ -220,7 +220,7 @@ const ContactForm = () => {
                                 </motion.div>
 
                                 <motion.a
-                                    href={`${WA_BUSINESS_NUMBER}?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager`}
+                                    href={`${WA_BUSINESS_NUMBER}?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 transition-colors"

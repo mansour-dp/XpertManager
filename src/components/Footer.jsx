@@ -20,7 +20,7 @@ export function Footer() {
     // PLACEHOLDERS POUR LES LIENS RÉSEAUX SOCIAUX - À REMPLACER PAR VOS VRAIS LIENS
     const instagramLink = "https://instagram.com/votre_compte_instagram"; // Remplacez par votre lien Instagram
     const linkedinLink = "https://linkedin.com/company/votre_entreprise"; // Remplacez par votre lien LinkedIn
-    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager";
+    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager";
 
     // Fonction pour faire défiler vers une section
     const scrollToSection = (sectionId) => {
@@ -63,9 +63,9 @@ export function Footer() {
                                 className="w-12 h-12 object-contain"
                                 loading="lazy"
                                 src={Logo}
-                                alt="Logo XpertManager"
+                                alt="Logo xPertManager"
                             />
-                            <h2 className="text-2xl font-bold">XpertManager</h2>
+                            <h2 className="text-2xl font-bold">xPertManager</h2>
                         </motion.div>
                         <p className="text-white/90 mb-6 max-w-md leading-relaxed text-sm sm:text-base mx-auto sm:mx-0">
                             Votre partenaire digital pour transformer vos idées en solutions innovantes. 
@@ -255,7 +255,7 @@ export function Footer() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.7 }}
                         >
-                            &copy; {new Date().getFullYear()} XpertManager. Tous droits réservés.
+                            &copy; {new Date().getFullYear()} xPertManager. Tous droits réservés.
                             <br className="sm:hidden" />
                             <span className="hidden sm:inline"> | </span>
                             Réalisation: <span className="text-secondary font-medium">MSR-DP</span>

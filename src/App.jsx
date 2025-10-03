@@ -36,7 +36,7 @@ const HomePage = () => {
 
 	const whatsApp =
 		WA_BUSINESS_NUMBER +
-		"?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20XpertManager";
+		"?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager";
 
 	const openGallery = (rubric) => {
 		console.log("Opening gallery for rubric:", rubric);
@@ -85,10 +85,10 @@ const HomePage = () => {
 					{/* Conteneur avec fond semi-transparent pour le texte */}
 					<div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl max-w-5xl mx-auto">
 						<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl mx-auto drop-shadow-lg">
-							Donnez vie à votre organisation avec XpertManager
+							Donnez vie à votre organisation avec xPertManager
 						</motion.h1>
 						<p className="text-sm sm:text-base md:text-lg text-center max-w-3xl mx-auto mt-4 text-gray-100 drop-shadow-md">
-							XpertManager - Solutions numériques puissantes pour booster la performance, l'innovation et la collaboration dans votre organisation.
+							xPertManager - Solutions numériques puissantes pour booster la performance, l'innovation et la collaboration dans votre organisation.
 						</p>
 					</div>
 					
@@ -137,17 +137,17 @@ const HomePage = () => {
 				<div className="flex flex-col md:flex-row gap-8 items-center">
 					<motion.div className="md:w-1/2" variants={fadeInUp}>
 						<h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
-							XpertManager
+							xPertManager
 						</h2>
 						<motion.div
 							className="bg-card rounded-lg p-6 shadow-md mb-6"
 							whileHover={hoverScale}
 						>
 							<h3 className="text-xl font-bold text-txtLight mb-2">
-								Qu'est-ce que XpertManager ?
+								Qu'est-ce que xPertManager ?
 							</h3>
 							<p className="text-txt mb-4">
-								XpertManager est une plateforme intégrée de gestion,
+								xPertManager est une plateforme intégrée de gestion,
 								qui regroupe dans un environnement unique des fonctionnalités clés,
 								indispensables pour toute organisation moderne : qu'elle soit publique,
 								privée ou associative.
@@ -159,7 +159,7 @@ const HomePage = () => {
 							transition={{ delay: 0.1 }}
 						>
 							<h3 className="text-xl font-bold text-primary mb-2">
-								Pourquoi avoir développé XpertManager ?
+								Pourquoi avoir développé xPertManager ?
 							</h3>
 							<p className="text-txt mb-4">
 								Parce que nous ne devons plus dépendre systématiquement de solutions importées, souvent
@@ -195,7 +195,7 @@ const HomePage = () => {
 						>
 							<img
 								src={PatchApplication}
-								alt="Équipe XpertManager au travail"
+								alt="Équipe xPertManager au travail"
 								className="w-full h-auto object-cover"
 								loading="lazy"
 							/>
@@ -219,7 +219,7 @@ const HomePage = () => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6 }}
 					>
-						Fonctionnalités de XpertManager
+						Fonctionnalités de xPertManager
 					</motion.h2>
 					<motion.p
 	className="text-txt text-left mb-12 max-w-3xl"
@@ -354,7 +354,7 @@ const HomePage = () => {
 					viewport={{ once: true }}
 					transition={{ delay: 0.2, duration: 0.6 }}
 				>
-					Rejoignez les entreprises qui ont fait confiance à XpertManager 
+					Rejoignez les entreprises qui ont fait confiance à xPertManager 
 					pour leur transformation digitale et leur croissance.
 				</motion.p>
 

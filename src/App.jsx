@@ -99,22 +99,25 @@ const App = () => {
 						className="mt-6"
 					>
 						<BtnCustom
-							to={whatsApp}
+							to="http://localhost:5173/src/assets/xPertManagerHelp.html"
 							className="mt-2 sm:mt-4 flex items-center gap-2 text-lg px-8 py-3"
 						>
 							<motion.span
 								animate={{
-									rotate: [0, 10, -10, 10, 0],
+									y: [0, -3, 0],
+									scale: [1, 1.05, 1],
 								}}
 								transition={{
-									duration: 1.5,
+									duration: 2.5,
 									repeat: Infinity,
 									repeatDelay: 3,
+									ease: "easeInOut"
 								}}
+								className="text-xl"
 							>
-								<PiWhatsappLogoFill size={24} />
+								🎯
 							</motion.span>
-							Discuter de votre projet
+							Découvrir notre guide
 						</BtnCustom>
 					</motion.div>
 				</motion.div>

@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { PiWhatsappLogoFill } from "react-icons/pi";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { BtnCustom } from "./components/Btn";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Loader from "./components/Loader";
 import Gallery from "./components/Gallery";
+import Guide from "./components/Guide";
 import { WA_BUSINESS_NUMBER } from "./constants/info";
 import { rubrics } from "./constants/rubrics";
 import { Footer } from "./components/Footer";
@@ -27,8 +29,7 @@ import {
 	bannerContentAnimation,
 } from "./constants/animationVariants";
 
-const App = () => {
-	const [loading, setLoading] = useState(true);
+const HomePage = () => {
 	const [selectedRubric, setSelectedRubric] = useState(null);
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
@@ -46,17 +47,6 @@ const App = () => {
 		setIsGalleryOpen(false);
 		setSelectedRubric(null);
 	};
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLoading(false);
-		}, 2000);
-		return () => clearTimeout(timer);
-	}, []);
-
-	if (loading) {
-		return <Loader />;
-	}
 
 	return (
 		<div className="flex flex-col w-full">
@@ -99,7 +89,7 @@ const App = () => {
 						className="mt-6"
 					>
 						<a
-							href="/xPertManagerHelp.html"
+							href="/guide"
 							className="w-fit bg-accent text-white font-bold rounded-[8px] py-2 px-6 hover:bg-accent/90 transition-colors mt-2 sm:mt-4 flex items-center gap-2 text-lg px-8 py-3"
 						>
 							<motion.span
@@ -431,6 +421,30 @@ const App = () => {
 			{/* Bouton retour en haut */}
 			<ScrollToTopButton />
 		</div>
+	);
+};
+
+const App = () => {
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+		return () => clearTimeout(timer);
+	}, []);
+
+	if (loading) {
+		return <Loader />;
+	}
+
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route path="/guide" element={<Guide />} />
+			</Routes>
+		</Router>
 	);
 };
 

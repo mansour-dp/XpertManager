@@ -85,11 +85,9 @@ const HomePage = () => {
 					{/* Conteneur avec fond semi-transparent pour le texte */}
 					<div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl max-w-5xl mx-auto">
 						<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl mx-auto drop-shadow-lg">
-							Donnez vie à votre organisation avec xPertManager
+							xPertManager - Organisez mieux, gérez efficacement
 						</motion.h1>
-						<p className="text-sm sm:text-base md:text-lg text-center max-w-3xl mx-auto mt-4 text-gray-100 drop-shadow-md">
-							xPertManager - Solutions numériques puissantes pour booster la performance, l'innovation et la collaboration dans votre organisation.
-						</p>
+						
 					</div>
 					
 					<motion.div
@@ -100,27 +98,58 @@ const HomePage = () => {
 						transition={{ delay: 0.8, duration: 0.4 }}
 						className="mt-6"
 					>
-						<a
+						<motion.a
 							href="/guide"
-							className="w-fit bg-accent text-white font-bold rounded-[8px] py-2 px-6 hover:bg-accent/90 transition-colors mt-2 sm:mt-4 flex items-center gap-2 text-lg px-8 py-3"
+							className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-accent to-accent/80 text-white font-bold rounded-xl py-4 px-8 mt-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/20"
+							whileHover={{ 
+								scale: 1.02,
+								boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+							}}
+							whileTap={{ scale: 0.98 }}
 						>
+							{/* Effet de brillance au survol */}
+							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+							
+							{/* Icône avec animation */}
 							<motion.span
 								animate={{
-									y: [0, -3, 0],
-									scale: [1, 1.05, 1],
+									rotate: [0, 5, -5, 0],
 								}}
 								transition={{
-									duration: 2.5,
+									duration: 3,
 									repeat: Infinity,
-									repeatDelay: 3,
+									repeatDelay: 2,
 									ease: "easeInOut"
 								}}
-								className="text-xl"
+								className="text-2xl relative z-10"
 							>
-								🎯
+								📚
 							</motion.span>
-							Découvrir notre guide
-						</a>
+							
+							{/* Texte avec effet de transition */}
+							<span className="relative z-10 group-hover:text-white/95 transition-colors duration-300">
+								Découvrir le guide utilisateur
+							</span>
+							
+							{/* Flèche animée */}
+							<motion.svg 
+								className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" 
+								fill="none" 
+								stroke="currentColor" 
+								viewBox="0 0 24 24"
+								animate={{
+									x: [0, 3, 0],
+								}}
+								transition={{
+									duration: 2,
+									repeat: Infinity,
+									repeatDelay: 1,
+									ease: "easeInOut"
+								}}
+							>
+								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+							</motion.svg>
+						</motion.a>
 					</motion.div>
 				</motion.div>
 			</motion.div>
@@ -153,7 +182,7 @@ const HomePage = () => {
 								privée ou associative.
 							</p>
 						</motion.div>
-						<motion.div
+						{/* <motion.div
 							className="bg-card rounded-lg p-6 shadow-md"
 							whileHover={hoverScale}
 							transition={{ delay: 0.1 }}
@@ -182,7 +211,7 @@ const HomePage = () => {
 									Offrir à nos communautés des outils puissants, accessibles, et conçus sur mesure
 								</li>
 							</ul>
-						</motion.div>
+						</motion.div> */}
 					</motion.div>
 					<motion.div
 						className="md:w-1/2"

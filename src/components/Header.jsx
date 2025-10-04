@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Logo from "../assets/images/logo.png";
+import Xpert from "../assets/images/Xpert.png";
 import { WA_BUSINESS_NUMBER } from "../constants/info";
 
 export function Header() {
@@ -90,11 +91,10 @@ export function Header() {
                         className="flex items-center hover:scale-105 transition-transform duration-200"
                     >
                         <img
-                            className="w-12 sm:w-14 md:w-16 h-auto mr-2"
-                            src={Logo}
+                            className="w-auto h-12 sm:h-14 md:h-16"
+                            src={Xpert}
                             alt="Logo xPertManager"
                         />
-                        <span className="hidden sm:block text-lg font-bold text-primary">xPertManager</span>
                     </button>
                 </div>
 

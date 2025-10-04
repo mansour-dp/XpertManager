@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import Logo from "../assets/images/logo.png";
+import XpertC from "../assets/images/xPertC.png";
 
 const Loader = () => {
 	return (
@@ -22,8 +22,8 @@ const Loader = () => {
 				}}
 			>
 				<motion.img
-					src={Logo}
-					alt="Luna Soulage"
+					src={XpertC}
+					alt="xPertManager"
 					className="w-32 h-auto mb-6"
 					initial={{ scale: 0.8 }}
 					animate={{

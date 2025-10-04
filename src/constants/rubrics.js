@@ -21,7 +21,7 @@ export const rubrics = [
 			{
 				src: XpertManager,
 				title: "Interface principale xPertManager",
-				description: "Accès sécurisé à votre compte. En fonction des droits qui vous sont accordés, vous pouvez :\n\n• Créer, modifier, réorganiser la structuration de votre organisation\n• Gérer les ressources humaines et matérielles\n• Accéder à l'interface de création et de gestion des activités\n• Accéder à l'interface de création et de gestion des événements\n• Accéder à votre tableau de bord qui est automatiquement mis à jour, en fonction des événements et activités à faire\n• Accéder aux différentes fonctionnalités de communication entre utilisateurs :\n  - Appels audio inter-ordinateurs\n  - Messagerie instantanée\n  - Messages texte\n  - Création de groupes de diffusion\n  - Et bien plus encore"
+				description: "Accès sécurisé à votre compte. En fonction des droits qui vous sont accordés, vous pouvez :\n\n• Créer, modifier, réorganiser la structuration de votre organisation\n• Gérer les ressources humaines et matérielles\n• Accéder à l'interface de création et de gestion des activités\n• Accéder à l'interface de création et de gestion des événements\n• Accéder à votre tableau de bord qui est automatiquement mis à jour, en fonction des événements et activités à faire\n• Accéder aux différentes fonctionnalités de communication entre utilisateurs :\n  • Appels audio inter-ordinateurs\n  • Messagerie instantanée\n  • Messages texte\n  • Création de groupes de diffusion\n  • Et bien plus encore"
 			},
 		]
 	},

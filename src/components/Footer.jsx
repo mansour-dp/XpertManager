@@ -1,5 +1,6 @@
 import { MdEmail, MdLocationOn } from "react-icons/md";
 import Logo from "../assets/images/logo.png";
+import Xpert from "../assets/images/Xpert.png";
 import InstagramLogo from "../assets/images/instagram.png";
 import LinkedinLogo from "../assets/images/linkedin.png";
 import WhatsappLogo from "../assets/images/whatsapp.png";
@@ -56,16 +57,15 @@ export function Footer() {
                     {/* Logo et Description */}
                     <motion.div variants={fadeInLeft} className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
                         <motion.div 
-                            className="flex items-center gap-3 mb-6 justify-center sm:justify-start"
+                            className="flex items-center justify-center sm:justify-start mb-6"
                             whileHover={{ scale: 1.02 }}
                         >
                             <img
-                                className="w-12 h-12 object-contain"
+                                className="w-auto h-16 object-contain"
                                 loading="lazy"
-                                src={Logo}
+                                src={Xpert}
                                 alt="Logo xPertManager"
                             />
-                            <h2 className="text-2xl font-bold">xPertManager</h2>
                         </motion.div>
                         <p className="text-white/90 mb-6 max-w-md leading-relaxed text-sm sm:text-base mx-auto sm:mx-0">
                             Votre partenaire digital pour transformer vos idées en solutions innovantes. 

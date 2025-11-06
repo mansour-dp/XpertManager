@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation xPertManager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            scroll-margin-top: 20px; /* Pour l'ancrage */
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #1a5276;
+        }
+        img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            margin: 10px 0;
+            max-width: 100%;
+            height: auto;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        .back-to-top:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Point d'ancrage pour le retour en haut -->
+    <div id="top"></div>
+    
+    <h1>xPertManager</h1> 
+    <p><b>version 1.0</b></p>
+    <p><b>Septembre 2025</b></p>
+    
+    <div class="toc">
+        <h2>Table des matières</h2>
+        <p>
+            <a href="#description-produit">Description du produit</a><br/>
+            <a href="#creer-structures">Créer et organiser des structures</a><br/>
+            <a href="#gerer-personnel">Gérer le personnel</a><br/>
+            <a href="#gerer-projets">Créer et gérer des projets</a><br/>
+            <a href="#creer-evenements">Créer et organiser des événements</a><br/>
+            <a href="#conferences-video">Organiser des visioconférences</a><br/>
+            <a href="#ressources-materielles">Gérer les ressources matérielles</a><br/>
+            <a href="#communication">Appels audio, messages texte et messagerie instantanée</a><br/>
+            <a href="#votes-electroniques">Organisation de votes électroniques</a><br/>
+            <a href="#divers">Divers : Matrice d'Eisenhower, notes autocollantes, groupes de diffusion</a><br/>
+        </p>
+    </div>
+
+    <!-- Description du produit -->
+    <div class="section">
+        <h2 id="description-produit">Description du produit</h2>
+        <p>
+            <b>xPertManager</b> est une plateforme de gestion intégrée qui optimise le fonctionnement des organisations. Elle permet entre autres :
+            <ul>
+                <li>la gestion des ressources humaines et matérielles</li>
+                <li>la gestion de projets : conception, planification/ordonnancement, suivi et organisation des activités</li>
+                <li>la gestion d'événements : création, planification et partage</li>
+                <li>la gestion des communications : appels audio, messages texte, messagerie instantanée, visioconférence</li>
+                <li>l'organisation de votes électroniques</li>
+                <li>des outils d'organisation (tableau de bord avec matrice d'Eisenhower, notes autocollantes, rappels, etc.)</li>
+            </ul>
+        </p>
+
+        Le côté serveur utilise une base de données MySQL. L'interface client de l'application décrite ici comprend quatre onglets :
+        <ol>    
+            <li><b>Onglet Général</b> : Cette interface sert à la configuration générale de l'organisation :
+                <ul>
+                    <li>création de structures et sous-structures,</li> 
+                    <li>création et affectation d'agents aux structures,</li> 
+                    <li>création et affectation de ressources matérielles,</li> 
+                    <li>communications entre agents.</li>
+                </ul>
+                <p><img src="images/general.png" alt="Général" width="650"></p>
+            </li>
+            <li><b>Onglet Tableau de bord</b> : Permet à l'utilisateur de mieux s'organiser et de voir la priorité des tâches à faire.
+                <p><img src="images/dashboard.png" alt="Tableau de bord" width="650"></p>
+            </li>
+            <li><b>Onglet Activités</b> : Cette interface permet :
+                <ul> 
+                    <li>la création de projets ou d'activités</li>
+                    <li>le partage et le traitement de projets ou d'activités</li>
+                    <li>le suivi de projets ou d'activités</li>
+                </ul>
+                <p><img src="images/activities.png" alt="Activités" width="650"></p>
+            </li>
+            <li><b>Onglet Événement</b> : Cette interface permet :
+                <ul> 
+                    <li>la création d'événements</li>
+                    <li>le suivi d'événements</li>
+                    <li>le lancement d'événements tels que les visioconférences organisées sur la plateforme</li>
+                </ul>
+                <p><img src="images/events.png" alt="Événement" width="650"></p>
+            </li>
+        </ol>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Créer des structures -->
+    <div class="section">
+        <h2 id="creer-structures">Créer et organiser des structures</h2>
+        <p>
+            <ul>
+                <li><h3>Créer une structure</h3></li>    
+                <ol>    
+                    <li>Après le lancement de l'application, choisissez la langue de travail et cliquez sur le bouton <b>Annuler</b>.</li>    
+                    <li>Dans l'onglet <b>Général</b>, cliquez sur le bouton <img src="images/new.png">.</li>     
+                    <li>Dans la boîte de dialogue qui apparaît, entrez le nom de la structure et le nom de la base de données associée. Définissez également les catégories de personnel et les types d'activités en cliquant sur les boutons correspondants. Vous pouvez également remplir la zone <b>description de la structure</b>.</li>    
+                    <li>Cliquez ensuite sur le bouton <b>Créer</b>.</li>   
+                    <p><img src="images/structureCreation.png" alt="Création de structure" width="450"></p>
+                    <p><img src="images/staffCategories.png" alt="Catégories de personnel" width="450"></p>
+                    <p><img src="images/typesOfActivities.png" alt="Types d'activités" width="450"></p>
+                </ol>    
+
+                <li><h3>Ajouter une sous-structure</h3></li>    
+                Pour ajouter une sous-structure à une structure existante :
+                <ol>    
+                    <li>Sélectionnez la structure de base</li>    
+                    <li>Cliquez sur le bouton <img src="images/add.png"> dans l'onglet <b>Général</b></li>    
+                    <li>Dans la boîte de dialogue, entrez les données requises. La sélection du responsable de la nouvelle structure est optionnelle et peut être faite ultérieurement.</li>    
+                    <li>Cliquez sur le bouton <b>Créer</b>.</li>    
+                    <li>Vous pouvez continuer à créer d'autres structures ou fermer la boîte de dialogue.</li>    
+                </ol>    
+                <p><img src="images/addStructure.png" alt="Ajouter une structure" width="400"></p>
+
+                <li><h3>Modifier/Supprimer une structure</h3></li>    
+                <ol>    
+                    <li>Pour modifier une structure, sélectionnez-la et cliquez sur <img src="images/modif.png"> dans l'onglet <b>Général</b></li>    
+                    <li>Pour supprimer une structure, sélectionnez-la et cliquez sur <img src="images/delete.png"> dans l'onglet <b>Général</b></li>    
+                </ol>    
+            </ul>          
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Gérer le personnel -->
+    <div class="section">
+        <h2 id="gerer-personnel">Gérer le personnel</h2>
+        <p>
+            <ul>
+                <li><h3>Ajouter un agent</h3></li>
+                Pour ajouter un agent à une structure :
+                <ol>
+                    <li>Sélectionnez la structure dans l'onglet <b>Général</b></li>
+                    <li>Dans l'onglet <b>Ressources Humaines</b>, cliquez sur <img src="images/add.png"></li>
+                    <li>Dans la boîte de dialogue, entrez les données requises.</li>
+                    <li>Cliquez sur <b>Insérer</b>.</li>
+                    <li>Vous pouvez continuer à ajouter d'autres agents ou fermer la boîte de dialogue.</li>
+                </ol>
+                <p><img src="images/employeeCreation.png" alt="Création d'employé" width="500"></p>
+
+                <li><h3>Modifier/Supprimer un agent</h3></li>
+                <ol>
+                    <li>Pour modifier un agent, sélectionnez-le et cliquez sur <img src="images/modif.png"> dans l'onglet <b>Ressources Humaines</b></li>
+                    <li>Pour supprimer un agent, sélectionnez-le et cliquez sur <img src="images/delete.png"> dans l'onglet <b>Ressources Humaines</b></li>
+                </ol>
+            </ul>    
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Gérer les projets -->
+    <div class="section">
+        <h2 id="gerer-projets">Créer et gérer des projets ou activités</h2>
+        <p>
+            <ul>
+                <li><h3>Créer un projet ou une activité</h3></li>
+                <ol>
+                    <li>Sélectionnez dans l'onglet <b>Général</b> la structure où le projet ou l'activité doit être créé</li>
+                    <li>Dans l'onglet <b>Activités</b>, sélectionnez le projet ou l'activité de base. S'il n'y en a pas, sélectionnez le type (professionnel ou personnel)</li>
+                    <li>Cliquez sur <img src="images/add.png"></li>
+                    <li>Dans la boîte de dialogue, remplissez les données requises. Si les types d'activités ne sont pas définis, ils doivent être paramétrés en modifiant la structure de base.</li>
+                    <li>Cliquez sur <b>Insérer</b>.</li>
+                    <li>Vous pouvez continuer à créer d'autres projets ou activités ou fermer la boîte de dialogue.</li>
+                </ol>
+                Lors de la création, des co-auteurs peuvent être définis qui pourront modifier ou créer des sous-activités.<br/>
+                <p><img src="images/activityCreation.png" alt="Création d'activité" width="500"></p>
+                
+                <li><h3>Modifier/Supprimer</h3></li>
+                <ol>
+                    <li>Pour modifier un projet ou une activité, sélectionnez-le et cliquez sur <img src="images/modif.png"> dans l'onglet <b>Activités</b>.</li>
+                    <li>Pour supprimer un projet ou une activité, sélectionnez-le et cliquez sur <img src="images/delete.png"> dans l'onglet <b>Activités</b>.</li>
+                </ol>
+
+                <li><h3>Gérer un projet ou une activité</h3></li>
+                <ul>
+                    <li><b>Ajouter des agents impliqués :</b> Cliquez sur <img src="images/involvedAgent.png"> pour choisir le personnel qui participera au projet ou à l'activité.</li>
+                    <li><b>Attacher un document :</b> Cliquez sur <img src="images/attachDoc.png"> pour attacher un fichier au projet.</li>
+                    <li><b>Publier un projet :</b> Cliquez sur <img src="images/postActivity.png"> pour le rendre accessible aux collaborateurs.</li>
+                    <li><b>Marquer comme terminé :</b> Cliquez sur <img src="images/closeActivity.png"> une fois terminé.</li>
+                    <li><b>Définir des dépendances :</b> Utilisez l'option "Activités précédentes".</li>
+                    <li><b>Attribuer des ressources :</b> Utilisez l'option "Attribuer des ressources" pour allouer des ressources matérielles ou humaines.</li>
+                    <li><b>Visualisation :</b> Affichez sous forme de diagramme de Gantt ou de diagramme MPM, animez la progression du projet et exportez les diagrammes.</li>
+                </ul>
+            </ul>
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Créer des événements -->
+    <div class="section">
+        <h2 id="creer-evenements">Créer et organiser des événements</h2>
+        <p>
+            <ul>
+                <li><h3>Créer un événement</h3></li>  
+                <ol>
+                    <li>Sélectionnez l'onglet <b>Événement</b>.</li>
+                    <li>Cliquez sur le bouton <img src="images/add.png"></li>
+                    <li>Dans la boîte de dialogue qui apparaît, entrez les informations requises.  
+                        Ajoutez les agents impliqués dans l'événement afin qu'ils puissent le voir dans leur interface.  
+                        Pour ajouter un participant à l'événement, cliquez sur le bouton <img src="images/add.png">.  
+                        Dans l'onglet <b>Ressources Humaines</b> sous l'onglet <b>Général</b> qui apparaît,  
+                        sélectionnez le participant et cliquez sur le bouton <img src="images/add.png">.  
+                    </li>
+                    <li>Vous pouvez ajouter d'autres participants à l'événement en suivant la même procédure  
+                        ou en chargeant un groupe de diffusion déjà créé (<img src="images/open.png">).</li>
+                </ol>
+                <p><img src="images/planEvent.png" alt="Créer et planifier un événement" width="500"></p>
+
+                <li><h3>Modifier/Supprimer un événement</h3></li>
+                <ol>
+                    <li>Pour modifier un événement, sélectionnez-le et cliquez sur <img src="images/modif.png"></li>
+                    <li>Pour supprimer un événement, sélectionnez-le et cliquez sur <img src="images/delete.png"></li>
+                </ol>
+            </ul>
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Conférences vidéo -->
+    <div class="section">
+        <h2 id="conferences-video">Organiser une visioconférence</h2>
+        <p>
+            <ul>
+                <li><h3>Pour organiser une visioconférence instantanée</h3></li>  
+                <ul>
+                    <li>Dans l'onglet <b>Événements</b>, cliquez sur <img src="images/visioInstant.png"></li> 
+                    <li>Dans la fenêtre de visioconférence, ajoutez des participants en cliquant sur <img src="images/add.png"></li>
+                </ul>
+
+                <li><h3>Pour démarrer une visioconférence planifiée</h3></li> 
+                <ul>
+                    <li>Sélectionnez l'événement dans l'onglet <b>Événements</b> et cliquez sur <img src="images/launch.png"></li> 
+                    <li>Les agents qui doivent participer à la visioconférence recevront une invitation pour rejoindre la réunion,  
+                        s'ils sont connectés.</li>
+                    Dans la fenêtre de visioconférence, les boutons suivants permettent :
+                    <ul>
+                        <li><img src="images/add.png"> Inviter un participant à la réunion.  
+                            Après avoir cliqué sur ce bouton, sélectionnez le participant dans la liste du personnel  
+                            sous l'onglet Ressources Humaines, puis cliquez à nouveau sur <img src="images/add.png">.</li>
+                        <li><img src="images/group.png"> Inviter un groupe de participants d'un groupe de diffusion précédemment créé.  
+                            Après avoir cliqué sur ce bouton, chargez le fichier du groupe depuis son emplacement.</li>
+                        <li><img src="images/stopMicro.png"> Activer/désactiver le microphone.</li>
+                        <li><img src="images/stopShare.png"> Activer/désactiver le partage d'écran.</li>
+                        <li><img src="images/handOff.png"> S'inscrire/se désinscrire de la liste des orateurs pour prendre la parole.</li>
+                        <li><img src="images/stopEditNotes.png"> Activer/désactiver le mode d'édition des notes de réunion.  
+                            Le participant qui active le mode d'édition des notes peut écrire des notes dans la zone dédiée,  
+                            qui seront affichées en temps réel dans les interfaces de tous les participants.  
+                            Un seul participant peut activer le mode d'édition des notes à la fois.</li>
+                        <li><img src="images/vote.png"> Lancer un vote électronique.  
+                            Tous les participants pourront voter et voir les résultats dans leurs interfaces.</li>
+                        <li><b>>></b> Envoyer un message texte saisi à tous les participants.</li>
+                        <li><img src="images/stop.png"> Quitter la visioconférence.</li>
+                    </ul>
+                </ul>
+            </ul>
+            <p><img src="images/videoConf.png" alt="Visioconférence" width="600"></p>
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Ressources matérielles -->
+    <div class="section">
+        <h2 id="ressources-materielles">Gérer les ressources matérielles</h2>
+        <p>
+            <ul>
+                <li><h3>Ajouter une ressource matérielle</h3></li>  
+                <ul>
+                    <li>Sélectionnez l'onglet <b>Général</b>.</li>
+                    <li>Sélectionnez la structure où la ressource matérielle sera affectée.</li>
+                    <li>Sélectionnez l'onglet <b>Ressources Matérielles</b> en bas de l'interface.</li>
+                    <li>Cliquez sur le bouton <img src="images/add.png"></li> 
+                    <li>Dans la boîte de dialogue qui apparaît, remplissez les informations requises.</li>
+                    <li>Définissez les catégories de ressources matérielles si nécessaire.</li>
+                    <li>Cliquez sur <b>Ajouter</b> pour ajouter la ressource.</li>
+                    <li>Vous pouvez continuer à ajouter d'autres ressources ou fermer la boîte de dialogue.</li>
+                </ul>
+
+                <li><h3>Modifier/Supprimer une ressource matérielle</h3></li> 
+                <ul>
+                    <li>Pour modifier une ressource matérielle, sélectionnez-la dans l'onglet <b>Ressources Matérielles</b>  
+                        et cliquez sur <img src="images/modif.png">.  
+                        Effectuez les modifications nécessaires dans la boîte de dialogue qui apparaît.</li> 
+                    <li>Pour supprimer une ressource matérielle, sélectionnez-la dans l'onglet <b>Ressources Matérielles</b>  
+                        et cliquez sur <img src="images/delete.png">.</li>
+                </ul>
+
+                <li><h3>Planifier une ressource matérielle</h3></li> 
+                La planification des ressources matérielles se fait dans la section <b>Gérer un projet ou une activité</b>.
+            </ul>
+
+            <p><img src="images/materialRessourceCategories.png" alt="Création de catégories de ressources matérielles" width="450"></p>
+            <p><img src="images/materialRessoureCreation.png" alt="Affectation de ressources matérielles" width="400"></p>
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Communication -->
+    <div class="section">
+        <h2 id="communication">Appels audio, messages texte et messagerie instantanée</h2>
+        <p>
+            <ul>
+                <li><h3>Passer un appel audio</h3></li>  
+                <ol>
+                    <li>Sélectionnez l'onglet <b>Général</b>.</li>
+                    <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+                    <li>Sélectionnez l'agent que vous souhaitez appeler (doit être en ligne).</li>
+                    <li>Cliquez sur le bouton <img src="images/phoneCall.png"></li>
+                </ol>
+            </ul>
+            <p><img src="images/audioCall.png" alt="Appel audio" width="300"></p>
+
+            <ul>
+                <li><h3>Envoyer un message texte</h3></li>  
+                <ol>
+                    <li>Sélectionnez l'onglet <b>Général</b>.</li>
+                    <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+                    <li>Sélectionnez l'agent à qui vous souhaitez envoyer un message (même s'il est hors ligne).</li>
+                    <li>Cliquez sur le bouton <img src="images/message.png"></li>
+                    <li>Écrivez le message et cliquez sur envoyer.  
+                        Si le destinataire est en ligne, il le verra immédiatement ; sinon, il le verra lors de sa connexion.  
+                        Il est possible d'envoyer un message à un groupe de destinataires (<img src="images/group.png">).</li>
+                </ol>
+            </ul>
+
+            Un message texte reçu peut être converti en note autocollante pour les rappels (<img src="images/sticky.png">)  
+            ou supprimé si nécessaire (<img src="images/strash.png">).
+            <p><img src="images/textMessage.png" alt="Message texte" width="500"></p>
+
+            <ul>
+                <li><h3>Démarrer un chat de messagerie instantanée</h3></li>  
+                <ol>
+                    <li>Sélectionnez l'onglet <b>Général</b>.</li>
+                    <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+                    <li>Sélectionnez l'agent avec qui vous souhaitez chatter (doit être en ligne).</li>
+                    <li>Cliquez sur le bouton <img src="images/chat.png"></li>
+                </ol>
+                <p><img src="images/textChat.png" alt="Messagerie instantanée" width="400"></p>
+            </ul>
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Votes électroniques -->
+    <div class="section">
+        <h2 id="votes-electroniques">Votes électroniques</h2>
+        <p>
+            Le vote électronique est intégré à un événement. Il peut être planifié ou effectué instantanément.  
+            Pour organiser un vote électronique : 
+            <ol>
+                <li>Lancez l'événement associé.</li> 
+                <li>Cliquez sur le bouton <img src="images/vote.png"></li> 
+                <li>Entrez le libellé du vote dans la boîte de dialogue qui apparaît et cliquez sur <b>OK</b>.</li> 
+                <li>Créez et ajoutez les options de vote.</li>
+                <li>Spécifiez l'heure de fin du vote.</li>
+                <li>Cliquez sur <b>Démarrer</b> pour lancer le vote. Les options apparaîtront dans les interfaces de tous les participants afin qu'ils puissent voter.</li>
+                <li>À la fin du vote, cliquez sur <b>Arrêter</b>. Les résultats du vote apparaîtront dans les interfaces de tous les participants.</li>
+            </ol>
+            <p>
+                <div>
+                    <img src="images/createVote.png" alt="Créer un vote" width="400">
+                    <img src="images/voting.png" alt="Vote" width="400">
+                    <img src="images/voteResult.png" alt="Résultats du vote" width="400">
+                </div>
+            </p>
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Divers -->
+    <div class="section">
+        <h2 id="divers">Divers : Matrice d'Eisenhower, notes autocollantes, groupes de diffusion</h2>
+        <p>
+            <ul>
+                <li><h3>Matrice d'Eisenhower</h3></li> 
+                <ul>
+                    <li>La matrice d'Eisenhower est intégrée au tableau de bord.  
+                        Elle permet à l'utilisateur d'avoir une vision claire de :</li>
+                    <ol>
+                        <li>Les tâches importantes et urgentes (à faire immédiatement)</li>
+                        <li>Les tâches importantes mais non urgentes (à planifier)</li>
+                        <li>Les tâches non importantes mais urgentes (à déléguer)</li>
+                        <li>Les tâches non importantes et non urgentes (peuvent être ignorées)</li>
+                    </ol>
+                    <li>Les activités ou événements créés par l'utilisateur ou reçus d'autres personnes sont automatiquement intégrés dans  
+                        la matrice d'Eisenhower — dans la zone <b>Tâches importantes et urgentes</b> si l'échéance est proche,  
+                        sinon dans la zone <b>Tâches importantes mais non urgentes</b>.  
+                        L'utilisateur peut attribuer ou réattribuer des priorités pour les activités et événements  
+                        depuis les onglets <b>Activités</b> et <b>Événements</b> en sélectionnant un élément  
+                        et en cliquant sur le bouton <img src="images/affectpriority.png">.</li>
+                </ul>
+
+                <li><h3>Créer des notes autocollantes</h3></li>  
+                <ol>
+                    <li>Cliquez sur le bouton <b>Post-it</b> et choisissez <b>Modifier</b>.</li>
+                    <li>Dans la boîte de dialogue qui apparaît, cliquez sur <b>Ajouter</b> pour créer une note autocollante.</li>
+                    <li>Vous pouvez continuer à créer d'autres notes autocollantes ou fermer la boîte de dialogue.</li>
+                </ol>
+
+                <li><h3>Afficher les notes autocollantes</h3></li> 
+                <ul>
+                    <li>Cliquez sur le bouton <b>Post-it</b> et choisissez <b>Afficher/Masquer</b>.</li>
+                    <li>Les notes autocollantes apparaîtront et défileront les unes après les autres.</li>
+                    <li>Pour fermer la fenêtre des notes autocollantes, cliquez sur le bouton <img src="images/stop.png">  
+                        dans la fenêtre ou cliquez sur <b>Post-it</b> → <b>Afficher/Masquer</b>.</li>
+                </ul>
+
+                <p>
+                    <div>
+                        <img src="images/createStickyNote.png" alt="Créer une note autocollante" width="400">
+                        <img src="images/showStickyNote.png" alt="Afficher les notes autocollantes" width="400">
+                    </div>
+                </p>
+
+                <li><h3>Créer des groupes de diffusion</h3></li> 
+                Pour créer un groupe de diffusion :
+                <ol>
+                    <li>Sélectionnez l'onglet <b>Général</b>.</li>
+                    <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+                    <li>Cliquez sur le bouton <img src="images/group.png"></li> 
+                    <li>Dans la boîte de dialogue qui apparaît, entrez le nom du groupe et ajoutez des membres.</li>
+                    <li>Sauvegardez le groupe dans un fichier pour une utilisation future.</li>
+                </ol>
+
+                <p><img src="images/diffusionGroup.png" alt="Groupe de diffusion" width="400"></p>
+            </ul>
+        </p>
+        
+        <a href="#top" class="back-to-top">Retour en haut</a>
+    </div>
+
+    <!-- Auteur -->    
+    <h2>Auteur</h2>
+    <p>
+        Prof. Lamine THIAW<br/>
+        Département de Génie Électrique<br/>
+        École Supérieure Polytechnique<br/>
+        Université Cheikh Anta Diop, Dakar<br/>
+        Email : lamine.thiaw@ucad.edu.sn<br/>
+    </p>
+    <p>Septembre 2025</p>
+
+    <script>
+        // JavaScript pour améliorer le fonctionnement des ancres
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ajouter un smooth scroll pour les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

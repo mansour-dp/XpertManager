@@ -13,6 +13,10 @@ import { rubrics } from "./constants/rubrics";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import ContactForm from "./components/ContactForm";
+import MaintenancePage from "./components/MaintenancePage";
+
+// 🔧 VARIABLE DE CONTRÔLE MAINTENANCE - Changez TRUE/FALSE ici
+const IS_MAINTENANCE_MODE = true; // Mettre 'true' pour activer la maintenance
 
 // Images - Assurez-vous d'avoir ces images dans vos assets
 import BannerHome from "./assets/images/banner.jpg";
@@ -425,6 +429,12 @@ const HomePage = () => {
 };
 
 const App = () => {
+	// Si le mode maintenance est activé, afficher uniquement la page de maintenance
+	if (IS_MAINTENANCE_MODE) {
+		return <MaintenancePage />;
+	}
+
+	// Sinon, afficher le site normal
 	return (
 		<Router>
 			<Routes>

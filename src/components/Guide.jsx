@@ -1,399 +1,648 @@
-import React from 'react';
-
-// Import des images nécessaires
-import xPertCLogo from '../assets/images/xPertC.png';
-import newIcon from '../assets/images/new.png';
-import structureCreation from '../assets/images/structureCreation.png';
-import staffCategories from '../assets/images/staffCategories.png';
-import typesOfActivities from '../assets/images/typesOfActivities.png';
-import addIcon from '../assets/images/add.png';
-import addStructure from '../assets/images/addStructure.png';
-import modifIcon from '../assets/images/modif.png';
-import deleteIcon from '../assets/images/delete.png';
-import employeeCreation from '../assets/images/employeeCreation.png';
-import activityCreation from '../assets/images/activityCreation.png';
-import involvedAgent from '../assets/images/involvedAgent.png';
-import attachDoc from '../assets/images/attachDoc.png';
-import postActivity from '../assets/images/postActivity.png';
-import closeActivity from '../assets/images/closeActivity.png';
-import ganntDiagram from '../assets/images/ganntDiagram.png';
-import MPMdiagram from '../assets/images/MPMdiagram.png';
-import planEvent from '../assets/images/planEvent.png';
-import launch from '../assets/images/launch.png';
-import visioInstant from '../assets/images/visioInstant.png';
-import videoConf from '../assets/images/videoConf.png';
-import phoneCall from '../assets/images/phoneCall.png';
-import message from '../assets/images/message.png';
-import group from '../assets/images/group.png';
-import chat from '../assets/images/chat.png';
-import vote from '../assets/images/vote.png';
+import React from "react";
+// Importation des images utilisées dans le guide
+import generalImg from '../assets/images/general.png';
+import dashboardImg from '../assets/images/dashboard.png';
+import activitiesImg from '../assets/images/activities.png';
+import eventsImg from '../assets/images/events.png';
+import newImg from '../assets/images/new.png';
+import structureCreationImg from '../assets/images/structureCreation.png';
+import staffCategoriesImg from '../assets/images/staffCategories.png';
+import typesOfActivitiesImg from '../assets/images/typesOfActivities.png';
+import addStructureImg from '../assets/images/addStructure.png';
+import modifImg from '../assets/images/modif.png';
+import deleteImg from '../assets/images/delete.png';
+import addImg from '../assets/images/add.png';
+import employeeCreationImg from '../assets/images/employeeCreation.png';
+import activityCreationImg from '../assets/images/activityCreation.png';
+import involvedAgentImg from '../assets/images/involvedAgent.png';
+import attachDocImg from '../assets/images/attachDoc.png';
+import postActivityImg from '../assets/images/postActivity.png';
+import closeActivityImg from '../assets/images/closeActivity.png';
+import openImg from '../assets/images/open.png';
+import planEventImg from '../assets/images/planEvent.png';
+import visioInstantImg from '../assets/images/visioInstant.png';
+import launchImg from '../assets/images/launch.png';
+import groupImg from '../assets/images/group.png';
+import stopMicroImg from '../assets/images/stopMicro.png';
+import stopShareImg from '../assets/images/stopShare.png';
+import handOffImg from '../assets/images/handOff.png';
+import stopEditNotesImg from '../assets/images/stopEditNotes.png';
+import voteImg from '../assets/images/vote.png';
+import stopImg from '../assets/images/stop.png';
+import videoConfImg from '../assets/images/videoConf.png';
+import materialRessourceCategoriesImg from '../assets/images/materialRessourceCategories.png';
+import materialRessoureCreationImg from '../assets/images/materialRessoureCreation.png';
+import phoneCallImg from '../assets/images/phoneCall.png';
+import audioCallImg from '../assets/images/audioCall.png';
+import messageImg from '../assets/images/message.png';
+import stickyImg from '../assets/images/sticky.png';
+import strashImg from '../assets/images/strash.png';
+import textMessageImg from '../assets/images/textMessage.png';
+import chatImg from '../assets/images/chat.png';
+import textChatImg from '../assets/images/textChat.png';
+import createVoteImg from '../assets/images/createVote.png';
+import votingImg from '../assets/images/voting.png';
+import voteResultImg from '../assets/images/voteResult.png';
+import affectpriorityImg from '../assets/images/affectpriority.png';
+import createStickyNoteImg from '../assets/images/createStickyNote.png';
+import showStickyNoteImg from '../assets/images/showStickyNote.png';
+import diffusionGroupImg from '../assets/images/diffusionGroup.png';
 
 const Guide = () => {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Smooth scroll pour les ancres internes
+  React.useEffect(() => {
+    const handleClick = (e) => {
+      const target = e.target;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        const targetId = target.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     };
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, []);
 
-    return (
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen p-6">
-            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
-                {/* Header */}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 text-center">
-                    <div className="flex items-center justify-center gap-4 mb-2">
-                        <div className="w-16 h-16 bg-white rounded-full p-2 shadow-lg flex items-center justify-center">
-                            <img 
-                                src={xPertCLogo} 
-                                alt="xPertManager Logo" 
-                                className="w-full h-full object-contain" 
-                                onError={(e) => {
-                                    e.target.style.display = 'none';
-                                    e.target.parentElement.innerHTML = '<span class="text-blue-600 font-bold text-2xl">X</span>';
-                                }}
-                            />
-                        </div>
-                        <h1 className="text-4xl font-bold">xPertManager</h1>
-                    </div>
-                    <p className="text-xl opacity-90">Guide d'utilisation complet</p>
-                </div>
-                
-                <div className="p-8">
-                    {/* Table des matières */}
-                    <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">Table des matières</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                        <a href="#xPertManagerDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">📖 Description du produit</a>
-                        <a href="#structureDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">🏢 Créer et organiser des structures</a>
-                        <a href="#agentDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">👥 Gérer le personnel</a>
-                        <a href="#activityDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">📊 Créer et gérer des projets</a>
-                        <a href="#eventDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">📅 Créer et organiser des évènements</a>
-                        <a href="#meetingDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">📹 Organiser des visioconférences</a>
-                        <a href="#materialRessourceDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">🔧 Gérer des ressources matérielles</a>
-                        <a href="#communicateDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">💬 Appels audio inter-ordinateurs, messages texte et messagerie instantanée</a>
-                        <a href="#votingDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">🗳️ Organisation de votes électroniques</a>
-                        <a href="#toolstDoc" className="block p-4 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 hover:border-blue-400 transition-all duration-300 text-blue-700 hover:text-blue-900 font-medium">📝 Outils d'aide</a>
-                    </div>
+  return (
+    <div style={{ maxWidth: 1200, margin: '0 auto', padding: 20, color: '#333', fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif', lineHeight: 1.6 }}>
+      {/* Style global identique au HTML */}
+      <style>{`
+        :root {
+          --primary: #3498db;
+          --primary-dark: #2980b9;
+          --text: #2c3e50;
+          --muted-text: #333;
+          --bg-toc: #f8f9fa;
+        }
+        body {
+          font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          line-height: 1.6;
+          color: var(--muted-text);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3 {
+          color: var(--text);
+          font-weight: 700;
+          margin-top: 1.2rem;
+          margin-bottom: 0.6rem;
+        }
+        h1 {
+          font-size: 2rem;
+          margin-top: 0;
+        }
+        h2 {
+          font-size: 1.5rem;
+          border-bottom: 2px solid var(--primary);
+          padding-bottom: 6px;
+          margin-top: 2rem;
+          scroll-margin-top: 20px;
+        }
+        h3 {
+          font-size: 1.1rem;
+          margin-top: 1rem;
+          margin-bottom: 0.3rem;
+        }
+        p {
+          margin: 0.5rem 0 0.8rem 0;
+        }
+        b, strong {
+          font-weight: 700;
+        }
+        a {
+          color: var(--primary-dark);
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+        img {
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          padding: 5px;
+          margin: 10px 0;
+          max-width: 100%;
+          height: auto;
+        }
+        ul, ol {
+          margin: 0.4rem 0 1rem 1.25rem;
+        }
+        ul {
+          list-style-type: disc;
+        }
+        ol {
+          list-style-type: decimal;
+        }
+        li {
+          margin: 0.25rem 0;
+        }
+        .toc {
+          background-color: var(--bg-toc);
+          padding: 15px;
+          border-radius: 5px;
+          margin: 16px 0 24px 0;
+          border-left: 4px solid var(--primary);
+        }
+        .toc h2 {
+          border: none;
+          padding: 0;
+          margin: 0 0 8px 0;
+        }
+        .toc p {
+          margin: 0;
+          line-height: 1.8;
+        }
+        .back-to-top {
+          display: inline-block;
+          margin-top: 14px;
+          padding: 8px 14px;
+          background-color: var(--primary);
+          color: white;
+          border-radius: 4px;
+          font-size: 0.9em;
+          cursor: pointer;
+        }
+        .back-to-top:hover {
+          background-color: var(--primary-dark);
+          text-decoration: none;
+        }
+        .section {
+          margin-bottom: 36px;
+        }
+        .inline-icon {
+          vertical-align: middle;
+          margin: 0 4px;
+          border: none;
+          padding: 0;
+          height: 20px;
+          width: 20px;
+        }
+      `}</style>
 
-                    {/* Description du produit */}
-                    <h2 id="xPertManagerDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Description du produit</h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        <b>xPertManager</b> est une plateforme intégrée de gestion qui optimise le fonctionnement des organisations. Elle permet entre autres:
-                        <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                            <li className="mb-2">la gestion des ressources humaines et matérielles</li>
-                            <li className="mb-2">la gestion de projets: conception, planification/ordonnancement, suivi et organisation des activités</li>
-                            <li className="mb-2">la gestion d'évènements: création, planification, partage</li>
-                            <li className="mb-2">la gestion des communications: appels audio inter-ordinateurs, messages texte, messagerie instantanée, visio conférencee</li>
-                            <li className="mb-2">l'organisation de votes électroniques</li>
-                            <li className="mb-2">Outils d'aide à l'organisation (tableau de bord avec une matrice de Eisenhover, post-it, rappels, etc.)</li>
-                        </ul>
-                    </p>
+      {/* Point d'ancrage pour le retour en haut */}
+      <div id="top"></div>
 
-                    {/* Créer et organiser des structures */}
-                    <section id="structureDoc" className="mb-12 p-6 bg-gray-50 rounded-xl">
-                        <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">🏢 Créer et organiser des structures</h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Créer une structure</h3></li>    
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">    
-                                    <li className="mb-2">Après lancement de l'application, choisir la langue de travail et cliquer sur le bouton <b>Annuler</b>.</li>    
-                                    <li className="mb-2"> Dans l'onglet <b>Général</b>, cliquer sur le bouton     
-                                        <img src={newIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Nouveau" />. </li>     
-                                    <li className="mb-2">Dans la boîte de dialogue qui s'affiche, renseigner le nom de la structure ainsi que le nom de la base de données associée à la structure.    
-                                        Définir également les catégories de personnel de la structure et les types d'activités,     
-                                        en cliquant sur les boutons prévus à cet effet.    
-                                        Vous pouvez également renseigner la zone <b>description de la structure</b>.</li>    
-                                    <li className="mb-2">Cliquer ensuite sur le bouton<b> Créer</b>.</li>   
-                                    <div>
-                                        <img src={structureCreation} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Création structure" width="400" />
-                                        <img src={staffCategories} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Catégories de personnel" width="400" />
-                                        <img src={typesOfActivities} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Types d'activités" width="400" />
-                                    </div> 
-                                </ol>    
-                                <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Ajouter une sous structure</h3></li>    
-                                Pour ajouter une sous structure à une structure existante    
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">    
-                                    <li className="mb-2">Sélectionner la structure de base</li>    
-                                    <li className="mb-2"> Cliquer sur le bouton     
-                                        <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Général</b> </li>    
-                                    <li className="mb-2">Dans la boîte de dialogue qui s'affiche, saisir les données requises.     
-                                        Le choix du responsable de la structure à créer n'est pas obligatoire et peut être fait ultérieurement.</li>    
-                                    <li className="mb-2"> Cliquer sur le bouton <b>Créer</b>.</li>
-                                    <li className="mb-2"> Vous pouvez continuer à créer d'autres structures, ou fermer la boîte de dialogue.</li>
-                                </ol>    
-                                <img src={addStructure} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Types d'activités" width="400" />
-                                
-                                <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Modifier/supprimer une structure</h3></li>    
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">    
-                                    <li className="mb-2">Pour modifier une structure, sélectionner la structure et cliquer sur le bouton     
-                                        <img src={modifIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Général</b> </li>    
-                                    <li className="mb-2">Pour supprimer une structure, sélectionner la structure et cliquer sur le bouton     
-                                        <img src={deleteIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Général</b> </li>    
-                                </ol>    
-                            </ul>          
-                        </p>
-                    </section>
+      <h1>xPertManager</h1>
+      <p><b>version 1.0</b></p>
+      <p><b>Septembre 2025</b></p>
 
-                    {/* Gérer le personnel */}
-                    <h2 id="agentDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Gérer le personnel</h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                           <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Ajouter un agent</h3></li>
-                                Pour ajouter un agent dans une structure
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2">Sélectionner la structure dans l'onglet <b>Général</b></li>
-                                    <li className="mb-2">Dans l'onglet <b>Ressources humaines</b>, cliquer sur le bouton 
-                                        <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li>
-                                      <li className="mb-2">Dans la boîte de dialogue qui s'affiche, saisir les données requises.</li>   
-                                      <li className="mb-2"> Cliquer sur le bouton <b>Insérer</b>.</li>
-                                      <li className="mb-2"> Vous pouvez continuer à insérer d'autres agents, ou fermer la boîte de dialogue.</li>
-                                </ol>
-                                <img src={employeeCreation} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Création d'un employé" width="500" /> 
-                            <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Modifier/supprimer un agent</h3></li>
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2">Pour modifier un agent, sélectionner l'agent et cliquer sur le bouton 
-                                      <img src={modifIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Ressources humaines</b></li>
-                                      <li className="mb-2">Pour supprimer un agent, sélectionner l'agent et cliquer sur le bouton 
-                                      <img src={deleteIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Ressources humaines</b></li>
-                                </ol>
-                        </ul>    
-                    </p>
+      <div className="toc">
+        <h2>Table des matières</h2>
+        <p>
+          <a href="#description-produit">Description du produit</a><br />
+          <a href="#creer-structures">Créer et organiser des structures</a><br />
+          <a href="#gerer-personnel">Gérer le personnel</a><br />
+          <a href="#gerer-projets">Créer et gérer des projets</a><br />
+          <a href="#creer-evenements">Créer et organiser des événements</a><br />
+          <a href="#conferences-video">Organiser des visioconférences</a><br />
+          <a href="#ressources-materielles">Gérer les ressources matérielles</a><br />
+          <a href="#communication">Appels audio, messages texte et messagerie instantanée</a><br />
+          <a href="#votes-electroniques">Organisation de votes électroniques</a><br />
+          <a href="#divers">Divers : Matrice d'Eisenhower, notes autocollantes, groupes de diffusion</a><br />
+        </p>
+      </div>
 
-                    {/* Créer et gérer des projets */}
-                    <h2 id="activityDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Créer et gérer des projets ou des activités</h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                            <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Créer un projet ou une activité</h3></li>
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2">Sélectionner dans l'onglet <b>Général</b> la structure où le projet ou l'activité doit être créé</li>
-                                    <li className="mb-2">Dans l'onglet <b>Activités</b>, sélectionner le projet ou l'activité de base. S'il n'y en a pas, 
-                                    sélectioner le type (professionnelle ou personnelle)</li> 
-                                    <li className="mb-2"> Cliquer sur le bouton  
-                                    <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li>
-                                    <li className="mb-2">Dans la boîte de dialogue qui s'affiche, saisir les données requises.  
-                                    Si les types d'activités n'ont pas été définies, il faut le faire en modifiant la structure de base.</li>
-                                    <li className="mb-2"> Cliquer sur le bouton <b>Insérer</b>.</li>
-                                    <li className="mb-2"> Vous pouvez continuer à créer d'autres projets ou activités, ou fermer la boîte de dialogue.</li>
-                                </ol>
-                            Pendant la création du projet (ou de l'activité), il est possible de définir des co-auteurs 
-                            qui pourront modifier et/ou créer des sous-activités.<br/>
-                            <img src={activityCreation} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Création d'une activité (ou d'un projet)" width="500" /> 
-                            <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Modifier/supprimer un projet ou une activité</h3></li>
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2">Pour modifier un projet ou une activité, sélectionner le et cliquer sur le bouton 
-                                    <img src={modifIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Activités</b> </li>
-                                    <li className="mb-2">Pour supprimer un projet ou une activité, sélectionner le et cliquer sur le bouton 
-                                    <img src={deleteIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Activités</b>  </li>
-                                </ol>
-                            <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Gérer un projet ou une activité</h3></li>
-                                <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2">Pour définir les agents impliqués dans un projet (ou une activité), en dehors du responsable de l'équipe, cliquer sur le bouton 
-                                        <img src={involvedAgent} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Activités</b> et renseigner 
-                                        les données requises dans la boîte de dialogue qui s'affiche. </li>
-                                    <li className="mb-2">Pour attacher un document à un projet ou une activité, cliquer sur le bouton 
-                                        <img src={attachDoc} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Activités</b> et renseigner 
-                                        les données requises dans la boîte de dialogue qui s'affiche. </li>
-                                    <li className="mb-2">Pour publier un projet ou une activité, cliquer sur le bouton 
-                                        <img src={postActivity} className="max-w-full h-auto rounded-lg shadow-d my-2" /> de l'onglet <b>Activités</b>.  
-                                        Les agents impliqués dans le projet (ou l'activité) le verront dans leur interface lorsque viendra 
-                                        leur tour d'y travailler, selon la planification faite. Les auteurs du projet (ou de l'activité) ainsi que 
-                                        les responsables verront toujours le projet (ou l'activité) dans leur interface, tant qu'il est actif.</li>
-                                    <li className="mb-2">Pour terminer une activité sur laquelle vous travaillez, cliquer sur le bouton 
-                                        <img src={closeActivity} className="max-w-full h-auto rounded-lg shadow-md my-2" /> de l'onglet <b>Activités</b>. 
-                                        L'activité sera alors transmise à l'agent (ou aux agents) impliqué(s), conformément à la planification faite.</li>
-                                    <li className="mb-2">Après avoir défini toutes les activités d'un projet (ou d'une activité de base), il faut faire la planification 
-                                        (définir l'antériorité des tâches). Pour cela, sélectionner une des activités du projet et cliquer sur le bouton 
-                                        <img src={modifIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> 
-                                        Dans la boîte de dialogue de modification, cliquer sur le bouton <b> Activités précédentes</b> et définir l'antériorité des actvités.</li>
-                                    <li className="mb-2">Pour affecter des ressources matérielles à une activité, sélectionner l'activité, cliquer sur le bouton de modification. 
-                                        Dans la boîte de dialogue de modification, cliquer sur le bouton <b>Affecter des ressources</b> pour planifier l'utilisation de la ressources.</li>
-                                     <li className="mb-2">On peut visualiser la planification et l'ordonnancement des activités d'un projet avec le <b>diagramme de Gannt</b> ou 
-                                        le <b>diagramme MPM</b> (Méthode des Potentiels Metra) en choisissant la méthode en bas dans l'onglet <b>Activités</b>. En cochant la case <b>Animer</b>, 
-                                        on peut suivre l'évolution du projet.</li>
-                                </ul>
-                                
-                                <img src={ganntDiagram} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Diagramme de Gannt d'un projet" width="700" /> 
-                                <img src={MPMdiagram} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Diagramme MPM d'un projet" width="700" /> 
-                        </ul>
-                    </p>
+      {/* Description du produit */}
+      <div className="section" id="description-produit">
+        <h2>Description du produit</h2>
+        <p>
+          <b>xPertManager</b> est une plateforme de gestion intégrée qui optimise le fonctionnement des organisations. Elle permet entre autres :
+        </p>
+        <ul>
+          <li>la gestion des ressources humaines et matérielles</li>
+          <li>la gestion de projets : conception, planification/ordonnancement, suivi et organisation des activités</li>
+          <li>la gestion d'événements : création, planification et partage</li>
+          <li>la gestion des communications : appels audio, messages texte, messagerie instantanée, visioconférence</li>
+          <li>l'organisation de votes électroniques</li>
+          <li>des outils d'organisation (tableau de bord avec matrice d'Eisenhower, notes autocollantes, rappels, etc.)</li>
+        </ul>
+        <p>Le côté serveur utilise une base de données MySQL. L'interface client de l'application décrite ici comprend quatre onglets :</p>
+        <ol>
+          <li>
+            <b>Onglet Général</b> : Cette interface sert à la configuration générale de l'organisation :
+            <ul>
+              <li>création de structures et sous-structures,</li>
+              <li>création et affectation d'agents aux structures,</li>
+              <li>création et affectation de ressources matérielles,</li>
+              <li>communications entre agents.</li>
+            </ul>
+            <img src={generalImg} alt="Général" width="650" />
+          </li>
+          <li>
+            <b>Onglet Tableau de bord</b> : Permet à l'utilisateur de mieux s'organiser et de voir la priorité des tâches à faire.
+            <br />
+            <img src={dashboardImg} alt="Tableau de bord" width="650" />
+          </li>
+          <li>
+            <b>Onglet Activités</b> : Cette interface permet :
+            <ul>
+              <li>la création de projets ou d'activités</li>
+              <li>le partage et le traitement de projets ou d'activités</li>
+              <li>le suivi de projets ou d'activités</li>
+            </ul>
+            <img src={activitiesImg} alt="Activités" width="650" />
+          </li>
+          <li>
+            <b>Onglet Événement</b> : Cette interface permet :
+            <ul>
+              <li>la création d'événements</li>
+              <li>le suivi d'événements</li>
+              <li>le lancement d'événements tels que les visioconférences organisées sur la plateforme</li>
+            </ul>
+            <img src={eventsImg} alt="Événement" width="650" />
+          </li>
+        </ol>
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
 
-                    {/* Créer et organiser des évènements */}
-                    <h2 id="eventDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Créer et organiser des évènements</h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                       <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                            <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Créer un évènement</h3></li>  
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2">Sélectionner l'onglet <b>Evènement</b></li>
-                                    <li className="mb-2"> Cliquer sur le bouton  
-                                        <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /></li>
-                                    <li className="mb-2">Dans la boîte de dialogue qui s'affiche, saisir les données requises.  
-                                    Ajouter les agents concernés par l'évènement afin qu'ils puissent le voir dans leur interface. 
-                                    Pour ajouter un participant à l'évènement, cliquer sur le bouton 
-                                    <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" />.  
-                                    Dans l'onglet <b>Ressources humaines</b> de l'onglet <b>Général</b> qui est affiché, 
-                                    sélectionner le participant et cliquer sur le bouton 
-                                    <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" />.</li> 
-                                    <li className="mb-2"> Vous pouvez ajouter d'autres participants à l'évènement en suivant la même procédure.</li>
-                                </ol>
-                                <img src={planEvent} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Créer et planifier un évènement" width="500" /> 
-                                
-                            <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Modifier/supprimer un évènement</h3></li>
-                                <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2">Pour modifier un évènement, sélectionner le et cliquer sur le bouton 
-                                    <img src={modifIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li>
-                                    <li className="mb-2">Pour supprimer un évènement, sélectionner le et cliquer sur le bouton 
-                                    <img src={deleteIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li>
-                                </ol>
-                        </ul>
-                    </p>
-
-                    {/* Organiser une visioconférence */}
-                    <h2 id="meetingDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Organiser une visioconférence</h2>
-                     <p className="text-gray-700 leading-relaxed mb-4">
-                         <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                             <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Pour organiser une visioconférence instantanée</h3></li>  
-                             <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                  <li className="mb-2">Dans l'onglet <b>Evènements</b>, cliquer sur le bouton 
-                                  <img src={visioInstant} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li> 
-                                 <li className="mb-2">Dans la fenêtre de la visio conférence, ajouter les participants en cliquant sur le bouton 
-                                 <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li>
-                             </ul>
-                             <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Pour démarrer une visioconférence planifiée</h3></li> 
-                             <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                  <li className="mb-2">Sélectionner l'évènement dans l'onglet <b>Evènements</b> et cliquer sur le bouton 
-                                  <img src={launch} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li> 
-                                 <li className="mb-2">Les agents devant participer à la visio conférence recevront une invitation à commencer 
-                                 la réunion, s'ils sont connectés. </li>
-                             </ul>
-                         </ul>
-                         <img src={videoConf} className="max-w-full h-auto rounded-lg shadow-md my-2" alt="Créer et planifier un évènement" width="600" /> 
-                     </p>
-
-                    {/* Gérer des ressources matérielles */}
-                    <h2 id="materialRessourceDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Gérer des ressources matérielles</h2>
-                            <p className="text-gray-700 leading-relaxed mb-4">
-                                <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Ajouter une ressource matérielle</h3></li>  
-                                    <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                        <li className="mb-2">Sélectionner l'onglet <b>Général</b></li>
-                                        <li className="mb-2">Sélectionner la structure où affecter la ressource matérielle</li>
-                                        <li className="mb-2">Sélectionner l'onglet <b>Ressources matérielles</b> dans la partie inférieure de l'interface</li> 
-                                        <li className="mb-2">Cliquer sur le bouton <img src={addIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li> 
-                                        <li className="mb-2">Dans la boîte de dialogue qui s'affiche, renseigner les informations requises.</li>
-                                        <li className="mb-2">Au besoin définir les catégories de ressources matérielles. </li>
-                                        <li className="mb-2">Cliquer sur le bouton <b>Ajouter</b> pour ajouter la ressource. </li>
-                                        <li className="mb-2">On peut continuer à ajouter d'autres ressources ou fermer la boîte de dialogue.</li>
-                                    </ul>
-                                <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Modifier/supprimer une ressource matérielle</h3></li> 
-                                    <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                        <li className="mb-2">Pour modifier une ressource matérielle, sélectionner la ressource dans l'onglet <b>Ressources matérielles</b> et 
-                                              cliquer sur le bouton <img src={modifIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" />. 
-                                               Effectuer les modifications nécessaires dans la boîte de dialogue qui s'affiche.</li> 
-                                        <li className="mb-2">Pour supprimer une ressource matérielle, sélectionner la ressource dans l'onglet <b>Ressources matérielles</b> et 
-                                                cliquer sur le bouton  <img src={deleteIcon} className="max-w-full h-auto rounded-lg shadow-md my-2" />. </li>
-                                    </ul>
-                                <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Planifier une ressource matérielle</h3></li> 
-                                    La planification des ressources matérielles se fait dans la rubrique <b>Gérer un projet ou une activité.</b>
-                                </ul>
-                            </p>
-
-                    {/* Appels téléphoniques et messagerie */}
-                    <h2 id="communicateDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Appels téléphoniques et messagerie instantanée</h2>
-                            <p className="text-gray-700 leading-relaxed mb-4">
-                                <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Pour faire un appel téléphonique</h3></li>  
-                                        <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                         <li className="mb-2">Sélectionner l'onglet <b>Général</b></li>
-                                         <li className="mb-2">Sélectionner l'onglet <b>Ressources humaines</b> dans la partie inférieure de l'interface</li>
-                                         <li className="mb-2">Sélectionner l'agent qu'on veut appeler (il doit être connecté)</li>
-                                         <li className="mb-2">Cliquer sur le bouton 
-                                         <img src={phoneCall} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li> 
-                                         </ol>
-                                </ul>
-                                <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Pour envoyer un message texte</h3></li>  
-                                        <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                         <li className="mb-2">Sélectionner l'onglet <b>Général</b></li>
-                                         <li className="mb-2">Sélectionner l'onglet <b>Ressources humaines</b> dans la partie inférieure de l'interface</li>
-                                         <li className="mb-2">Sélectionner l'agent à qui on veut envoyer un message (même s'il n'est pas connecté)</li>
-                                         <li className="mb-2">Cliquer sur le bouton 
-                                         <img src={message} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li> 
-                                         <li className="mb-2">Rédiger le message et cliquer sur envoyer. Si le destinataire est connecté, 
-                                         il verra le message s'affiché dans son interface. Sinon il le verra dès qu'il se connecte. 
-                                         Il est possible d'envoyer un message à un groupe de destinataires (groupe de diffusion 
-                                         <img src={group} className="max-w-full h-auto rounded-lg shadow-md my-2" /> ) </li>
-                                         </ol>
-                                </ul>
-                                <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                    <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Pour démarrer une messagerie instantanée</h3></li>  
-                                        <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                         <li className="mb-2">Sélectionner l'onglet <b>Général</b></li>
-                                         <li className="mb-2">Sélectionner l'onglet <b>Ressources humaines</b> dans la partie inférieure de l'interface</li>
-                                         <li className="mb-2">Sélectionner l'agent avec qui on veut comuniquer (il doit être connecté)</li>
-                                         <li className="mb-2">Cliquer sur le bouton 
-                                         <img src={chat} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li> 
-                                         </ol>
-                                </ul>
-                            </p>
-
-                    {/* Vote électronique */}    
-                    <h2 id="votingDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Vote électronique</h2>
-                            <p className="text-gray-700 leading-relaxed mb-4">
-                             Le vote électronique est intégré dans un évènement. il peut donc être planifié ou réalisé en 
-                             instantané. Pour Organiser un vote électronique: 
-                             <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                <li className="mb-2">Lancer l'évènement associé </li> 
-                                <li className="mb-2">Cliquer sur le bouton 
-                                <img src={vote} className="max-w-full h-auto rounded-lg shadow-md my-2" /> </li> 
-                                <li className="mb-2">Renseigner le libellé du vote dans la boîte de dialogue qui s'affiche et cliquer sur <b>OK</b> </li> 
-                                <li className="mb-2">Créer et ajouter les propositions de vote</li>
-                                 <li className="mb-2">Indiquer l'heure de fin du vote</li>
-                                <li className="mb-2">Cliquer sur <b>Démarrer</b> pour lancer le vote. Les propositions de vote vont s'afficher dans 
-                                les interfaces de tous les participants qui pourront alors voter</li>
-                                <li className="mb-2">A la fin du vote, cliquer sur <b>Arrêter</b>. Les résultats du vote 
-                                s'afficheront dans les interfaces de tous les participants.</li>
-                             </ol>
-                            </p>
-
-                    {/* Post-it */}          
-                    <h2 id="postItDoc" className="text-2xl md:text-3xl font-bold text-gray-800 mt-8 mb-4 pb-2 border-b-2 border-blue-500">Post-it</h2>
-                            <p className="text-gray-700 leading-relaxed mb-4">
-                            <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                           <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Pour créer un post-it</h3></li>  
-                               <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-700">
-                                   <li className="mb-2">Cliquer sur le bouton <b>Post-it</b> et choisir <b>Editer</b></li>
-                                   <li className="mb-2">Dans la boîte de dialogue qui s'affiche, cliquer sur le bouton <b>Ajouter</b> pour créer un post-it</li>
-                                   <li className="mb-2">On peut continuer à créer d'autres post-it ou fermer la boîte de dialogue.</li>
-                               </ol>
-                            <li className="mb-2"><h3 className="text-xl font-semibold text-blue-600 mt-6 mb-3">Pour afficher les post-it</h3></li> 
-                               <ul className="list-none list-inside space-y-2 mb-4 text-gray-700">
-                                      <li className="mb-2">Cliquer sur le bouton <b>Post-it</b> et choisir <b>Afficher/Cacher</b></li>
-                                      <li className="mb-2">Les post-it vont s'afficher et défilier les uns après les autres</li>
-                                      <li className="mb-2">Pour fermer la fenêtre des post-it, cliquer sur le bouton <b>-</b> 
-                                      de la fenêtre ou sur le bouton <b>Post-it</b> et choisir <b>Afficher/Cacher</b></li>
-                               </ul>
-                            </ul>
-                            </p>
-                </div>
-                
-                {/* Section Auteur */}
-                <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8 text-center rounded-b-2xl">
-                    <h2 className="text-2xl font-bold mb-4">👨‍💻 Auteur</h2>
-                    <div className="bg-white/10 rounded-lg p-4 max-w-md mx-auto">
-                        <p className="font-bold text-lg">Prof. Lamine THIAW</p>
-                        <p className="text-gray-300">Département Génie Électrique</p>
-                        <p className="text-gray-300">École Supérieure Polytechnique</p>
-                        <p className="text-gray-300">Université Cheikh Anta Diop de Dakar</p>
-                        <p className="text-blue-300 mt-2">📧 lamine.thiaw@ucad.edu.sn</p>
-                    </div>
-                </div>
+      {/* Créer des structures */}
+      <div className="section" id="creer-structures">
+        <h2>Créer et organiser des structures</h2>
+        <ul>
+          <li>
+            <h3>Créer une structure</h3>
+            <ol>
+              <li>Après le lancement de l'application, choisissez la langue de travail et cliquez sur le bouton <b>Annuler</b>.</li>
+              <li>Dans l'onglet <b>Général</b>, cliquez sur le bouton <img className="inline-icon" src={newImg} alt="Nouveau" /></li>
+              <li>Dans la boîte de dialogue qui apparaît, entrez le nom de la structure et le nom de la base de données associée. Définissez également les catégories de personnel et les types d'activités en cliquant sur les boutons correspondants. Vous pouvez également remplir la zone <b>description de la structure</b>.</li>
+              <li>Cliquez ensuite sur le bouton <b>Créer</b>.</li>
+            </ol>
+            <div>
+              <img src={structureCreationImg} alt="Création de structure" width="450" />
+              <img src={staffCategoriesImg} alt="Catégories de personnel" width="450" />
+              <img src={typesOfActivitiesImg} alt="Types d'activités" width="450" />
             </div>
-            
-            {/* Bouton retour en haut */}
-            <button 
-                onClick={scrollToTop}
-                className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold shadow-lg transition-all duration-300 hover:scale-110"
-            >
-                ↑
-            </button>
+          </li>
+
+          <li>
+            <h3>Ajouter une sous-structure</h3>
+            <p>Pour ajouter une sous-structure à une structure existante :</p>
+            <ol>
+              <li>Sélectionnez la structure de base.</li>
+              <li>Cliquez sur le bouton <img className="inline-icon" src={addImg} alt="Ajouter" /> dans l'onglet <b>Général</b>.</li>
+              <li>Dans la boîte de dialogue, entrez les données requises. La sélection du responsable de la nouvelle structure est optionnelle et peut être faite ultérieurement.</li>
+              <li>Cliquez sur le bouton <b>Créer</b>.</li>
+              <li>Vous pouvez continuer à créer d'autres structures ou fermer la boîte de dialogue.</li>
+            </ol>
+            <img src={addStructureImg} alt="Ajouter une structure" width="400" />
+          </li>
+
+          <li>
+            <h3>Modifier/Supprimer une structure</h3>
+            <ol>
+              <li>Pour modifier une structure, sélectionnez-la et cliquez sur <img className="inline-icon" src={modifImg} alt="Modifier" /> dans l'onglet <b>Général</b>.</li>
+              <li>Pour supprimer une structure, sélectionnez-la et cliquez sur <img className="inline-icon" src={deleteImg} alt="Supprimer" /> dans l'onglet <b>Général</b>.</li>
+            </ol>
+          </li>
+        </ul>
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Gérer le personnel */}
+      <div className="section" id="gerer-personnel">
+        <h2>Gérer le personnel</h2>
+        <ul>
+          <li>
+            <h3>Ajouter un agent</h3>
+            <p>Pour ajouter un agent à une structure :</p>
+            <ol>
+              <li>Sélectionnez la structure dans l'onglet <b>Général</b>.</li>
+              <li>Dans l'onglet <b>Ressources Humaines</b>, cliquez sur <img className="inline-icon" src={addImg} alt="Ajouter" />.</li>
+              <li>Dans la boîte de dialogue, entrez les données requises.</li>
+              <li>Cliquez sur <b>Insérer</b>.</li>
+              <li>Vous pouvez continuer à ajouter d'autres agents ou fermer la boîte de dialogue.</li>
+            </ol>
+            <img src={employeeCreationImg} alt="Création d'employé" width="500" />
+          </li>
+
+          <li>
+            <h3>Modifier/Supprimer un agent</h3>
+            <ol>
+              <li>Pour modifier un agent, sélectionnez-le et cliquez sur <img className="inline-icon" src={modifImg} alt="Modifier" /> dans l'onglet <b>Ressources Humaines</b>.</li>
+              <li>Pour supprimer un agent, sélectionnez-le et cliquez sur <img className="inline-icon" src={deleteImg} alt="Supprimer" /> dans l'onglet <b>Ressources Humaines</b>.</li>
+            </ol>
+          </li>
+        </ul>
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Gérer les projets */}
+      <div className="section" id="gerer-projets">
+        <h2>Créer et gérer des projets ou activités</h2>
+        <ul>
+          <li>
+            <h3>Créer un projet ou une activité</h3>
+            <ol>
+              <li>Sélectionnez dans l'onglet <b>Général</b> la structure où le projet ou l'activité doit être créé.</li>
+              <li>Dans l'onglet <b>Activités</b>, sélectionnez le projet ou l'activité de base. S'il n'y en a pas, sélectionnez le type (professionnel ou personnel).</li>
+              <li>Cliquez sur <img className="inline-icon" src={addImg} alt="Ajouter" />.</li>
+              <li>Dans la boîte de dialogue, remplissez les données requises. Si les types d'activités ne sont pas définis, ils doivent être paramétrés en modifiant la structure de base.</li>
+              <li>Cliquez sur <b>Insérer</b>.</li>
+              <li>Vous pouvez continuer à créer d'autres projets ou activités ou fermer la boîte de dialogue.</li>
+            </ol>
+            <p>Lors de la création, des co-auteurs peuvent être définis qui pourront modifier ou créer des sous-activités.</p>
+            <div><img src={activityCreationImg} alt="Création d'activité" width="500" /></div>
+          </li>
+
+          <li>
+            <h3>Modifier/Supprimer</h3>
+            <ol>
+              <li>Pour modifier un projet ou une activité, sélectionnez-le et cliquez sur <img className="inline-icon" src={modifImg} alt="Modifier" /> dans l'onglet <b>Activités</b>.</li>
+              <li>Pour supprimer un projet ou une activité, sélectionnez-le et cliquez sur <img className="inline-icon" src={deleteImg} alt="Supprimer" /> dans l'onglet <b>Activités</b>.</li>
+            </ol>
+          </li>
+
+          <li>
+            <h3>Gérer un projet ou une activité</h3>
+            <ul>
+              <li><b>Ajouter des agents impliqués :</b> Cliquez sur <img className="inline-icon" src={involvedAgentImg} alt="Ajouter agent impliqué" /> pour choisir le personnel qui participera au projet ou à l'activité.</li>
+              <li><b>Attacher un document :</b> Cliquez sur <img className="inline-icon" src={attachDocImg} alt="Attacher document" /> pour attacher un fichier au projet.</li>
+              <li><b>Publier un projet :</b> Cliquez sur <img className="inline-icon" src={postActivityImg} alt="Publier projet" /> pour le rendre accessible aux collaborateurs.</li>
+              <li><b>Marquer comme terminé :</b> Cliquez sur <img className="inline-icon" src={closeActivityImg} alt="Clôturer activité" /> une fois terminé.</li>
+              <li><b>Définir des dépendances :</b> Utilisez l'option "Activités précédentes".</li>
+              <li><b>Attribuer des ressources :</b> Utilisez l'option "Attribuer des ressources" pour allouer des ressources matérielles ou humaines.</li>
+              <li><b>Visualisation :</b> Affichez sous forme de diagramme de Gantt ou de diagramme MPM, animez la progression du projet et exportez les diagrammes.</li>
+            </ul>
+          </li>
+        </ul>
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Créer des événements */}
+      <div className="section" id="creer-evenements">
+        <h2>Créer et organiser des événements</h2>
+        <ul>
+          <li>
+            <h3>Créer un événement</h3>
+            <ol>
+              <li>Sélectionnez l'onglet <b>Événement</b>.</li>
+              <li>Cliquez sur le bouton <img className="inline-icon" src={addImg} alt="Ajouter" />.</li>
+              <li>
+                Dans la boîte de dialogue qui apparaît, entrez les informations requises.
+                Ajoutez les agents impliqués dans l'événement afin qu'ils puissent le voir dans leur interface.
+                Pour ajouter un participant à l'événement, cliquez sur le bouton <img className="inline-icon" src={addImg} alt="Ajouter" />.
+                Dans l'onglet <b>Ressources Humaines</b> sous l'onglet <b>Général</b> qui apparaît,
+                sélectionnez le participant et cliquez sur le bouton <img className="inline-icon" src={addImg} alt="Ajouter" />.
+              </li>
+              <li>
+                Vous pouvez ajouter d'autres participants à l'événement en suivant la même procédure
+                ou en chargeant un groupe de diffusion déjà créé (<img className="inline-icon" src={openImg} alt="Ouvrir" />).
+              </li>
+            </ol>
+            <div><img src={planEventImg} alt="Créer et planifier un événement" width="500" /></div>
+          </li>
+
+          <li>
+            <h3>Modifier/Supprimer un événement</h3>
+            <ol>
+              <li>Pour modifier un événement, sélectionnez-le et cliquez sur <img className="inline-icon" src={modifImg} alt="Modifier" />.</li>
+              <li>Pour supprimer un événement, sélectionnez-le et cliquez sur <img className="inline-icon" src={deleteImg} alt="Supprimer" />.</li>
+            </ol>
+          </li>
+        </ul>
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Conférences vidéo */}
+      <div className="section" id="conferences-video">
+        <h2>Organiser une visioconférence</h2>
+        <ul>
+          <li>
+            <h3>Pour organiser une visioconférence instantanée</h3>
+            <ul>
+              <li>Dans l'onglet <b>Événements</b>, cliquez sur <img className="inline-icon" src={visioInstantImg} alt="Visio instantanée" />.</li>
+              <li>Dans la fenêtre de visioconférence, ajoutez des participants en cliquant sur <img className="inline-icon" src={addImg} alt="Ajouter" />.</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>Pour démarrer une visioconférence planifiée</h3>
+            <ul>
+              <li>Sélectionnez l'événement dans l'onglet <b>Événements</b> et cliquez sur <img className="inline-icon" src={launchImg} alt="Lancer" />.</li>
+              <li>Les agents qui doivent participer à la visioconférence recevront une invitation pour rejoindre la réunion, s'ils sont connectés.</li>
+            </ul>
+            <p>Dans la fenêtre de visioconférence, les boutons suivants permettent :</p>
+            <ul>
+              <li><img className="inline-icon" src={addImg} alt="Ajouter" /> Inviter un participant à la réunion.
+                Après avoir cliqué sur ce bouton, sélectionnez le participant dans la liste du personnel
+                sous l'onglet Ressources Humaines, puis cliquez à nouveau sur <img className="inline-icon" src={addImg} alt="Ajouter" />.</li>
+              <li><img className="inline-icon" src={groupImg} alt="Groupe" /> Inviter un groupe de participants d'un groupe de diffusion précédemment créé.
+                Après avoir cliqué sur ce bouton, chargez le fichier du groupe depuis son emplacement.</li>
+              <li><img className="inline-icon" src={stopMicroImg} alt="Micro" /> Activer/désactiver le microphone.</li>
+              <li><img className="inline-icon" src={stopShareImg} alt="Partage écran" /> Activer/désactiver le partage d'écran.</li>
+              <li><img className="inline-icon" src={handOffImg} alt="Prendre la parole" /> S'inscrire/se désinscrire de la liste des orateurs pour prendre la parole.</li>
+              <li><img className="inline-icon" src={stopEditNotesImg} alt="Édition notes" /> Activer/désactiver le mode d'édition des notes de réunion.
+                Le participant qui active le mode d'édition des notes peut écrire des notes dans la zone dédiée,
+                qui seront affichées en temps réel dans les interfaces de tous les participants.
+                Un seul participant peut activer le mode d'édition des notes à la fois.</li>
+              <li><img className="inline-icon" src={voteImg} alt="Vote" /> Lancer un vote électronique.
+                Tous les participants pourront voter et voir les résultats dans leurs interfaces.</li>
+              <li><b>{'>>'}</b> Envoyer un message texte saisi à tous les participants.</li>
+              <li><img className="inline-icon" src={stopImg} alt="Quitter" /> Quitter la visioconférence.</li>
+            </ul>
+          </li>
+        </ul>
+        <div><img src={videoConfImg} alt="Visioconférence" width="600" /></div>
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Ressources matérielles */}
+      <div className="section" id="ressources-materielles">
+        <h2>Gérer les ressources matérielles</h2>
+        <ul>
+          <li>
+            <h3>Ajouter une ressource matérielle</h3>
+            <ul>
+              <li>Sélectionnez l'onglet <b>Général</b>.</li>
+              <li>Sélectionnez la structure où la ressource matérielle sera affectée.</li>
+              <li>Sélectionnez l'onglet <b>Ressources Matérielles</b> en bas de l'interface.</li>
+              <li>Cliquez sur le bouton <img className="inline-icon" src={addImg} alt="Ajouter" />.</li>
+              <li>Dans la boîte de dialogue qui apparaît, remplissez les informations requises.</li>
+              <li>Définissez les catégories de ressources matérielles si nécessaire.</li>
+              <li>Cliquez sur <b>Ajouter</b> pour ajouter la ressource.</li>
+              <li>Vous pouvez continuer à ajouter d'autres ressources ou fermer la boîte de dialogue.</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>Modifier/Supprimer une ressource matérielle</h3>
+            <ul>
+              <li>Pour modifier une ressource matérielle, sélectionnez-la dans l'onglet <b>Ressources Matérielles</b>
+                et cliquez sur <img className="inline-icon" src={modifImg} alt="Modifier" />.
+                Effectuez les modifications nécessaires dans la boîte de dialogue qui apparaît.</li>
+              <li>Pour supprimer une ressource matérielle, sélectionnez-la dans l'onglet <b>Ressources Matérielles</b>
+                et cliquez sur <img className="inline-icon" src={deleteImg} alt="Supprimer" />.</li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>Planifier une ressource matérielle</h3>
+            <p>La planification des ressources matérielles se fait dans la section <b>Gérer un projet ou une activité</b>.</p>
+          </li>
+        </ul>
+
+        <div><img src={materialRessourceCategoriesImg} alt="Création de catégories de ressources matérielles" width="450" /></div>
+        <div><img src={materialRessoureCreationImg} alt="Affectation de ressources matérielles" width="400" /></div>
+
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Communication */}
+      <div className="section" id="communication">
+        <h2>Appels audio, messages texte et messagerie instantanée</h2>
+        <ul>
+          <li>
+            <h3>Passer un appel audio</h3>
+            <ol>
+              <li>Sélectionnez l'onglet <b>Général</b>.</li>
+              <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+              <li>Sélectionnez l'agent que vous souhaitez appeler (doit être en ligne).</li>
+              <li>Cliquez sur le bouton <img className="inline-icon" src={phoneCallImg} alt="Appel" />.</li>
+            </ol>
+          </li>
+        </ul>
+        <div><img src={audioCallImg} alt="Appel audio" width="300" /></div>
+
+        <ul>
+          <li>
+            <h3>Envoyer un message texte</h3>
+            <ol>
+              <li>Sélectionnez l'onglet <b>Général</b>.</li>
+              <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+              <li>Sélectionnez l'agent à qui vous souhaitez envoyer un message (même s'il est hors ligne).</li>
+              <li>Cliquez sur le bouton <img className="inline-icon" src={messageImg} alt="Message" />.</li>
+              <li>
+                Écrivez le message et cliquez sur envoyer.
+                Si le destinataire est en ligne, il le verra immédiatement ; sinon, il le verra lors de sa connexion.
+                Il est possible d'envoyer un message à un groupe de destinataires (<img className="inline-icon" src={groupImg} alt="Groupe" />).
+              </li>
+            </ol>
+          </li>
+        </ul>
+
+        <p>
+          Un message texte reçu peut être converti en note autocollante pour les rappels (<img className="inline-icon" src={stickyImg} alt="Note autocollante" />)
+          ou supprimé si nécessaire (<img className="inline-icon" src={strashImg} alt="Supprimer" />).
+        </p>
+        <div><img src={textMessageImg} alt="Message texte" width="500" /></div>
+
+        <ul>
+          <li>
+            <h3>Démarrer un chat de messagerie instantanée</h3>
+            <ol>
+              <li>Sélectionnez l'onglet <b>Général</b>.</li>
+              <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+              <li>Sélectionnez l'agent avec qui vous souhaitez chatter (doit être en ligne).</li>
+              <li>Cliquez sur le bouton <img className="inline-icon" src={chatImg} alt="Chat" />.</li>
+            </ol>
+            <div><img src={textChatImg} alt="Messagerie instantanée" width="400" /></div>
+          </li>
+        </ul>
+
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Votes électroniques */}
+      <div className="section" id="votes-electroniques">
+        <h2>Votes électroniques</h2>
+        <p>
+          Le vote électronique est intégré à un événement. Il peut être planifié ou effectué instantanément.
+          Pour organiser un vote électronique :
+        </p>
+        <ol>
+          <li>Lancez l'événement associé.</li>
+          <li>Cliquez sur le bouton <img className="inline-icon" src={voteImg} alt="Vote" />.</li>
+          <li>Entrez le libellé du vote dans la boîte de dialogue qui apparaît et cliquez sur <b>OK</b>.</li>
+          <li>Créez et ajoutez les options de vote.</li>
+          <li>Spécifiez l'heure de fin du vote.</li>
+          <li>Cliquez sur <b>Démarrer</b> pour lancer le vote. Les options apparaîtront dans les interfaces de tous les participants afin qu'ils puissent voter.</li>
+          <li>À la fin du vote, cliquez sur <b>Arrêter</b>. Les résultats du vote apparaîtront dans les interfaces de tous les participants.</li>
+        </ol>
+        <div>
+          <img src={createVoteImg} alt="Créer un vote" width="400" />
+          <img src={votingImg} alt="Vote" width="400" />
+          <img src={voteResultImg} alt="Résultats du vote" width="400" />
         </div>
-    );
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Divers */}
+      <div className="section" id="divers">
+        <h2>Divers : Matrice d'Eisenhower, notes autocollantes, groupes de diffusion</h2>
+        <ul>
+          <li>
+            <h3>Matrice d'Eisenhower</h3>
+            <p>La matrice d'Eisenhower est intégrée au tableau de bord. Elle permet à l'utilisateur d'avoir une vision claire de :</p>
+            <ol>
+              <li>Les tâches importantes et urgentes (à faire immédiatement)</li>
+              <li>Les tâches importantes mais non urgentes (à planifier)</li>
+              <li>Les tâches non importantes mais urgentes (à déléguer)</li>
+              <li>Les tâches non importantes et non urgentes (peuvent être ignorées)</li>
+            </ol>
+            <p>
+              Les activités ou événements créés par l'utilisateur ou reçus d'autres personnes sont automatiquement intégrés dans
+              la matrice d'Eisenhower — dans la zone <b>Tâches importantes et urgentes</b> si l'échéance est proche,
+              sinon dans la zone <b>Tâches importantes mais non urgentes</b>.
+              L'utilisateur peut attribuer ou réattribuer des priorités pour les activités et événements
+              depuis les onglets <b>Activités</b> et <b>Événements</b> en sélectionnant un élément
+              et en cliquant sur le bouton <img className="inline-icon" src={affectpriorityImg} alt="Affecter priorité" />.
+            </p>
+          </li>
+
+          <li>
+            <h3>Créer des notes autocollantes</h3>
+            <ol>
+              <li>Cliquez sur le bouton <b>Post-it</b> et choisissez <b>Modifier</b>.</li>
+              <li>Dans la boîte de dialogue qui apparaît, cliquez sur <b>Ajouter</b> pour créer une note autocollante.</li>
+              <li>Vous pouvez continuer à créer d'autres notes autocollantes ou fermer la boîte de dialogue.</li>
+            </ol>
+          </li>
+
+          <li>
+            <h3>Afficher les notes autocollantes</h3>
+            <ul>
+              <li>Cliquez sur le bouton <b>Post-it</b> et choisissez <b>Afficher/Masquer</b>.</li>
+              <li>Les notes autocollantes apparaîtront et défileront les unes après les autres.</li>
+              <li>Pour fermer la fenêtre des notes autocollantes, cliquez sur le bouton <img className="inline-icon" src={stopImg} alt="Fermer" />
+                dans la fenêtre ou cliquez sur <b>Post-it</b> → <b>Afficher/Masquer</b>.</li>
+            </ul>
+            <div>
+              <img src={createStickyNoteImg} alt="Créer une note autocollante" width="400" />
+              <img src={showStickyNoteImg} alt="Afficher les notes autocollantes" width="400" />
+            </div>
+          </li>
+
+          <li>
+            <h3>Créer des groupes de diffusion</h3>
+            <p>Pour créer un groupe de diffusion :</p>
+            <ol>
+              <li>Sélectionnez l'onglet <b>Général</b>.</li>
+              <li>Sélectionnez l'onglet <b>Ressources Humaines</b> en bas de l'interface.</li>
+              <li>Cliquez sur le bouton <img className="inline-icon" src={groupImg} alt="Groupe" />.</li>
+              <li>Dans la boîte de dialogue qui apparaît, entrez le nom du groupe et ajoutez des membres.</li>
+              <li>Sauvegardez le groupe dans un fichier pour une utilisation future.</li>
+            </ol>
+            <div><img src={diffusionGroupImg} alt="Groupe de diffusion" width="400" /></div>
+          </li>
+        </ul>
+        <a href="#top" className="back-to-top">Retour en haut</a>
+      </div>
+
+      {/* Auteur */}
+      <h2>Auteur</h2>
+      <p>
+        Prof. Lamine THIAW<br/>
+        Département de Génie Électrique<br/>
+        École Supérieure Polytechnique<br/>
+        Université Cheikh Anta Diop, Dakar<br/>
+        Email : lamine.thiaw@ucad.edu.sn<br/>
+      </p>
+      <div>Septembre 2025</div>
+    </div>
+  );
 };
 
 export default Guide;

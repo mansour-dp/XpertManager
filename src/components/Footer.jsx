@@ -68,9 +68,7 @@ export function Footer() {
                             />
                         </motion.div>
                         <p className="text-white/90 mb-6 max-w-md leading-relaxed text-sm sm:text-base mx-auto sm:mx-0">
-                            Votre partenaire digital pour transformer vos idées en solutions innovantes. 
-                            Nous accompagnons les entreprises dans leur transformation numérique avec 
-                            expertise et passion.
+                           xPertManager, une alternative fiable, performante et sécurisée pour la gestion des organisations.
                         </p>
                         
                         {/* Informations de contact */}
@@ -90,7 +88,7 @@ export function Footer() {
                                 whileHover={{ x: 5 }}
                             >
                                 <MdLocationOn className="text-secondary text-lg" />
-                                <span>Dakar, Sénégal</span>
+                                <span>Université Cheikh Anta Diop de Dakar, Ecole Supérieure Polytechnique</span>
                             </motion.div>
                         </div>
                     </motion.div>

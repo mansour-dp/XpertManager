@@ -51,7 +51,7 @@ export function Footer() {
             <div className="relative text-white py-12 md:py-16">
             <div className="container mx-auto px-4">
                 <motion.div 
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
                     variants={staggerContainer}
                 >
                     {/* Logo et Description */}
@@ -91,53 +91,6 @@ export function Footer() {
                                 <span>Université Cheikh Anta Diop de Dakar, Ecole Supérieure Polytechnique</span>
                             </motion.div>
                         </div>
-                    </motion.div>
-
-                    {/* Fonctionnalités */}
-                    <motion.div variants={fadeInUp} className="lg:col-span-1 text-center sm:text-left">
-                        <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">Nos Fonctionnalités</h3>
-                        <motion.div className="space-y-2" variants={staggerContainer}>
-                            <motion.div variants={listItemVariant}>
-                                <button 
-                                    onClick={() => scrollToSection('services')} 
-                                    className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
-                                >
-                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Présentation d'interfaces
-                                    </motion.span>
-                                </button>
-                            </motion.div>
-                            <motion.div variants={listItemVariant}>
-                                <button 
-                                    onClick={() => scrollToSection('services')} 
-                                    className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
-                                >
-                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Gestion de projets
-                                    </motion.span>
-                                </button>
-                            </motion.div>
-                            <motion.div variants={listItemVariant}>
-                                <button 
-                                    onClick={() => scrollToSection('services')} 
-                                    className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
-                                >
-                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Gestion des Événements
-                                    </motion.span>
-                                </button>
-                            </motion.div>
-                            <motion.div variants={listItemVariant}>
-                                <button 
-                                    onClick={() => scrollToSection('services')} 
-                                    className="text-white/80 hover:text-white transition-colors block text-sm sm:text-base w-full sm:w-auto sm:text-left"
-                                >
-                                    <motion.span whileHover="hover" variants={footerLinkVariant} className="inline-block">
-                                        Tableau de Bord (Gestion des Tâches)
-                                    </motion.span>
-                                </button>
-                            </motion.div>
-                        </motion.div>
                     </motion.div>
 
                     {/* Liens rapides et Réseaux sociaux */}

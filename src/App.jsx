@@ -433,58 +433,7 @@ const HomePage = () => {
 			<ContactForm />
 
 			{/* 5. CALL TO ACTION */}
-			<section className="container mx-auto px-4 py-12 md:py-16 text-center">
-				<motion.h2
-					className="text-2xl md:text-3xl font-bold text-primary mb-6"
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
-				>
-					Prêt à transformer votre entreprise ?
-				</motion.h2>
-
-				<motion.p
-					className="text-txt mb-8 max-w-2xl mx-auto"
-					initial={{ opacity: 0 }}
-					whileInView={{ opacity: 1 }}
-					viewport={{ once: true }}
-					transition={{ delay: 0.2, duration: 0.6 }}
-				>
-					Rejoignez les entreprises qui ont fait confiance à xPertManager 
-					pour leur transformation digitale et leur croissance.
-				</motion.p>
-
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ delay: 0.4, duration: 0.6 }}
-					whileHover={hoverScale}
-					whileTap={{ scale: 0.98 }}
-				>
-					<BtnCustom
-						to={whatsApp}
-						className="mx-auto px-8 py-3 text-lg flex items-center gap-3 justify-center"
-					>
-						<motion.span
-							animate={{
-								rotate: [0, 10, -10, 10, 0],
-							}}
-							transition={{
-								duration: 1.5,
-								repeat: Infinity,
-								repeatDelay: 3,
-							}}
-						>
-							<PiWhatsappLogoFill size={24} />
-						</motion.span>
-						Démarrer un projet maintenant
-					</BtnCustom>
-				</motion.div>
-
-
-			</section>
+			
 
 			{/* 9. PIED DE PAGE */}
 			<Footer />

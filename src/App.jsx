@@ -16,11 +16,19 @@ import ContactForm from "./components/ContactForm";
 import MaintenancePage from "./components/MaintenancePage";
 
 // 🔧 VARIABLE DE CONTRÔLE MAINTENANCE - Changez TRUE/FALSE ici
-const IS_MAINTENANCE_MODE = true; // Mettre 'true' pour activer la maintenance
+const IS_MAINTENANCE_MODE = false; // Mettre 'true' pour activer la maintenance
 
 // Images - Assurez-vous d'avoir ces images dans vos assets
-import BannerHome from "./assets/images/banner.jpg";
 import PatchApplication from "./assets/images/propos1.svg";
+
+// Images du carrousel pour la page d'accueil
+import XpertManager from "./assets/images/1-xPertManager-starting.png";
+import Activity_creation from "./assets/images/2_0-Activity-creation.png";
+import Activity_grannt from "./assets/images/2_1-Activity-Gannt.png";
+import Activity_MPM from "./assets/images/2_2-Activity-MPM.png";
+import Event_creation from "./assets/images/3_0-Event-creation.png";
+import Event_visioConf from "./assets/images/3_1-Event-visioConf.png";
+import Dashboard_Eisenhover from "./assets/images/4_Dashborad-Eisenhover-matrix.png";
 
 
 // Animations
@@ -37,6 +45,18 @@ const HomePage = () => {
 	const [loading, setLoading] = useState(true);
 	const [selectedRubric, setSelectedRubric] = useState(null);
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+	// Images du carrousel pour la bannière
+	const carouselImages = [
+		XpertManager,
+		Activity_creation,
+		Activity_grannt,
+		Activity_MPM,
+		Event_creation,
+		Event_visioConf,
+		Dashboard_Eisenhover
+	];
 
 	const whatsApp =
 		WA_BUSINESS_NUMBER +
@@ -60,6 +80,17 @@ const HomePage = () => {
 		return () => clearTimeout(timer);
 	}, []);
 
+	// Carrousel automatique des images
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentImageIndex((prevIndex) => 
+				(prevIndex + 1) % carouselImages.length
+			);
+		}, 5000); // Changement d'image toutes les 5 secondes
+		
+		return () => clearInterval(interval);
+	}, [carouselImages.length]);
+
 	if (loading) {
 		return <Loader />;
 	}
@@ -71,95 +102,131 @@ const HomePage = () => {
 
 			{/* 1. HERO SECTION */}
 			<motion.div
-				className="bg-cover bg-center bg-no-repeat md:h-[700px] sm:h-[600px] h-[500px] shadow-lg relative"
-				style={{ backgroundImage: `url(${BannerHome})` }}
-				variants={bannerAnimation}
-				initial="hidden"
-				animate="visible"
-				id="hero"
+			className="md:h-[600px] sm:h-[500px] h-[450px] shadow-lg relative overflow-hidden"
+			variants={bannerAnimation}
+			initial="hidden"
+			animate="visible"
+			id="hero"
+		>
+			{/* Carrousel d'images en arrière-plan avec animations fluides */}
+			{carouselImages.map((image, index) => (
+				<motion.div
+					key={index}
+					className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+					style={{ 
+						backgroundImage: `url(${image})`,
+						filter: currentImageIndex === index ? 'brightness(0.85)' : 'brightness(0.7)'
+					}}
+					initial={{ opacity: 0, scale: 1.1 }}
+					animate={{ 
+						opacity: currentImageIndex === index ? 1 : 0,
+						scale: currentImageIndex === index ? 1 : 1.1
+					}}
+					transition={{ 
+						opacity: { duration: 1.2, ease: "easeInOut" },
+						scale: { duration: 7, ease: "linear" }
+					}}
+				/>
+			))}
+			
+			{/* Overlay élégant avec dégradé subtil */}
+			<div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/50 z-10"></div>
+			<div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10"></div>
+			
+			{/* Contenu centré */}
+			<motion.div
+				className="relative z-20 flex flex-col items-center justify-center gap-3 md:gap-5 h-full text-white p-4 md:p-5"
+				variants={bannerContentAnimation}
 			>
-				{/* Overlay professionnel pour la lisibilité */}
-				<div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-black/40"></div>
-				<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+				{/* Conteneur avec fond semi-transparent pour le texte */}
+				<div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl max-w-5xl mx-auto">
+					<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl mx-auto drop-shadow-lg">
+						xPertManager - Organisez mieux, gérez efficacement
+					</motion.h1>
+				</div>
 				
 				<motion.div
-					className="relative flex flex-col items-center justify-center gap-3 md:gap-5 h-full text-white p-4 md:p-5"
-					variants={bannerContentAnimation}
+					whileHover={hoverScale}
+					whileTap={{ scale: 0.98 }}
+					initial={{ opacity: 0, scale: 0.9 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{ delay: 0.8, duration: 0.4 }}
+					className="mt-6"
 				>
-					{/* Conteneur avec fond semi-transparent pour le texte */}
-					<div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-2xl max-w-5xl mx-auto">
-						<motion.h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-center max-w-4xl mx-auto drop-shadow-lg">
-							xPertManager - Organisez mieux, gérez efficacement
-						</motion.h1>
-						
-					</div>
-					
-					<motion.div
-						whileHover={hoverScale}
+					<motion.a
+						href="/guide"
+						className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-accent to-accent/80 text-white font-bold rounded-xl py-4 px-8 mt-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/20"
+						whileHover={{ 
+							scale: 1.02,
+							boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+						}}
 						whileTap={{ scale: 0.98 }}
-						initial={{ opacity: 0, scale: 0.9 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ delay: 0.8, duration: 0.4 }}
-						className="mt-6"
 					>
-						<motion.a
-							href="/guide"
-							className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-accent to-accent/80 text-white font-bold rounded-xl py-4 px-8 mt-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/20"
-							whileHover={{ 
-								scale: 1.02,
-								boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+						{/* Effet de brillance au survol */}
+						<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+						
+						{/* Icône avec animation */}
+						<motion.span
+							animate={{
+								rotate: [0, 5, -5, 0],
 							}}
-							whileTap={{ scale: 0.98 }}
+							transition={{
+								duration: 3,
+								repeat: Infinity,
+								repeatDelay: 2,
+								ease: "easeInOut"
+							}}
+							className="text-2xl relative z-10"
 						>
-							{/* Effet de brillance au survol */}
-							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-							
-							{/* Icône avec animation */}
-							<motion.span
-								animate={{
-									rotate: [0, 5, -5, 0],
-								}}
-								transition={{
-									duration: 3,
-									repeat: Infinity,
-									repeatDelay: 2,
-									ease: "easeInOut"
-								}}
-								className="text-2xl relative z-10"
-							>
-								📚
-							</motion.span>
-							
-							{/* Texte avec effet de transition */}
-							<span className="relative z-10 group-hover:text-white/95 transition-colors duration-300">
-								Découvrir le guide utilisateur
-							</span>
-							
-							{/* Flèche animée */}
-							<motion.svg 
-								className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" 
-								fill="none" 
-								stroke="currentColor" 
-								viewBox="0 0 24 24"
-								animate={{
-									x: [0, 3, 0],
-								}}
-								transition={{
-									duration: 2,
-									repeat: Infinity,
-									repeatDelay: 1,
-									ease: "easeInOut"
-								}}
-							>
-								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-							</motion.svg>
-						</motion.a>
-					</motion.div>
+							📚
+						</motion.span>
+						
+						{/* Texte avec effet de transition */}
+						<span className="relative z-10 group-hover:text-white/95 transition-colors duration-300">
+							Découvrir le guide utilisateur
+						</span>
+						
+						{/* Flèche animée */}
+						<motion.svg 
+							className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" 
+							fill="none" 
+							stroke="currentColor" 
+							viewBox="0 0 24 24"
+							animate={{
+								x: [0, 3, 0],
+							}}
+							transition={{
+								duration: 2,
+								repeat: Infinity,
+								repeatDelay: 1,
+								ease: "easeInOut"
+							}}
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+						</motion.svg>
+					</motion.a>
 				</motion.div>
 			</motion.div>
+			
+			{/* Indicateurs de navigation élégants en bas */}
+			<div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-30 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+				{carouselImages.map((_, index) => (
+					<button
+						key={index}
+						onClick={() => setCurrentImageIndex(index)}
+						className={`transition-all duration-500 rounded-full ${
+							currentImageIndex === index 
+								? 'w-10 h-3 bg-white shadow-lg' 
+								: 'w-3 h-3 bg-white/40 hover:bg-white/70 hover:scale-125'
+						}`}
+						aria-label={`Afficher l'image ${index + 1}`}
+					/>
+				))}
+			</div>
+		</motion.div>
 
-			{/* 2. À PROPOS */}
-			<motion.section
+		{/* 2. À PROPOS */}
+		<motion.section
 				className="container mx-auto px-4 py-12 md:py-16"
 				initial="hidden"
 				whileInView="visible"

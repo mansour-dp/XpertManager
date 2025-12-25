@@ -231,6 +231,28 @@ const ContactForm = () => {
                                         <p className="text-green-600">Discussion immédiate</p>
                                     </div>
                                 </motion.a>
+                                
+                                {/* QR Code WhatsApp */}
+                                <div className="pt-4 border-t border-gray-200">
+                                    <div className="flex justify-center">
+                                        <div className="inline-block">
+                                            <div className="flex items-start mb-3">
+                                                <span className="text-3xl">📲</span>
+                                            </div>
+                                            <a
+                                                href={`${WA_BUSINESS_NUMBER}?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${WA_BUSINESS_NUMBER}`}
+                                                    alt="QR WhatsApp"
+                                                    className="rounded-lg"
+                                                />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -243,3 +265,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+

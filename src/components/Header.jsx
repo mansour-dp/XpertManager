@@ -79,63 +79,116 @@ export function Header() {
 
     return (
         <header
-            className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md px-4 sm:px-6 md:px-8 lg:px-14 py-2 md:py-3 transition-shadow duration-300 ${
-                hasScrolled ? "shadow-md" : "shadow-none"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                hasScrolled 
+                    ? "bg-white shadow-lg py-2 md:py-2" 
+                    : "bg-transparent py-3 md:py-4"
             }`}
         >
-            <div className="max-w-screen-xl mx-auto flex items-center justify-between relative">
-                {/* Logo */}
-                <div className="flex items-center flex-shrink-0">
-                    <button
-                        onClick={() => scrollToSection('hero')}
-                        className="flex items-center hover:scale-105 transition-transform duration-200"
-                    >
-                        <img
-                            className="w-auto h-12 sm:h-14 md:h-16"
-                            src={Xpert}
-                            alt="Logo xPertManager"
-                        />
-                    </button>
-                </div>
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 lg:px-14">
+                <div className="flex items-center justify-between relative">
+                    {/* Logo */}
+                    <div className="flex items-center flex-shrink-0">
+                        <button
+                            onClick={() => scrollToSection('hero')}
+                            className="flex items-center hover:scale-105 transition-transform duration-200"
+                        >
+                            <img
+                                className={`w-auto transition-all duration-300 ${
+                                    hasScrolled ? "h-10 sm:h-12 md:h-14" : "h-12 sm:h-14 md:h-16"
+                                }`}
+                                src={Xpert}
+                                alt="Logo xPertManager"
+                            />
+                        </button>
+                    </div>
 
                 {/* Navigation desktop - Centré */}
                 <div className="hidden md:flex flex-1 justify-center">
-                    <nav className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg border border-gray-200">
+                    <nav className={`backdrop-blur-md rounded-full px-6 py-2.5 border transition-all duration-300 ${
+                        hasScrolled 
+                            ? "bg-primary/5 border-primary/10 shadow-md" 
+                            : "bg-white/10 border-white/20 shadow-lg"
+                    }`}>
                         <ul className="flex items-center space-x-8">
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('hero')} 
-                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
+                                    className={`font-medium transition-all duration-300 px-3 py-2 cursor-pointer relative group ${
+                                        hasScrolled 
+                                            ? "text-txt hover:text-primary" 
+                                            : "text-white hover:text-white/80"
+                                    }`}
                                 >
                                     Accueil
+                                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                                        hasScrolled ? "bg-primary" : "bg-white"
+                                    }`}></span>
                                 </button>
                             </li>
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('about')} 
-                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
+                                    className={`font-medium transition-all duration-300 px-3 py-2 cursor-pointer relative group ${
+                                        hasScrolled 
+                                            ? "text-txt hover:text-primary" 
+                                            : "text-white hover:text-white/80"
+                                    }`}
                                 >
                                     À propos
+                                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                                        hasScrolled ? "bg-primary" : "bg-white"
+                                    }`}></span>
                                 </button>
                             </li>
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('services')} 
-                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
+                                    className={`font-medium transition-all duration-300 px-3 py-2 cursor-pointer relative group ${
+                                        hasScrolled 
+                                            ? "text-txt hover:text-primary" 
+                                            : "text-white hover:text-white/80"
+                                    }`}
                                 >
                                     Fonctionnalités
+                                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                                        hasScrolled ? "bg-primary" : "bg-white"
+                                    }`}></span>
                                 </button>
                             </li>
                             <li>
                                 <button 
                                     onClick={() => scrollToSection('contact')} 
-                                    className={`${navLinkStyles} hover:text-primary transition-colors duration-200`}
+                                    className={`font-medium transition-all duration-300 px-3 py-2 cursor-pointer relative group ${
+                                        hasScrolled 
+                                            ? "text-txt hover:text-primary" 
+                                            : "text-white hover:text-white/80"
+                                    }`}
                                 >
                                     Contact
+                                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                                        hasScrolled ? "bg-primary" : "bg-white"
+                                    }`}></span>
                                 </button>
                             </li>
                         </ul>
                     </nav>
+                </div>
+
+                {/* Bouton CTA Desktop */}
+                <div className="hidden md:flex items-center">
+                    <a
+                        href={whatsApp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`font-semibold px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 ${
+                            hasScrolled
+                                ? "bg-primary text-white hover:bg-primary/90 shadow-md hover:shadow-lg"
+                                : "bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl"
+                        }`}
+                    >
+                        Parler à un expert
+                    </a>
                 </div>
 
 
@@ -221,7 +274,11 @@ export function Header() {
                 {/* Icône menu hamburger */}
                 <div className="flex items-center gap-3 sm:gap-5 relative z-20">
                     <button
-                        className="md:hidden flex items-center cursor-pointer justify-center w-8 h-8 bg-primary/20 rounded-full"
+                        className={`md:hidden flex items-center cursor-pointer justify-center w-10 h-10 rounded-full transition-all duration-300 ${
+                            hasScrolled 
+                                ? "bg-primary/20" 
+                                : "bg-white/20 backdrop-blur-sm"
+                        }`}
                         onClick={() => setIsOpen(!isOpen)}
                         aria-expanded={isOpen}
                         aria-label="Menu principal"
@@ -232,7 +289,9 @@ export function Header() {
                             viewBox="0 0 24 24"
                             strokeWidth="2.5"
                             stroke="currentColor"
-                            className="w-5 h-5 text-primary"
+                            className={`w-6 h-6 transition-colors duration-300 ${
+                                hasScrolled ? "text-primary" : "text-white"
+                            }`}
                         >
                             <path
                                 strokeLinecap="round"
@@ -242,6 +301,7 @@ export function Header() {
                         </svg>
                     </button>
                 </div>
+            </div>
             </div>
         </header>
     );

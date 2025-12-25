@@ -175,22 +175,6 @@ export function Header() {
                     </nav>
                 </div>
 
-                {/* Bouton CTA Desktop */}
-                <div className="hidden md:flex items-center">
-                    <a
-                        href={whatsApp}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`font-semibold px-6 py-2.5 rounded-full transition-all duration-300 transform hover:scale-105 ${
-                            hasScrolled
-                                ? "bg-primary text-white hover:bg-primary/90 shadow-md hover:shadow-lg"
-                                : "bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl"
-                        }`}
-                    >
-                        Parler à un expert
-                    </a>
-                </div>
-
 
 
                 {/* Navigation mobile */}

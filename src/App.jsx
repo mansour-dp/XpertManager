@@ -19,7 +19,7 @@ import MaintenancePage from "./components/MaintenancePage";
 const IS_MAINTENANCE_MODE = false; // Mettre 'true' pour activer la maintenance
 
 // Images - Assurez-vous d'avoir ces images dans vos assets
-import PatchApplication from "./assets/images/propos1.svg";
+import PatchApplication from "./assets/images/xPertManager-image.png";
 
 // Images du carrousel pour la page d'accueil
 import XpertManager from "./assets/images/1-xPertManager-starting.png";

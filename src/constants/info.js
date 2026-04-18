@@ -6,4 +6,5 @@ export const INSTAGRAM_PAGE =
 export const TIKTOK_PAGE =
 	"https://www.tiktok.com/@xpertmanager";
 export const EMAIL_CONTACT = "lamine.jeery.thiaw@gmail.com";
+export const EMAIL_CONTACT_ALTERNATE = "lamine.thiaw@esp.sn";
 export const PHONE_NUMBER = "+221769203031";

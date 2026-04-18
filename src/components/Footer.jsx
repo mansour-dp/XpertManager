@@ -4,7 +4,7 @@ import Xpert from "../assets/images/Xpert.png";
 import InstagramLogo from "../assets/images/instagram.png";
 import LinkedinLogo from "../assets/images/linkedin.png";
 import WhatsappLogo from "../assets/images/whatsapp.png";
-import { WA_BUSINESS_NUMBER, EMAIL_CONTACT } from "../constants/info";
+import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, EMAIL_CONTACT_ALTERNATE } from "../constants/info";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { 
@@ -80,6 +80,10 @@ export function Footer() {
                                 <MdEmail className="text-secondary text-lg" />
                                 <a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-white transition-colors">
                                     {EMAIL_CONTACT}
+                                </a>
+                                <br />
+                                <a href={`mailto:${EMAIL_CONTACT_ALTERNATE}`} className="hover:text-white transition-colors">
+                                    {EMAIL_CONTACT_ALTERNATE}
                                 </a>
                             </motion.div>
 

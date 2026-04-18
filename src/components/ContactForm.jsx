@@ -6,7 +6,7 @@ import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import { PiWhatsappLogoFill } from "react-icons/pi";
 import { fadeInUp, cardVariant, hoverScale } from "../constants/animationVariants";
-import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, PHONE_NUMBER } from '../constants/info.js';
+import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, EMAIL_CONTACT_ALTERNATE, PHONE_NUMBER } from '../constants/info.js';
 
 const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -197,6 +197,10 @@ const ContactForm = () => {
                                         <h4 className="font-semibold text-gray-800">Email</h4>
                                         <a href={`mailto:${EMAIL_CONTACT}`} className="text-primary hover:underline">
                                             {EMAIL_CONTACT}
+                                        </a>
+                                        <br />
+                                        <a href={`mailto:${EMAIL_CONTACT_ALTERNATE}`} className="text-primary hover:underline">
+                                            {EMAIL_CONTACT_ALTERNATE}
                                         </a>
                                     </div>
                                 </motion.div>

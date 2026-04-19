@@ -1,7 +1,6 @@
 import { MdEmail, MdLocationOn } from "react-icons/md";
 import Logo from "../assets/images/logo.png";
 import Xpert from "../assets/images/Xpert.png";
-import InstagramLogo from "../assets/images/instagram.png";
 import LinkedinLogo from "../assets/images/linkedin.png";
 import WhatsappLogo from "../assets/images/whatsapp.png";
 import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, EMAIL_CONTACT_ALTERNATE } from "../constants/info";
@@ -19,8 +18,7 @@ import {
 
 export function Footer() {
     // PLACEHOLDERS POUR LES LIENS RÉSEAUX SOCIAUX - À REMPLACER PAR VOS VRAIS LIENS
-    const instagramLink = "https://instagram.com/votre_compte_instagram"; // Remplacez par votre lien Instagram
-    const linkedinLink = "https://linkedin.com/company/votre_entreprise"; // Remplacez par votre lien LinkedIn
+    const linkedinLink = "https://www.linkedin.com/in/lamine-thiaw-1a137b34/?skipRedirect=true"; // Lien LinkedIn personnel
     const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager";
 
     // Fonction pour faire défiler vers une section
@@ -161,18 +159,7 @@ export function Footer() {
                                 <img src={WhatsappLogo} alt="WhatsApp" className="w-full h-full object-contain filter brightness-90 hover:brightness-100" />
                             </motion.a>
                             <motion.a
-                                href={instagramLink} // PLACEHOLDER - Remplacez par votre lien Instagram
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center hover:scale-110 transition-transform duration-200"
-                                variants={socialIconVariant}
-                                whileHover="hover"
-                                title="Instagram"
-                            >
-                                <img src={InstagramLogo} alt="Instagram" className="w-full h-full object-contain filter brightness-90 hover:brightness-100" />
-                            </motion.a>
-                            <motion.a
-                                href={linkedinLink} // PLACEHOLDER - Remplacez par votre lien LinkedIn
+                                href={linkedinLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center hover:scale-110 transition-transform duration-200"

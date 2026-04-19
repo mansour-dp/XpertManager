@@ -19,8 +19,8 @@ import {
 
 export function Footer() {
     // PLACEHOLDERS POUR LES LIENS RÉSEAUX SOCIAUX - À REMPLACER PAR VOS VRAIS LIENS
-    const instagramLink = "https://instagram.com/votre_compte_instagram"; // Remplacez par votre lien Instagram
-    const linkedinLink = "https://linkedin.com/company/votre_entreprise"; // Remplacez par votre lien LinkedIn
+   // const instagramLink = "https://instagram.com/votre_compte_instagram"; // Remplacez par votre lien Instagram
+    const linkedinLink = "https://www.linkedin.com/in/lamine-thiaw-1a137b34/?skipRedirect=true"; // Lien LinkedIn réel
     const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager";
 
     // Fonction pour faire défiler vers une section

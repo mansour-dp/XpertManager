@@ -247,10 +247,12 @@ const HomePage = () => {
 								Qu'est-ce que xPertManager ?
 							</h3>
 							<p className="text-txt mb-4">
-								xPertManager est une plateforme intégrée de gestion,
-								qui regroupe dans un environnement unique des fonctionnalités clés,
-								indispensables pour toute organisation moderne : qu'elle soit publique,
-								privée ou associative.
+								xPertManager est une plateforme collaborative intégrée, 
+								conçue pour centraliser le pilotage opérationnel, 
+								la gouvernance et les communications sécurisées au sein d’un écosystème
+								unique et résilient. Face aux risques liés à l'hébergement de données sensibles sur des infrastructures étrangères,
+								xPertManager s'impose comme un rempart technologique garantissant l'intégrité du patrimoine informationnel et
+								la souveraineté numérique des organisations.
 							</p>
 						</motion.div>
 						{/* <motion.div

@@ -1,11 +1,11 @@
 // Images par défaut - vous devrez remplacer ces imports par vos vraies images
-import XpertManager from "../assets/images/1-xPertManager-starting.png";
-import Activity_creation from "../assets/images/2_0-Activity-creation.png";
-import Activity_grannt from "../assets/images/2_1-Activity-Gannt.png";
-import Activity_MPM from "../assets/images/2_2-Activity-MPM.png"; 
-import Event_creation from "../assets/images/3_0-Event-creation.png";
-import Event_visioConf from "../assets/images/3_1-Event-visioConf.png";
-import Dashboard_Eisenhover from "../assets/images/4_Dashborad-Eisenhover-matrix.png";
+import XpertManager from "../assets/images/xPertManager-splash.png";
+import Activity_creation from "../assets/images/activityCreation.png";
+import Activity_grannt from "../assets/images/ganntDiagram.png";
+import Activity_MPM from "../assets/images/MPMdiagram.png"; 
+import Event_creation from "../assets/images/planEvent.png";
+import Event_visioConf from "../assets/images/videoConf.png";
+import Dashboard_Eisenhover from "../assets/images/eisenhover.png";
 
 
 

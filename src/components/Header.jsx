@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import Logo from "../assets/images/logo.png";
-import Xpert from "../assets/images/Xpert.png";
+import Logo from "../assets/images/xPertManager-splash.png";
+import Xpert from "../assets/images/xPertManager-splash.png";
 import { WA_BUSINESS_NUMBER } from "../constants/info";
 
 export function Header() {

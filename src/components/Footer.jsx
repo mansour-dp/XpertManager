@@ -1,8 +1,7 @@
 import { MdEmail, MdLocationOn } from "react-icons/md";
-import Logo from "../assets/images/logo.png";
-import Xpert from "../assets/images/Xpert.png";
-import LinkedinLogo from "../assets/images/linkedin.png";
-import WhatsappLogo from "../assets/images/whatsapp.png";
+import Logo from "../assets/images/xPertManager-splash.png";
+import Xpert from "../assets/images/xPertManager-splash.png";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, EMAIL_CONTACT_ALTERNATE } from "../constants/info";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -156,7 +155,7 @@ export function Footer() {
                                 whileHover="hover"
                                 title="WhatsApp"
                             >
-                                <img src={WhatsappLogo} alt="WhatsApp" className="w-full h-full object-contain filter brightness-90 hover:brightness-100" />
+                                <FaWhatsapp className="w-full h-full" />
                             </motion.a>
                             <motion.a
                                 href={linkedinLink}
@@ -167,7 +166,7 @@ export function Footer() {
                                 whileHover="hover"
                                 title="LinkedIn"
                             >
-                                <img src={LinkedinLogo} alt="LinkedIn" className="w-full h-full object-contain filter brightness-90 hover:brightness-100" />
+                                <FaLinkedin className="w-full h-full" />
                             </motion.a>
                         </motion.div>
                     </motion.div>

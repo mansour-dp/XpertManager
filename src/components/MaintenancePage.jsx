@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Logo from "../assets/images/logo.png";
+import Logo from "../assets/images/xPertManager-splash.png";
 
 const MaintenancePage = () => {
 	return (

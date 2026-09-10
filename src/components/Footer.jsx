@@ -1,8 +1,8 @@
 import { MdEmail, MdLocationOn } from "react-icons/md";
-import Logo from "../assets/images/xPertManager-splash.png";
-import Xpert from "../assets/images/xPertManager-splash.png";
+import Logo from "../assets/images/xPr.png";
+import Xpert from "../assets/images/Xpert.png";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, EMAIL_CONTACT_ALTERNATE } from "../constants/info";
+import { WA_BUSINESS_NUMBER, EMAIL_CONTACT, EMAIL_CONTACT_ALTERNATE, EMAIL_CONTACT_NIITAN } from "../constants/info";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { 
@@ -71,17 +71,21 @@ export function Footer() {
                         {/* Informations de contact */}
                         <div className="space-y-3">
                             <motion.div 
-                                className="flex items-center gap-3 text-white/80 text-sm sm:text-base justify-center sm:justify-start"
+                                className="flex items-start gap-3 text-white/80 text-sm sm:text-base justify-center sm:justify-start"
                                 whileHover={{ x: 5 }}
                             >
-                                <MdEmail className="text-secondary text-lg" />
-                                <a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-white transition-colors">
-                                    {EMAIL_CONTACT}
-                                </a>
-                                <br />
-                                <a href={`mailto:${EMAIL_CONTACT_ALTERNATE}`} className="hover:text-white transition-colors">
-                                    {EMAIL_CONTACT_ALTERNATE}
-                                </a>
+                                <MdEmail className="text-secondary text-lg mt-1 flex-shrink-0" />
+                                <div className="flex flex-col gap-1 text-left">
+                                    <a href={`mailto:${EMAIL_CONTACT}`} className="hover:text-white transition-colors break-all">
+                                        {EMAIL_CONTACT}
+                                    </a>
+                                    <a href={`mailto:${EMAIL_CONTACT_ALTERNATE}`} className="hover:text-white transition-colors break-all">
+                                        {EMAIL_CONTACT_ALTERNATE}
+                                    </a>
+                                    <a href={`mailto:${EMAIL_CONTACT_NIITAN}`} className="hover:text-white transition-colors break-all">
+                                        {EMAIL_CONTACT_NIITAN}
+                                    </a>
+                                </div>
                             </motion.div>
 
                             <motion.div 

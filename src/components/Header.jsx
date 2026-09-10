@@ -8,7 +8,7 @@ export function Header() {
     const [hasScrolled, setHasScrolled] = useState(false);
     const menuRef = useRef(null);
 
-    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20commander%20des%20patchs%20Luna%20Soulage";
+    const whatsApp = WA_BUSINESS_NUMBER + "?text=Bonjour,%20je%20souhaite%20discuter%20d%27un%20projet%20avec%20xPertManager";
 
     // Fonction pour faire défiler vers une section
     const scrollToSection = (sectionId) => {

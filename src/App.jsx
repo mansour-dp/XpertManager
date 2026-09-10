@@ -323,36 +323,28 @@ const HomePage = () => {
 					>
 						Fonctionnalités de xPertManager
 					</motion.h2>
-					<motion.p
-	className="text-txt text-left mb-12 max-w-3xl"
-	initial={{ opacity: 0 }}
-	whileInView={{ opacity: 1 }}
-	viewport={{ once: true }}
-	transition={{ delay: 0.2, duration: 0.6 }}
->
-
-	xPertManager permet une gestion de projets fluide et collaborative, à travers une interface intuitive, permettant de :
-	<ul className="list-disc list-inside text-left max-w-xl mt-2 mb-2">
-		<li>co-construire</li>
-		<li>planifier</li>
-		<li>suivre l’avancement</li>
-		<li>gérer les priorités et respecter les délais</li>
-	</ul>
-	xPertManager intègre également :
-	<ul className="list-disc list-inside text-left max-w-xl mt-2 mb-2">
-		<li>des fonctions avancées de planification et d’ordonnancement des tâches</li>
-		<li>une gestion des activités basée sur la matrice d’Eisenhower</li>
-		<li>la gestion des ressources humaines et matérielles</li>
-		<li>une messagerie instantanée</li>
-		<li>l’envoi de messages texte</li>
-		<li>des appels audio inter-ordinateurs</li>
-		<li>des visioconférences</li>
-		<li>la gestion d’évènements : planification, invitation, notification et gestion des participants</li>
-		<li>un système de vote électronique pour une gouvernance participative, permettant des consultations et des prises de décision collectives</li>
-	</ul>
-	<br />
-	Découvrez les fonctions principales du logiciel xPertManager en cliquant sur les rubriques ci-dessous.
-</motion.p>
+					<motion.div
+						className="text-txt text-left mb-12 max-w-4xl mx-auto leading-relaxed"
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						viewport={{ once: true }}
+						transition={{ delay: 0.2, duration: 0.6 }}
+					>
+						<p>
+							xPertManager est une plateforme de gestion intégrée qui optimise le fonctionnement des organisations. Elle permet entre autres :
+						</p>
+						<ul className="list-disc pl-6 mt-2 mb-5 space-y-1 marker:text-primary">
+							<li>la gestion des ressources humaines, matérielles et financières</li>
+							<li>la gestion de projets : conception, planification/ordonnancement, suivi et organisation des activités</li>
+							<li>la gestion d'événements : création, planification et partage</li>
+							<li>la gestion des communications : appels audio, messages texte, messagerie instantanée, visioconférence</li>
+							<li>l'organisation de votes électroniques</li>
+							<li>des outils d'organisation (tableau de bord avec matrice d'Eisenhower, notes autocollantes, rappels, etc.)</li>
+						</ul>
+						<p className="mt-6">
+							Découvrez les fonctions principales du logiciel xPertManager en cliquant sur les rubriques ci-dessous.
+						</p>
+					</motion.div>
 					
 					<motion.div
 						className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
@@ -361,10 +353,14 @@ const HomePage = () => {
 						whileInView="visible"
 						viewport={{ once: true, amount: 0.1 }}
 					>
-						{rubrics.map((rubric) => (
+						{rubrics.map((rubric, rubricIndex) => (
 							<motion.div
 								key={rubric.id}
-								className="bg-gradient-to-br from-white to-gray-50/80 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 cursor-pointer group relative overflow-hidden"
+								className={`bg-gradient-to-br from-white to-gray-50/80 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 cursor-pointer group relative overflow-hidden ${
+									rubrics.length % 2 === 1 && rubricIndex === rubrics.length - 1
+										? "md:col-span-2 md:w-[calc(50%-1rem)] md:mx-auto"
+										: ""
+								}`}
 								variants={cardVariant}
 								whileHover={{ y: -8, scale: 1.02 }}
 								transition={{ duration: 0.3 }}

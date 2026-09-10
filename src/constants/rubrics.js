@@ -6,6 +6,9 @@ import Activity_MPM from "../assets/images/MPMdiagram.png";
 import Event_creation from "../assets/images/planEvent.png";
 import Event_visioConf from "../assets/images/videoConf.png";
 import Dashboard_Eisenhover from "../assets/images/eisenhover.png";
+import Finance_hub from "../assets/images/financeHub.png";
+import Finance_treasury from "../assets/images/treasuryDashboard.png";
+import Finance_product from "../assets/images/productCreation.png";
 
 
 
@@ -73,5 +76,24 @@ export const rubrics = [
 			},
 		]
 	},
-	
+	{
+		id: 5,
+		title: "Interface Finances / Comptabilité",
+		description: "Le hub Finance et comptabilité, ouvert depuis l'onglet Finance/Comptabilité, regroupe les modules en trois familles : Ventes et achats (Clients, Fournisseurs, Commandes, Factures), Catalogue et stock (Produits, Stocks) et Finance et paie (Trésorerie, Règlement de la paie). Chaque carte ouvre son module dans sa propre fenêtre.",
+		thumbnail: Finance_hub,
+		images: [
+			{
+				src: Finance_hub,
+				title: "Hub Finance et comptabilité"
+			},
+			{
+				src: Finance_treasury,
+				title: "Tableau de bord de la trésorerie"
+			},
+			{
+				src: Finance_product,
+				title: "Création d'un produit"
+			},
+		]
+	},
 ];

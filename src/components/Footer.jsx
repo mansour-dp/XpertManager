@@ -1,4 +1,4 @@
-import { MdEmail, MdLocationOn } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import Logo from "../assets/images/xPr.png";
 import Xpert from "../assets/images/Xpert.png";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
@@ -86,14 +86,6 @@ export function Footer() {
                                         {EMAIL_CONTACT_NIITAN}
                                     </a>
                                 </div>
-                            </motion.div>
-
-                            <motion.div 
-                                className="flex items-center gap-3 text-white/80 text-sm sm:text-base justify-center sm:justify-start"
-                                whileHover={{ x: 5 }}
-                            >
-                                <MdLocationOn className="text-secondary text-lg" />
-                                <span>Université Cheikh Anta Diop de Dakar, Ecole Supérieure Polytechnique</span>
                             </motion.div>
                         </div>
                     </motion.div>

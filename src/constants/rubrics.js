@@ -79,7 +79,7 @@ export const rubrics = [
 	{
 		id: 5,
 		title: "Interface Finances / Comptabilité",
-		description: "Le hub Finance et comptabilité, ouvert depuis l'onglet Finance/Comptabilité, regroupe les modules en trois familles : Ventes et achats (Clients, Fournisseurs, Commandes, Factures), Catalogue et stock (Produits, Stocks) et Finance et paie (Trésorerie, Règlement de la paie). Chaque carte ouvre son module dans sa propre fenêtre.",
+		description: "Interface permettant de gérer les ventes, les achats, les clients, les fournisseurs, les commandes, les factures, la finance, les payes, etc.",
 		thumbnail: Finance_hub,
 		images: [
 			{

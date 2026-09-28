@@ -474,6 +474,38 @@
         .author-grid .author-card { margin-top: 0; align-items: flex-start; }
         .author-avatar.coauthor { background: var(--primary-light); }
 
+        .deploy-card {
+            margin-top: 14px;
+            background: var(--accent-light);
+            border: 1px solid #f1d9a8;
+            border-left: 4px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .deploy-card .author-avatar { background: var(--accent); }
+        .deploy-card .name { font-weight: 600; color: var(--text); }
+        .deploy-card .name strong { color: var(--primary); letter-spacing: 0.03em; }
+        .deploy-card .role { font-size: 0.83rem; color: var(--text-muted); }
+        .deploy-card a { color: var(--primary-light); font-size: 0.83rem; }
+
+        /* ── DOCUMENT FOOTER ── */
+        #doc-footer {
+            border-top: 1px solid var(--border);
+            margin: 0 50px;
+            padding: 20px 0 28px;
+            max-width: 800px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 6px 20px;
+        }
+        #doc-footer strong { color: var(--primary); font-weight: 600; }
+
         /* ── BACK TO TOP ── */
         .back-to-top {
             display: inline-flex;
@@ -508,6 +540,7 @@
             .toc-grid { grid-template-columns: 1fr; }
             .section { padding: 24px 20px; }
             .author-grid { grid-template-columns: 1fr; }
+            #doc-footer { margin: 0 20px; padding: 18px 0 24px; }
         }
 
         /* ── PRINT ── */
@@ -571,7 +604,7 @@
         <h1>xPertManager</h1>
         <div class="tagline">Integrated management platform for organizations</div>
         <div class="badges">
-            <span class="badge">Version 1.0</span>
+            <span class="badge">Version 2.0</span>
             <span class="badge">September 2026</span>
             <a class="badge language-link" href="xPertManagerHelpfr.html" hreflang="fr" aria-label="Click to view the French version">
                 FR / EN
@@ -1147,10 +1180,23 @@
                     </div>
                 </div>
             </div>
+            <div class="deploy-card">
+                <div class="author-avatar">N</div>
+                <div>
+                    <div class="name">Deployed by <strong>NIITAN SARL</strong> · 2026</div>
+                    <div class="role">Dakar, Senegal</div>
+                    <a href="mailto:contact@niitan.com">contact@niitan.com</a>
+                </div>
+            </div>
             <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">September 2026</p>
         </div>
 
     </div><!-- /content -->
+
+    <footer id="doc-footer">
+        <span>xPertManager · User Guide · Version 2.0</span>
+        <span>Deployed by <strong>NIITAN SARL</strong> · 2026</span>
+    </footer>
 </div><!-- /main -->
 
 <script>

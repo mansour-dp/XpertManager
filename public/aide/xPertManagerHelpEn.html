@@ -456,6 +456,23 @@
         .author-info .name { font-weight: 600; color: var(--primary); }
         .author-info .role { font-size: 0.83rem; color: var(--text-muted); }
         .author-info a { color: var(--primary-light); font-size: 0.83rem; }
+        .author-info .label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .author-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .author-grid .author-card { margin-top: 0; align-items: flex-start; }
+        .author-avatar.coauthor { background: var(--primary-light); }
 
         /* ── BACK TO TOP ── */
         .back-to-top {
@@ -490,6 +507,7 @@
             #topbar { padding: 14px 20px; }
             .toc-grid { grid-template-columns: 1fr; }
             .section { padding: 24px 20px; }
+            .author-grid { grid-template-columns: 1fr; }
         }
 
         /* ── PRINT ── */
@@ -1107,15 +1125,26 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ AUTHOR ═══ -->
+        <!-- ═══ AUTHORS ═══ -->
         <div class="section" id="auteur">
-            <h2><span class="section-icon">👤</span>Author</h2>
-            <div class="author-card">
-                <div class="author-avatar">LT</div>
-                <div class="author-info">
-                    <div class="name">Prof. Lamine THIAW</div>
-                    <div class="role">Department of Electrical Engineering<br>École Supérieure Polytechnique<br>Cheikh Anta Diop University, Dakar</div>
-                    <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a>
+            <h2><span class="section-icon">👤</span>Authors</h2>
+            <div class="author-grid">
+                <div class="author-card">
+                    <div class="author-avatar">LT</div>
+                    <div class="author-info">
+                        <span class="label">Author</span>
+                        <div class="name">Prof. Lamine THIAW</div>
+                        <div class="role">Department of Electrical Engineering<br>École Supérieure Polytechnique<br>Cheikh Anta Diop University, Dakar</div>
+                        <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a>
+                    </div>
+                </div>
+                <div class="author-card">
+                    <div class="author-avatar coauthor">MT</div>
+                    <div class="author-info">
+                        <span class="label">Co-author</span>
+                        <div class="name">Malick Thiaw</div>
+                        <a href="mailto:malickthiaw012@gmail.com">malickthiaw012@gmail.com</a>
+                    </div>
                 </div>
             </div>
             <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">September 2026</p>

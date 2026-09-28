@@ -392,44 +392,6 @@
             border: 1px solid rgba(255,255,255,0.25);
         }
 
-        .language-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            text-decoration: none;
-            animation: language-pulse 2s ease-in-out infinite;
-            transition: transform 180ms ease, background 180ms ease;
-        }
-
-        .language-link small {
-            font-family: inherit;
-            font-size: 0.58rem;
-            line-height: 1.2;
-        }
-
-        .language-link:hover,
-        .language-link:focus-visible {
-            background: rgba(255,255,255,0.28);
-            transform: translateY(-2px);
-        }
-
-        .language-link:focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 3px;
-        }
-
-        @keyframes language-pulse {
-            50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.12); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .language-link {
-                animation: none;
-                transition: none;
-            }
-        }
-
         /* ── AUTHOR CARD ── */
         .author-card {
             background: var(--surface2);
@@ -491,31 +453,6 @@
             .toc-grid { grid-template-columns: 1fr; }
             .section { padding: 24px 20px; }
         }
-
-        /* ── IMPRESSION ── */
-        @media print {
-            /* N'imprime pas le menu de navigation latéral : seul le contenu de droite sort */
-            #sidebar { display: none !important; }
-            #main { margin-left: 0 !important; }
-
-            /* Conserve les couleurs de fond/texte de la page à l'impression.
-               Sans cette règle, la plupart des moteurs (dont WebKit, utilisé par
-               le WebView JavaFX) impriment en "mode économie" et ignorent les
-               couleurs de fond par défaut. */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            /* Le sticky top bar n'a pas de sens sur papier */
-            #topbar { position: static; }
-
-            /* Évite qu'une section soit coupée juste après son titre */
-            .section, #toc-section, #hero {
-                break-inside: avoid-page;
-            }
-        }
     </style>
 </head>
 <body>
@@ -554,18 +491,15 @@
         <div class="tagline">Plateforme de gestion intégrée pour les organisations</div>
         <div class="badges">
             <span class="badge">Version 1.0</span>
-            <span class="badge">Septembre 2026</span>
-            <a class="badge language-link" href="xPertManagerHelpEn.html" lang="en" aria-label="Cliquer pour afficher la version anglaise">
-                FR / EN
-                <small>Cliquer pour la version anglaise</small>
-            </a>
+            <span class="badge">Avril 2026</span>
+            <span class="badge">FR / EN</span>
         </div>
     </div>
 
     <!-- Top bar -->
     <div id="topbar">
         <h1>Guide d'utilisation</h1>
-        <span class="meta">Documentation · Septembre 2026</span>
+        <span class="meta">Documentation · Avril 2026</span>
     </div>
 
     <!-- Content -->
@@ -644,7 +578,7 @@
             <ul class="feature-list">
                 <li><strong>Ventes et achats</strong> : Clients, Fournisseurs, Commandes, Factures</li>
                 <li><strong>Catalogue et stock</strong> : Produits, Stocks</li>
-                <li><strong>Finance et paie</strong> : Trésorerie, Rapprochement bancaire, Règlement de la paie</li>
+                <li><strong>Finance et paie</strong> : Trésorerie, Règlement de la paie</li>
             </ul>
             <img src="images/financeCompta.png" alt="Onglet Finance/Comptabilité" width="650">
 
@@ -816,7 +750,7 @@
                 <li><strong>Marquer comme terminé :</strong> Cliquez sur <img src="images/closeActivity.png" class="img-inline" alt="Terminer"> une fois terminé.</li>
                 <li><strong>Définir des dépendances :</strong> Utilisez l'option «&nbsp;Activités précédentes&nbsp;».</li>
                 <li><strong>Attribuer des ressources :</strong> Utilisez l'option «&nbsp;Attribuer des ressources&nbsp;» pour allouer des ressources matérielles ou humaines.</li>
-                <li><strong>Visualisation :</strong> Affichez sous forme de diagramme de Gantt ou MPM, animez la progression en temps réel avec la case <strong>Animer</strong> (les activités se colorent automatiquement selon leur avancement : normal, critique, terminée, pas encore démarrée) et exportez les diagrammes.</li>
+                <li><strong>Visualisation :</strong> Affichez sous forme de diagramme de Gantt ou MPM, animez la progression et exportez les diagrammes.</li>
             </ul>
 
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
@@ -892,7 +826,6 @@
                 <li><div class="step-content">Cliquez sur <strong>Ajouter</strong>.</div></li>
                 <li><div class="step-content">Vous pouvez continuer à ajouter d'autres ressources ou fermer la boîte de dialogue.</div></li>
             </ol>
-            <div class="note"><strong>ℹ️ Note :</strong> Le champ <strong>Date d'acquisition</strong> (optionnel) permet de garder la trace de la date d'entrée en service de la ressource.</div>
 
             <h3>Modifier / Supprimer une ressource matérielle</h3>
             <ul class="feature-list">
@@ -915,7 +848,7 @@
         <div class="section" id="finances-comptabilite">
             <h2><span class="section-icon">💰</span>Finances &amp; Comptabilité</h2>
 
-            <p>Le hub <strong>Finance et comptabilité</strong>, ouvert depuis l'onglet <strong>Finance/Comptabilité</strong>, regroupe les modules en trois familles : <strong>Ventes et achats</strong> (Clients, Fournisseurs, Commandes, Factures), <strong>Catalogue et stock</strong> (Produits, Stocks) et <strong>Finance et paie</strong> (Trésorerie, Rapprochement bancaire, Règlement de la paie). Chaque carte ouvre son module dans sa propre fenêtre.</p>
+            <p>Le hub <strong>Finance et comptabilité</strong>, ouvert depuis l'onglet <strong>Finance/Comptabilité</strong>, regroupe les modules en trois familles : <strong>Ventes et achats</strong> (Clients, Fournisseurs, Commandes, Factures), <strong>Catalogue et stock</strong> (Produits, Stocks) et <strong>Finance et paie</strong> (Trésorerie, Règlement de la paie). Chaque carte ouvre son module dans sa propre fenêtre.</p>
             <img src="images/financeHub.png" alt="Finance et comptabilité" width="700">
 
             <h3>Gérer les clients et les fournisseurs</h3>
@@ -980,19 +913,6 @@
                 <li><div class="step-content">Le graphique <strong>Évolution mensuelle de la trésorerie</strong> retrace recettes et dépenses mois par mois ; les camemberts <strong>Répartition des dépenses</strong> et <strong>Répartition des recettes</strong> détaillent chacun par catégorie, avec un tableau <strong>Détail par catégorie</strong> (Catégorie, Type, Montant) en dessous.</div></li>
             </ol>
             <img src="images/treasuryDashboard.png" alt="Trésorerie" width="700">
-
-            <h3>Rapprocher le relevé bancaire (TOP Manager / responsable finances / assistant)</h3>
-            <p>La carte <strong>Rapprochement bancaire</strong> compare, ligne à ligne, le relevé envoyé par la banque aux écritures de trésorerie déjà saisies dans l'application, pour vérifier qu'ils concordent.</p>
-            <ol class="steps">
-                <li><div class="step-content">Ouvrez la carte <strong>Rapprochement bancaire</strong>, choisissez la période à traiter (date de début, date de fin) puis cliquez sur <strong>Rafraîchir</strong>.</div></li>
-                <li><div class="step-content">Le tableau de gauche affiche les <strong>lignes du relevé bancaire</strong> (date, libellé, montant, statut) ; le tableau de droite affiche les <strong>écritures de trésorerie</strong> de la même période.</div></li>
-                <li><div class="step-content">Si une ligne du relevé n'existe pas encore dans l'application, cliquez sur <strong>Ajouter</strong> et saisissez sa date, son libellé et son montant.</div></li>
-                <li><div class="step-content">Sélectionnez une ligne du relevé et l'écriture de trésorerie qui lui correspond, puis cliquez sur <strong>Rapprocher</strong> : la ligne passe au statut <strong>Rapprochée</strong>.</div></li>
-                <li><div class="step-content">En cas d'erreur d'association, sélectionnez la ligne rapprochée et cliquez sur <strong>Annuler le rapprochement</strong>.</div></li>
-            </ol>
-            <div class="note"><strong>ℹ️ Note :</strong> Le nombre de lignes rapprochées, le nombre de lignes non rapprochées et l'écart entre le total du relevé et le total des écritures sont affichés en bas de l'écran et se mettent à jour à chaque rapprochement.</div>
-            <p>L'accès à ce module est réservé au TOP Manager, au responsable des finances et à son assistant.</p>
-            <img src="images/bankReconciliation.png" alt="Rapprochement bancaire" width="700">
 
             <h3>Régler une fiche de paie (responsable finances/comptabilité)</h3>
             <p>La carte <strong>Règlement de la paie</strong> (« Bulletins validés en attente de paiement ») liste les bulletins déjà validés par le responsable RH et permet d'enregistrer leur règlement (mode de paiement, statut, observations) — voir aussi la section <a href="#fiches-de-paie">Fiches de paie</a>.</p>
@@ -1118,7 +1038,7 @@
                     <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a>
                 </div>
             </div>
-            <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">Septembre 2026</p>
+            <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">Avril 2026</p>
         </div>
 
     </div><!-- /content -->

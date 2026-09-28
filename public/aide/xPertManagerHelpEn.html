@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xPertManager Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f4c81;
+            --primary-light: #1a6bb5;
+            --accent: #e8a020;
+            --accent-light: #fdf3e0;
+            --bg: #f5f6f8;
+            --surface: #ffffff;
+            --surface2: #f0f2f5;
+            --text: #1a1f2e;
+            --text-muted: #5a6275;
+            --border: #dde1ea;
+            --sidebar-w: 270px;
+            --success: #1a7a4a;
+            --success-bg: #edfaf3;
+            --radius: 8px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ── SIDEBAR ── */
+        #sidebar {
+            position: fixed;
+            top: 0; left: 0;
+            width: var(--sidebar-w);
+            height: 100vh;
+            background: var(--primary);
+            color: #fff;
+            overflow-y: auto;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sidebar-header {
+            padding: 28px 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        #sidebar-header .app-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #fff;
+        }
+
+        #sidebar-header .app-version {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.55);
+            margin-top: 3px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        #sidebar nav { padding: 16px 0 30px; }
+
+        #sidebar nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 20px;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            border-left: 3px solid transparent;
+            transition: all 0.18s ease;
+            line-height: 1.4;
+        }
+
+        #sidebar nav a:hover,
+        #sidebar nav a.active {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--accent);
+        }
+
+        #sidebar nav a .nav-icon {
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* ── MAIN ── */
+        #main {
+            margin-left: var(--sidebar-w);
+            min-height: 100vh;
+        }
+
+        /* ── TOP BAR ── */
+        #topbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        #topbar h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        #topbar .meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* ── CONTENT ── */
+        #content {
+            padding: 40px 50px 80px;
+            max-width: 900px;
+        }
+
+        /* ── SECTIONS ── */
+        .section {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 36px 40px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border);
+            scroll-margin-top: 80px;
+        }
+
+        .section h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            padding-bottom: 14px;
+            margin-bottom: 22px;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .section-icon {
+            background: var(--accent-light);
+            color: var(--accent);
+            width: 32px; height: 32px;
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin: 24px 0 10px;
+            padding-left: 12px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .section p { margin-bottom: 12px; color: var(--text); }
+
+        /* ── LISTS ── */
+        .section ul, .section ol {
+            margin: 8px 0 14px 0;
+            padding-left: 22px;
+        }
+
+        .section li { margin-bottom: 6px; }
+
+        /* Steps: styled numbered ol */
+        .steps {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 10px 14px;
+            background: var(--surface2);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Mono', monospace;
+            min-width: 24px; height: 24px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* Text content inside a step: proper wrapping */
+        .steps li > span,
+        .steps li > div {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Inner wrapper for step content */
+        .step-content {
+            flex: 1;
+            min-width: 0;
+            line-height: 1.65;
+        }
+
+        /* ── FEATURE LIST (ul with styled bullets) ── */
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 12px;
+            padding-left: 28px;
+            position: relative;
+            border-radius: 5px;
+            transition: background 0.15s;
+        }
+
+        .feature-list li::before {
+            content: '▸';
+            color: var(--accent);
+            position: absolute;
+            left: 10px;
+            font-size: 0.85rem;
+        }
+
+        .feature-list li:hover { background: var(--surface2); }
+
+        /* ── IMAGES ── */
+        .section img {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 6px;
+            margin: 12px 0 6px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+
+        .img-inline {
+            display: inline !important;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2px 4px !important;
+            margin: 0 3px !important;
+            vertical-align: middle;
+            box-shadow: none !important;
+            background: var(--surface2);
+        }
+
+        .img-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 14px 0;
+        }
+
+        .img-group figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .img-group figcaption {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ── NOTE / TIP ── */
+        .note {
+            background: var(--success-bg);
+            border-left: 4px solid var(--success);
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            margin: 14px 0;
+            font-size: 0.88rem;
+            color: #1a3a28;
+        }
+
+        .note strong { color: var(--success); }
+
+        /* ── TOC ── */
+        #toc-section {
+            background: var(--primary);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 30px 36px;
+            margin-bottom: 28px;
+        }
+
+        #toc-section h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+        }
+
+        .toc-grid a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: color 0.15s;
+        }
+
+        .toc-grid a:hover { color: var(--accent); }
+
+        .toc-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            min-width: 20px;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a6bb5 100%);
+            color: #fff;
+            padding: 40px 50px 36px;
+            margin-bottom: 0;
+        }
+
+        #hero h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        #hero .tagline {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        #hero .badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-family: 'IBM Plex Mono', monospace;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .language-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            text-decoration: none;
+            animation: language-pulse 2s ease-in-out infinite;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .language-link small {
+            font-family: inherit;
+            font-size: 0.58rem;
+            line-height: 1.2;
+        }
+
+        .language-link:hover,
+        .language-link:focus-visible {
+            background: rgba(255,255,255,0.28);
+            transform: translateY(-2px);
+        }
+
+        .language-link:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        @keyframes language-pulse {
+            50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.12); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .language-link {
+                animation: none;
+                transition: none;
+            }
+        }
+
+        /* ── AUTHOR CARD ── */
+        .author-card {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .author-avatar {
+            width: 48px; height: 48px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .author-info .name { font-weight: 600; color: var(--primary); }
+        .author-info .role { font-size: 0.83rem; color: var(--text-muted); }
+        .author-info a { color: var(--primary-light); font-size: 0.83rem; }
+
+        /* ── BACK TO TOP ── */
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 24px;
+            padding: 7px 16px;
+            background: var(--surface2);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.18s;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            #sidebar { display: none; }
+            #main { margin-left: 0; }
+            #content { padding: 24px 20px 60px; }
+            #hero { padding: 28px 20px; }
+            #topbar { padding: 14px 20px; }
+            .toc-grid { grid-template-columns: 1fr; }
+            .section { padding: 24px 20px; }
+        }
+
+        /* ── PRINT ── */
+        @media print {
+            /* Do not print the side navigation menu: only the right-hand content is printed */
+            #sidebar { display: none !important; }
+            #main { margin-left: 0 !important; }
+
+            /* Keep the page's background/text colors when printing.
+               Without this rule, most engines (including WebKit, used by
+               the JavaFX WebView) print in "economy mode" and ignore
+               background colors by default. */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* A sticky top bar makes no sense on paper */
+            #topbar { position: static; }
+
+            /* Avoid breaking a section right after its heading */
+            .section, #toc-section, #hero {
+                break-inside: avoid-page;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="top"></div>
+
+<!-- ════════════════ SIDEBAR ════════════════ -->
+<aside id="sidebar">
+    <div id="sidebar-header">
+        <div class="app-name">xPertManager</div>
+        <div class="app-version">v1.0 · Documentation</div>
+    </div>
+    <nav>
+        <a href="#description-produit"><span class="nav-icon">📋</span>Product description</a>
+        <a href="#creer-structures"><span class="nav-icon">🏗️</span>Structures</a>
+        <a href="#gerer-personnel"><span class="nav-icon">👥</span>Staff</a>
+        <a href="#conges"><span class="nav-icon">🌴</span>Leave</a>
+        <a href="#fiches-de-paie"><span class="nav-icon">🧾</span>Payslips</a>
+        <a href="#gerer-projets"><span class="nav-icon">📁</span>Projects &amp; Activities</a>
+        <a href="#creer-evenements"><span class="nav-icon">📅</span>Events</a>
+        <a href="#conferences-video"><span class="nav-icon">🎥</span>Video conferences</a>
+        <a href="#ressources-materielles"><span class="nav-icon">🔧</span>Material resources</a>
+        <a href="#finances-comptabilite"><span class="nav-icon">💰</span>Finance &amp; Accounting</a>
+        <a href="#communication"><span class="nav-icon">💬</span>Communication</a>
+        <a href="#votes-electroniques"><span class="nav-icon">🗳️</span>Electronic voting</a>
+        <a href="#divers"><span class="nav-icon">✨</span>Miscellaneous</a>
+        <a href="#auteur"><span class="nav-icon">👤</span>Author</a>
+    </nav>
+</aside>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<div id="main">
+
+    <!-- Hero -->
+    <div id="hero">
+        <h1>xPertManager</h1>
+        <div class="tagline">Integrated management platform for organizations</div>
+        <div class="badges">
+            <span class="badge">Version 1.0</span>
+            <span class="badge">September 2026</span>
+            <a class="badge language-link" href="xPertManagerHelpfr.html" hreflang="fr" aria-label="Click to view the French version">
+                FR / EN
+                <small>Click for the French version</small>
+            </a>
+        </div>
+    </div>
+
+    <!-- Top bar -->
+    <div id="topbar">
+        <h1>User Guide</h1>
+        <span class="meta">Documentation · September 2026</span>
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!-- TABLE OF CONTENTS -->
+        <div id="toc-section">
+            <h2>Table of contents</h2>
+            <div class="toc-grid">
+                <a href="#description-produit"><span class="toc-num">01</span>Product description</a>
+                <a href="#creer-structures"><span class="toc-num">02</span>Creating and organizing structures</a>
+                <a href="#gerer-personnel"><span class="toc-num">03</span>Managing staff</a>
+                <a href="#conges"><span class="toc-num">04</span>Managing leave</a>
+                <a href="#fiches-de-paie"><span class="toc-num">05</span>Managing payslips</a>
+                <a href="#gerer-projets"><span class="toc-num">06</span>Creating and managing projects</a>
+                <a href="#creer-evenements"><span class="toc-num">07</span>Creating and organizing events</a>
+                <a href="#conferences-video"><span class="toc-num">08</span>Organizing video conferences</a>
+                <a href="#ressources-materielles"><span class="toc-num">09</span>Managing material resources</a>
+                <a href="#finances-comptabilite"><span class="toc-num">10</span>Finance and accounting</a>
+                <a href="#communication"><span class="toc-num">11</span>Audio calls, messages and chat</a>
+                <a href="#votes-electroniques"><span class="toc-num">12</span>Electronic voting</a>
+                <a href="#divers"><span class="toc-num">13</span>Miscellaneous</a>
+            </div>
+        </div>
+
+        <!-- ═══ 1. PRODUCT DESCRIPTION ═══ -->
+        <div class="section" id="description-produit">
+            <h2><span class="section-icon">📋</span>Product description</h2>
+
+            <p><strong>xPertManager</strong> is an integrated management platform that streamlines how organizations operate. Among other things, it provides:</p>
+
+            <ul class="feature-list">
+                <li>management of human, material and financial resources</li>
+                <li>project management: design, planning/scheduling, monitoring and organization of activities</li>
+                <li>event management: creation, planning and sharing</li>
+                <li>communication management: audio calls, text messages, instant messaging, video conferencing</li>
+                <li>organization of electronic votes</li>
+                <li>organization tools (dashboard with Eisenhower matrix, sticky notes, reminders, etc.)</li>
+            </ul>
+            <img src="images/login.png" alt="Login screen" width="550">
+            <p>When the application starts, the user can choose the working language: French or English (support for other languages is planned for future versions).</p>
+            <p>The client interface has five tabs:</p>
+
+            <h3>General tab</h3>
+            <p>General configuration interface for the organization:</p>
+            <ul class="feature-list">
+                <li>creation of structures and sub-structures</li>
+                <li>creation of agents and their assignment to structures</li>
+                <li>creation and assignment of material resources</li>
+                <li>communication between agents</li>
+            </ul>
+            <img src="images/general.png" alt="General tab" width="650">
+
+            <h3>Dashboard tab</h3>
+            <p>Helps users organize themselves better and see the priority of their pending tasks.</p>
+            <img src="images/dashboard.png" alt="Dashboard" width="650">
+
+            <h3>Activities tab</h3>
+            <ul class="feature-list">
+                <li>creating projects or activities</li>
+                <li>sharing and processing projects or activities</li>
+                <li>monitoring projects or activities</li>
+            </ul>
+            <img src="images/activities.png" alt="Activities tab" width="650">
+
+            <h3>Event tab</h3>
+            <ul class="feature-list">
+                <li>creating events</li>
+                <li>monitoring events</li>
+                <li>launching events such as video conferences held on the platform</li>
+            </ul>
+            <img src="images/events.png" alt="Event tab" width="650">
+
+            <h3>Finance/Accounting tab</h3>
+            <p>Opens the <strong>Finance and accounting</strong> hub, organized into three groups of modules, each opening in its own window:</p>
+            <ul class="feature-list">
+                <li><strong>Sales and purchasing</strong>: Customers, Suppliers, Orders, Invoices</li>
+                <li><strong>Catalog and stock</strong>: Products, Stock</li>
+                <li><strong>Finance and payroll</strong>: Treasury, Bank reconciliation, Payroll settlement</li>
+            </ul>
+            <img src="images/financeCompta.png" alt="Finance/Accounting tab" width="650">
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 2. STRUCTURES ═══ -->
+        <div class="section" id="creer-structures">
+            <h2><span class="section-icon">🏗️</span>Creating and organizing structures</h2>
+
+            <h3>Create a structure</h3>
+            <ol class="steps">
+                <li><div class="step-content">After launching the application, choose the working language and click the <strong>Cancel</strong> button.</div></li>
+                <li><div class="step-content">In the <strong>General</strong> tab, click the <img src="images/new.png" class="img-inline" alt="New"> button.</div></li>
+                <li><div class="step-content">In the dialog box that appears, enter the name of the structure and the name of its associated database. Also define the staff categories and activity types by clicking the corresponding buttons. You can also fill in the <strong>structure description</strong> field.</div></li>
+                <li><div class="step-content">Then click the <strong>Create</strong> button.</div></li>
+            </ol>
+            <div class="img-group">
+                <figure><img src="images/structureCreation.png" alt="Structure creation" width="450"><figcaption>Structure creation</figcaption></figure>
+                <figure><img src="images/staffCategories.png" alt="Staff categories" width="450"><figcaption>Staff categories</figcaption></figure>
+                <figure><img src="images/typesOfActivities.png" alt="Activity types" width="450"><figcaption>Activity types</figcaption></figure>
+            </div>
+
+            <h3>Add a sub-structure</h3>
+            <p>To add a sub-structure to an existing structure:</p>
+            <ol class="steps">
+                <li><div class="step-content">Select the parent structure.</div></li>
+                <li><div class="step-content">Click the <img src="images/add.png" class="img-inline" alt="Add"> button in the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">In the dialog box, enter the required data. Selecting the manager of the new structure is optional and can be done later.</div></li>
+                <li><div class="step-content">Click the <strong>Create</strong> button.</div></li>
+                <li><div class="step-content">You can continue creating other structures or close the dialog box.</div></li>
+            </ol>
+            <img src="images/addStructure.png" alt="Add a structure" width="400">
+
+            <h3>Edit / Delete a structure</h3>
+            <ul class="feature-list">
+                <li>To <strong>edit</strong> a structure, select it and click <img src="images/modif.png" class="img-inline" alt="Edit"> in the <strong>General</strong> tab.</li>
+                <li>To <strong>delete</strong> a structure, select it and click <img src="images/delete.png" class="img-inline" alt="Delete"> in the <strong>General</strong> tab.</li>
+            </ul>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 3. STAFF ═══ -->
+        <div class="section" id="gerer-personnel">
+            <h2><span class="section-icon">👥</span>Managing staff</h2>
+
+            <h3>Add an agent</h3>
+            <p>To add an agent to a structure:</p>
+            <ol class="steps">
+                <li><div class="step-content">Select the structure in the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">In the <strong>Human Resources</strong> tab, click <img src="images/add.png" class="img-inline" alt="Add">.</div></li>
+                <li><div class="step-content">In the dialog box, enter the required data.</div></li>
+                <li><div class="step-content">Click <strong>Insert</strong>.</div></li>
+                <li><div class="step-content">You can continue adding other agents or close the dialog box.</div></li>
+            </ol>
+            <img src="images/employeeCreation.png" alt="Employee creation" width="500">
+
+            <h3>Edit / Delete an agent</h3>
+            <ul class="feature-list">
+                <li>To <strong>edit</strong> an agent, select them and click <img src="images/modif.png" class="img-inline" alt="Edit"> in the <strong>Human Resources</strong> tab.</li>
+                <li>To <strong>delete</strong> an agent, select them and click <img src="images/delete.png" class="img-inline" alt="Delete"> in the <strong>Human Resources</strong> tab.</li>
+            </ul>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 4. LEAVE ═══ -->
+        <div class="section" id="conges">
+            <h2><span class="section-icon">🌴</span>Leave</h2>
+
+            <p>Leave management covers two uses: <strong>self-service</strong>, where each agent submits and tracks their own requests, and <strong>HR processing</strong>, grouped in the <strong>Human resources management</strong> module.</p>
+
+            <h3>Open the Human resources management module</h3>
+            <p>From the <strong>General</strong> tab, select the <strong>Human Resources</strong> tab at the bottom of the interface and click <img src="images/manageHR.png" class="img-inline" alt="Human resources management">. The module opens in its own window, organized into three groups: <strong>Staff</strong> (Agent directory), <strong>Leave</strong> (Leave requests, Leave balances, Leave types) and <strong>Payroll</strong> (Payslips, Payslip template).</p>
+            <img src="images/hrHub.png" alt="Human resources management" width="700">
+
+            <h3>Submit a leave request (agent)</h3>
+            <ol class="steps">
+                <li><div class="step-content">From the main menu, open <strong>My leave requests</strong>. At the top of the screen, <strong>Days remaining</strong> shows the available balance.</div></li>
+                <li><div class="step-content">Click <strong>New request</strong>, enter the leave type and dates, then confirm.</div></li>
+                <li><div class="step-content">The request appears in the table (Type, Period, Days, Status, Submitted on, Decided on, Decision), where you can follow its progress.</div></li>
+                <li><div class="step-content">Filter by <strong>Fiscal year</strong> or <strong>Status</strong>, or search for a specific request. Select a row and click <strong>Open</strong> for details.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Note:</strong> A submitted request can still be withdrawn with <strong>Cancel request</strong>; a request that has already been decided can no longer be cancelled.</div>
+            <img src="images/leaveRequestsMine.png" alt="My leave requests" width="650">
+
+            <h3>Approve or reject a request (HR manager)</h3>
+            <ol class="steps">
+                <li><div class="step-content">In <strong>Human resources management</strong>, open the <strong>Leave requests</strong> card.</div></li>
+                <li><div class="step-content">Filter by structure, agent, fiscal year or status if needed, then switch between the <strong>Awaiting decision</strong> and <strong>History</strong> tabs.</div></li>
+                <li><div class="step-content">Select a pending request (Agent, Type, Period, Days, Submitted on, Reason) and click <strong>Approve</strong> or <strong>Reject</strong>.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Important:</strong> Approving or rejecting is final and records your name on the decision. Agents submit their requests from their own screen; this module cannot be used to create one on their behalf.</div>
+            <img src="images/leaveApproval.png" alt="Leave requests — decision" width="650">
+
+            <h3>View leave balances</h3>
+            <p>The <strong>Leave balances</strong> card shows, for any agent, the leave counters automatically recalculated from requests that have already been approved.</p>
+
+            <h3>Configure leave types</h3>
+            <p>The <strong>Leave types</strong> card lets you set up the available leave categories (annual leave, sick leave, etc.) and their accrual rules.</p>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 5. PAYSLIPS ═══ -->
+        <div class="section" id="fiches-de-paie">
+            <h2><span class="section-icon">🧾</span>Payslips</h2>
+
+            <p>Each agent views their own payslips on a self-service basis; generating them is reserved for HR and finance/accounting managers.</p>
+
+            <h3>View your payslips (agent)</h3>
+            <ol class="steps">
+                <li><div class="step-content">From the main menu, open <strong>My payslips</strong>: the screen shows your name and the number of available payslips.</div></li>
+                <li><div class="step-content">Filter the list by <strong>year</strong> or <strong>status</strong>, then click <strong>Refresh</strong>.</div></li>
+                <li><div class="step-content">Select a payslip in the list (period, issue date, gross salary, total deductions, net pay, status): its preview appears in the right-hand panel.</div></li>
+                <li><div class="step-content">Use <strong>Print</strong> or <strong>Export PDF</strong> to keep a copy.</div></li>
+            </ol>
+            <img src="images/payslipsMine.png" alt="My payslips" width="650">
+
+            <h3>Generate a payslip (HR manager)</h3>
+            <p>In <strong>Human resources management</strong> (<strong>Payroll</strong> group), the <strong>Payslips</strong> card — “Payslip calculation and printing” — opens the <strong>Payslip</strong> screen (“Payslip entry and preview”).</p>
+            <ol class="steps">
+                <li><div class="step-content">Choose the team and then the agent concerned, as well as the payroll month and year — or reuse an existing payslip with <strong>Load from...</strong> — then enter the issue and payment dates.</div></li>
+                <li><div class="step-content">Under <strong>Earnings</strong>, enter the base salary; bonuses and other earnings items are added in the detailed list to obtain the <strong>gross salary</strong>.</div></li>
+                <li><div class="step-content">Under <strong>Deductions</strong>, itemize contributions and other deductions: their sum makes up the <strong>total deductions</strong>.</div></li>
+                <li><div class="step-content">The <strong>Results and employer cost</strong> section gives the net salary as well as the total cost to the employer.</div></li>
+                <li><div class="step-content">Once the entries have been checked, save the payslip; it can then be printed or exported to PDF.</div></li>
+            </ol>
+            <img src="images/payslipGeneration.png" alt="Payslip generation" width="650">
+
+            <div class="note"><strong>ℹ️ Important:</strong> Once issued, a payslip permanently keeps its own figures — a payslip issued last year keeps the contribution rate in force at the time, even if the payroll template has changed since.</div>
+
+            <h3>Configure the payroll template (HR manager)</h3>
+            <p>The <strong>Payslip template</strong> card — “Configure earnings, deductions and employer charges” — defines the items offered when generating a new payslip (see the overview of the <a href="#conges">Human resources management</a> module above).</p>
+
+            <p>Settlement of an already validated payslip is handled in the <a href="#finances-comptabilite">Finance &amp; Accounting</a> module, via the <strong>Payroll settlement</strong> card.</p>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 6. PROJECTS ═══ -->
+        <div class="section" id="gerer-projets">
+            <h2><span class="section-icon">📁</span>Creating and managing projects or activities</h2>
+
+            <h3>Create a project or activity</h3>
+            <ol class="steps">
+                <li><div class="step-content">In the <strong>General</strong> tab, select the structure in which the project or activity is to be created.</div></li>
+                <li><div class="step-content">In the <strong>Activities</strong> tab, select the parent project or activity. If there is none, select the type (professional or personal).</div></li>
+                <li><div class="step-content">Click <img src="images/add.png" class="img-inline" alt="Add">.</div></li>
+                <li><div class="step-content">In the dialog box, fill in the required data. If activity types have not been defined, they must be set up by editing the parent structure.</div></li>
+                <li><div class="step-content">Click <strong>Insert</strong>.</div></li>
+                <li><div class="step-content">You can continue creating other projects or close the dialog box.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Note:</strong> Co-authors can be defined at creation time; they will be able to edit the project or create sub-activities.</div>
+            <img src="images/activityCreation.png" alt="Activity creation" width="500">
+
+            <h3>Edit / Delete</h3>
+            <ul class="feature-list">
+                <li>To <strong>edit</strong> a project, select it and click <img src="images/modif.png" class="img-inline" alt="Edit"> in the <strong>Activities</strong> tab.</li>
+                <li>To <strong>delete</strong> a project, select it and click <img src="images/delete.png" class="img-inline" alt="Delete"> in the <strong>Activities</strong> tab.</li>
+            </ul>
+
+            <h3>Manage a project or activity</h3>
+            <ul class="feature-list">
+                <li><strong>Add involved agents:</strong> Click <img src="images/involvedAgent.png" class="img-inline" alt="Agents"> to choose the participating staff.</li>
+                <li><strong>Attach a document:</strong> Click <img src="images/attachDoc.png" class="img-inline" alt="Document"> to attach a file to the project.</li>
+                <li><strong>Publish a project:</strong> Click <img src="images/postActivity.png" class="img-inline" alt="Publish"> to make it available to collaborators.</li>
+                <li><strong>Mark as completed:</strong> Click <img src="images/closeActivity.png" class="img-inline" alt="Complete"> once finished.</li>
+                <li><strong>Define dependencies:</strong> Use the “Previous activities” option.</li>
+                <li><strong>Assign resources:</strong> Use the “Assign resources” option to allocate material or human resources.</li>
+                <li><strong>Visualization:</strong> Display as a Gantt or MPM chart, animate progress in real time with the <strong>Animate</strong> checkbox (activities are automatically colored according to their progress: normal, critical, completed, not yet started) and export the charts.</li>
+            </ul>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 7. EVENTS ═══ -->
+        <div class="section" id="creer-evenements">
+            <h2><span class="section-icon">📅</span>Creating and organizing events</h2>
+
+            <h3>Create an event</h3>
+            <ol class="steps">
+                <li><div class="step-content">Select the <strong>Event</strong> tab.</div></li>
+                <li><div class="step-content">Click the <img src="images/add.png" class="img-inline" alt="Add"> button.</div></li>
+                <li><div class="step-content">In the dialog box, enter the required information. Add the agents involved so that they can see the event in their interface. To add a participant, click <img src="images/add.png" class="img-inline" alt="Add">, then in the <strong>Human Resources</strong> tab, select the participant and click <img src="images/add.png" class="img-inline" alt="Add">.</div></li>
+                <li><div class="step-content">Add more participants by repeating the procedure, or load an existing distribution group <img src="images/open.png" class="img-inline" alt="Open">.</div></li>
+            </ol>
+            <img src="images/planEvent.png" alt="Create and schedule an event" width="500">
+
+            <h3>Edit / Delete an event</h3>
+            <ul class="feature-list">
+                <li>To <strong>edit</strong> an event, select it and click <img src="images/modif.png" class="img-inline" alt="Edit">.</li>
+                <li>To <strong>delete</strong> an event, select it and click <img src="images/delete.png" class="img-inline" alt="Delete">.</li>
+            </ul>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 8. VIDEO CONFERENCES ═══ -->
+        <div class="section" id="conferences-video">
+            <h2><span class="section-icon">🎥</span>Organizing a video conference</h2>
+
+            <h3>Instant video conference</h3>
+            <ul class="feature-list">
+                <li>In the <strong>Events</strong> tab, click <img src="images/visioInstant.png" class="img-inline" alt="Instant video conference">.</li>
+                <li>In the video conference window, add participants by clicking <img src="images/add.png" class="img-inline" alt="Add">.</li>
+            </ul>
+
+            <h3>Scheduled video conference</h3>
+            <ol class="steps">
+                <li><div class="step-content">Select the event in the <strong>Events</strong> tab and click <img src="images/launch.png" class="img-inline" alt="Launch">.</div></li>
+                <li><div class="step-content">Connected participants will automatically receive an invitation to join the meeting.</div></li>
+            </ol>
+
+            <p>In the video conference window, the available buttons are:</p>
+            <ul class="feature-list">
+                <li><img src="images/add.png" class="img-inline" alt="Invite"> <strong>Invite a participant</strong> — select them in the staff list, then click <img src="images/add.png" class="img-inline" alt="Add"> in the <strong>Human resources</strong> tab.</li>
+                <li><img src="images/group.png" class="img-inline" alt="Group"> <strong>Invite a distribution group</strong> — load the group file from its location.</li>
+                <li><img src="images/stopMicro.png" class="img-inline" alt="Microphone"> <strong>Turn the microphone on/off.</strong></li>
+                <li><img src="images/cameraOff.png" class="img-inline" alt="Camera"> <strong>Turn the camera on/off.</strong></li>
+                <li><img src="images/stopShare.png" class="img-inline" alt="Sharing"> <strong>Turn screen sharing on/off.</strong></li>
+                <li><img src="images/handOff.png" class="img-inline" alt="Request to speak"> <strong>Join/leave the speakers' list</strong> to take the floor.</li>
+                <li><img src="images/stopEditNotes.png" class="img-inline" alt="Notes"> <strong>Turn meeting-notes editing mode on/off</strong> — notes are displayed in real time to all participants. Only one participant can edit at a time.</li>
+                <li><img src="images/vote.png" class="img-inline" alt="Vote"> <strong>Start an electronic vote</strong> — all participants can vote and see the results.</li>
+                <li><strong>&gt;&gt;</strong> <strong>Send a text message</strong> to all participants.</li>
+                <li><img src="images/stop.png" class="img-inline" alt="Leave"> <strong>Leave the video conference.</strong></li>
+            </ul>
+            <img src="images/videoConf.png" alt="Video conference" width="600">
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 9. MATERIAL RESOURCES ═══ -->
+        <div class="section" id="ressources-materielles">
+            <h2><span class="section-icon">🔧</span>Managing material resources</h2>
+
+            <h3>Add a material resource</h3>
+            <ol class="steps">
+                <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">Select the structure to which the material resource will be assigned.</div></li>
+                <li><div class="step-content">Select the <strong>Material Resources</strong> tab at the bottom of the interface.</div></li>
+                <li><div class="step-content">Click the <img src="images/add.png" class="img-inline" alt="Add"> button.</div></li>
+                <li><div class="step-content">In the dialog box, fill in the required information and define categories if needed.</div></li>
+                <li><div class="step-content">Click <strong>Add</strong>.</div></li>
+                <li><div class="step-content">You can continue adding other resources or close the dialog box.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Note:</strong> The optional <strong>Acquisition date</strong> field lets you record when the resource was put into service.</div>
+
+            <h3>Edit / Delete a material resource</h3>
+            <ul class="feature-list">
+                <li>To <strong>edit</strong>, select the resource in the <strong>Material Resources</strong> tab and click <img src="images/modif.png" class="img-inline" alt="Edit">.</li>
+                <li>To <strong>delete</strong>, select the resource and click <img src="images/delete.png" class="img-inline" alt="Delete">.</li>
+            </ul>
+
+            <h3>Schedule a material resource</h3>
+            <p>Material resources are scheduled in the <a href="#gerer-projets"><strong>Manage a project or activity</strong></a> section.</p>
+
+            <div class="img-group">
+                <figure><img src="images/materialRessourceCategories.png" alt="Material resource categories" width="450"><figcaption>Resource categories</figcaption></figure>
+                <figure><img src="images/materialRessoureCreation.png" alt="Material resource creation" width="400"><figcaption>Resource creation</figcaption></figure>
+            </div>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 10. FINANCE & ACCOUNTING ═══ -->
+        <div class="section" id="finances-comptabilite">
+            <h2><span class="section-icon">💰</span>Finance &amp; Accounting</h2>
+
+            <p>The <strong>Finance and accounting</strong> hub, opened from the <strong>Finance/Accounting</strong> tab, groups the modules into three families: <strong>Sales and purchasing</strong> (Customers, Suppliers, Orders, Invoices), <strong>Catalog and stock</strong> (Products, Stock) and <strong>Finance and payroll</strong> (Treasury, Bank reconciliation, Payroll settlement). Each card opens its module in its own window.</p>
+            <img src="images/financeHub.png" alt="Finance and accounting" width="700">
+
+            <h3>Manage customers and suppliers</h3>
+            <ol class="steps">
+                <li><div class="step-content">Open the <strong>Customers</strong> card (“Customer records and contacts”) or the <strong>Suppliers</strong> card (“Supplier records and contacts”).</div></li>
+                <li><div class="step-content">Click <strong>New customer</strong> (or <strong>New supplier</strong>) and enter the code, the name or company name, the customer type where applicable, the phone number, email, address and active status.</div></li>
+                <li><div class="step-content">Click <strong>Save</strong>.</div></li>
+            </ol>
+            <ul class="feature-list">
+                <li>Search or filter by type, or tick <strong>Active only</strong>.</li>
+                <li>Select an existing record to edit it or <strong>Delete</strong> it; <strong>Clear</strong> empties the form.</li>
+            </ul>
+            <div class="img-group">
+                <figure><img src="images/clientCreation.png" alt="Customer creation" width="450"><figcaption>Customer record</figcaption></figure>
+                <figure><img src="images/supplierCreation.png" alt="Supplier creation" width="450"><figcaption>Supplier record</figcaption></figure>
+            </div>
+
+            <h3>Track orders and invoices</h3>
+            <p>The <strong>Orders</strong> card (“Sales and purchase orders”) lists the orders placed with customers and suppliers:</p>
+            <ul class="feature-list">
+                <li>Create a <strong>New sales order</strong> or a <strong>New purchase order</strong>, and filter by type or status.</li>
+                <li>Select an order to <strong>Open</strong>, <strong>Confirm</strong>, <strong>Mark as delivered</strong> or <strong>Cancel</strong> it.</li>
+                <li>Once the order is confirmed, <strong>Generate invoice</strong> creates the corresponding invoice.</li>
+            </ul>
+            <p>The <strong>Invoices</strong> card (“Issuing, payments, cancellation”) then lets you track each invoice:</p>
+            <ul class="feature-list">
+                <li>The invoice details (number, type, linked order, invoice and due dates, status) and its amounts (excl. tax, VAT, incl. tax, paid, balance due) are shown in the right-hand panel.</li>
+                <li>Enter a <strong>Payment amount</strong> and click <strong>Record payment</strong>; an invoice can also be cancelled with <strong>Cancel invoice</strong>.</li>
+                <li>Use <strong>Export to PDF</strong> or <strong>Print</strong> to get the document.</li>
+            </ul>
+            <div class="img-group">
+                <figure><img src="images/orderCreation.png" alt="Orders" width="450"><figcaption>Orders</figcaption></figure>
+                <figure><img src="images/invoiceCreation.png" alt="Invoices" width="450"><figcaption>Invoices</figcaption></figure>
+            </div>
+
+            <h3>Manage the product catalog and stock</h3>
+            <ol class="steps">
+                <li><div class="step-content">Open the <strong>Products</strong> card (“Catalog, prices, alert thresholds”) and click <strong>New product</strong>.</div></li>
+                <li><div class="step-content">Enter the purchase and selling prices excluding tax, as well as the tax rate: the selling price including tax and the margin are calculated automatically.</div></li>
+                <li><div class="step-content">Enter the quantity in stock and the alert threshold; a <strong>low stock</strong> badge appears automatically when the threshold is reached.</div></li>
+                <li><div class="step-content">Click <strong>Save</strong>.</div></li>
+            </ol>
+            <p>The log of stock receipts and issues is available in the <strong>Stock</strong> card (“Movement and adjustment log”).</p>
+            <img src="images/productCreation.png" alt="Product creation" width="500">
+
+            <h3>Record an expense or income</h3>
+            <ol class="steps">
+                <li><div class="step-content">Open the <strong>Treasury</strong> card and click <strong>New entry</strong>.</div></li>
+                <li><div class="step-content">Choose the type (expense or income), a category, a description, an amount and, if needed, a note.</div></li>
+                <li><div class="step-content">Confirm: the entry appears in the table and is immediately reflected in the indicators and charts.</div></li>
+            </ol>
+            <p>Expense categories: rent, electricity, water, telecoms, supplies, transport, insurance, maintenance, taxes and duties, salaries, purchases, other. Income categories: sales, grants, interest, refunds, other.</p>
+            <ul class="feature-list">
+                <li>An existing entry can be edited or deleted from the table.</li>
+                <li><strong>Generate report</strong> exports the displayed period.</li>
+            </ul>
+
+            <h3>Monitor treasury</h3>
+            <ol class="steps">
+                <li><div class="step-content">Choose the period to analyze (start month and year, end month and year), then click <strong>Refresh</strong>.</div></li>
+                <li><div class="step-content">The key indicators — <strong>Total income</strong>, <strong>Total expenses</strong>, <strong>Balance</strong>, <strong>Margin rate</strong> — are updated at the top of the screen.</div></li>
+                <li><div class="step-content">The <strong>Monthly treasury trend</strong> chart traces income and expenses month by month; the <strong>Expense breakdown</strong> and <strong>Income breakdown</strong> pie charts break each down by category, with a <strong>Breakdown by category</strong> table (Category, Type, Amount) below.</div></li>
+            </ol>
+            <img src="images/treasuryDashboard.png" alt="Treasury" width="700">
+
+            <h3>Reconcile the bank statement (TOP Manager / finance manager / assistant)</h3>
+            <p>The <strong>Bank reconciliation</strong> card compares, line by line, the statement sent by the bank with the treasury entries already recorded in the application, to check that they match.</p>
+            <ol class="steps">
+                <li><div class="step-content">Open the <strong>Bank reconciliation</strong> card, choose the period to process (start date, end date), then click <strong>Refresh</strong>.</div></li>
+                <li><div class="step-content">The left-hand table shows the <strong>bank statement lines</strong> (date, description, amount, status); the right-hand table shows the <strong>treasury entries</strong> for the same period.</div></li>
+                <li><div class="step-content">If a statement line does not yet exist in the application, click <strong>Add</strong> and enter its date, description and amount.</div></li>
+                <li><div class="step-content">Select a statement line and its matching treasury entry, then click <strong>Reconcile</strong>: the line changes to <strong>Reconciled</strong> status.</div></li>
+                <li><div class="step-content">If a match was made in error, select the reconciled line and click <strong>Undo reconciliation</strong>.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Note:</strong> The number of reconciled lines, the number of unreconciled lines and the difference between the statement total and the entries total are shown at the bottom of the screen and are updated with each reconciliation.</div>
+            <p>Access to this module is restricted to the TOP Manager, the finance manager and their assistant.</p>
+            <img src="images/bankReconciliation.png" alt="Bank reconciliation" width="700">
+
+            <h3>Settle a payslip (finance/accounting manager)</h3>
+            <p>The <strong>Payroll settlement</strong> card (“Validated payslips awaiting payment”) lists the payslips already validated by the HR manager and lets you record their settlement (payment method, status, remarks) — see also the <a href="#fiches-de-paie">Payslips</a> section.</p>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 11. COMMUNICATION ═══ -->
+        <div class="section" id="communication">
+            <h2><span class="section-icon">💬</span>Audio calls, text messages and instant messaging</h2>
+
+            <h3>Make an audio call</h3>
+            <ol class="steps">
+                <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">Select the <strong>Human Resources</strong> tab at the bottom of the interface.</div></li>
+                <li><div class="step-content">Select the agent you want to call (they must be online).</div></li>
+                <li><div class="step-content">Click the <img src="images/phoneCall.png" class="img-inline" alt="Call"> button.</div></li>
+            </ol>
+            <img src="images/audioCall.png" alt="Audio call" width="300">
+
+            <h3>Send a text message</h3>
+            <ol class="steps">
+                <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">Select the <strong>Human Resources</strong> tab at the bottom of the interface.</div></li>
+                <li><div class="step-content">Select the recipient agent (even if they are offline).</div></li>
+                <li><div class="step-content">Click the <img src="images/message.png" class="img-inline" alt="Message"> button.</div></li>
+                <li><div class="step-content">Write the message and click <strong>Send</strong>. If the recipient is online, they will see it immediately; otherwise, they will see it when they next log in. You can also send a message to a group of recipients <img src="images/group.png" class="img-inline" alt="Group">.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Tip:</strong> A received text message can be turned into a sticky note as a reminder <img src="images/sticky.png" class="img-inline" alt="Sticky note"> or deleted if needed <img src="images/strash.png" class="img-inline" alt="Delete">.</div>
+            <img src="images/textMessage.png" alt="Text message" width="500">
+
+            <h3>Start an instant messaging chat</h3>
+            <ol class="steps">
+                <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">Select the <strong>Human Resources</strong> tab at the bottom of the interface.</div></li>
+                <li><div class="step-content">Select the agent you want to chat with (they must be online).</div></li>
+                <li><div class="step-content">Click the <img src="images/chat.png" class="img-inline" alt="Chat"> button.</div></li>
+            </ol>
+            <img src="images/textChat.png" alt="Instant messaging" width="400">
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 12. ELECTRONIC VOTING ═══ -->
+        <div class="section" id="votes-electroniques">
+            <h2><span class="section-icon">🗳️</span>Electronic voting</h2>
+
+            <p>Electronic voting is built into an event. It can be scheduled or held instantly. To organize an electronic vote:</p>
+
+            <ol class="steps">
+                <li><div class="step-content">Launch the associated event.</div></li>
+                <li><div class="step-content">Click the <img src="images/vote.png" class="img-inline" alt="Vote"> button.</div></li>
+                <li><div class="step-content">Enter the vote title in the dialog box that appears and click <strong>OK</strong>.</div></li>
+                <li><div class="step-content">Create and add the voting options.</div></li>
+                <li><div class="step-content">Specify the closing time of the vote.</div></li>
+                <li><div class="step-content">Click <strong>Start</strong> to open the vote. The options will appear in all participants' interfaces so that they can vote.</div></li>
+                <li><div class="step-content">At the end of the vote, click <strong>Stop</strong>. The results will appear in all participants' interfaces.</div></li>
+            </ol>
+
+            <div class="img-group">
+                <figure><img src="images/createVote.png" alt="Create a vote" width="400"><figcaption>Create a vote</figcaption></figure>
+                <figure><img src="images/voting.png" alt="Vote in progress" width="400"><figcaption>Vote in progress</figcaption></figure>
+                <figure><img src="images/voteResult.png" alt="Vote results" width="400"><figcaption>Results</figcaption></figure>
+            </div>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 13. MISCELLANEOUS ═══ -->
+        <div class="section" id="divers">
+            <h2><span class="section-icon">✨</span>Miscellaneous: Eisenhower matrix, sticky notes, distribution groups</h2>
+
+            <h3>Eisenhower matrix</h3>
+            <p>The Eisenhower matrix is built into the dashboard. It gives the user a clear view of:</p>
+            <ul class="feature-list">
+                <li><strong>Important and urgent tasks</strong> — do immediately</li>
+                <li><strong>Important but not urgent tasks</strong> — schedule</li>
+                <li><strong>Not important but urgent tasks</strong> — delegate</li>
+                <li><strong>Not important and not urgent tasks</strong> — can be ignored</li>
+            </ul>
+            <p>Activities or events created or received are automatically placed in the matrix — in the <strong>Important and urgent tasks</strong> area if the deadline is close, otherwise in <strong>Important but not urgent tasks</strong>. The user can reassign priorities from the <strong>Activities</strong> and <strong>Events</strong> tabs by selecting an item and clicking <img src="images/affectpriority.png" class="img-inline" alt="Priority">.</p>
+
+            <h3>Create sticky notes</h3>
+            <ol class="steps">
+                <li><div class="step-content">In the <strong>General</strong> tab, click the <img src="images/sticky.png" class="img-inline" alt="Sticky note"> button and choose <strong>Edit...</strong>.</div></li>
+                <li><div class="step-content">In the dialog box, click <strong>Add</strong> to create a sticky note.</div></li>
+                <li><div class="step-content">You can continue creating other notes or close the dialog box.</div></li>
+            </ol>
+
+            <h3>Display sticky notes</h3>
+            <ul class="feature-list">
+                <li>Click the <img src="images/sticky.png" class="img-inline" alt="Sticky note"> button and choose <strong>Show/Hide</strong>.</li>
+                <li>The notes will appear and scroll one after another.</li>
+                <li>To close the window, click <img src="images/stop.png" class="img-inline" alt="Close"> in the window, or click <img src="images/sticky.png" class="img-inline" alt="Sticky note"> and then <strong>Show/Hide</strong>.</li>
+            </ul>
+
+            <div class="img-group">
+                <figure><img src="images/createStickyNote.png" alt="Create a sticky note" width="400"><figcaption>Create a note</figcaption></figure>
+                <figure><img src="images/showStickyNote.png" alt="Display sticky notes" width="400"><figcaption>Display notes</figcaption></figure>
+            </div>
+
+            <h3>Create distribution groups</h3>
+            <ol class="steps">
+                <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">Select the <strong>Human Resources</strong> tab at the bottom of the interface.</div></li>
+                <li><div class="step-content">Click the <img src="images/group.png" class="img-inline" alt="Group"> button.</div></li>
+                <li><div class="step-content">In the dialog box, enter the group name and add members.</div></li>
+                <li><div class="step-content">Save the group to a file for future use.</div></li>
+            </ol>
+            <img src="images/diffusionGroup.png" alt="Distribution group" width="400">
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ AUTHOR ═══ -->
+        <div class="section" id="auteur">
+            <h2><span class="section-icon">👤</span>Author</h2>
+            <div class="author-card">
+                <div class="author-avatar">LT</div>
+                <div class="author-info">
+                    <div class="name">Prof. Lamine THIAW</div>
+                    <div class="role">Department of Electrical Engineering<br>École Supérieure Polytechnique<br>Cheikh Anta Diop University, Dakar</div>
+                    <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a>
+                </div>
+            </div>
+            <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">September 2026</p>
+        </div>
+
+    </div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('.section[id], #description-produit');
+    const navLinks = document.querySelectorAll('#sidebar nav a');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active',
+                        link.getAttribute('href') === '#' + entry.target.id);
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

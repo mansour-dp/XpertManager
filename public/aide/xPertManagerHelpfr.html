@@ -394,6 +394,44 @@
             border: 1px solid rgba(255,255,255,0.25);
         }
 
+        .language-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            text-decoration: none;
+            animation: language-pulse 2s ease-in-out infinite;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .language-link small {
+            font-family: inherit;
+            font-size: 0.58rem;
+            line-height: 1.2;
+        }
+
+        .language-link:hover,
+        .language-link:focus-visible {
+            background: rgba(255,255,255,0.28);
+            transform: translateY(-2px);
+        }
+
+        .language-link:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        @keyframes language-pulse {
+            50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.12); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .language-link {
+                animation: none;
+                transition: none;
+            }
+        }
+
         /* ── AUTHOR CARD ── */
         .author-card {
             background: var(--surface2);
@@ -560,7 +598,10 @@
         <div class="badges">
             <span class="badge">Version 2.0</span>
             <span class="badge">Septembre 2026</span>
-            <span class="badge">FR / EN</span>
+            <a class="badge language-link" href="xPertManagerHelpEn.html" lang="en" aria-label="Cliquer pour afficher la version anglaise">
+                FR / EN
+                <small>Cliquer pour la version anglaise</small>
+            </a>
         </div>
     </div>
 

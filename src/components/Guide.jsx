@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 // Utilise la dernière version du guide, qui comprend les sections Présences et Notifications.
-const GUIDE_URL = "/XpertManagerSite-maj2/public/aide/xPertManagerHelpFr.html";
+const GUIDE_URL = "/aide/xPertManagerHelpfr.html";
 
 const Guide = () => {
 	useEffect(() => {

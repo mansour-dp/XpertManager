@@ -224,6 +224,25 @@
             min-width: 0;
         }
 
+        /* Liste imbriquée dans une étape : simple liste à puces (pas de numéro ni d'encadré) */
+        .steps .step-content ul {
+            list-style: disc;
+            padding-left: 22px;
+            margin: 6px 0 0;
+        }
+        .steps .step-content li {
+            display: list-item;
+            counter-increment: none;
+            margin: 4px 0;
+            padding: 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+        }
+        .steps .step-content li::before {
+            content: none;
+        }
+
         /* Wrapper interne généré pour le contenu des steps */
         .step-content {
             flex: 1;
@@ -392,44 +411,6 @@
             border: 1px solid rgba(255,255,255,0.25);
         }
 
-        .language-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            text-decoration: none;
-            animation: language-pulse 2s ease-in-out infinite;
-            transition: transform 180ms ease, background 180ms ease;
-        }
-
-        .language-link small {
-            font-family: inherit;
-            font-size: 0.58rem;
-            line-height: 1.2;
-        }
-
-        .language-link:hover,
-        .language-link:focus-visible {
-            background: rgba(255,255,255,0.28);
-            transform: translateY(-2px);
-        }
-
-        .language-link:focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 3px;
-        }
-
-        @keyframes language-pulse {
-            50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.12); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .language-link {
-                animation: none;
-                transition: none;
-            }
-        }
-
         /* ── AUTHOR CARD ── */
         .author-card {
             background: var(--surface2);
@@ -516,6 +497,37 @@
                 break-inside: avoid-page;
             }
         }
+
+        .language-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            text-decoration: none;
+            animation: language-pulse 2s ease-in-out infinite;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .language-link small {
+            font-family: inherit;
+            font-size: 0.58rem;
+            line-height: 1.2;
+        }
+
+        .language-link:hover,
+        .language-link:focus-visible {
+            background: rgba(255,255,255,0.28);
+            transform: translateY(-2px);
+        }
+
+        .language-link:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        @keyframes language-pulse {
+            50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.12); }
+        }
     </style>
 </head>
 <body>
@@ -525,7 +537,7 @@
 <aside id="sidebar">
     <div id="sidebar-header">
         <div class="app-name">xPertManager</div>
-        <div class="app-version">v1.0 · Documentation</div>
+        <div class="app-version">v1.1.0 · Documentation</div>
     </div>
     <nav>
         <a href="#description-produit"><span class="nav-icon">📋</span>Description du produit</a>
@@ -533,12 +545,14 @@
         <a href="#gerer-personnel"><span class="nav-icon">👥</span>Personnel</a>
         <a href="#conges"><span class="nav-icon">🌴</span>Congés</a>
         <a href="#fiches-de-paie"><span class="nav-icon">🧾</span>Fiches de paie</a>
+        <a href="#presences"><span class="nav-icon">⏱️</span>Présences (badgeage)</a>
         <a href="#gerer-projets"><span class="nav-icon">📁</span>Projets &amp; Activités</a>
         <a href="#creer-evenements"><span class="nav-icon">📅</span>Événements</a>
         <a href="#conferences-video"><span class="nav-icon">🎥</span>Visioconférences</a>
         <a href="#ressources-materielles"><span class="nav-icon">🔧</span>Ressources matérielles</a>
         <a href="#finances-comptabilite"><span class="nav-icon">💰</span>Finances &amp; Comptabilité</a>
         <a href="#communication"><span class="nav-icon">💬</span>Communication</a>
+        <a href="#notifications"><span class="nav-icon">🔔</span>Notifications</a>
         <a href="#votes-electroniques"><span class="nav-icon">🗳️</span>Votes électroniques</a>
         <a href="#divers"><span class="nav-icon">✨</span>Divers</a>
         <a href="#auteur"><span class="nav-icon">👤</span>Auteur</a>
@@ -553,8 +567,8 @@
         <h1>xPertManager</h1>
         <div class="tagline">Plateforme de gestion intégrée pour les organisations</div>
         <div class="badges">
-            <span class="badge">Version 1.0</span>
-            <span class="badge">Septembre 2026</span>
+            <span class="badge">Version 1.1.0</span>
+            <span class="badge">Octobre 2026</span>
             <a class="badge language-link" href="xPertManagerHelpEn.html" lang="en" aria-label="Cliquer pour afficher la version anglaise">
                 FR / EN
                 <small>Cliquer pour la version anglaise</small>
@@ -565,7 +579,7 @@
     <!-- Top bar -->
     <div id="topbar">
         <h1>Guide d'utilisation</h1>
-        <span class="meta">Documentation · Septembre 2026</span>
+        <span class="meta">Documentation · Octobre 2026</span>
     </div>
 
     <!-- Content -->
@@ -580,14 +594,16 @@
                 <a href="#gerer-personnel"><span class="toc-num">03</span>Gérer le personnel</a>
                 <a href="#conges"><span class="toc-num">04</span>Gérer les congés</a>
                 <a href="#fiches-de-paie"><span class="toc-num">05</span>Gérer les fiches de paie</a>
-                <a href="#gerer-projets"><span class="toc-num">06</span>Créer et gérer des projets</a>
-                <a href="#creer-evenements"><span class="toc-num">07</span>Créer et organiser des événements</a>
-                <a href="#conferences-video"><span class="toc-num">08</span>Organiser des visioconférences</a>
-                <a href="#ressources-materielles"><span class="toc-num">09</span>Gérer les ressources matérielles</a>
-                <a href="#finances-comptabilite"><span class="toc-num">10</span>Finances et comptabilité</a>
-                <a href="#communication"><span class="toc-num">11</span>Appels audio, messages et chat</a>
-                <a href="#votes-electroniques"><span class="toc-num">12</span>Votes électroniques</a>
-                <a href="#divers"><span class="toc-num">13</span>Divers</a>
+                <a href="#presences"><span class="toc-num">06</span>Présences (badgeage par QR code)</a>
+                <a href="#gerer-projets"><span class="toc-num">07</span>Créer et gérer des projets</a>
+                <a href="#creer-evenements"><span class="toc-num">08</span>Créer et organiser des événements</a>
+                <a href="#conferences-video"><span class="toc-num">09</span>Organiser des visioconférences</a>
+                <a href="#ressources-materielles"><span class="toc-num">10</span>Gérer les ressources matérielles</a>
+                <a href="#finances-comptabilite"><span class="toc-num">11</span>Finances et comptabilité</a>
+                <a href="#communication"><span class="toc-num">12</span>Appels audio, messages et chat</a>
+                <a href="#notifications"><span class="toc-num">13</span>Centre des notifications</a>
+                <a href="#votes-electroniques"><span class="toc-num">14</span>Votes électroniques</a>
+                <a href="#divers"><span class="toc-num">15</span>Divers</a>
             </div>
         </div>
 
@@ -599,14 +615,16 @@
 
             <ul class="feature-list">
                 <li>la gestion des ressources humaines, matérielles et financières</li>
+                <li>le suivi des présences par badgeage avec un QR code, depuis le téléphone des agents</li>
                 <li>la gestion de projets : conception, planification/ordonnancement, suivi et organisation des activités</li>
                 <li>la gestion d'événements : création, planification et partage</li>
-                <li>la gestion des communications : appels audio, messages texte, messagerie instantanée, visioconférence</li>
+                <li>la gestion des communications : appels audio, messages texte, messagerie instantanée, visioconférence, avec un centre de notifications</li>
                 <li>l'organisation de votes électroniques</li>
                 <li>des outils d'organisation (tableau de bord avec matrice d'Eisenhower, notes autocollantes, rappels, etc.)</li>
             </ul>
             <img src="images/login.png" alt="Onglet Activités" width="550">
             <p>Au démarrage de l'application, l'utilisateur peut choisir sa langue de travail : le français ou l'anglais (l'extension à d'autres langues est prévue dans les versions futures).</p>
+            <p>La fenêtre de connexion propose trois boutons : <strong>Connecter</strong> ouvre votre espace de travail, <strong>Nouveau projet</strong> lance la création d'une nouvelle structure et de sa base de données (voir <a href="#creer-structures">Créer une structure</a>), et <strong>Annuler</strong> quitte l'application.</p>
             <p>L'interface client comprend cinq onglets :</p>
 
             <h3>Onglet Général</h3>
@@ -614,8 +632,9 @@
             <ul class="feature-list">
                 <li>création de structures et sous-structures</li>
                 <li>création et affectation d'agents aux structures</li>
-                <li>création et affectation de ressources matérielles</li>
-                <li>communications entre agents</li>
+                <li>création et affectation de ressources matérielles (à une structure et à un agent)</li>
+                <li>suivi des présences (badgeage par QR code)</li>
+                <li>communications entre agents et centre des notifications 🔔</li>
             </ul>
             <img src="images/general.png" alt="Onglet Général" width="650">
 
@@ -657,8 +676,7 @@
 
             <h3>Créer une structure</h3>
             <ol class="steps">
-                <li><div class="step-content">Après le lancement de l'application, choisissez la langue de travail et cliquez sur le bouton <strong>Annuler</strong>.</div></li>
-                <li><div class="step-content">Dans l'onglet <strong>Général</strong>, cliquez sur le bouton <img src="images/new.png" class="img-inline" alt="Nouveau">.</div></li>
+                <li><div class="step-content">Au lancement de l'application, dans la fenêtre de connexion, choisissez la langue de travail et cliquez sur le bouton <strong>Nouveau projet</strong>.</div></li>
                 <li><div class="step-content">Dans la boîte de dialogue qui apparaît, entrez le nom de la structure et le nom de la base de données associée. Définissez également les catégories de personnel et les types d'activités en cliquant sur les boutons correspondants. Vous pouvez également remplir la zone <strong>description de la structure</strong>.</div></li>
                 <li><div class="step-content">Cliquez ensuite sur le bouton <strong>Créer</strong>.</div></li>
             </ol>
@@ -708,6 +726,18 @@
                 <li>Pour <strong>modifier</strong> un agent, sélectionnez-le et cliquez sur <img src="images/modif.png" class="img-inline" alt="Modifier"> dans l'onglet <strong>Ressources Humaines</strong>.</li>
                 <li>Pour <strong>supprimer</strong> un agent, sélectionnez-le et cliquez sur <img src="images/delete.png" class="img-inline" alt="Supprimer"> dans l'onglet <strong>Ressources Humaines</strong>.</li>
             </ul>
+
+            <h3>Droits d'accès des agents</h3>
+            <p>Chaque agent reçoit un droit d'accès qui détermine les modules et les actions auxquels il a accès :</p>
+            <ul class="feature-list">
+                <li><strong>Haut Dirigeant</strong> — accès complet ; peut attribuer tous les droits.</li>
+                <li><strong>Responsable des Ressources Humaines</strong> et <strong>Assistant Ressources Humaines</strong> — gestion du personnel et des <a href="#presences">présences</a> ; peuvent attribuer tous les droits sauf Haut Dirigeant.</li>
+                <li><strong>Responsable finances et comptabilité</strong> et <strong>Assistant finances et comptabilité</strong> — module Finances &amp; Comptabilité. Le responsable peut attribuer les droits Ordinaire, Assistant finances et Responsable finances.</li>
+                <li><strong>Responsable Ressources Matérielles</strong> et <strong>Assistant Ressources Matérielles</strong> — seuls à pouvoir ajouter, modifier et supprimer le matériel et à l'affecter librement (service, agent) ; consultation de l'affectation du matériel. Le responsable peut attribuer les droits Ordinaire, Assistant ressources matérielles et Responsable ressources matérielles.</li>
+                <li><strong>Dirigeant</strong> (chef de service) — gère son service ; peut attribuer les droits Ordinaire et Dirigeant.</li>
+                <li><strong>Ordinaire</strong> — accès aux fonctions courantes (activités, événements, communication, libre-service congés et bulletins).</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Nouveau :</strong> le droit <strong>Assistant Ressources Matérielles</strong> permet de seconder le Responsable des ressources matérielles, notamment pour consulter l'<a href="#ressources-materielles">affectation du matériel</a>.</div>
 
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
@@ -781,12 +811,71 @@
             <h3>Configurer le modèle de paie (responsable RH)</h3>
             <p>La carte <strong>Modèle de bulletin</strong> — « Configurez les gains, retenues et charges patronales » — définit les rubriques proposées lors de la génération d'un nouveau bulletin (voir l'aperçu du module <a href="#conges">Gestion des ressources humaines</a> plus haut).</p>
 
+            <h3>Cotisations IPRES et impôt sur le revenu (calcul automatique)</h3>
+            <ol class="steps">
+                <li><div class="step-content">Dans <strong>Modèle de bulletin</strong>, cliquez sur <strong>Rubriques légales (IPRES, IR)</strong> : les rubriques manquantes sont créées une fois pour toutes (IPRES régime général et régime cadre, parts salariale et patronale, et impôt sur le revenu).</div></li>
+                <li><div class="step-content">Sur la fiche de chaque agent cadre, cochez <strong>Cadre (IPRES régime cadre)</strong>.</div></li>
+            </ol>
+            <ul class="feature-list">
+                <li><strong>IPRES régime général</strong> (tous les agents) : 5,60 % salarié et 8,40 % employeur, sur le brut plafonné à 432 000 FCFA par mois.</li>
+                <li><strong>IPRES régime cadre</strong> (agents cochés « Cadre ») : 2,40 % salarié et 3,60 % employeur, sur la part du brut comprise entre 432 000 et 1 296 000 FCFA.</li>
+                <li><strong>Impôt sur le revenu</strong> : calculé d'après le barème officiel des retenues à la source, après l'abattement de 30 % (75 000 FCFA par mois au plus) et selon les parts fiscales de l'agent (situation matrimoniale et enfants à charge).</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Note :</strong> La part salariale de l'IPRES diminue le net, mais pas l'assiette de l'impôt sur le revenu : l'abattement de 30 % tient déjà lieu des cotisations de retraite (CGI, art. 168 b). Une indemnité de transport (remboursement de frais) se saisit en ajustement du net (+), pas en gain, pour ne pas entrer dans l'assiette de l'IPRES. Les taux restent modifiables dans le modèle ; un taux laissé vide prend le taux légal.</div>
+
             <p>Le règlement d'un bulletin déjà validé se fait de son côté dans le module <a href="#finances-comptabilite">Finances &amp; Comptabilité</a>, via la carte <strong>Règlement de la paie</strong>.</p>
 
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 6. PROJETS ═══ -->
+        <!-- ═══ 6. PRÉSENCES ═══ -->
+        <div class="section" id="presences">
+            <h2><span class="section-icon">⏱️</span>Présences (badgeage par QR code)</h2>
+
+            <p>Les agents enregistrent leurs <strong>arrivées</strong> et leurs <strong>départs</strong> en scannant, avec l'appareil photo de leur téléphone, le QR code affiché sur une borne placée à l'entrée des locaux. Aucune application n'est à installer : le scan ouvre une page web. Le QR code change toutes les 30 secondes, et le pointage n'est accepté que si le téléphone est connecté au Wi-Fi des locaux : une photo du code ou un pointage depuis le domicile est donc refusé.</p>
+
+            <h3>Pointer (agent)</h3>
+            <ol class="steps">
+                <li><div class="step-content">À l'entrée, scannez le QR code de la borne avec l'appareil photo de votre téléphone, puis ouvrez le lien proposé. Le téléphone doit être connecté au Wi-Fi des locaux.</div></li>
+                <li><div class="step-content"><strong>Au premier scan uniquement</strong>, saisissez votre identifiant et votre mot de passe xPertManager : votre téléphone est alors associé à votre compte. Un seul téléphone peut être associé à un agent.</div></li>
+                <li><div class="step-content">Les fois suivantes, le scan suffit : la page confirme l'enregistrement et indique l'heure retenue.</div></li>
+            </ol>
+            <ul class="feature-list">
+                <li>Le type de pointage est automatique : le premier scan de la journée est une <strong>arrivée</strong>, le suivant un <strong>départ</strong>, et ainsi de suite.</li>
+                <li>L'heure enregistrée est celle du serveur, et non celle du téléphone.</li>
+                <li>Un second scan moins de deux minutes après le précédent est ignoré.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Note :</strong> L'association est conservée par le navigateur du téléphone. Si vous changez de téléphone, utilisez la navigation privée ou effacez les données du navigateur, le pointage vous sera refusé : demandez aux RH de réinitialiser votre téléphone, puis identifiez-vous de nouveau au scan suivant.</div>
+
+            <h3>Consulter les présences</h3>
+            <p>Dans l'onglet <strong>Général</strong>, sélectionnez l'onglet <strong>Ressources humaines</strong> en bas de l'interface et cliquez sur ⏱️. La fenêtre <strong>Présences (badgeage par QR code)</strong> s'ouvre.</p>
+            <ol class="steps">
+                <li><div class="step-content">Choisissez la période (<strong>Du</strong> / <strong>Au</strong>), puis, si besoin, une <strong>Structure</strong> et un <strong>Agent</strong>, et cliquez sur <strong>Actualiser</strong>.</div></li>
+                <li><div class="step-content">L'onglet <strong>Récapitulatif journalier</strong> présente une ligne par agent et par jour : arrivée, départ, durée de présence, nombre de pointages et observations (départ non badgé, saisie manuelle, tentatives refusées…).</div></li>
+                <li><div class="step-content">L'onglet <strong>Détail des pointages</strong> liste chaque pointage : heure, type, statut (enregistré ou refusé), origine (QR code ou manuel), motif et adresse IP.</div></li>
+                <li><div class="step-content"><strong>Exporter CSV</strong> enregistre le tableau affiché dans un fichier lisible par un tableur.</div></li>
+            </ol>
+            <p>Ce que chacun peut consulter :</p>
+            <ul class="feature-list">
+                <li>le <strong>responsable RH</strong>, son <strong>assistant</strong> et le <strong>TOP Manager</strong> voient les pointages de tous les agents ;</li>
+                <li>un <strong>responsable de structure</strong> voit ceux des agents de sa structure et de ses sous-structures ;</li>
+                <li>les autres agents voient uniquement leurs propres pointages.</li>
+            </ul>
+
+            <h3>Gérer les présences (responsable RH, assistant RH, TOP Manager)</h3>
+            <ul class="feature-list">
+                <li><strong>Pointage manuel…</strong> : enregistre un pointage oublié (agent, date, heure, type et motif obligatoire). La saisie est tracée à votre nom.</li>
+                <li><strong>Annuler le pointage…</strong> : annule le pointage sélectionné. Il reste dans l'historique, marqué comme annulé.</li>
+                <li><strong>Téléphone de l'agent…</strong> : affiche le téléphone associé à l'agent choisi (date d'association, dernière utilisation) et permet de le <strong>réinitialiser</strong>, par exemple après un changement ou une perte de téléphone.</li>
+                <li><strong>Borne d'entrée…</strong> : donne l'adresse de la page à ouvrir en plein écran sur la tablette ou le PC placé à l'entrée, connecté au Wi-Fi des locaux. Gardez cette adresse confidentielle.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Notifications :</strong> Chaque pointage met à jour la fenêtre Présences en temps réel. Les tentatives refusées (code expiré, téléphone hors du Wi-Fi des locaux, téléphone non reconnu) apparaissent dans le <a href="#notifications">centre des notifications</a> des responsables RH.</div>
+            <div class="note"><strong>ℹ️ Pour l'administrateur :</strong> Le service de badgeage est intégré au serveur xPertManager. En production, la page de pointage doit être servie en <strong>HTTPS</strong> (nom de domaine et certificat), car l'agent y saisit son mot de passe lors de la première association.</div>
+
+            <a href="#top" class="back-to-top">↑ Retour en haut</a>
+        </div>
+
+        <!-- ═══ 7. PROJETS ═══ -->
         <div class="section" id="gerer-projets">
             <h2><span class="section-icon">📁</span>Créer et gérer des projets ou activités</h2>
 
@@ -795,7 +884,7 @@
                 <li><div class="step-content">Sélectionnez dans l'onglet <strong>Général</strong> la structure où le projet ou l'activité doit être créé.</div></li>
                 <li><div class="step-content">Dans l'onglet <strong>Activités</strong>, sélectionnez le projet ou l'activité de base. S'il n'y en a pas, sélectionnez le type (professionnel ou personnel).</div></li>
                 <li><div class="step-content">Cliquez sur <img src="images/add.png" class="img-inline" alt="Ajouter">.</div></li>
-                <li><div class="step-content">Dans la boîte de dialogue, remplissez les données requises. Si les types d'activités ne sont pas définis, ils doivent être paramétrés en modifiant la structure de base.</div></li>
+                <li><div class="step-content">Dans la boîte de dialogue, remplissez les données requises. Le champ <strong>Jalons</strong> permet de décrire les étapes clés de l'activité. Si les types d'activités ne sont pas définis, ils doivent être paramétrés en modifiant la structure de base.</div></li>
                 <li><div class="step-content">Cliquez sur <strong>Insérer</strong>.</div></li>
                 <li><div class="step-content">Vous pouvez continuer à créer d'autres projets ou fermer la boîte de dialogue.</div></li>
             </ol>
@@ -822,7 +911,7 @@
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 7. ÉVÉNEMENTS ═══ -->
+        <!-- ═══ 8. ÉVÉNEMENTS ═══ -->
         <div class="section" id="creer-evenements">
             <h2><span class="section-icon">📅</span>Créer et organiser des événements</h2>
 
@@ -844,7 +933,7 @@
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 8. VISIOCONFÉRENCES ═══ -->
+        <!-- ═══ 9. VISIOCONFÉRENCES ═══ -->
         <div class="section" id="conferences-video">
             <h2><span class="section-icon">🎥</span>Organiser une visioconférence</h2>
 
@@ -874,32 +963,50 @@
                 <li><img src="images/stop.png" class="img-inline" alt="Quitter"> <strong>Quitter la visioconférence.</strong></li>
             </ul>
             <img src="images/videoConf.png" alt="Visioconférence" width="600">
+            <div class="note"><strong>ℹ️ Réseaux différents :</strong> les participants n'ont pas besoin d'être sur le même réseau. Une visioconférence (audio, vidéo, partage d'écran, invitations) fonctionne aussi entre un poste connecté au réseau de l'entreprise, un poste en Wi-Fi à domicile et un poste en partage de connexion mobile : les échanges transitent par le serveur lorsque la connexion directe est impossible.</div>
 
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 9. RESSOURCES MATÉRIELLES ═══ -->
+        <!-- ═══ 10. RESSOURCES MATÉRIELLES ═══ -->
         <div class="section" id="ressources-materielles">
             <h2><span class="section-icon">🔧</span>Gérer les ressources matérielles</h2>
 
             <h3>Ajouter une ressource matérielle</h3>
+            <div class="note"><strong>ℹ️ Droits :</strong> seuls le <strong>Responsable des ressources matérielles</strong> et l'<strong>Assistant ressources matérielles</strong> peuvent ajouter, modifier, supprimer et affecter une ressource matérielle. Un <strong>chef de service</strong> peut seulement réaffecter (service et agent) le matériel de son service et de ses sous-services. Pour les autres agents, y compris le Haut Dirigeant, l'onglet <strong>Ressources Matérielles</strong> est en consultation seule.</div>
             <ol class="steps">
                 <li><div class="step-content">Sélectionnez l'onglet <strong>Général</strong>.</div></li>
                 <li><div class="step-content">Sélectionnez la structure où la ressource matérielle sera affectée.</div></li>
                 <li><div class="step-content">Sélectionnez l'onglet <strong>Ressources Matérielles</strong> en bas de l'interface.</div></li>
                 <li><div class="step-content">Cliquez sur le bouton <img src="images/add.png" class="img-inline" alt="Ajouter">.</div></li>
-                <li><div class="step-content">Dans la boîte de dialogue, remplissez les informations requises et définissez les catégories si nécessaire.</div></li>
+                <li><div class="step-content">Dans la boîte de dialogue, choisissez la <strong>catégorie</strong> (ou ajoutez-en une), puis renseignez la <strong>désignation</strong>, la <strong>référence</strong> (qui doit être unique) et la <strong>date d'acquisition</strong>.</div></li>
+                <li><div class="step-content">Dans <strong>Affecter à</strong>, choisissez le service auquel le matériel est affecté.</div></li>
+                <li><div class="step-content">Dans <strong>Affecter à l'agent</strong>, choisissez éventuellement l'agent de ce service qui utilise le matériel, ou laissez <strong>— Personne —</strong> si le matériel est affecté au service seulement. La liste des agents se met à jour à chaque changement de service.</div></li>
                 <li><div class="step-content">Cliquez sur <strong>Ajouter</strong>.</div></li>
                 <li><div class="step-content">Vous pouvez continuer à ajouter d'autres ressources ou fermer la boîte de dialogue.</div></li>
             </ol>
-            <div class="note"><strong>ℹ️ Note :</strong> Le champ <strong>Date d'acquisition</strong> (optionnel) permet de garder la trace de la date d'entrée en service de la ressource.</div>
+            <div class="note"><strong>ℹ️ Note :</strong> Le tableau des ressources matérielles affiche la <strong>Référence</strong>, la désignation, la catégorie, le service et l'<strong>agent affectataire</strong> de chaque ressource. L'export CSV <img src="images/export.png" class="img-inline" alt="Exporter"> inclut également l'agent affectataire.</div>
 
             <h3>Modifier / Supprimer une ressource matérielle</h3>
             <ul class="feature-list">
-                <li>Pour <strong>modifier</strong>, sélectionnez la ressource dans l'onglet <strong>Ressources Matérielles</strong> et cliquez sur <img src="images/modif.png" class="img-inline" alt="Modifier">.</li>
+                <li>Pour <strong>modifier</strong>, sélectionnez la ressource dans l'onglet <strong>Ressources Matérielles</strong> et cliquez sur <img src="images/modif.png" class="img-inline" alt="Modifier">. La référence n'est plus modifiable après la création. Un chef de service peut uniquement réaffecter (service et agent) le matériel de son service et de ses sous-services.</li>
                 <li>Pour <strong>supprimer</strong>, sélectionnez la ressource et cliquez sur <img src="images/delete.png" class="img-inline" alt="Supprimer">.</li>
             </ul>
 
+            <h3>Consulter l'affectation du matériel (Responsable ressources matérielles / assistant)</h3>
+            <p>La fenêtre <strong>Affectation du matériel</strong> permet de voir quel matériel est affecté à un service et à ses agents.</p>
+            <ol class="steps">
+                <li><div class="step-content">Dans l'onglet <strong>Ressources Matérielles</strong>, cliquez sur le bouton <strong>Affectation du matériel</strong>.</div></li>
+                <li><div class="step-content">Choisissez le <strong>Service</strong>, puis dans la liste <strong>Agent</strong> :
+                    <ul>
+                        <li><strong>— Tout le matériel (service et sous-services) —</strong> : tout le matériel du service et de ses sous-services, quel que soit l'agent ; les colonnes <strong>Service</strong> et <strong>Agent affectataire</strong> s'affichent alors ;</li>
+                        <li><strong>— Personne (non affecté à un agent) —</strong> : le matériel du service qui n'est affecté à aucun agent ;</li>
+                        <li><strong>un agent</strong> : le matériel qui lui est affecté.</li>
+                    </ul></div></li>
+                <li><div class="step-content">Au-dessus du tableau, la liste <strong>Catégorie</strong> permet d'afficher <strong>toutes les catégories</strong> ou une seule catégorie de matériel.</div></li>
+                <li><div class="step-content">Le tableau affiche la <strong>Référence</strong>, la <strong>Désignation</strong> et la <strong>Date d'acquisition</strong> ; le nombre de matériels est indiqué sous les listes. Une barre de défilement apparaît lorsque la liste est longue.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Note :</strong> Ce bouton n'est actif que pour le <strong>Responsable des ressources matérielles</strong> et l'<strong>Assistant ressources matérielles</strong>. La fenêtre sert uniquement à consulter : les modifications se font avec <img src="images/modif.png" class="img-inline" alt="Modifier">.</div>
             <h3>Planifier une ressource matérielle</h3>
             <p>La planification des ressources matérielles se fait dans la section <a href="#gerer-projets"><strong>Gérer un projet ou une activité</strong></a>.</p>
 
@@ -911,7 +1018,7 @@
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 10. FINANCES & COMPTABILITÉ ═══ -->
+        <!-- ═══ 11. FINANCES & COMPTABILITÉ ═══ -->
         <div class="section" id="finances-comptabilite">
             <h2><span class="section-icon">💰</span>Finances &amp; Comptabilité</h2>
 
@@ -1000,9 +1107,11 @@
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 11. COMMUNICATION ═══ -->
+        <!-- ═══ 12. COMMUNICATION ═══ -->
         <div class="section" id="communication">
             <h2><span class="section-icon">💬</span>Appels audio, messages texte et messagerie instantanée</h2>
+
+            <div class="note"><strong>ℹ️ Réseaux différents :</strong> les appels audio, le chat et les messages fonctionnent même si les agents ne sont pas sur le même réseau (réseau de l'entreprise, Wi-Fi à domicile, partage de connexion mobile) : les échanges passent par le serveur lorsque la connexion directe est impossible.</div>
 
             <h3>Passer un appel audio</h3>
             <ol class="steps">
@@ -1015,14 +1124,30 @@
 
             <h3>Envoyer un message texte</h3>
             <ol class="steps">
-                <li><div class="step-content">Sélectionnez l'onglet <strong>Général</strong>.</div></li>
-                <li><div class="step-content">Sélectionnez l'onglet <strong>Ressources Humaines</strong> en bas de l'interface.</div></li>
-                <li><div class="step-content">Sélectionnez l'agent destinataire (même s'il est hors ligne).</div></li>
-                <li><div class="step-content">Cliquez sur le bouton <img src="images/message.png" class="img-inline" alt="Message">.</div></li>
-                <li><div class="step-content">Rédigez le message et cliquez sur <strong>Envoyer</strong>. Si le destinataire est en ligne, il le verra immédiatement ; sinon, il le verra lors de sa connexion. Il est possible d'envoyer un message à un groupe de destinataires <img src="images/group.png" class="img-inline" alt="Groupe">.</div></li>
+                <li><div class="step-content">Sélectionnez l'onglet <strong>Général</strong>, puis l'onglet <strong>Ressources Humaines</strong> en bas de l'interface.</div></li>
+                <li><div class="step-content">Sélectionnez l'agent destinataire (même s'il est hors ligne) et cliquez sur le bouton <img src="images/message.png" class="img-inline" alt="Message">. La fenêtre s'ouvre en mode <strong>À</strong> (rédaction).</div></li>
+                <li><div class="step-content">Ajoutez ou retirez des destinataires avec <img src="images/add.png" class="img-inline" alt="Ajouter"> (cochez les agents dans la liste ; ● indique un agent connecté), ou chargez un groupe de diffusion avec <img src="images/group.png" class="img-inline" alt="Groupe">.</div></li>
+                <li><div class="step-content">Saisissez l'<strong>Objet</strong> et le texte du message. Cochez <strong>Haute priorité</strong> si le message doit s'afficher en note autocollante chez le destinataire dès sa réception (ou dès sa connexion).</div></li>
+                <li><div class="step-content">Si besoin, joignez un document avec <img src="images/attachDoc.png" class="img-inline" alt="Joindre"> (16 Mo au maximum), puis cliquez sur <strong>Envoyer</strong>. Un compte rendu indique les destinataires atteints.</div></li>
             </ol>
-            <div class="note"><strong>ℹ️ Astuce :</strong> Un message texte reçu peut être converti en note autocollante pour les rappels <img src="images/sticky.png" class="img-inline" alt="Note autocollante"> ou supprimé si nécessaire <img src="images/strash.png" class="img-inline" alt="Supprimer">.</div>
-            <img src="images/textMessage.png" alt="Message texte" width="500">
+            <div class="note"><strong>ℹ️ Pièce jointe :</strong> Le destinataire télécharge le document depuis la fenêtre des messages. Le document est supprimé du serveur dès qu'il l'a enregistré, et dans tous les cas 48 heures après l'envoi.</div>
+            <img src="images/textMessage.png" alt="Message texte" width="650">
+
+            <h3>Consulter les messages reçus et envoyés</h3>
+            <p>Dans la fenêtre des messages, la liste en haut à gauche propose trois modes : <strong>À</strong> (rédaction), <strong>De</strong> (messages reçus) et <strong>Envoyés</strong>. En modes <strong>De</strong> et <strong>Envoyés</strong>, la fenêtre est divisée en deux parties :</p>
+            <ul class="feature-list">
+                <li><strong>À gauche</strong>, une ligne par correspondant (l'expéditeur en mode De, le destinataire en mode Envoyés) : son nom, la date et l'aperçu du dernier message, et le nombre de messages. Tant qu'il reste des messages non lus, le nom est en gras et un badge indique le nombre de nouveaux messages.</li>
+                <li><strong>À droite</strong>, tous les messages échangés avec ce correspondant, du plus ancien au plus récent : date, objet, texte et pièce jointe éventuelle.</li>
+                <li>Le champ du haut résume la boîte : nombre de messages et de messages non lus.</li>
+            </ul>
+            <p>En mode <strong>De</strong> :</p>
+            <ul class="feature-list">
+                <li>ouvrir une conversation marque ses messages comme lus ;</li>
+                <li><strong>Répondre</strong> rouvre la rédaction avec l'expéditeur comme destinataire et « RE : » devant l'objet ;</li>
+                <li>le message sélectionné à droite peut être converti en note autocollante <img src="images/sticky.png" class="img-inline" alt="Note autocollante">, supprimé <img src="images/strash.png" class="img-inline" alt="Supprimer"> ou, s'il porte une pièce jointe, téléchargé avec <img src="images/downloadDoc.png" class="img-inline" alt="Télécharger">.</li>
+            </ul>
+            <p>En mode <strong>Envoyés</strong>, chaque message indique s'il a été <strong>✓ Lu</strong> ou <strong>Non lu</strong> par son destinataire, ainsi que l'état de sa pièce jointe (pas encore téléchargée, ou plus disponible sur le serveur).</p>
+            <div class="note"><strong>ℹ️ Note :</strong> Un message envoyé et le message reçu sont un seul et même enregistrement. Pour cette raison, un message envoyé ne peut pas être supprimé depuis le mode Envoyés, et il disparaît de ce mode si son destinataire le supprime ou l'archive.</div>
 
             <h3>Démarrer un chat de messagerie instantanée</h3>
             <ol class="steps">
@@ -1036,7 +1161,26 @@
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 12. VOTES ÉLECTRONIQUES ═══ -->
+        <!-- ═══ 13. NOTIFICATIONS ═══ -->
+        <div class="section" id="notifications">
+            <h2><span class="section-icon">🔔</span>Centre des notifications</h2>
+
+            <p>La cloche 🔔, en haut à droite de l'onglet <strong>Général</strong>, regroupe l'historique de vos communications : appels audio, chats, messages texte et visioconférences, reçus ou émis, y compris les appels manqués, refusés ou sans réponse. Les responsables RH y reçoivent aussi les tentatives de pointage refusées. Une pastille rouge sur la cloche indique le nombre de notifications non lues.</p>
+            <ol class="steps">
+                <li><div class="step-content">Cliquez sur la cloche pour ouvrir la fenêtre <strong>Notifications des communications</strong>.</div></li>
+                <li><div class="step-content">Le tableau affiche la date, le type, le sens (reçu ou émis), le correspondant, le statut (accepté, manqué, refusé, ligne occupée, injoignable…) et le détail de chaque notification. Filtrez par type si nécessaire.</div></li>
+                <li><div class="step-content"><strong>Tout marquer comme lu</strong> remet le compteur de la cloche à zéro.</div></li>
+            </ol>
+            <ul class="feature-list">
+                <li><strong>Conserver</strong> protège les notifications sélectionnées ; <strong>Ne plus conserver</strong> retire cette protection.</li>
+                <li><strong>Supprimer</strong> efface les notifications sélectionnées ; <strong>Supprimer les non conservées</strong> efface toutes les autres.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Note :</strong> Les notifications sont enregistrées sur votre poste, pour votre compte uniquement. Au-delà de 1 000 notifications, les plus anciennes non conservées sont supprimées automatiquement.</div>
+
+            <a href="#top" class="back-to-top">↑ Retour en haut</a>
+        </div>
+
+        <!-- ═══ 14. VOTES ÉLECTRONIQUES ═══ -->
         <div class="section" id="votes-electroniques">
             <h2><span class="section-icon">🗳️</span>Votes électroniques</h2>
 
@@ -1049,7 +1193,7 @@
                 <li><div class="step-content">Créez et ajoutez les options de vote.</div></li>
                 <li><div class="step-content">Spécifiez l'heure de fin du vote.</div></li>
                 <li><div class="step-content">Cliquez sur <strong>Démarrer</strong> pour lancer le vote. Les options apparaîtront dans les interfaces de tous les participants afin qu'ils puissent voter.</div></li>
-                <li><div class="step-content">À la fin du vote, cliquez sur <strong>Arrêter</strong>. Les résultats apparaîtront dans les interfaces de tous les participants.</div></li>
+                <li><div class="step-content">À la fin du vote, cliquez sur <strong>Arrêter</strong>. Les résultats apparaîtront dans les interfaces de tous les participants invités au vote — y compris ceux qui n'ont pas voté — ainsi que chez l'organisateur. La liste des votants affichée ne comprend que les personnes ayant effectivement voté.</div></li>
             </ol>
 
             <div class="img-group">
@@ -1061,7 +1205,7 @@
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
 
-        <!-- ═══ 13. DIVERS ═══ -->
+        <!-- ═══ 15. DIVERS ═══ -->
         <div class="section" id="divers">
             <h2><span class="section-icon">✨</span>Divers : Matrice d'Eisenhower, notes autocollantes, groupes de diffusion</h2>
 
@@ -1115,10 +1259,11 @@
                 <div class="author-info">
                     <div class="name">Prof. Lamine THIAW</div>
                     <div class="role">Département de Génie Électrique<br>École Supérieure Polytechnique<br>Université Cheikh Anta Diop, Dakar</div>
-                    <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a>
+                    <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a><br>
+                    <a href="mailto:lamine.thiaw@esp.sn">lamine.thiaw@esp.sn</a>
                 </div>
             </div>
-            <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">Septembre 2026</p>
+            <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">Octobre 2026</p>
         </div>
 
     </div><!-- /content -->

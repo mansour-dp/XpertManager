@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 
-// Le guide utilisateur est le fichier HTML officiel (identique à l'aide du logiciel),
-// placé dans public/aide/. Pour le mettre à jour, il suffit de remplacer
-// public/aide/xPertManagerHelpfr.html et le dossier public/aide/images/.
-const GUIDE_URL = "/aide/xPertManagerHelpfr.html";
+// Utilise la dernière version du guide, qui comprend les sections Présences et Notifications.
+const GUIDE_URL = "/XpertManagerSite-maj2/public/aide/xPertManagerHelpFr.html";
 
 const Guide = () => {
 	useEffect(() => {

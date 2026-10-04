@@ -605,7 +605,7 @@
         <a href="#notifications"><span class="nav-icon">🔔</span>Notifications</a>
         <a href="#votes-electroniques"><span class="nav-icon">🗳️</span>Votes électroniques</a>
         <a href="#divers"><span class="nav-icon">✨</span>Divers</a>
-        <a href="#auteur"><span class="nav-icon">👤</span>Auteur</a>
+        <a href="#auteur"><span class="nav-icon">👤</span>Auteurs</a>
     </nav>
 </aside>
 
@@ -672,7 +672,7 @@
                 <li>l'organisation de votes électroniques</li>
                 <li>des outils d'organisation (tableau de bord avec matrice d'Eisenhower, notes autocollantes, rappels, etc.)</li>
             </ul>
-            <img src="images/login.png" alt="Écran de connexion" width="550">
+            <img src="images/login.png" alt="Onglet Activités" width="550">
             <p>Au démarrage de l'application, l'utilisateur peut choisir sa langue de travail : le français ou l'anglais (l'extension à d'autres langues est prévue dans les versions futures).</p>
             <p>La fenêtre de connexion propose trois boutons : <strong>Connecter</strong> ouvre votre espace de travail, <strong>Nouveau projet</strong> lance la création d'une nouvelle structure et de sa base de données (voir <a href="#creer-structures">Créer une structure</a>), et <strong>Annuler</strong> quitte l'application.</p>
             <p>L'interface client comprend cinq onglets :</p>
@@ -684,7 +684,7 @@
                 <li>création et affectation d'agents aux structures</li>
                 <li>création et affectation de ressources matérielles (à une structure et à un agent)</li>
                 <li>suivi des présences (badgeage par QR code)</li>
-                <li>communications entre agents et centre des notifications <img src="images/bell.png" class="img-inline" alt="Notifications"></li>
+                <li>communications entre agents et centre des notifications 🔔</li>
             </ul>
             <img src="images/general.png" alt="Onglet Général" width="650">
 
@@ -898,14 +898,14 @@
             <div class="note"><strong>ℹ️ Note :</strong> L'association est conservée par le navigateur du téléphone. Si vous changez de téléphone, utilisez la navigation privée ou effacez les données du navigateur, le pointage vous sera refusé : demandez aux RH de réinitialiser votre téléphone, puis identifiez-vous de nouveau au scan suivant.</div>
 
             <h3>Consulter les présences</h3>
-            <p>Dans l'onglet <strong>Général</strong>, sélectionnez l'onglet <strong>Ressources humaines</strong> en bas de l'interface et cliquez sur <img src="images/attendance.png" class="img-inline" alt="Présences">. La fenêtre <strong>Présences (badgeage par QR code)</strong> s'ouvre.</p>
+            <p>Dans l'onglet <strong>Général</strong>, sélectionnez l'onglet <strong>Ressources humaines</strong> en bas de l'interface et cliquez sur ⏱️. La fenêtre <strong>Présences (badgeage par QR code)</strong> s'ouvre.</p>
             <ol class="steps">
                 <li><div class="step-content">Choisissez la période (<strong>Du</strong> / <strong>Au</strong>), puis, si besoin, une <strong>Structure</strong> et un <strong>Agent</strong>, et cliquez sur <strong>Actualiser</strong>.</div></li>
                 <li><div class="step-content">L'onglet <strong>Récapitulatif journalier</strong> présente une ligne par agent et par jour : arrivée, départ, durée de présence, nombre de pointages et observations (départ non badgé, saisie manuelle, tentatives refusées…).</div></li>
                 <li><div class="step-content">L'onglet <strong>Détail des pointages</strong> liste chaque pointage : heure, type, statut (enregistré ou refusé), origine (QR code ou manuel), motif et adresse IP.</div></li>
                 <li><div class="step-content"><strong>Exporter CSV</strong> enregistre le tableau affiché dans un fichier lisible par un tableur.</div></li>
             </ol>
-            <img src="images/attendanceWindow.png" alt="Présences (badgeage par QR code)" width="700">
+            <img src="images/attendanceWindow.png" alt="Fenêtre des présences et des pointages" width="700">
             <p>Ce que chacun peut consulter :</p>
             <ul class="feature-list">
                 <li>le <strong>responsable RH</strong>, son <strong>assistant</strong> et le <strong>TOP Manager</strong> voient les pointages de tous les agents ;</li>
@@ -1047,7 +1047,7 @@
             <h3>Consulter l'affectation du matériel (Responsable ressources matérielles / assistant)</h3>
             <p>La fenêtre <strong>Affectation du matériel</strong> permet de voir quel matériel est affecté à un service et à ses agents.</p>
             <ol class="steps">
-                <li><div class="step-content">Dans l'onglet <strong>Ressources Matérielles</strong>, cliquez sur le bouton <img src="images/agentMaterial.png" class="img-inline" alt="Affectation du matériel">.</div></li>
+                <li><div class="step-content">Dans l'onglet <strong>Ressources Matérielles</strong>, cliquez sur le bouton <strong>Affectation du matériel</strong>.</div></li>
                 <li><div class="step-content">Choisissez le <strong>Service</strong>, puis dans la liste <strong>Agent</strong> :
                     <ul>
                         <li><strong>— Tout le matériel (service et sous-services) —</strong> : tout le matériel du service et de ses sous-services, quel que soit l'agent ; les colonnes <strong>Service</strong> et <strong>Agent affectataire</strong> s'affichent alors ;</li>
@@ -1058,8 +1058,6 @@
                 <li><div class="step-content">Le tableau affiche la <strong>Référence</strong>, la <strong>Désignation</strong> et la <strong>Date d'acquisition</strong> ; le nombre de matériels est indiqué sous les listes. Une barre de défilement apparaît lorsque la liste est longue.</div></li>
             </ol>
             <div class="note"><strong>ℹ️ Note :</strong> Ce bouton n'est actif que pour le <strong>Responsable des ressources matérielles</strong> et l'<strong>Assistant ressources matérielles</strong>. La fenêtre sert uniquement à consulter : les modifications se font avec <img src="images/modif.png" class="img-inline" alt="Modifier">.</div>
-            <img src="images/materialRessourcesAssignment.png" alt="Affectation du matériel" width="650">
-
             <h3>Planifier une ressource matérielle</h3>
             <p>La planification des ressources matérielles se fait dans la section <a href="#gerer-projets"><strong>Gérer un projet ou une activité</strong></a>.</p>
 
@@ -1218,7 +1216,7 @@
         <div class="section" id="notifications">
             <h2><span class="section-icon">🔔</span>Centre des notifications</h2>
 
-            <p>La cloche <img src="images/bell.png" class="img-inline" alt="Notifications">, en haut à droite de l'onglet <strong>Général</strong>, regroupe l'historique de vos communications : appels audio, chats, messages texte et visioconférences, reçus ou émis, y compris les appels manqués, refusés ou sans réponse. Les responsables RH y reçoivent aussi les tentatives de pointage refusées. Une pastille rouge sur la cloche indique le nombre de notifications non lues.</p>
+            <p>La cloche 🔔, en haut à droite de l'onglet <strong>Général</strong>, regroupe l'historique de vos communications : appels audio, chats, messages texte et visioconférences, reçus ou émis, y compris les appels manqués, refusés ou sans réponse. Les responsables RH y reçoivent aussi les tentatives de pointage refusées. Une pastille rouge sur la cloche indique le nombre de notifications non lues.</p>
             <ol class="steps">
                 <li><div class="step-content">Cliquez sur la cloche pour ouvrir la fenêtre <strong>Notifications des communications</strong>.</div></li>
                 <li><div class="step-content">Le tableau affiche la date, le type, le sens (reçu ou émis), le correspondant, le statut (accepté, manqué, refusé, ligne occupée, injoignable…) et le détail de chaque notification. Filtrez par type si nécessaire.</div></li>
@@ -1274,7 +1272,7 @@
 
             <h3>Créer des notes autocollantes</h3>
             <ol class="steps">
-                <li><div class="step-content">Dans l'onglet <strong>Général</strong>, cliquez sur le bouton <img src="images/sticky.png" class="img-inline" alt="Post-it"> et choisissez <strong>Éditer...</strong>.</div></li>
+                <li><div class="step-content">Dans  l'onglet <strong>Général</strong>, cliquez sur le bouton <img src="images/sticky.png" class="img-inline" alt="Post-it"> et choisissez <strong>Editer...</strong>.</div></li>
                 <li><div class="step-content">Dans la boîte de dialogue, cliquez sur <strong>Ajouter</strong> pour créer une note autocollante.</div></li>
                 <li><div class="step-content">Vous pouvez continuer à créer d'autres notes ou fermer la boîte de dialogue.</div></li>
             </ol>
@@ -1297,7 +1295,7 @@
                 <li><div class="step-content">Sélectionnez l'onglet <strong>Ressources Humaines</strong> en bas de l'interface.</div></li>
                 <li><div class="step-content">Cliquez sur le bouton <img src="images/group.png" class="img-inline" alt="Groupe">.</div></li>
                 <li><div class="step-content">Dans la boîte de dialogue, entrez le nom du groupe et ajoutez des membres.</div></li>
-                <li><div class="step-content">Enregistrez le groupe dans un fichier pour une utilisation future.</div></li>
+                <li><div class="step-content">Sauvegardez le groupe dans un fichier pour une utilisation future.</div></li>
             </ol>
             <img src="images/diffusionGroup.png" alt="Groupe de diffusion" width="400">
 
@@ -1323,7 +1321,7 @@
                     <div class="author-info">
                         <span class="label">Co-auteur</span>
                         <div class="name">Malick Thiaw</div>
-                        <a href="mailto:malick@niitan.com">malick@niitan.com</a>
+                        <a href="mailto:malickthiaw012@gmail.com">malickthiaw012@gmail.com</a>
                     </div>
                 </div>
             </div>

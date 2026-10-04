@@ -584,12 +584,14 @@
         <a href="#gerer-personnel"><span class="nav-icon">👥</span>Staff</a>
         <a href="#conges"><span class="nav-icon">🌴</span>Leave</a>
         <a href="#fiches-de-paie"><span class="nav-icon">🧾</span>Payslips</a>
+        <a href="#presences"><span class="nav-icon">⏱️</span>Attendance (QR code clock-in)</a>
         <a href="#gerer-projets"><span class="nav-icon">📁</span>Projects &amp; Activities</a>
         <a href="#creer-evenements"><span class="nav-icon">📅</span>Events</a>
         <a href="#conferences-video"><span class="nav-icon">🎥</span>Video conferences</a>
         <a href="#ressources-materielles"><span class="nav-icon">🔧</span>Material resources</a>
         <a href="#finances-comptabilite"><span class="nav-icon">💰</span>Finance &amp; Accounting</a>
         <a href="#communication"><span class="nav-icon">💬</span>Communication</a>
+        <a href="#notifications"><span class="nav-icon">🔔</span>Notification center</a>
         <a href="#votes-electroniques"><span class="nav-icon">🗳️</span>Electronic voting</a>
         <a href="#divers"><span class="nav-icon">✨</span>Miscellaneous</a>
         <a href="#auteur"><span class="nav-icon">👤</span>Author</a>
@@ -631,14 +633,16 @@
                 <a href="#gerer-personnel"><span class="toc-num">03</span>Managing staff</a>
                 <a href="#conges"><span class="toc-num">04</span>Managing leave</a>
                 <a href="#fiches-de-paie"><span class="toc-num">05</span>Managing payslips</a>
-                <a href="#gerer-projets"><span class="toc-num">06</span>Creating and managing projects</a>
-                <a href="#creer-evenements"><span class="toc-num">07</span>Creating and organizing events</a>
-                <a href="#conferences-video"><span class="toc-num">08</span>Organizing video conferences</a>
-                <a href="#ressources-materielles"><span class="toc-num">09</span>Managing material resources</a>
-                <a href="#finances-comptabilite"><span class="toc-num">10</span>Finance and accounting</a>
-                <a href="#communication"><span class="toc-num">11</span>Audio calls, messages and chat</a>
-                <a href="#votes-electroniques"><span class="toc-num">12</span>Electronic voting</a>
-                <a href="#divers"><span class="toc-num">13</span>Miscellaneous</a>
+                <a href="#presences"><span class="toc-num">06</span>Attendance (QR code clock-in)</a>
+                <a href="#gerer-projets"><span class="toc-num">07</span>Creating and managing projects</a>
+                <a href="#creer-evenements"><span class="toc-num">08</span>Creating and organizing events</a>
+                <a href="#conferences-video"><span class="toc-num">09</span>Organizing video conferences</a>
+                <a href="#ressources-materielles"><span class="toc-num">10</span>Managing material resources</a>
+                <a href="#finances-comptabilite"><span class="toc-num">11</span>Finance and accounting</a>
+                <a href="#communication"><span class="toc-num">12</span>Audio calls, messages and chat</a>
+                <a href="#notifications"><span class="toc-num">13</span>Notification center</a>
+                <a href="#votes-electroniques"><span class="toc-num">14</span>Electronic voting</a>
+                <a href="#divers"><span class="toc-num">15</span>Miscellaneous</a>
             </div>
         </div>
 
@@ -650,9 +654,10 @@
 
             <ul class="feature-list">
                 <li>management of human, material and financial resources</li>
+                <li>attendance tracking by QR code, using agents' phones</li>
                 <li>project management: design, planning/scheduling, monitoring and organization of activities</li>
                 <li>event management: creation, planning and sharing</li>
-                <li>communication management: audio calls, text messages, instant messaging, video conferencing</li>
+                <li>communication management: audio calls, text messages, instant messaging, video conferencing and a notification center</li>
                 <li>organization of electronic votes</li>
                 <li>organization tools (dashboard with Eisenhower matrix, sticky notes, reminders, etc.)</li>
             </ul>
@@ -837,7 +842,55 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 6. PROJECTS ═══ -->
+        <!-- ═══ 6. ATTENDANCE ═══ -->
+        <div class="section" id="presences">
+            <h2><span class="section-icon">⏱️</span>Attendance (QR code clock-in)</h2>
+
+            <p>Agents record their <strong>arrivals</strong> and <strong>departures</strong> by scanning, with their phone's camera, the QR code shown on a kiosk placed at the office entrance. No app needs to be installed: the scan opens a web page. The QR code changes every 30 seconds, and a clock-in is only accepted when the phone is connected to the office Wi-Fi, so a photo of the code or a clock-in from home is refused.</p>
+
+            <h3>Clock in (agent)</h3>
+            <ol class="steps">
+                <li><div class="step-content">At the entrance, scan the kiosk's QR code with your phone's camera, then open the suggested link. The phone must be connected to the office Wi-Fi.</div></li>
+                <li><div class="step-content"><strong>On the first scan only</strong>, enter your xPertManager user name and password: your phone is then linked to your account. Only one phone can be linked to an agent.</div></li>
+                <li><div class="step-content">After that, scanning is enough: the page confirms the clock-in and shows the recorded time.</div></li>
+            </ol>
+            <ul class="feature-list">
+                <li>The clock-in type is automatic: the first scan of the day is an <strong>arrival</strong>, the next one a <strong>departure</strong>, and so on.</li>
+                <li>The recorded time is the server's time, not the phone's.</li>
+                <li>A second scan less than two minutes after the previous one is ignored.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Note:</strong> The link is kept by the phone's web browser. If you change phones, use private browsing or clear the browser's data, the clock-in will be refused: ask HR to reset your phone, then sign in again at the next scan.</div>
+
+            <h3>View attendance</h3>
+            <p>In the <strong>General</strong> tab, select the <strong>Human Resources</strong> tab at the bottom of the interface and click <img src="images/attendance.png" class="img-inline" alt="Attendance">. The <strong>Attendance (QR code clock-in)</strong> window opens.</p>
+            <ol class="steps">
+                <li><div class="step-content">Choose the period (<strong>From</strong> / <strong>To</strong>), then, if needed, a <strong>Structure</strong> and an <strong>Agent</strong>, and click <strong>Refresh</strong>.</div></li>
+                <li><div class="step-content">The <strong>Daily summary</strong> tab shows one line per agent and per day: arrival, departure, time present, number of clock-ins and remarks (departure not clocked, manual entry, refused attempts…).</div></li>
+                <li><div class="step-content">The <strong>All clock-ins</strong> tab lists each clock-in: time, type, status (recorded or refused), origin (QR code or manual), reason and IP address.</div></li>
+                <li><div class="step-content"><strong>Export CSV</strong> saves the displayed table to a file that opens in a spreadsheet.</div></li>
+            </ol>
+            <img src="images/attendanceWindow.png" alt="Attendance records window" width="700">
+            <p>Who can see what:</p>
+            <ul class="feature-list">
+                <li>the <strong>HR manager</strong>, their <strong>assistant</strong> and the <strong>TOP Manager</strong> see the clock-ins of all agents;</li>
+                <li>a <strong>structure manager</strong> sees those of the agents of their structure and its sub-structures;</li>
+                <li>other agents see only their own clock-ins.</li>
+            </ul>
+
+            <h3>Manage attendance (HR manager, HR assistant, TOP Manager)</h3>
+            <ul class="feature-list">
+                <li><strong>Manual clock-in…</strong> records a missed clock-in (agent, date, time, type and required reason). The entry is recorded under your name.</li>
+                <li><strong>Cancel clock-in…</strong> cancels the selected entry. It remains in the history, marked as cancelled.</li>
+                <li><strong>Agent's phone…</strong> shows the phone linked to the selected agent (link date and last use) and lets you <strong>reset</strong> it, for example after a phone change or loss.</li>
+                <li><strong>Entrance kiosk…</strong> gives you the page address to open full-screen on the tablet or PC at the entrance, connected to the office Wi-Fi. Keep this address confidential.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Notifications:</strong> Each clock-in updates the Attendance window in real time. Refused attempts (expired code, phone outside office Wi-Fi, unrecognized phone) appear in HR managers' <a href="#notifications">notification center</a>.</div>
+            <div class="note"><strong>ℹ️ For administrators:</strong> Clock-in is integrated with the xPertManager server. In production, the clock-in page must be served over <strong>HTTPS</strong> (domain name and certificate), because agents enter their password the first time they link a phone.</div>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 7. PROJECTS ═══ -->
         <div class="section" id="gerer-projets">
             <h2><span class="section-icon">📁</span>Creating and managing projects or activities</h2>
 
@@ -873,7 +926,7 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 7. EVENTS ═══ -->
+        <!-- ═══ 8. EVENTS ═══ -->
         <div class="section" id="creer-evenements">
             <h2><span class="section-icon">📅</span>Creating and organizing events</h2>
 
@@ -895,7 +948,7 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 8. VIDEO CONFERENCES ═══ -->
+        <!-- ═══ 9. VIDEO CONFERENCES ═══ -->
         <div class="section" id="conferences-video">
             <h2><span class="section-icon">🎥</span>Organizing a video conference</h2>
 
@@ -929,7 +982,7 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 9. MATERIAL RESOURCES ═══ -->
+        <!-- ═══ 10. MATERIAL RESOURCES ═══ -->
         <div class="section" id="ressources-materielles">
             <h2><span class="section-icon">🔧</span>Managing material resources</h2>
 
@@ -962,7 +1015,7 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 10. FINANCE & ACCOUNTING ═══ -->
+        <!-- ═══ 11. FINANCE & ACCOUNTING ═══ -->
         <div class="section" id="finances-comptabilite">
             <h2><span class="section-icon">💰</span>Finance &amp; Accounting</h2>
 
@@ -1051,7 +1104,7 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 11. COMMUNICATION ═══ -->
+        <!-- ═══ 12. COMMUNICATION ═══ -->
         <div class="section" id="communication">
             <h2><span class="section-icon">💬</span>Audio calls, text messages and instant messaging</h2>
 
@@ -1087,7 +1140,26 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 12. ELECTRONIC VOTING ═══ -->
+        <!-- ═══ 13. NOTIFICATIONS ═══ -->
+        <div class="section" id="notifications">
+            <h2><span class="section-icon">🔔</span>Notification center</h2>
+
+            <p>The bell <img src="images/bell.png" class="img-inline" alt="Notifications">, at the top right of the <strong>General</strong> tab, keeps the history of your communications: audio calls, chats, text messages and video conferences, received or placed, including missed, declined or unanswered calls. HR managers also receive refused clock-in attempts there. A red badge on the bell shows the number of unread notifications.</p>
+            <ol class="steps">
+                <li><div class="step-content">Click the bell to open the <strong>Communication notifications</strong> window.</div></li>
+                <li><div class="step-content">The table shows the date, type, direction (received or sent), contact, status (answered, missed, declined, line busy, unreachable…) and details of each notification. Filter by type if needed.</div></li>
+                <li><div class="step-content"><strong>Mark all as read</strong> resets the bell's counter.</div></li>
+            </ol>
+            <ul class="feature-list">
+                <li><strong>Keep</strong> protects the selected notifications; <strong>Don't keep</strong> removes that protection.</li>
+                <li><strong>Delete</strong> removes the selected notifications; <strong>Delete not kept</strong> removes all the others.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Note:</strong> Notifications are stored on your computer, for your account only. Beyond 1,000 notifications, the oldest ones that are not kept are deleted automatically.</div>
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 14. ELECTRONIC VOTING ═══ -->
         <div class="section" id="votes-electroniques">
             <h2><span class="section-icon">🗳️</span>Electronic voting</h2>
 
@@ -1112,7 +1184,7 @@
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
 
-        <!-- ═══ 13. MISCELLANEOUS ═══ -->
+        <!-- ═══ 15. MISCELLANEOUS ═══ -->
         <div class="section" id="divers">
             <h2><span class="section-icon">✨</span>Miscellaneous: Eisenhower matrix, sticky notes, distribution groups</h2>
 
@@ -1176,7 +1248,7 @@
                     <div class="author-info">
                         <span class="label">Co-author</span>
                         <div class="name">Malick Thiaw</div>
-                        <a href="mailto:malickthiaw012@gmail.com">malickthiaw012@gmail.com</a>
+                        <a href="mailto:malick@niitan.com">malick@niitan.com</a>
                     </div>
                 </div>
             </div>

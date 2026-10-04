@@ -224,25 +224,6 @@
             min-width: 0;
         }
 
-        /* Liste imbriquée dans une étape : simple liste à puces (pas de numéro ni d'encadré) */
-        .steps .step-content ul {
-            list-style: disc;
-            padding-left: 22px;
-            margin: 6px 0 0;
-        }
-        .steps .step-content li {
-            display: list-item;
-            counter-increment: none;
-            margin: 4px 0;
-            padding: 0;
-            background: none;
-            border: none;
-            border-radius: 0;
-        }
-        .steps .step-content li::before {
-            content: none;
-        }
-
         /* Inner wrapper for step content */
         .step-content {
             flex: 1;
@@ -411,6 +392,44 @@
             border: 1px solid rgba(255,255,255,0.25);
         }
 
+        .language-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            text-decoration: none;
+            animation: language-pulse 2s ease-in-out infinite;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .language-link small {
+            font-family: inherit;
+            font-size: 0.58rem;
+            line-height: 1.2;
+        }
+
+        .language-link:hover,
+        .language-link:focus-visible {
+            background: rgba(255,255,255,0.28);
+            transform: translateY(-2px);
+        }
+
+        .language-link:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        @keyframes language-pulse {
+            50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.12); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .language-link {
+                animation: none;
+                transition: none;
+            }
+        }
+
         /* ── AUTHOR CARD ── */
         .author-card {
             background: var(--surface2);
@@ -472,6 +491,7 @@
         .deploy-card .role { font-size: 0.83rem; color: var(--text-muted); }
         .deploy-card a { color: var(--primary-light); font-size: 0.83rem; }
 
+        /* ── DOCUMENT FOOTER ── */
         #doc-footer {
             border-top: 1px solid var(--border);
             margin: 0 50px;
@@ -547,37 +567,6 @@
                 break-inside: avoid-page;
             }
         }
-
-        .language-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            text-decoration: none;
-            animation: language-pulse 2s ease-in-out infinite;
-            transition: transform 180ms ease, background 180ms ease;
-        }
-
-        .language-link small {
-            font-family: inherit;
-            font-size: 0.58rem;
-            line-height: 1.2;
-        }
-
-        .language-link:hover,
-        .language-link:focus-visible {
-            background: rgba(255,255,255,0.28);
-            transform: translateY(-2px);
-        }
-
-        .language-link:focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 3px;
-        }
-
-        @keyframes language-pulse {
-            50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.12); }
-        }
     </style>
 </head>
 <body>
@@ -587,7 +576,7 @@
 <aside id="sidebar">
     <div id="sidebar-header">
         <div class="app-name">xPertManager</div>
-        <div class="app-version">v1.1.0 · Documentation</div>
+        <div class="app-version">v1.0 · Documentation</div>
     </div>
     <nav>
         <a href="#description-produit"><span class="nav-icon">📋</span>Product description</a>
@@ -595,14 +584,14 @@
         <a href="#gerer-personnel"><span class="nav-icon">👥</span>Staff</a>
         <a href="#conges"><span class="nav-icon">🌴</span>Leave</a>
         <a href="#fiches-de-paie"><span class="nav-icon">🧾</span>Payslips</a>
-        <a href="#presences"><span class="nav-icon">⏱️</span>Attendance (clock-in)</a>
+        <a href="#presences"><span class="nav-icon">⏱️</span>Attendance (QR code clock-in)</a>
         <a href="#gerer-projets"><span class="nav-icon">📁</span>Projects &amp; Activities</a>
         <a href="#creer-evenements"><span class="nav-icon">📅</span>Events</a>
         <a href="#conferences-video"><span class="nav-icon">🎥</span>Video conferences</a>
         <a href="#ressources-materielles"><span class="nav-icon">🔧</span>Material resources</a>
         <a href="#finances-comptabilite"><span class="nav-icon">💰</span>Finance &amp; Accounting</a>
         <a href="#communication"><span class="nav-icon">💬</span>Communication</a>
-        <a href="#notifications"><span class="nav-icon">🔔</span>Notifications</a>
+        <a href="#notifications"><span class="nav-icon">🔔</span>Notification center</a>
         <a href="#votes-electroniques"><span class="nav-icon">🗳️</span>Electronic voting</a>
         <a href="#divers"><span class="nav-icon">✨</span>Miscellaneous</a>
         <a href="#auteur"><span class="nav-icon">👤</span>Author</a>
@@ -617,9 +606,9 @@
         <h1>xPertManager</h1>
         <div class="tagline">Integrated management platform for organizations</div>
         <div class="badges">
-            <span class="badge">Version 1.1.0</span>
-            <span class="badge">October 2026</span>
-            <a class="badge language-link" href="xPertManagerHelpFr.html" hreflang="fr" aria-label="Click to view the French version">
+            <span class="badge">Version 2.0</span>
+            <span class="badge">September 2026</span>
+            <a class="badge language-link" href="xPertManagerHelpfr.html" hreflang="fr" aria-label="Click to view the French version">
                 FR / EN
                 <small>Click for the French version</small>
             </a>
@@ -629,7 +618,7 @@
     <!-- Top bar -->
     <div id="topbar">
         <h1>User Guide</h1>
-        <span class="meta">Documentation · October 2026</span>
+        <span class="meta">Documentation · September 2026</span>
     </div>
 
     <!-- Content -->
@@ -665,16 +654,15 @@
 
             <ul class="feature-list">
                 <li>management of human, material and financial resources</li>
-                <li>attendance tracking by scanning a QR code with the agents' phones</li>
+                <li>attendance tracking by QR code, using agents' phones</li>
                 <li>project management: design, planning/scheduling, monitoring and organization of activities</li>
                 <li>event management: creation, planning and sharing</li>
-                <li>communication management: audio calls, text messages, instant messaging, video conferencing, with a notification center</li>
+                <li>communication management: audio calls, text messages, instant messaging, video conferencing and a notification center</li>
                 <li>organization of electronic votes</li>
                 <li>organization tools (dashboard with Eisenhower matrix, sticky notes, reminders, etc.)</li>
             </ul>
             <img src="images/login.png" alt="Login screen" width="550">
             <p>When the application starts, the user can choose the working language: French or English (support for other languages is planned for future versions).</p>
-            <p>The login window offers three buttons: <strong>Connect</strong> opens your workspace, <strong>New project</strong> starts the creation of a new structure and its database (see <a href="#creer-structures">Create a structure</a>), and <strong>Cancel</strong> quits the application.</p>
             <p>The client interface has five tabs:</p>
 
             <h3>General tab</h3>
@@ -682,9 +670,8 @@
             <ul class="feature-list">
                 <li>creation of structures and sub-structures</li>
                 <li>creation of agents and their assignment to structures</li>
-                <li>creation and assignment of material resources (to a structure and to an agent)</li>
-                <li>attendance tracking (QR code clock-in)</li>
-                <li>communication between agents and notification center <img src="images/bell.png" class="img-inline" alt="Notifications"></li>
+                <li>creation and assignment of material resources</li>
+                <li>communication between agents</li>
             </ul>
             <img src="images/general.png" alt="General tab" width="650">
 
@@ -726,7 +713,8 @@
 
             <h3>Create a structure</h3>
             <ol class="steps">
-                <li><div class="step-content">When the application starts, in the login window, choose the working language and click the <strong>New project</strong> button.</div></li>
+                <li><div class="step-content">After launching the application, choose the working language and click the <strong>Cancel</strong> button.</div></li>
+                <li><div class="step-content">In the <strong>General</strong> tab, click the <img src="images/new.png" class="img-inline" alt="New"> button.</div></li>
                 <li><div class="step-content">In the dialog box that appears, enter the name of the structure and the name of its associated database. Also define the staff categories and activity types by clicking the corresponding buttons. You can also fill in the <strong>structure description</strong> field.</div></li>
                 <li><div class="step-content">Then click the <strong>Create</strong> button.</div></li>
             </ol>
@@ -776,18 +764,6 @@
                 <li>To <strong>edit</strong> an agent, select them and click <img src="images/modif.png" class="img-inline" alt="Edit"> in the <strong>Human Resources</strong> tab.</li>
                 <li>To <strong>delete</strong> an agent, select them and click <img src="images/delete.png" class="img-inline" alt="Delete"> in the <strong>Human Resources</strong> tab.</li>
             </ul>
-
-            <h3>Agent access rights</h3>
-            <p>Each agent is given an access right that determines which modules and actions are available to them:</p>
-            <ul class="feature-list">
-                <li><strong>Top Manager</strong> — full access; can grant every right.</li>
-                <li><strong>Human Resources Manager</strong> and <strong>Human Resources Assistant</strong> — staff and <a href="#presences">attendance</a> management; can grant every right except Top Manager.</li>
-                <li><strong>Finance and Accounting Manager</strong> and <strong>Finance and Accounting Assistant</strong> — Finance &amp; Accounting module. The manager can grant the Ordinary, Finance Assistant and Finance Manager rights.</li>
-                <li><strong>Material Resources Manager</strong> and <strong>Material Resources Assistant</strong> — the only ones who can add, edit and delete material and freely assign it (department, agent); review of material assignment. The manager can grant the Ordinary, Material Resources Assistant and Material Resources Manager rights.</li>
-                <li><strong>Manager</strong> (head of department) — manages their department; can grant the Ordinary and Manager rights.</li>
-                <li><strong>Ordinary</strong> — access to everyday features (activities, events, communication, leave and payslip self-service).</li>
-            </ul>
-            <div class="note"><strong>ℹ️ New:</strong> the <strong>Material Resources Assistant</strong> right lets an agent assist the Material Resources Manager, in particular to review <a href="#ressources-materielles">material assignment</a>.</div>
 
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
@@ -861,18 +837,6 @@
             <h3>Configure the payroll template (HR manager)</h3>
             <p>The <strong>Payslip template</strong> card — “Configure earnings, deductions and employer charges” — defines the items offered when generating a new payslip (see the overview of the <a href="#conges">Human resources management</a> module above).</p>
 
-            <h3>IPRES contributions and income tax (automatic computation)</h3>
-            <ol class="steps">
-                <li><div class="step-content">In <strong>Payslip template</strong>, click <strong>Legal rubrics (IPRES, IR)</strong>: the missing rubrics are created once and for all (IPRES general scheme and managers' scheme, employee and employer shares, and the income tax).</div></li>
-                <li><div class="step-content">On the record of each manager, tick <strong>Cadre (IPRES managers' scheme)</strong>.</div></li>
-            </ol>
-            <ul class="feature-list">
-                <li><strong>IPRES general scheme</strong> (every agent): 5.60% employee and 8.40% employer, on the gross capped at 432,000 FCFA a month.</li>
-                <li><strong>IPRES managers' scheme</strong> (agents ticked "Cadre"): 2.40% employee and 3.60% employer, on the part of the gross between 432,000 and 1,296,000 FCFA.</li>
-                <li><strong>Income tax</strong>: computed from the official withholding scale, after the 30% abatement (at most 75,000 FCFA a month) and according to the agent's fiscal parts (marital status and dependent children).</li>
-            </ul>
-            <div class="note"><strong>ℹ️ Note:</strong> The IPRES employee share lowers the net but not the income tax base: the 30% abatement already stands for retirement contributions (CGI, art. 168 b). A transport allowance (expense reimbursement) is entered as a net adjustment (+), not as an earning, so it stays out of the IPRES base. Rates remain editable in the template; a rate left empty takes the legal rate.</div>
-
             <p>Settlement of an already validated payslip is handled in the <a href="#finances-comptabilite">Finance &amp; Accounting</a> module, via the <strong>Payroll settlement</strong> card.</p>
 
             <a href="#top" class="back-to-top">↑ Back to top</a>
@@ -898,14 +862,14 @@
             <div class="note"><strong>ℹ️ Note:</strong> The link is kept by the phone's web browser. If you change phones, use private browsing or clear the browser's data, the clock-in will be refused: ask HR to reset your phone, then sign in again at the next scan.</div>
 
             <h3>View attendance</h3>
-            <p>In the <strong>General</strong> tab, select the <strong>Human Resources</strong> tab at the bottom of the interface and click <img src="images/attendance.png" class="img-inline" alt="Attendance">. The <strong>Attendance (QR clock-in)</strong> window opens.</p>
+            <p>In the <strong>General</strong> tab, select the <strong>Human Resources</strong> tab at the bottom of the interface and click <img src="images/attendance.png" class="img-inline" alt="Attendance">. The <strong>Attendance (QR code clock-in)</strong> window opens.</p>
             <ol class="steps">
                 <li><div class="step-content">Choose the period (<strong>From</strong> / <strong>To</strong>), then, if needed, a <strong>Structure</strong> and an <strong>Agent</strong>, and click <strong>Refresh</strong>.</div></li>
                 <li><div class="step-content">The <strong>Daily summary</strong> tab shows one line per agent and per day: arrival, departure, time present, number of clock-ins and remarks (departure not clocked, manual entry, refused attempts…).</div></li>
                 <li><div class="step-content">The <strong>All clock-ins</strong> tab lists each clock-in: time, type, status (recorded or refused), origin (QR code or manual), reason and IP address.</div></li>
                 <li><div class="step-content"><strong>Export CSV</strong> saves the displayed table to a file that opens in a spreadsheet.</div></li>
             </ol>
-            <img src="images/attendanceWindow.png" alt="Attendance (QR clock-in)" width="700">
+            <img src="images/attendanceWindow.png" alt="Attendance records window" width="700">
             <p>Who can see what:</p>
             <ul class="feature-list">
                 <li>the <strong>HR manager</strong>, their <strong>assistant</strong> and the <strong>TOP Manager</strong> see the clock-ins of all agents;</li>
@@ -915,13 +879,13 @@
 
             <h3>Manage attendance (HR manager, HR assistant, TOP Manager)</h3>
             <ul class="feature-list">
-                <li><strong>Manual entry…</strong>: records a forgotten clock-in (agent, date, time, type and a required reason). The entry is traced with your name.</li>
-                <li><strong>Cancel the clock-in…</strong>: cancels the selected clock-in. It stays in the history, marked as cancelled.</li>
-                <li><strong>Agent's phone…</strong>: shows the phone linked to the chosen agent (link date, last use) and lets you <strong>reset</strong> it, for example after a phone change or loss.</li>
-                <li><strong>Entrance kiosk…</strong>: gives the address of the page to open in full screen on the tablet or PC placed at the entrance, connected to the office Wi-Fi. Keep this address confidential.</li>
+                <li><strong>Manual clock-in…</strong> records a missed clock-in (agent, date, time, type and required reason). The entry is recorded under your name.</li>
+                <li><strong>Cancel clock-in…</strong> cancels the selected entry. It remains in the history, marked as cancelled.</li>
+                <li><strong>Agent's phone…</strong> shows the phone linked to the selected agent (link date and last use) and lets you <strong>reset</strong> it, for example after a phone change or loss.</li>
+                <li><strong>Entrance kiosk…</strong> gives you the page address to open full-screen on the tablet or PC at the entrance, connected to the office Wi-Fi. Keep this address confidential.</li>
             </ul>
-            <div class="note"><strong>ℹ️ Notifications:</strong> Each clock-in updates the Attendance window in real time. Refused attempts (expired code, phone outside the office Wi-Fi, unrecognized phone) appear in the HR managers' <a href="#notifications">notification center</a>.</div>
-            <div class="note"><strong>ℹ️ For the administrator:</strong> The clock-in service is built into the xPertManager server. In production, the clock-in page must be served over <strong>HTTPS</strong> (domain name and certificate), because agents enter their password there when linking their phone.</div>
+            <div class="note"><strong>ℹ️ Notifications:</strong> Each clock-in updates the Attendance window in real time. Refused attempts (expired code, phone outside office Wi-Fi, unrecognized phone) appear in HR managers' <a href="#notifications">notification center</a>.</div>
+            <div class="note"><strong>ℹ️ For administrators:</strong> Clock-in is integrated with the xPertManager server. In production, the clock-in page must be served over <strong>HTTPS</strong> (domain name and certificate), because agents enter their password the first time they link a phone.</div>
 
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
@@ -935,7 +899,7 @@
                 <li><div class="step-content">In the <strong>General</strong> tab, select the structure in which the project or activity is to be created.</div></li>
                 <li><div class="step-content">In the <strong>Activities</strong> tab, select the parent project or activity. If there is none, select the type (professional or personal).</div></li>
                 <li><div class="step-content">Click <img src="images/add.png" class="img-inline" alt="Add">.</div></li>
-                <li><div class="step-content">In the dialog box, fill in the required data. The <strong>Milestones</strong> field describes the key steps of the activity. If activity types have not been defined, they must be set up by editing the parent structure.</div></li>
+                <li><div class="step-content">In the dialog box, fill in the required data. If activity types have not been defined, they must be set up by editing the parent structure.</div></li>
                 <li><div class="step-content">Click <strong>Insert</strong>.</div></li>
                 <li><div class="step-content">You can continue creating other projects or close the dialog box.</div></li>
             </ol>
@@ -1014,7 +978,6 @@
                 <li><img src="images/stop.png" class="img-inline" alt="Leave"> <strong>Leave the video conference.</strong></li>
             </ul>
             <img src="images/videoConf.png" alt="Video conference" width="600">
-            <div class="note"><strong>ℹ️ Different networks:</strong> participants do not need to be on the same network. A video conference (audio, video, screen sharing, invitations) also works between a computer on the company network, one on home Wi-Fi and one using a mobile hotspot: traffic goes through the server when a direct connection is not possible.</div>
 
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
@@ -1024,41 +987,22 @@
             <h2><span class="section-icon">🔧</span>Managing material resources</h2>
 
             <h3>Add a material resource</h3>
-            <div class="note"><strong>ℹ️ Rights:</strong> only the <strong>Material Resources Manager</strong> and the <strong>Material Resources Assistant</strong> can add, edit, delete and assign a material resource. A <strong>head of department</strong> can only reassign (department and agent) the material of their department and its sub-departments. For other agents, including the Top Manager, the <strong>Material Resources</strong> tab is view-only.</div>
             <ol class="steps">
                 <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
                 <li><div class="step-content">Select the structure to which the material resource will be assigned.</div></li>
                 <li><div class="step-content">Select the <strong>Material Resources</strong> tab at the bottom of the interface.</div></li>
                 <li><div class="step-content">Click the <img src="images/add.png" class="img-inline" alt="Add"> button.</div></li>
-                <li><div class="step-content">In the dialog box, choose the <strong>category</strong> (or add one), then enter the <strong>designation</strong>, the <strong>reference</strong> (which must be unique) and the <strong>acquisition date</strong>.</div></li>
-                <li><div class="step-content">In <strong>Assign to</strong>, choose the department the material is assigned to.</div></li>
-                <li><div class="step-content">In <strong>Assign to agent</strong>, optionally choose the agent of that department who uses the material, or leave <strong>— Nobody —</strong> if the material is assigned to the department only. The list of agents is updated whenever the department changes.</div></li>
+                <li><div class="step-content">In the dialog box, fill in the required information and define categories if needed.</div></li>
                 <li><div class="step-content">Click <strong>Add</strong>.</div></li>
                 <li><div class="step-content">You can continue adding other resources or close the dialog box.</div></li>
             </ol>
-            <div class="note"><strong>ℹ️ Note:</strong> The material resources table shows the <strong>Reference</strong>, designation, category, department and <strong>assigned agent</strong> of each resource. The CSV export <img src="images/export.png" class="img-inline" alt="Export"> also includes the assigned agent.</div>
+            <div class="note"><strong>ℹ️ Note:</strong> The optional <strong>Acquisition date</strong> field lets you record when the resource was put into service.</div>
 
             <h3>Edit / Delete a material resource</h3>
             <ul class="feature-list">
-                <li>To <strong>edit</strong>, select the resource in the <strong>Material Resources</strong> tab and click <img src="images/modif.png" class="img-inline" alt="Edit">. The reference can no longer be changed after creation. A head of department can only reassign (department and agent) the material of their department and its sub-departments.</li>
+                <li>To <strong>edit</strong>, select the resource in the <strong>Material Resources</strong> tab and click <img src="images/modif.png" class="img-inline" alt="Edit">.</li>
                 <li>To <strong>delete</strong>, select the resource and click <img src="images/delete.png" class="img-inline" alt="Delete">.</li>
             </ul>
-
-            <h3>Review material assignment (Material Resources Manager / assistant)</h3>
-            <p>The <strong>Material assignment</strong> window shows which material is assigned to a department and to its agents.</p>
-            <ol class="steps">
-                <li><div class="step-content">In the <strong>Material Resources</strong> tab, click the <img src="images/agentMaterial.png" class="img-inline" alt="Material assignment"> button.</div></li>
-                <li><div class="step-content">Choose the <strong>Department</strong>, then in the <strong>Agent</strong> list:
-                    <ul>
-                        <li><strong>— All material (department and sub-departments) —</strong>: all the material of the department and its sub-departments, whoever it is assigned to; the <strong>Department</strong> and <strong>Assigned agent</strong> columns are then shown;</li>
-                        <li><strong>— Nobody (not assigned to an agent) —</strong>: the department's material that is not assigned to any agent;</li>
-                        <li><strong>an agent</strong>: the material assigned to that agent.</li>
-                    </ul></div></li>
-                <li><div class="step-content">Above the table, the <strong>Category</strong> list lets you display <strong>all categories</strong> or a single category of material.</div></li>
-                <li><div class="step-content">The table shows the <strong>Reference</strong>, <strong>Designation</strong> and <strong>Acquisition date</strong>; the number of items is shown below the lists. A scroll bar appears when the list is long.</div></li>
-            </ol>
-            <div class="note"><strong>ℹ️ Note:</strong> This button is only active for the <strong>Material Resources Manager</strong> and the <strong>Material Resources Assistant</strong>. The window is read-only: changes are made with <img src="images/modif.png" class="img-inline" alt="Edit">.</div>
-            <img src="images/materialRessourcesAssignment.png" alt="Material assignment" width="650">
 
             <h3>Schedule a material resource</h3>
             <p>Material resources are scheduled in the <a href="#gerer-projets"><strong>Manage a project or activity</strong></a> section.</p>
@@ -1164,8 +1108,6 @@
         <div class="section" id="communication">
             <h2><span class="section-icon">💬</span>Audio calls, text messages and instant messaging</h2>
 
-            <div class="note"><strong>ℹ️ Different networks:</strong> audio calls, chat and messages work even when agents are not on the same network (company network, home Wi-Fi, mobile hotspot): traffic goes through the server when a direct connection is not possible.</div>
-
             <h3>Make an audio call</h3>
             <ol class="steps">
                 <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
@@ -1177,30 +1119,14 @@
 
             <h3>Send a text message</h3>
             <ol class="steps">
-                <li><div class="step-content">Select the <strong>General</strong> tab, then the <strong>Human Resources</strong> tab at the bottom of the interface.</div></li>
-                <li><div class="step-content">Select the recipient agent (even if they are offline) and click the <img src="images/message.png" class="img-inline" alt="Message"> button. The window opens in <strong>To</strong> mode (writing).</div></li>
-                <li><div class="step-content">Add or remove recipients with <img src="images/add.png" class="img-inline" alt="Add"> (tick the agents in the list; ● marks a connected agent), or load a distribution group with <img src="images/group.png" class="img-inline" alt="Group">.</div></li>
-                <li><div class="step-content">Enter the <strong>Subject</strong> and the text of the message. Tick <strong>High priority</strong> if the message should pop up as a sticky note for the recipient as soon as it arrives (or when they log in).</div></li>
-                <li><div class="step-content">If needed, attach a document with <img src="images/attachDoc.png" class="img-inline" alt="Attach"> (16 MB maximum), then click <strong>Send</strong>. A report lists the recipients reached.</div></li>
+                <li><div class="step-content">Select the <strong>General</strong> tab.</div></li>
+                <li><div class="step-content">Select the <strong>Human Resources</strong> tab at the bottom of the interface.</div></li>
+                <li><div class="step-content">Select the recipient agent (even if they are offline).</div></li>
+                <li><div class="step-content">Click the <img src="images/message.png" class="img-inline" alt="Message"> button.</div></li>
+                <li><div class="step-content">Write the message and click <strong>Send</strong>. If the recipient is online, they will see it immediately; otherwise, they will see it when they next log in. You can also send a message to a group of recipients <img src="images/group.png" class="img-inline" alt="Group">.</div></li>
             </ol>
-            <div class="note"><strong>ℹ️ Attachment:</strong> The recipient downloads the document from the messages window. It is deleted from the server as soon as they have saved it, and in any case 48 hours after sending.</div>
-            <img src="images/textMessage.png" alt="Text message" width="650">
-
-            <h3>Read received and sent messages</h3>
-            <p>In the messages window, the list at the top left offers three modes: <strong>To</strong> (writing), <strong>From</strong> (received messages) and <strong>Sent</strong>. In <strong>From</strong> and <strong>Sent</strong> modes, the window is split in two:</p>
-            <ul class="feature-list">
-                <li><strong>On the left</strong>, one line per contact (the sender in From mode, the recipient in Sent mode): their name, the date and a preview of the last message, and the number of messages. While unread messages remain, the name is in bold and a badge shows the number of new messages.</li>
-                <li><strong>On the right</strong>, all the messages exchanged with that contact, from oldest to newest: date, subject, text and any attachment.</li>
-                <li>The field at the top summarizes the box: number of messages and of unread messages.</li>
-            </ul>
-            <p>In <strong>From</strong> mode:</p>
-            <ul class="feature-list">
-                <li>opening a conversation marks its messages as read;</li>
-                <li><strong>Reply</strong> goes back to writing, with the sender as recipient and "RE:" before the subject;</li>
-                <li>the message selected on the right can be turned into a sticky note <img src="images/sticky.png" class="img-inline" alt="Sticky note">, deleted <img src="images/strash.png" class="img-inline" alt="Delete"> or, if it has an attachment, downloaded with <img src="images/downloadDoc.png" class="img-inline" alt="Download">.</li>
-            </ul>
-            <p>In <strong>Sent</strong> mode, each message shows whether it was <strong>✓ Read</strong> or <strong>Not read</strong> by its recipient, and the state of its attachment (not downloaded yet, or no longer on the server).</p>
-            <div class="note"><strong>ℹ️ Note:</strong> A sent message and the received message are one and the same record. For this reason, a sent message cannot be deleted from Sent mode, and it disappears from that mode if its recipient deletes or archives it.</div>
+            <div class="note"><strong>ℹ️ Tip:</strong> A received text message can be turned into a sticky note as a reminder <img src="images/sticky.png" class="img-inline" alt="Sticky note"> or deleted if needed <img src="images/strash.png" class="img-inline" alt="Delete">.</div>
+            <img src="images/textMessage.png" alt="Text message" width="500">
 
             <h3>Start an instant messaging chat</h3>
             <ol class="steps">
@@ -1246,7 +1172,7 @@
                 <li><div class="step-content">Create and add the voting options.</div></li>
                 <li><div class="step-content">Specify the closing time of the vote.</div></li>
                 <li><div class="step-content">Click <strong>Start</strong> to open the vote. The options will appear in all participants' interfaces so that they can vote.</div></li>
-                <li><div class="step-content">At the end of the vote, click <strong>Stop</strong>. The results will appear in the interfaces of all participants invited to the vote — including those who did not vote — and for the organizer. The displayed list of voters only includes the people who actually voted.</div></li>
+                <li><div class="step-content">At the end of the vote, click <strong>Stop</strong>. The results will appear in all participants' interfaces.</div></li>
             </ol>
 
             <div class="img-group">
@@ -1314,8 +1240,7 @@
                         <span class="label">Author</span>
                         <div class="name">Prof. Lamine THIAW</div>
                         <div class="role">Department of Electrical Engineering<br>École Supérieure Polytechnique<br>Cheikh Anta Diop University, Dakar</div>
-                        <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a><br>
-                        <a href="mailto:lamine.thiaw@esp.sn">lamine.thiaw@esp.sn</a>
+                        <a href="mailto:lamine.thiaw@ucad.edu.sn">lamine.thiaw@ucad.edu.sn</a>
                     </div>
                 </div>
                 <div class="author-card">
@@ -1323,7 +1248,7 @@
                     <div class="author-info">
                         <span class="label">Co-author</span>
                         <div class="name">Malick Thiaw</div>
-                        <a href="mailto:malick@niitan.com">malick@niitan.com</a>
+                        <a href="mailto:malickthiaw012@gmail.com">malickthiaw012@gmail.com</a>
                     </div>
                 </div>
             </div>
@@ -1335,13 +1260,13 @@
                     <a href="mailto:contact@niitan.com">contact@niitan.com</a>
                 </div>
             </div>
-            <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">October 2026</p>
+            <p style="margin-top:14px; color: var(--text-muted); font-size:0.85rem;">September 2026</p>
         </div>
 
     </div><!-- /content -->
 
     <footer id="doc-footer">
-        <span>xPertManager · User Guide</span>
+        <span>xPertManager · User Guide · Version 2.0</span>
         <span>Deployed by <strong>NIITAN SARL</strong> · 2026</span>
     </footer>
 </div><!-- /main -->

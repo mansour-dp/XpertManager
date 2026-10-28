@@ -604,6 +604,7 @@
         <a href="#communication"><span class="nav-icon">💬</span>Communication</a>
         <a href="#notifications"><span class="nav-icon">🔔</span>Notifications</a>
         <a href="#votes-electroniques"><span class="nav-icon">🗳️</span>Votes électroniques</a>
+        <a href="#assistant-ia"><span class="nav-icon">✨</span>Assistant IA</a>
         <a href="#divers"><span class="nav-icon">✨</span>Divers</a>
         <a href="#auteur"><span class="nav-icon">👤</span>Auteurs</a>
     </nav>
@@ -654,6 +655,7 @@
                 <a href="#notifications"><span class="toc-num">13</span>Centre des notifications</a>
                 <a href="#votes-electroniques"><span class="toc-num">14</span>Votes électroniques</a>
                 <a href="#divers"><span class="toc-num">15</span>Divers</a>
+                <a href="#assistant-ia"><span class="toc-num">16</span>Assistant IA</a>
             </div>
         </div>
 
@@ -713,7 +715,7 @@
             <ul class="feature-list">
                 <li><strong>Ventes et achats</strong> : Clients, Fournisseurs, Commandes, Factures</li>
                 <li><strong>Catalogue et stock</strong> : Produits, Stocks</li>
-                <li><strong>Finance et paie</strong> : Trésorerie, Rapprochement bancaire, Règlement de la paie</li>
+                <li><strong>Finance et paie</strong> : Trésorerie, Rapprochement bancaire, Règlement de la paie, Comptabilité générale (SYSCOHADA)</li>
             </ul>
             <img src="images/financeCompta.png" alt="Onglet Finance/Comptabilité" width="650">
 
@@ -1073,7 +1075,7 @@
         <div class="section" id="finances-comptabilite">
             <h2><span class="section-icon">💰</span>Finances &amp; Comptabilité</h2>
 
-            <p>Le hub <strong>Finance et comptabilité</strong>, ouvert depuis l'onglet <strong>Finance/Comptabilité</strong>, regroupe les modules en trois familles : <strong>Ventes et achats</strong> (Clients, Fournisseurs, Commandes, Factures), <strong>Catalogue et stock</strong> (Produits, Stocks) et <strong>Finance et paie</strong> (Trésorerie, Rapprochement bancaire, Règlement de la paie). Chaque carte ouvre son module dans sa propre fenêtre.</p>
+            <p>Le hub <strong>Finance et comptabilité</strong>, ouvert depuis l'onglet <strong>Finance/Comptabilité</strong>, regroupe les modules en trois familles : <strong>Ventes et achats</strong> (Clients, Fournisseurs, Commandes, Factures), <strong>Catalogue et stock</strong> (Produits, Stocks) et <strong>Finance et paie</strong> (Trésorerie, Rapprochement bancaire, Règlement de la paie, Comptabilité générale SYSCOHADA). Chaque carte ouvre son module dans sa propre fenêtre.</p>
             <img src="images/financeHub.png" alt="Finance et comptabilité" width="700">
 
             <h3>Gérer les clients et les fournisseurs</h3>
@@ -1154,6 +1156,57 @@
 
             <h3>Régler une fiche de paie (responsable finances/comptabilité)</h3>
             <p>La carte <strong>Règlement de la paie</strong> (« Bulletins validés en attente de paiement ») liste les bulletins déjà validés par le responsable RH et permet d'enregistrer leur règlement (mode de paiement, statut, observations) — voir aussi la section <a href="#fiches-de-paie">Fiches de paie</a>.</p>
+
+            <h3>Tenir la comptabilité générale SYSCOHADA</h3>
+            <p>La carte <strong>Comptabilité générale</strong> du groupe <strong>Finance et paie</strong> ouvre la comptabilité de l'entreprise, conforme au référentiel <strong>SYSCOHADA</strong>. Il n'y a presque rien à saisir : les factures de vente et d'achat, les règlements, les bulletins de paie, les écritures de trésorerie et les immobilisations déjà enregistrés dans l'application sont transformés automatiquement en écritures comptables.</p>
+            <img src="images/financeHubCompta.png" alt="Carte Comptabilité générale du hub Finance et comptabilité" width="700">
+            <ol class="steps">
+                <li><div class="step-content">Dans l'onglet <strong>Finance/Comptabilité</strong>, ouvrez la carte <strong>Comptabilité générale</strong>.</div></li>
+                <li><div class="step-content">En haut de la fenêtre, choisissez l'<strong>Exercice</strong> et la date de <strong>Situation au</strong>, puis cliquez sur <strong>Actualiser</strong>.</div></li>
+                <li><div class="step-content">Cliquez sur <strong>Comptabiliser les pièces</strong> : les nouvelles factures, règlements, bulletins de paie, écritures de trésorerie et immobilisations sont comptabilisés, et les écritures des pièces modifiées sont corrigées.</div></li>
+                <li><div class="step-content">Parcourez ensuite les onglets : <strong>Synthèse</strong>, <strong>Journaux</strong>, <strong>Grand livre</strong>, <strong>Balance</strong>, <strong>Bilan</strong>, <strong>Compte de résultat</strong>, <strong>Flux de trésorerie</strong>, <strong>Créances / dettes</strong>, <strong>Immobilisations</strong>, <strong>Plan comptable</strong> et <strong>Paramètres et clôture</strong>.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Important :</strong> Une écriture n'est jamais modifiée sur place. Si une pièce change après sa comptabilisation, son écriture est contre-passée puis comptabilisée à nouveau au prochain clic sur <strong>Comptabiliser les pièces</strong>. Pour corriger une écriture automatique, corrigez donc la pièce d'origine (facture, règlement, bulletin, écriture de trésorerie, immobilisation). Un exercice clôturé n'est jamais touché.</div>
+
+            <h3>Synthèse</h3>
+            <p>L'onglet <strong>Synthèse</strong> affiche les indicateurs clés de l'exercice — <strong>Chiffre d'affaires</strong>, <strong>Résultat net</strong>, <strong>Trésorerie nette</strong>, <strong>Créances clients</strong>, <strong>Dettes fournisseurs</strong>, <strong>Total du bilan</strong> — et les <strong>Contrôles comptables</strong> : total des débits égal au total des crédits, bilan équilibré, résultat du compte de résultat égal à celui du bilan, tableau des flux qui explique la variation de trésorerie, compte d'attente 471 soldé, aucune caisse créditrice. La section <strong>Comptabilisation des pièces</strong> garde l'historique des comptabilisations ; le bouton <strong>Vérification complète des règlements</strong> repasse en revue tous les règlements.</p>
+            <img src="images/accSynthese.png" alt="Comptabilité générale — Synthèse" width="700">
+
+            <h3>Journaux et saisie d'écritures</h3>
+            <ol class="steps">
+                <li><div class="step-content">Dans l'onglet <strong>Journaux</strong>, choisissez un journal (Ventes, Achats, Banque, Caisse, Paie, Opérations diverses, À-nouveaux, ou <strong>Tous les journaux</strong>), une période, et au besoin un filtre (compte, libellé, tiers), puis cliquez sur <strong>Rechercher</strong>.</div></li>
+                <li><div class="step-content">Chaque ligne indique la date, le n° de pièce, le journal, le compte et son intitulé, le libellé, le tiers, le débit et le crédit ; les totaux débit et crédit s'affichent en bas.</div></li>
+                <li><div class="step-content"><strong>Nouvelle écriture</strong> saisit une écriture manuelle (opérations diverses). <strong>Saisir les à-nouveaux</strong> enregistre la situation de l'entreprise au premier jour de la comptabilité : capital, emprunts, banque, créances, dettes, immobilisations…</div></li>
+                <li><div class="step-content"><strong>Liquidation de TVA</strong> solde la TVA collectée et la TVA récupérable d'un mois et constate la TVA due (4441) ou le crédit de TVA (4449).</div></li>
+                <li><div class="step-content"><strong>Exporter (Excel)</strong> exporte les lignes affichées.</div></li>
+            </ol>
+            <img src="images/accJournaux.png" alt="Comptabilité générale — Journaux" width="700">
+
+            <h3>Grand livre et balance</h3>
+            <ul class="feature-list">
+                <li><strong>Grand livre</strong> : saisissez un numéro de compte (ou son début, par exemple <strong>41</strong> pour tous les clients) et une période, puis <strong>Rechercher</strong> : solde reporté, mouvements et solde final.</li>
+                <li><strong>Balance</strong> : soldes de début, mouvements débit et crédit et soldes de fin de chaque compte, au niveau de détail choisi.</li>
+            </ul>
+            <img src="images/accBalance.png" alt="Comptabilité générale — Balance" width="700">
+
+            <h3>États financiers SYSCOHADA</h3>
+            <ul class="feature-list">
+                <li><strong>Bilan</strong> : actif (brut, amortissements et dépréciations, net) et passif selon les rubriques SYSCOHADA (AD, AI, BI, BS, CA, CJ…), avec le contrôle de l'écart actif / passif en bas de page.</li>
+                <li><strong>Compte de résultat</strong> : produits et charges de l'exercice jusqu'au résultat net.</li>
+                <li><strong>Flux de trésorerie</strong> : tableau des flux qui explique la variation de la trésorerie.</li>
+                <li><strong>Créances / dettes</strong> : ce que doivent les clients et ce qui est dû aux fournisseurs, avec les encaissements et décaissements prévus.</li>
+                <li><strong>Exporter / imprimer</strong> produit chaque état prêt à imprimer.</li>
+            </ul>
+            <img src="images/accBilan.png" alt="Comptabilité générale — Bilan" width="700">
+            <img src="images/accCompteResultat.png" alt="Comptabilité générale — Compte de résultat" width="700">
+
+            <h3>Immobilisations, plan comptable et clôture</h3>
+            <ul class="feature-list">
+                <li><strong>Immobilisations</strong> : registre des immobilisations (code, valeur, date d'acquisition, durée) ; la dotation de l'exercice, les amortissements cumulés et la valeur nette comptable sont calculés et comptabilisés automatiquement.</li>
+                <li><strong>Plan comptable</strong> : le plan SYSCOHADA, complété des comptes propres à l'entreprise.</li>
+                <li><strong>Paramètres et clôture</strong> : paramètres comptables, clôture et réouverture d'un exercice.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Droits d'accès :</strong> le TOP Manager consulte la comptabilité ; le responsable des finances et son assistant comptabilisent, saisissent des écritures et gèrent les immobilisations ; le plan comptable, les paramètres et la clôture d'exercice sont réservés au responsable des finances.</div>
 
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>
@@ -1298,6 +1351,47 @@
                 <li><div class="step-content">Sauvegardez le groupe dans un fichier pour une utilisation future.</div></li>
             </ol>
             <img src="images/diffusionGroup.png" alt="Groupe de diffusion" width="400">
+
+            <a href="#top" class="back-to-top">↑ Retour en haut</a>
+        </div>
+
+        <!-- ═══ 16. ASSISTANT IA ═══ -->
+        <div class="section" id="assistant-ia">
+            <h2><span class="section-icon">✨</span>Assistant IA</h2>
+            <p>Le bouton <strong>Assistant</strong>, en haut à droite de la fenêtre principale, ouvre l'assistant IA de xPertManager. Il connaît le logiciel et l'écran sur lequel vous êtes, et ne voit que ce que vos droits vous permettent de voir.</p>
+
+            <h3>Poser une question</h3>
+            <ol class="steps">
+                <li><div class="step-content">Cliquez sur <strong>Assistant</strong> : le panneau s'ouvre à droite de l'écran.</div></li>
+                <li><div class="step-content">Écrivez votre question (par exemple « Comment est calculé l'IR sur un bulletin de paie ? ») ou choisissez une des suggestions, puis cliquez sur <strong>Envoyer</strong>.</div></li>
+                <li><div class="step-content">L'assistant répond en expliquant la démarche et, si besoin, vous indique l'écran à ouvrir.</div></li>
+            </ol>
+
+            <h3>Faire remplir un formulaire (IA Pro)</h3>
+            <p>Avec la formule <strong>IA Pro</strong>, il suffit de demander : « Planifie une réunion visio Point hebdo le 6 novembre à 10h avec Fatou Sow et Bamba Fall », « Crée le client Sonatel »… L'assistant prépare une carte qui montre exactement ce qu'il va remplir.</p>
+            <ol class="steps">
+                <li><div class="step-content">Relisez la carte proposée par l'assistant, puis cliquez sur <strong>Ouvrir et remplir le formulaire</strong>.</div></li>
+                <li><div class="step-content">Le vrai formulaire du logiciel s'ouvre, déjà rempli ; les champs remplis sont encadrés.</div></li>
+                <li><div class="step-content">Vérifiez, corrigez si besoin, puis enregistrez vous-même avec le bouton habituel (<strong>OK</strong>, <strong>Enregistrer</strong>…).</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Important :</strong> L'IA ne valide jamais à votre place : rien n'est enregistré sans votre clic. Elle ne supprime rien et ne touche ni aux droits ni aux mots de passe. Elle ne propose que les formulaires que vos droits vous autorisent à utiliser.</div>
+            <img src="images/iaAssistantCarte.png" alt="Carte préparée par l'assistant" width="300">
+            <img src="images/iaFormulaireRempli.png" alt="Formulaire rempli par l'assistant" width="650">
+
+            <h3>Comptes rendus de réunion et transcription</h3>
+            <ol class="steps">
+                <li><div class="step-content">Pendant une visioconférence, l'organisateur active l'enregistrement IA ; tous les participants voient qu'il est en cours.</div></li>
+                <li><div class="step-content">À la fin de la réunion, l'IA rédige le compte rendu : <strong>Résumé</strong>, <strong>Décisions</strong>, <strong>Actions</strong> (avec responsable et échéance) et <strong>Points en suspens</strong>.</div></li>
+                <li><div class="step-content">Dans l'onglet <strong>Événements</strong>, sélectionnez la réunion puis cliquez sur <strong>Comptes rendus IA</strong> : l'onglet <strong>Compte rendu</strong> affiche le texte, l'onglet <strong>Transcription</strong> la transcription horodatée de chaque intervenant. Vous pouvez les copier ou les exporter.</div></li>
+            </ol>
+            <p>Un compte rendu n'est visible que par l'organisateur, les invités de la réunion et les personnes qui y ont participé.</p>
+            <img src="images/iaCompteRendu.png" alt="Compte rendu IA d'une réunion" width="700">
+
+            <h3>Formules IA</h3>
+            <ul class="feature-list">
+                <li><strong>IA Essentiel</strong> : l'assistant explique et vous guide dans le logiciel.</li>
+                <li><strong>IA Pro</strong> : en plus, il remplit les formulaires à votre place (vous validez) et rédige les comptes rendus de réunion.</li>
+            </ul>
 
             <a href="#top" class="back-to-top">↑ Retour en haut</a>
         </div>

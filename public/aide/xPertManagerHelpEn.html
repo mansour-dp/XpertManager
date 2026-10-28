@@ -593,6 +593,7 @@
         <a href="#communication"><span class="nav-icon">💬</span>Communication</a>
         <a href="#notifications"><span class="nav-icon">🔔</span>Notification center</a>
         <a href="#votes-electroniques"><span class="nav-icon">🗳️</span>Electronic voting</a>
+        <a href="#assistant-ia"><span class="nav-icon">✨</span>AI assistant</a>
         <a href="#divers"><span class="nav-icon">✨</span>Miscellaneous</a>
         <a href="#auteur"><span class="nav-icon">👤</span>Author</a>
     </nav>
@@ -643,6 +644,7 @@
                 <a href="#notifications"><span class="toc-num">13</span>Notification center</a>
                 <a href="#votes-electroniques"><span class="toc-num">14</span>Electronic voting</a>
                 <a href="#divers"><span class="toc-num">15</span>Miscellaneous</a>
+                <a href="#assistant-ia"><span class="toc-num">16</span>AI assistant</a>
             </div>
         </div>
 
@@ -700,7 +702,7 @@
             <ul class="feature-list">
                 <li><strong>Sales and purchasing</strong>: Customers, Suppliers, Orders, Invoices</li>
                 <li><strong>Catalog and stock</strong>: Products, Stock</li>
-                <li><strong>Finance and payroll</strong>: Treasury, Bank reconciliation, Payroll settlement</li>
+                <li><strong>Finance and payroll</strong>: Treasury, Bank reconciliation, Payroll settlement, General accounting (SYSCOHADA)</li>
             </ul>
             <img src="images/financeCompta.png" alt="Finance/Accounting tab" width="650">
 
@@ -1019,7 +1021,7 @@
         <div class="section" id="finances-comptabilite">
             <h2><span class="section-icon">💰</span>Finance &amp; Accounting</h2>
 
-            <p>The <strong>Finance and accounting</strong> hub, opened from the <strong>Finance/Accounting</strong> tab, groups the modules into three families: <strong>Sales and purchasing</strong> (Customers, Suppliers, Orders, Invoices), <strong>Catalog and stock</strong> (Products, Stock) and <strong>Finance and payroll</strong> (Treasury, Bank reconciliation, Payroll settlement). Each card opens its module in its own window.</p>
+            <p>The <strong>Finance and accounting</strong> hub, opened from the <strong>Finance/Accounting</strong> tab, groups the modules into three families: <strong>Sales and purchasing</strong> (Customers, Suppliers, Orders, Invoices), <strong>Catalog and stock</strong> (Products, Stock) and <strong>Finance and payroll</strong> (Treasury, Bank reconciliation, Payroll settlement, SYSCOHADA general accounting). Each card opens its module in its own window.</p>
             <img src="images/financeHub.png" alt="Finance and accounting" width="700">
 
             <h3>Manage customers and suppliers</h3>
@@ -1100,6 +1102,57 @@
 
             <h3>Settle a payslip (finance/accounting manager)</h3>
             <p>The <strong>Payroll settlement</strong> card (“Validated payslips awaiting payment”) lists the payslips already validated by the HR manager and lets you record their settlement (payment method, status, remarks) — see also the <a href="#fiches-de-paie">Payslips</a> section.</p>
+
+            <h3>Keep the SYSCOHADA general accounting</h3>
+            <p>The <strong>General accounting</strong> card of the <strong>Finance and payroll</strong> group opens the company's accounting, compliant with the <strong>SYSCOHADA</strong> framework. There is almost nothing to type: the sales and purchase invoices, payments, payslips, treasury entries and fixed assets already recorded in the application are turned into accounting entries automatically.</p>
+            <img src="images/financeHubCompta.png" alt="General accounting card of the Finance and accounting hub" width="700">
+            <ol class="steps">
+                <li><div class="step-content">In the <strong>Finance/Accounting</strong> tab, open the <strong>General accounting</strong> card.</div></li>
+                <li><div class="step-content">At the top of the window, choose the <strong>Fiscal year</strong> and the <strong>Situation at</strong> date, then click <strong>Refresh</strong>.</div></li>
+                <li><div class="step-content">Click <strong>Post documents</strong>: new invoices, payments, payslips, treasury entries and fixed assets are posted, and the entries of documents that changed are corrected.</div></li>
+                <li><div class="step-content">Then browse the tabs: <strong>Overview</strong>, <strong>Journals</strong>, <strong>General ledger</strong>, <strong>Trial balance</strong>, <strong>Balance sheet</strong>, <strong>Income statement</strong>, <strong>Cash flow</strong>, <strong>Receivables / payables</strong>, <strong>Fixed assets</strong>, <strong>Chart of accounts</strong> and <strong>Settings and closing</strong>.</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Important:</strong> An entry is never modified in place. If a document changes after it was posted, its entry is reversed and posted again the next time you click <strong>Post documents</strong>. To correct an automatic entry, correct the source document (invoice, payment, payslip, treasury entry, fixed asset). A closed fiscal year is never touched.</div>
+
+            <h3>Overview</h3>
+            <p>The <strong>Overview</strong> tab shows the key figures of the year — <strong>Turnover</strong>, <strong>Net result</strong>, <strong>Net cash</strong>, <strong>Customer receivables</strong>, <strong>Supplier payables</strong>, <strong>Balance sheet total</strong> — and the <strong>Accounting checks</strong>: total debits equal total credits, balanced balance sheet, income statement result equal to the balance sheet result, cash-flow statement explaining the change in cash, suspense account 471 cleared, no cash account with a credit balance. The <strong>Posting of the documents</strong> section keeps the history of the postings; the <strong>Full check of all payments</strong> button reviews every payment again.</p>
+            <img src="images/accSynthese.png" alt="General accounting — Overview" width="700">
+
+            <h3>Journals and manual entries</h3>
+            <ol class="steps">
+                <li><div class="step-content">In the <strong>Journals</strong> tab, choose a journal (Sales, Purchases, Bank, Cash, Payroll, Miscellaneous operations, Opening balances, or <strong>All journals</strong>), a period and, if needed, a filter (account, label, party), then click <strong>Search</strong>.</div></li>
+                <li><div class="step-content">Each line shows the date, entry number, journal, account and account name, label, third party, debit and credit; debit and credit totals are shown at the bottom.</div></li>
+                <li><div class="step-content"><strong>New entry</strong> records a manual entry (miscellaneous operations). <strong>Opening balances</strong> records the company's position on the first day of the ledger: capital, loans, bank, receivables, payables, fixed assets…</div></li>
+                <li><div class="step-content"><strong>VAT return</strong> clears the output and input VAT of a month and records the VAT payable (4441) or the VAT credit (4449).</div></li>
+                <li><div class="step-content"><strong>Export (Excel)</strong> exports the lines shown.</div></li>
+            </ol>
+            <img src="images/accJournaux.png" alt="General accounting — Journals" width="700">
+
+            <h3>General ledger and trial balance</h3>
+            <ul class="feature-list">
+                <li><strong>General ledger</strong>: type an account number (or its beginning, e.g. <strong>41</strong> for every customer) and a period, then <strong>Search</strong>: balance brought forward, movements and closing balance.</li>
+                <li><strong>Trial balance</strong>: opening balances, debit and credit movements and closing balances of every account, at the chosen level of detail.</li>
+            </ul>
+            <img src="images/accBalance.png" alt="General accounting — Trial balance" width="700">
+
+            <h3>SYSCOHADA financial statements</h3>
+            <ul class="feature-list">
+                <li><strong>Balance sheet</strong>: assets (gross, depreciation and impairment, net) and liabilities by SYSCOHADA heading (AD, AI, BI, BS, CA, CJ…), with the assets / liabilities difference checked at the bottom.</li>
+                <li><strong>Income statement</strong>: income and expenses of the year down to the net result.</li>
+                <li><strong>Cash flow</strong>: cash-flow statement explaining the change in cash.</li>
+                <li><strong>Receivables / payables</strong>: what customers owe and what is owed to suppliers, with expected receipts and payments.</li>
+                <li><strong>Export / print</strong> produces each statement ready to print.</li>
+            </ul>
+            <img src="images/accBilan.png" alt="General accounting — Balance sheet" width="700">
+            <img src="images/accCompteResultat.png" alt="General accounting — Income statement" width="700">
+
+            <h3>Fixed assets, chart of accounts and closing</h3>
+            <ul class="feature-list">
+                <li><strong>Fixed assets</strong>: register of fixed assets (code, value, acquisition date, useful life); the depreciation of the year, cumulated depreciation and net book value are computed and posted automatically.</li>
+                <li><strong>Chart of accounts</strong>: the SYSCOHADA chart, completed with the company's own accounts.</li>
+                <li><strong>Settings and closing</strong>: accounting settings, closing and reopening of a fiscal year.</li>
+            </ul>
+            <div class="note"><strong>ℹ️ Access rights:</strong> the TOP Manager can consult the accounting; the finance manager and the finance assistant post, record entries and manage fixed assets; the chart of accounts, settings and year closing are reserved for the finance manager.</div>
 
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>
@@ -1226,6 +1279,47 @@
                 <li><div class="step-content">Save the group to a file for future use.</div></li>
             </ol>
             <img src="images/diffusionGroup.png" alt="Distribution group" width="400">
+
+            <a href="#top" class="back-to-top">↑ Back to top</a>
+        </div>
+
+        <!-- ═══ 16. AI ASSISTANT ═══ -->
+        <div class="section" id="assistant-ia">
+            <h2><span class="section-icon">✨</span>AI assistant</h2>
+            <p>The <strong>Assistant</strong> button, at the top right of the main window, opens the xPertManager AI assistant. It knows the software and the screen you are on, and only sees what your rights allow you to see.</p>
+
+            <h3>Ask a question</h3>
+            <ol class="steps">
+                <li><div class="step-content">Click <strong>Assistant</strong>: the panel opens on the right of the screen.</div></li>
+                <li><div class="step-content">Type your question (e.g. “How is income tax computed on a payslip?”) or pick a suggestion, then click <strong>Send</strong>.</div></li>
+                <li><div class="step-content">The assistant explains the steps and, if needed, tells you which screen to open.</div></li>
+            </ol>
+
+            <h3>Have a form filled in (AI Pro)</h3>
+            <p>With the <strong>AI Pro</strong> plan, just ask: “Plan a video meeting Weekly review on November 6 at 10am with Fatou Sow and Bamba Fall”, “Create the customer Sonatel”… The assistant prepares a card showing exactly what it will fill in.</p>
+            <ol class="steps">
+                <li><div class="step-content">Check the card proposed by the assistant, then click <strong>Open and fill in the form</strong>.</div></li>
+                <li><div class="step-content">The software's real form opens, already filled in; the filled fields are outlined.</div></li>
+                <li><div class="step-content">Check, correct if needed, then save yourself with the usual button (<strong>OK</strong>, <strong>Save</strong>…).</div></li>
+            </ol>
+            <div class="note"><strong>ℹ️ Important:</strong> The AI never validates for you: nothing is saved without your click. It deletes nothing and never touches rights or passwords. It only offers the forms your rights allow you to use.</div>
+            <img src="images/iaAssistantCarte.png" alt="Card prepared by the assistant" width="300">
+            <img src="images/iaFormulaireRempli.png" alt="Form filled in by the assistant" width="650">
+
+            <h3>Meeting minutes and transcript</h3>
+            <ol class="steps">
+                <li><div class="step-content">During a video conference, the organizer switches AI recording on; every participant sees that it is running.</div></li>
+                <li><div class="step-content">At the end of the meeting, the AI writes the minutes: <strong>Summary</strong>, <strong>Decisions</strong>, <strong>Actions</strong> (with owner and deadline) and <strong>Open points</strong>.</div></li>
+                <li><div class="step-content">In the <strong>Events</strong> tab, select the meeting and click <strong>AI minutes</strong>: the <strong>Minutes</strong> tab shows the text, the <strong>Transcript</strong> tab the time-stamped transcript of each speaker. You can copy or export them.</div></li>
+            </ol>
+            <p>Minutes are visible only to the organizer, the meeting's guests and the people who took part.</p>
+            <img src="images/iaCompteRendu.png" alt="AI minutes of a meeting" width="700">
+
+            <h3>AI plans</h3>
+            <ul class="feature-list">
+                <li><strong>AI Essential</strong>: the assistant explains and guides you in the software.</li>
+                <li><strong>AI Pro</strong>: in addition, it fills in forms for you (you validate) and writes meeting minutes.</li>
+            </ul>
 
             <a href="#top" class="back-to-top">↑ Back to top</a>
         </div>

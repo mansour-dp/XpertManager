@@ -158,6 +158,21 @@ export function Header() {
                             </li>
                             <li>
                                 <button 
+                                    onClick={() => scrollToSection('telecharger')} 
+                                    className={`font-medium transition-all duration-300 px-3 py-2 cursor-pointer relative group ${
+                                        hasScrolled 
+                                            ? "text-txt hover:text-primary" 
+                                            : "text-white hover:text-white/80"
+                                    }`}
+                                >
+                                    Télécharger
+                                    <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                                        hasScrolled ? "bg-primary" : "bg-white"
+                                    }`}></span>
+                                </button>
+                            </li>
+                            <li>
+                                <button 
                                     onClick={() => scrollToSection('contact')} 
                                     className={`font-medium transition-all duration-300 px-3 py-2 cursor-pointer relative group ${
                                         hasScrolled 
@@ -239,6 +254,14 @@ export function Header() {
                                         className={mobileNavLinkStyles}
                                     >
                                         Fonctionnalités
+                                    </button>
+                                </li>
+                                <li>
+                                    <button 
+                                        onClick={() => scrollToSection('telecharger')} 
+                                        className={mobileNavLinkStyles}
+                                    >
+                                        Télécharger
                                     </button>
                                 </li>
                                 <li>

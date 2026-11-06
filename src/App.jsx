@@ -5,7 +5,6 @@ import { PiWhatsappLogoFill } from "react-icons/pi";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { BtnCustom } from "./components/Btn";
 import ScrollToTopButton from "./components/ScrollToTopButton";
-import Loader from "./components/Loader";
 import Gallery from "./components/Gallery";
 import Guide from "./components/Guide";
 import { WA_BUSINESS_NUMBER } from "./constants/info";
@@ -14,21 +13,15 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import ContactForm from "./components/ContactForm";
 import MaintenancePage from "./components/MaintenancePage";
+import Downloads from "./components/Downloads";
+import AppShowcase from "./components/AppShowcase";
 
 // 🔧 VARIABLE DE CONTRÔLE MAINTENANCE - Changez TRUE/FALSE ici
 const IS_MAINTENANCE_MODE = false; // Mettre 'true' pour activer la maintenance
 
-// Images - Assurez-vous d'avoir ces images dans vos assets
-import PatchApplication from "./assets/images/xPertManager-splash.png";
 
-// Images du carrousel pour la page d'accueil
-import XpertManager from "./assets/images/xPertManager-splash.png";
-import Activity_creation from "./assets/images/activityCreation.png";
-import Activity_grannt from "./assets/images/ganntDiagram.png";
-import Activity_MPM from "./assets/images/MPMdiagram.png";
-import Event_creation from "./assets/images/planEvent.png";
-import Event_visioConf from "./assets/images/videoConf.png";
-import Dashboard_Eisenhover from "./assets/images/eisenhover.png";
+// Captures récentes de l'application (voir constants/rubrics.js)
+import { img } from "./constants/rubrics";
 
 
 // Animations
@@ -42,20 +35,20 @@ import {
 } from "./constants/animationVariants";
 
 const HomePage = () => {
-	const [loading, setLoading] = useState(true);
 	const [selectedRubric, setSelectedRubric] = useState(null);
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
 	// Images du carrousel pour la bannière
 	const carouselImages = [
-		XpertManager,
-		Activity_creation,
-		Activity_grannt,
-		Activity_MPM,
-		Event_creation,
-		Event_visioConf,
-		Dashboard_Eisenhover
+		img("dashboard"),
+		img("activities"),
+		img("videoConf"),
+		img("financeHubCompta"),
+		img("accSynthese"),
+		img("hrHub"),
+		img("attendanceWindow"),
+		img("treasuryDashboard"),
 	];
 
 	const whatsApp =
@@ -73,13 +66,6 @@ const HomePage = () => {
 		setSelectedRubric(null);
 	};
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLoading(false);
-		}, 2000);
-		return () => clearTimeout(timer);
-	}, []);
-
 	// Carrousel automatique des images
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -90,10 +76,6 @@ const HomePage = () => {
 		
 		return () => clearInterval(interval);
 	}, [carouselImages.length]);
-
-	if (loading) {
-		return <Loader />;
-	}
 
 	return (
 		<div className="flex flex-col w-full">
@@ -206,6 +188,19 @@ const HomePage = () => {
 						</motion.svg>
 					</motion.a>
 				</motion.div>
+				<motion.a
+					href="#telecharger"
+					onClick={(e) => { e.preventDefault(); document.getElementById("telecharger")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+					className="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-dark font-bold rounded-xl py-3 px-7 text-lg shadow-lg border border-white/40 transition-colors"
+					initial={{ opacity: 0, y: 10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ delay: 1, duration: 0.4 }}
+				>
+					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+					</svg>
+					Télécharger xPertManager
+				</motion.a>
 			</motion.div>
 			
 			{/* Indicateurs de navigation élégants en bas */}
@@ -224,6 +219,9 @@ const HomePage = () => {
 				))}
 			</div>
 		</motion.div>
+
+		{/* 1 bis. TÉLÉCHARGEMENT */}
+		<Downloads />
 
 		{/* 2. À PROPOS */}
 		<motion.section
@@ -290,20 +288,11 @@ const HomePage = () => {
 						className="md:w-1/2"
 						variants={fadeInUp}
 					>
-						<motion.div
-							className="relative overflow-hidden rounded-lg shadow-lg"
-							whileHover={{ scale: 1.01 }}
-							transition={{ duration: 0.4, ease: "easeOut" }}
-						>
-							<img
-								src={PatchApplication}
-								alt="Équipe xPertManager au travail"
-								className="w-full h-auto object-cover"
-								loading="lazy"
-							/>
-							{/* Overlay subtil pour effet professionnel */}
-							<div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-primary/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-						</motion.div>
+						<AppShowcase
+							src={img("dashboard")}
+							alt="Tableau de bord de xPertManager avec la matrice d'Eisenhower"
+							title="xPertManager — Tableau de bord"
+						/>
 					</motion.div>
 				</div>
 			</motion.section>
@@ -335,11 +324,20 @@ const HomePage = () => {
 						</p>
 						<ul className="list-disc pl-6 mt-2 mb-5 space-y-1 marker:text-primary">
 							<li>la gestion des ressources humaines, matérielles et financières</li>
+							<li>la gestion du personnel : fiches des agents, demandes et validation des congés, soldes de congés</li>
+							<li>la paie : génération des bulletins avec calcul automatique des cotisations IPRES et de l'impôt sur le revenu, consultation des bulletins par chaque agent</li>
+							<li>le suivi des présences par badgeage avec un QR code, depuis le téléphone des agents</li>
 							<li>la gestion de projets : conception, planification/ordonnancement, suivi et organisation des activités</li>
 							<li>la gestion d'événements : création, planification et partage</li>
-							<li>la gestion des communications : appels audio, messages texte, messagerie instantanée, visioconférence</li>
+							<li>la gestion des communications : appels audio, messages texte, messagerie instantanée, visioconférence, avec un centre de notifications</li>
 							<li>l'organisation de votes électroniques</li>
+							<li>les ventes et les achats : clients, fournisseurs, commandes, factures, catalogue de produits et stock</li>
+							<li>la trésorerie et le rapprochement bancaire</li>
+							<li>la comptabilité générale conforme au SYSCOHADA : écritures générées automatiquement, journaux, grand livre, balance, bilan, compte de résultat, flux de trésorerie, immobilisations et clôture d'exercice</li>
+							<li>un assistant IA qui répond à vos questions et remplit les formulaires à votre place (vous validez)</li>
+							<li>les comptes rendus de visioconférence rédigés par l'IA (résumé, décisions, actions avec responsable et échéance, points en suspens) et la transcription horodatée de chaque intervenant</li>
 							<li>des outils d'organisation (tableau de bord avec matrice d'Eisenhower, notes autocollantes, rappels, etc.)</li>
+							<li>une interface en français et en anglais, sur Windows et macOS</li>
 						</ul>
 						<p className="mt-6">
 							Découvrez les fonctions principales du logiciel xPertManager en cliquant sur les rubriques ci-dessous.
